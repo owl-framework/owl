@@ -1,0 +1,7 @@
+
+namespace Owl;
+
+class Application
+{
+
+}
