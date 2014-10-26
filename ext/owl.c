@@ -27,6 +27,7 @@
 
 
 zend_class_entry *owl_application_ce;
+zend_class_entry *owl_mvc_controller_ce;
 
 ZEND_DECLARE_MODULE_GLOBALS(owl)
 
@@ -194,6 +195,7 @@ static PHP_MINIT_FUNCTION(owl)
 #endif
 
 	ZEPHIR_INIT(Owl_Application);
+	ZEPHIR_INIT(Owl_Mvc_Controller);
 
 #if PHP_VERSION_ID < 50500
 	setlocale(LC_ALL, old_lc_all);
