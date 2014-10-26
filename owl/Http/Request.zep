@@ -15,7 +15,7 @@ class Request
     const PATCH    = "PATCH";
     const PROPFIND = "PROPFIND";
 
-    protected method {get};
+    protected method = self::GET {get};
 
     public fn getParam()
     {

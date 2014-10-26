@@ -23,7 +23,7 @@ ZEPHIR_INIT_CLASS(Owl_Http_Request) {
 
 	ZEPHIR_REGISTER_CLASS(Owl\\Http, Request, owl, http_request, owl_http_request_method_entry, 0);
 
-	zend_declare_property_null(owl_http_request_ce, SL("method"), ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_string(owl_http_request_ce, SL("method"), "GET", ZEND_ACC_PROTECTED TSRMLS_CC);
 
 	zend_declare_class_constant_string(owl_http_request_ce, SL("GET"), "GET" TSRMLS_CC);
 
