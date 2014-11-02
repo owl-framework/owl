@@ -18,7 +18,11 @@ class Application
 
 	public function bootstrap() {}
 
-
-	public function run() {}
+    /**
+     * @param mixed $request 
+     * @param mixed $response 
+     * @return Http\Response 
+     */
+	public function handle($request, $response = null) {}
 
 }
