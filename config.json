@@ -1,7 +1,7 @@
 {
     "stubs": {
         "path": "ide\/%version%\/%namespace%\/",
-        "stubs-run-after-generate": false
+        "stubs-run-after-generate": true
     },
     "warnings": {
         "unused-variable": true,
