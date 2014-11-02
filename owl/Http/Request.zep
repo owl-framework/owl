@@ -24,16 +24,27 @@ class Request
 
     public fn getPost(string! key)
     {
+        if isset _POST[key] {
+            return _POST[key];
+        }
 
+        return false;
     }
 
-    public fn getServer()
+    public fn getServer(string! key)
     {
+        if isset _SERVER[key] {
+            return _SERVER[key];
+        }
 
+        return false;
     }
 
     public fn getScheme()
     {
-
+        /**
+         * @todo implement it
+         */
+        return "http";
     }
 }
