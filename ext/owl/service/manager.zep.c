@@ -18,6 +18,8 @@
 #include "kernel/operators.h"
 #include "kernel/memory.h"
 #include "kernel/array.h"
+#include "kernel/fcall.h"
+#include "kernel/concat.h"
 
 ZEPHIR_INIT_CLASS(Owl_Service_Manager) {
 
@@ -57,8 +59,9 @@ PHP_METHOD(Owl_Service_Manager, setService) {
 
 PHP_METHOD(Owl_Service_Manager, getService) {
 
-	zval *name_param = NULL, *_0, *_1, *_2;
-	zval *name = NULL;
+	int ZEPHIR_LAST_CALL_STATUS;
+	zval *name_param = NULL, *_0, *_1, *_2, *_3;
+	zval *name = NULL, *_4;
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &name_param);
@@ -82,7 +85,15 @@ PHP_METHOD(Owl_Service_Manager, getService) {
 		zephir_array_fetch(&_2, _1, name, PH_NOISY | PH_READONLY, "owl/Service/Manager.zep", 16 TSRMLS_CC);
 		RETURN_CTOR(_2);
 	}
+	ZEPHIR_INIT_VAR(_3);
+	object_init_ex(_3, owl_exception_ce);
+	ZEPHIR_INIT_VAR(_4);
+	ZEPHIR_CONCAT_SV(_4, "No service was founded by name : ", name);
+	ZEPHIR_CALL_METHOD(NULL, _3, "__construct", NULL, _4);
+	zephir_check_call_status();
+	zephir_throw_exception_debug(_3, "owl/Service/Manager.zep", 19 TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();
+	return;
 
 }
 

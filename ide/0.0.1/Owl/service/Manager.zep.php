@@ -15,6 +15,7 @@ class Manager
 
     /**
      * @param string $name 
+     * @return mixed 
      */
 	public function getService($name) {}
 
