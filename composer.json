@@ -1,0 +1,11 @@
+{
+    "name": "owl/owl",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dmitry Patsura",
+            "email": "talk@dmtry.me"
+        }
+    ],
+    "require": {}
+}
