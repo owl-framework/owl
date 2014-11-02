@@ -12,13 +12,25 @@
 #include <Zend/zend_interfaces.h>
 
 #include "kernel/main.h"
+#include "kernel/object.h"
 
 
 ZEPHIR_INIT_CLASS(Owl_Http_Response) {
 
-	ZEPHIR_REGISTER_CLASS(Owl\\Http, Response, owl, http_response, NULL, 0);
+	ZEPHIR_REGISTER_CLASS(Owl\\Http, Response, owl, http_response, owl_http_response_method_entry, 0);
+
+	zend_declare_property_long(owl_http_response_ce, SL("code"), 200, ZEND_ACC_PROTECTED TSRMLS_CC);
+
+	zend_declare_class_constant_long(owl_http_response_ce, SL("STATUS_CODE_OK"), 200 TSRMLS_CC);
 
 	return SUCCESS;
+
+}
+
+PHP_METHOD(Owl_Http_Response, getCode) {
+
+
+	RETURN_MEMBER(this_ptr, "code");
 
 }
 
