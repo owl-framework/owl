@@ -9,4 +9,4 @@ use Owl\Http\Request;
 $application = new Application();
 $response = $application->handle(new Request());
 
-var_dump($response
+var_dump($response);
