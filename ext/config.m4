@@ -1,8 +1,10 @@
 PHP_ARG_ENABLE(owl, whether to enable owl, [ --enable-owl   Enable Owl])
 
 if test "$PHP_OWL" = "yes"; then
+
 	AC_DEFINE(HAVE_OWL, 1, [Whether you have Owl])
 	owl_sources="owl.c kernel/main.c kernel/memory.c kernel/exception.c kernel/hash.c kernel/debug.c kernel/backtrace.c kernel/object.c kernel/array.c kernel/extended/array.c kernel/string.c kernel/fcall.c kernel/require.c kernel/file.c kernel/operators.c kernel/concat.c kernel/variables.c kernel/filter.c kernel/iterator.c kernel/exit.c owl/application.zep.c
+	owl/exception.zep.c
 	owl/http/request.zep.c
 	owl/http/response.zep.c
 	owl/mvc/controller.zep.c "
@@ -46,4 +48,6 @@ if test "$PHP_OWL" = "yes"; then
 	)
 
 	CPPFLAGS=$old_CPPFLAGS
+
+	PHP_INSTALL_HEADERS([ext/owl], [php_OWL.h])
 fi

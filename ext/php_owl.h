@@ -61,6 +61,8 @@ ZEND_EXTERN_MODULE_GLOBALS(owl)
 	#define ZEPHIR_VGLOBAL &(owl_globals)
 #endif
 
+#define ZEPHIR_API ZEND_API
+
 #define zephir_globals_def owl_globals
 #define zend_zephir_globals_def zend_owl_globals
 
