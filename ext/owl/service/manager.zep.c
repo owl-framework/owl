@@ -12,13 +12,90 @@
 #include <Zend/zend_interfaces.h>
 
 #include "kernel/main.h"
-
+#include "kernel/object.h"
+#include "ext/spl/spl_exceptions.h"
+#include "kernel/exception.h"
+#include "kernel/operators.h"
+#include "kernel/memory.h"
+#include "kernel/array.h"
 
 ZEPHIR_INIT_CLASS(Owl_Service_Manager) {
 
-	ZEPHIR_REGISTER_CLASS(Owl\\Service, Manager, owl, service_manager, NULL, 0);
+	ZEPHIR_REGISTER_CLASS(Owl\\Service, Manager, owl, service_manager, owl_service_manager_method_entry, 0);
+
+	zend_declare_property_null(owl_service_manager_ce, SL("services"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
 	return SUCCESS;
+
+}
+
+PHP_METHOD(Owl_Service_Manager, setService) {
+
+	zval *name_param = NULL, *service;
+	zval *name = NULL;
+
+	ZEPHIR_MM_GROW();
+	zephir_fetch_params(1, 2, 0, &name_param, &service);
+
+	if (unlikely(Z_TYPE_P(name_param) != IS_STRING && Z_TYPE_P(name_param) != IS_NULL)) {
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'name' must be a string") TSRMLS_CC);
+		RETURN_MM_NULL();
+	}
+
+	if (likely(Z_TYPE_P(name_param) == IS_STRING)) {
+		zephir_get_strval(name, name_param);
+	} else {
+		ZEPHIR_INIT_VAR(name);
+		ZVAL_EMPTY_STRING(name);
+	}
+
+
+	zephir_update_property_array(this_ptr, SL("services"), name, service TSRMLS_CC);
+	ZEPHIR_MM_RESTORE();
+
+}
+
+PHP_METHOD(Owl_Service_Manager, getService) {
+
+	zval *name_param = NULL, *_0, *_1, *_2;
+	zval *name = NULL;
+
+	ZEPHIR_MM_GROW();
+	zephir_fetch_params(1, 1, 0, &name_param);
+
+	if (unlikely(Z_TYPE_P(name_param) != IS_STRING && Z_TYPE_P(name_param) != IS_NULL)) {
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'name' must be a string") TSRMLS_CC);
+		RETURN_MM_NULL();
+	}
+
+	if (likely(Z_TYPE_P(name_param) == IS_STRING)) {
+		zephir_get_strval(name, name_param);
+	} else {
+		ZEPHIR_INIT_VAR(name);
+		ZVAL_EMPTY_STRING(name);
+	}
+
+
+	_0 = zephir_fetch_nproperty_this(this_ptr, SL("services"), PH_NOISY_CC);
+	if (zephir_array_isset(_0, name)) {
+		_1 = zephir_fetch_nproperty_this(this_ptr, SL("services"), PH_NOISY_CC);
+		zephir_array_fetch(&_2, _1, name, PH_NOISY | PH_READONLY, "owl/Service/Manager.zep", 16 TSRMLS_CC);
+		RETURN_CTOR(_2);
+	}
+	ZEPHIR_MM_RESTORE();
+
+}
+
+PHP_METHOD(Owl_Service_Manager, __construct) {
+
+	zval *_0;
+
+	ZEPHIR_MM_GROW();
+
+	ZEPHIR_INIT_VAR(_0);
+	array_init(_0);
+	zephir_update_property_this(this_ptr, SL("services"), _0 TSRMLS_CC);
+	ZEPHIR_MM_RESTORE();
 
 }
 
