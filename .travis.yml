@@ -1,0 +1,22 @@
+language:
+  - php
+  - c
+
+php:
+  - 5.4
+  - 5.5
+  - 5.6
+
+install:
+  - composer --prefer-source install
+  - composer require phalcon/zephir:dev-master --prefer-source
+
+before_script:
+  - git submodule --quiet update --init --recursive
+  - (cd vendor/phalcon/zephir; ./unit-tests/ci/before_install.sh; ./install)
+  - ./vendor/bin/zephir generate
+  - (cd ext; export CFLAGS="-g3 -O1 -std=gnu90 -Wall"; phpize && ./configure --enable-lynx && make --silent -j4 && sudo make --silent install && phpenv config-add ../tests/ci/lynx.ini)
+  - ulimit -c unlimited || true
+
+script:
+  - php examples/simle/index.php
