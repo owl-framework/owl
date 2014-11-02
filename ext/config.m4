@@ -7,6 +7,7 @@ if test "$PHP_OWL" = "yes"; then
 	owl/exception.zep.c
 	owl/http/request.zep.c
 	owl/http/response.zep.c
+	owl/module/manager.zep.c
 	owl/mvc/controller.zep.c "
 	PHP_NEW_EXTENSION(owl, $owl_sources, $ext_shared)
 
