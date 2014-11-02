@@ -19,4 +19,4 @@ before_script:
   - ulimit -c unlimited || true
 
 script:
-  - php examples/simle/index.php
+  - php examples/simple/index.php
