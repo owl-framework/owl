@@ -10,5 +10,6 @@
 #include "owl/http/response.zep.h"
 #include "owl/module/manager.zep.h"
 #include "owl/mvc/controller.zep.h"
+#include "owl/service/manager.zep.h"
 
 #endif

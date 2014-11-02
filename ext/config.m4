@@ -8,7 +8,8 @@ if test "$PHP_OWL" = "yes"; then
 	owl/http/request.zep.c
 	owl/http/response.zep.c
 	owl/module/manager.zep.c
-	owl/mvc/controller.zep.c "
+	owl/mvc/controller.zep.c
+	owl/service/manager.zep.c "
 	PHP_NEW_EXTENSION(owl, $owl_sources, $ext_shared)
 
 	old_CPPFLAGS=$CPPFLAGS
