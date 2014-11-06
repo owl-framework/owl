@@ -5,3 +5,8 @@ Owl
 [![License](https://poser.pugx.org/owl/owl/license.svg)](https://packagist.org/packages/owl/owl)
 
 Owl framework, It is funny :)
+
+License
+-------
+
+This project is open-sourced software licensed under the MIT License. See the LICENSE file for more information.
