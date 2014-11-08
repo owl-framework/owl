@@ -67,7 +67,7 @@ PHP_METHOD(Owl_Application, handle) {
 
 
 	if (!(zephir_instance_of_ev(request, owl_http_request_ce TSRMLS_CC))) {
-		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(spl_ce_InvalidArgumentException, "Parameter 'request' must be an instance of 'Owl\\\\Http\\\\Request'", "", 0);
+		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(spl_ce_InvalidArgumentException, "Parameter 'request' must be an instance of 'Owl\\Http\\Request'", "", 0);
 		return;
 	}
 	_0 = Z_TYPE_P(response) != IS_NULL;
@@ -75,7 +75,7 @@ PHP_METHOD(Owl_Application, handle) {
 		_0 = !zephir_instance_of_ev(response, owl_http_response_ce TSRMLS_CC);
 	}
 	if (_0) {
-		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(spl_ce_InvalidArgumentException, "Parameter 'response' must be an instance of 'Owl\\\\Http\\\\Response'", "", 0);
+		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(spl_ce_InvalidArgumentException, "Parameter 'response' must be an instance of 'Owl\\Http\\Response'", "", 0);
 		return;
 	}
 	if (Z_TYPE_P(response) == IS_NULL) {

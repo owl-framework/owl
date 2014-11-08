@@ -4,13 +4,17 @@
 #ifndef PHP_OWL_H
 #define PHP_OWL_H 1
 
+#ifdef PHP_WIN32
+#define ZEPHIR_RELEASE 1
+#endif
+
 #include "kernel/globals.h"
 
 #define PHP_OWL_NAME        "owl"
 #define PHP_OWL_VERSION     "0.0.1"
 #define PHP_OWL_EXTNAME     "owl"
 #define PHP_OWL_AUTHOR      ""
-#define PHP_OWL_ZEPVERSION  "0.5.7a"
+#define PHP_OWL_ZEPVERSION  "0.5.8a"
 #define PHP_OWL_DESCRIPTION ""
 
 
