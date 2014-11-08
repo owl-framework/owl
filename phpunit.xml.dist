@@ -1,0 +1,18 @@
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="true"
+         syntaxCheck="false"
+         bootstrap="./tests/Owl/Tests/Bootstrap.php"
+        >
+
+    <testsuites>
+        <testsuite name="Owl Http">
+            <directory>./tests/Owl/Tests/Http/</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
