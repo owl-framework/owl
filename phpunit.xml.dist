@@ -11,8 +11,8 @@
         >
 
     <testsuites>
-        <testsuite name="Owl Http">
-            <directory>./tests/Owl/Tests/Http/</directory>
+        <testsuite name="Owl">
+            <directory>./tests/Owl/Tests/</directory>
         </testsuite>
     </testsuites>
 </phpunit>
