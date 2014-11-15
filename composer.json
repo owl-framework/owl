@@ -7,5 +7,7 @@
             "email": "talk@dmtry.me"
         }
     ],
-    "require": {}
+    "require": {
+        "php": "~5.4"
+    }
 }
