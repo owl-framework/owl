@@ -27,6 +27,18 @@ class Request
 
     protected $method;
 
+    protected $get;
+
+    protected $post;
+
+    protected $server;
+
+    protected $headers;
+
+    protected $files;
+
+    protected $cookies;
+
 
 	public function getMethod() {}
 

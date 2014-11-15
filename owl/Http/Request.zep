@@ -17,6 +17,18 @@ class Request
 
     protected method = self::GET {get};
 
+    protected get;
+
+    protected post;
+
+    protected server;
+
+    protected headers;
+
+    protected files;
+
+    protected cookies;
+
     public fn getParam()
     {
 
