@@ -21,3 +21,4 @@ before_script:
 
 script:
   - php examples/simple/index.php
+  - phpunit
