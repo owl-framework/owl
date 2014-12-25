@@ -15,6 +15,7 @@ if test "$PHP_OWL" = "yes"; then
 	owl/http/response.zep.c
 	owl/module/manager.zep.c
 	owl/mvc/controller.zep.c
+	owl/router/routerinterface.zep.c
 	owl/service/manager.zep.c "
 	PHP_NEW_EXTENSION(owl, $owl_sources, $ext_shared,, )
 	PHP_SUBST(OWL_SHARED_LIBADD)

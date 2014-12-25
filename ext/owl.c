@@ -26,6 +26,7 @@
 
 
 
+zend_class_entry *owl_router_routerinterface_ce;
 zend_class_entry *owl_application_ce;
 zend_class_entry *owl_exception_ce;
 zend_class_entry *owl_http_request_ce;
@@ -54,6 +55,7 @@ static PHP_MINIT_FUNCTION(owl)
 	setlocale(LC_ALL, "C");
 #endif
 
+	ZEPHIR_INIT(Owl_Router_RouterInterface);
 	ZEPHIR_INIT(Owl_Application);
 	ZEPHIR_INIT(Owl_Exception);
 	ZEPHIR_INIT(Owl_Http_Request);

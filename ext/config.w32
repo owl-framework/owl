@@ -9,6 +9,7 @@ if (PHP_OWL != "no") {
 	ADD_SOURCES(configure_module_dirname + "/owl/http", "request.zep.c response.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/module", "manager.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/mvc", "controller.zep.c", "owl");
+	ADD_SOURCES(configure_module_dirname + "/owl/router", "routerinterface.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/service", "manager.zep.c", "owl");
   ADD_FLAG("CFLAGS_OWL", "/D ZEPHIR_RELEASE");
 }
