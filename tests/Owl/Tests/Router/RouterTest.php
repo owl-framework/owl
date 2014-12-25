@@ -11,6 +11,7 @@ class RouterTest extends \PHPUnit_Framework_TestCase
         $router->add("/", ['name' => 'default', 'action' => 'index', 'controller' => 'index', 'module' => 'index']);
         $router->add("/user/1/", ['name' => 'user-view-static', 'action' => 'view', 'controller' => 'user', 'module' => 'user']);
 
-        $this->assertInstanceOf('Owl\Router\Route', $router->match("/"));
+        $this->assertInstanceOf('Owl\Router\Route', $result = $router->match("/"));
+        $this->assertSame("default", $result->parameters["name"]);
     }
 } 
