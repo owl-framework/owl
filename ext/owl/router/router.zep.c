@@ -18,6 +18,7 @@
 #include "kernel/operators.h"
 #include "ext/spl/spl_exceptions.h"
 #include "kernel/exception.h"
+#include "kernel/hash.h"
 
 ZEPHIR_INIT_CLASS(Owl_Router_Router) {
 
@@ -108,7 +109,9 @@ PHP_METHOD(Owl_Router_Router, matchRequest) {
 
 PHP_METHOD(Owl_Router_Router, match) {
 
-	zval *uri_param = NULL, *method_param = NULL;
+	HashTable *_2;
+	HashPosition _1;
+	zval *uri_param = NULL, *method_param = NULL, *router = NULL, *_0, **_3, *_4 = NULL;
 	zval *uri = NULL, *method = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -123,6 +126,20 @@ PHP_METHOD(Owl_Router_Router, match) {
 	}
 
 
+	_0 = zephir_fetch_nproperty_this(this_ptr, SL("routers"), PH_NOISY_CC);
+	zephir_is_iterable(_0, &_2, &_1, 0, 0, "owl/Router/Router.zep", 37);
+	for (
+	  ; zephir_hash_get_current_data_ex(_2, (void**) &_3, &_1) == SUCCESS
+	  ; zephir_hash_move_forward_ex(_2, &_1)
+	) {
+		ZEPHIR_GET_HVALUE(router, _3);
+		ZEPHIR_OBS_NVAR(_4);
+		zephir_read_property(&_4, router, SL("uri"), PH_NOISY_CC);
+		if (ZEPHIR_IS_EQUAL(_4, uri)) {
+			RETURN_CCTOR(router);
+		}
+	}
+	RETURN_MM_BOOL(0);
 
 }
 
