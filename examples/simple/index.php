@@ -23,3 +23,5 @@ var_dump($serviceManager->getService('router'));
 $router = new \Owl\Router\Router();
 $router->add("/", ['name' => 'default', 'action' => 'index', 'controller' => 'index', 'module' => 'index']);
 $router->add("/user/1/", ['name' => 'user-view-static', 'action' => 'view', 'controller' => 'user', 'module' => 'user']);
+
+var_dump($router->match("/"));
