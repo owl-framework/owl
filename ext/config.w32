@@ -1,14 +1,14 @@
 ARG_ENABLE("owl", "enable owl", "no");
 
 if (PHP_OWL != "no") {
-  EXTENSION("owl", "owl.c", null, "-Iext/owl");
-  ADD_SOURCES("ext/owl/kernel", "main.c memory.c exception.c hash.c debug.c backtrace.c object.c array.c string.c fcall.c require.c file.c operators.c concat.c variables.c filter.c iterator.c exit.c", "owl");
-  ADD_SOURCES("ext/owl/kernel/extended", "array.c", "owl");
+  EXTENSION("owl", "owl.c", null, "-I"+configure_module_dirname);
+  ADD_SOURCES(configure_module_dirname + "/kernel", "main.c memory.c exception.c hash.c debug.c backtrace.c object.c array.c string.c fcall.c require.c file.c operators.c concat.c variables.c filter.c iterator.c exit.c", "owl");
+  ADD_SOURCES(configure_module_dirname + "/kernel/extended", "array.c", "owl");
   
-  ADD_SOURCES("ext/owl/owl", "application.zep.c exception.zep.c", "owl");
-	ADD_SOURCES("ext/owl/owl/http", "request.zep.c response.zep.c", "owl");
-	ADD_SOURCES("ext/owl/owl/module", "manager.zep.c", "owl");
-	ADD_SOURCES("ext/owl/owl/mvc", "controller.zep.c", "owl");
-	ADD_SOURCES("ext/owl/owl/service", "manager.zep.c", "owl");
+  ADD_SOURCES(configure_module_dirname + "/owl", "application.zep.c exception.zep.c", "owl");
+	ADD_SOURCES(configure_module_dirname + "/owl/http", "request.zep.c response.zep.c", "owl");
+	ADD_SOURCES(configure_module_dirname + "/owl/module", "manager.zep.c", "owl");
+	ADD_SOURCES(configure_module_dirname + "/owl/mvc", "controller.zep.c", "owl");
+	ADD_SOURCES(configure_module_dirname + "/owl/service", "manager.zep.c", "owl");
   ADD_FLAG("CFLAGS_OWL", "/D ZEPHIR_RELEASE");
 }
