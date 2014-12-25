@@ -39,5 +39,4 @@ ext/modules/
 compile-errors.log
 compile.log
 composer.lock
-ext/kernel/
 phpunit.xml
