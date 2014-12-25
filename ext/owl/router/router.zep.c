@@ -13,8 +13,8 @@
 
 #include "kernel/main.h"
 #include "kernel/object.h"
-#include "kernel/exception.h"
 #include "kernel/memory.h"
+#include "kernel/exception.h"
 #include "kernel/operators.h"
 
 
@@ -22,9 +22,28 @@ ZEPHIR_INIT_CLASS(Owl_Router_Router) {
 
 	ZEPHIR_REGISTER_CLASS(Owl\\Router, Router, owl, router_router, owl_router_router_method_entry, 0);
 
-	zend_declare_property_null(owl_router_router_ce, SL("base"), ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_string(owl_router_router_ce, SL("basePath"), "", ZEND_ACC_PROTECTED TSRMLS_CC);
 
 	return SUCCESS;
+
+}
+
+PHP_METHOD(Owl_Router_Router, getBasePath) {
+
+
+	RETURN_MEMBER(this_ptr, "basePath");
+
+}
+
+PHP_METHOD(Owl_Router_Router, setBasePath) {
+
+	zval *basePath;
+
+	zephir_fetch_params(0, 1, 0, &basePath);
+
+
+
+	zephir_update_property_this(this_ptr, SL("basePath"), basePath TSRMLS_CC);
 
 }
 

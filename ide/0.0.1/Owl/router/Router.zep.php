@@ -5,7 +5,15 @@ namespace Owl\Router;
 class Router
 {
 
-    protected $base;
+    protected $basePath = "";
+
+
+	public function getBasePath() {}
+
+    /**
+     * @param mixed $basePath 
+     */
+	public function setBasePath($basePath) {}
 
     /**
      * @param mixed $request 

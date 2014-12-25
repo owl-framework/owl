@@ -3,7 +3,7 @@ namespace Owl\Router;
 
 class Router
 {
-    protected base;
+    protected basePath = "" {get, set};
 
     public function matchRequest(<Owl\Http\Request> request)
     {
