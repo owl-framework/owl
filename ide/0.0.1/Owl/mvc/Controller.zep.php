@@ -14,6 +14,6 @@ class Controller
      * @param mixed $request 
      * @param mixed $response 
      */
-	public function dispatch($request, $response = null) {}
+	public function dispatch(\Owl\Http\Request $request, \Owl\Http\Response $response = null) {}
 
 }

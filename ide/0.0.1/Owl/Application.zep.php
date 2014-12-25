@@ -23,6 +23,6 @@ class Application
      * @param mixed $response 
      * @return Http\Response 
      */
-	public function handle($request, $response = null) {}
+	public function handle(Http\Request $request, Http\Response $response = null) {}
 
 }
