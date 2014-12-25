@@ -15,6 +15,7 @@ if test "$PHP_OWL" = "yes"; then
 	owl/http/response.zep.c
 	owl/module/manager.zep.c
 	owl/mvc/controller.zep.c
+	owl/router/route.zep.c
 	owl/router/router.zep.c
 	owl/router/routerinterface.zep.c
 	owl/service/manager.zep.c "

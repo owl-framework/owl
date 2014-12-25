@@ -14,6 +14,7 @@
 #include "kernel/main.h"
 #include "kernel/object.h"
 #include "kernel/memory.h"
+#include "kernel/fcall.h"
 #include "kernel/operators.h"
 #include "kernel/exception.h"
 
@@ -51,7 +52,8 @@ PHP_METHOD(Owl_Router_Router, setBasePath) {
 
 PHP_METHOD(Owl_Router_Router, add) {
 
-	zval *uri_param = NULL, *method_param = NULL;
+	int ZEPHIR_LAST_CALL_STATUS;
+	zval *uri_param = NULL, *method_param = NULL, *route;
 	zval *uri = NULL, *method = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -66,6 +68,16 @@ PHP_METHOD(Owl_Router_Router, add) {
 	}
 
 
+	ZEPHIR_INIT_VAR(route);
+	object_init_ex(route, owl_router_route_ce);
+	if (zephir_has_constructor(route TSRMLS_CC)) {
+		ZEPHIR_CALL_METHOD(NULL, route, "__construct", NULL);
+		zephir_check_call_status();
+	}
+	zephir_update_property_zval(route, SL("uri"), uri TSRMLS_CC);
+	zephir_update_property_zval(route, SL("method"), method TSRMLS_CC);
+	zephir_update_property_array_append(this_ptr, SL("routers"), route TSRMLS_CC);
+	ZEPHIR_MM_RESTORE();
 
 }
 
