@@ -2,7 +2,7 @@
 
 namespace Owl\Router;
 
-class Router
+class Router implements \Owl\Router\RouterInterface
 {
 
     protected $basePath = "";

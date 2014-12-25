@@ -24,6 +24,7 @@ ZEPHIR_INIT_CLASS(Owl_Router_Router) {
 
 	zend_declare_property_string(owl_router_router_ce, SL("basePath"), "", ZEND_ACC_PROTECTED TSRMLS_CC);
 
+	zend_class_implements(owl_router_router_ce TSRMLS_CC, 1, owl_router_routerinterface_ce);
 	return SUCCESS;
 
 }

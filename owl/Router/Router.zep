@@ -1,7 +1,7 @@
 
 namespace Owl\Router;
 
-class Router
+class Router implements RouterInterface
 {
     protected basePath = "" {get, set};
 
