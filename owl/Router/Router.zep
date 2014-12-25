@@ -27,7 +27,7 @@ class Router implements RouterInterface
     public function match(string uri, string method = "GET") -> object|boolean
     {
         var router;
-        
+
         for router in this->routers {
             if (router->uri == uri) {
                 return router;
