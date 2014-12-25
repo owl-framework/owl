@@ -6,4 +6,6 @@ class Route
     public uri;
 
     public method = "GET";
+
+    public parameters;
 }

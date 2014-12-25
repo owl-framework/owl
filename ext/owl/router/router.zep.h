@@ -16,6 +16,7 @@ ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_router_router_add, 0, 0, 1)
 	ZEND_ARG_INFO(0, uri)
+	ZEND_ARG_ARRAY_INFO(0, parameters, 1)
 	ZEND_ARG_INFO(0, method)
 ZEND_END_ARG_INFO()
 

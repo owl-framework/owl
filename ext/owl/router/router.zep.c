@@ -16,6 +16,7 @@
 #include "kernel/memory.h"
 #include "kernel/fcall.h"
 #include "kernel/operators.h"
+#include "ext/spl/spl_exceptions.h"
 #include "kernel/exception.h"
 
 ZEPHIR_INIT_CLASS(Owl_Router_Router) {
@@ -53,13 +54,21 @@ PHP_METHOD(Owl_Router_Router, setBasePath) {
 PHP_METHOD(Owl_Router_Router, add) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *uri_param = NULL, *method_param = NULL, *route;
+	zval *parameters = NULL;
+	zval *uri_param = NULL, *parameters_param = NULL, *method_param = NULL, *route;
 	zval *uri = NULL, *method = NULL;
 
 	ZEPHIR_MM_GROW();
-	zephir_fetch_params(1, 1, 1, &uri_param, &method_param);
+	zephir_fetch_params(1, 1, 2, &uri_param, &parameters_param, &method_param);
 
 	zephir_get_strval(uri, uri_param);
+	if (!parameters_param) {
+		ZEPHIR_INIT_VAR(parameters);
+		array_init(parameters);
+	} else {
+	parameters = parameters_param;
+
+	}
 	if (!method_param) {
 		ZEPHIR_INIT_VAR(method);
 		ZVAL_STRING(method, "GET", 1);
@@ -76,6 +85,7 @@ PHP_METHOD(Owl_Router_Router, add) {
 	}
 	zephir_update_property_zval(route, SL("uri"), uri TSRMLS_CC);
 	zephir_update_property_zval(route, SL("method"), method TSRMLS_CC);
+	zephir_update_property_zval(route, SL("parameters"), parameters TSRMLS_CC);
 	zephir_update_property_array_append(this_ptr, SL("routers"), route TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();
 

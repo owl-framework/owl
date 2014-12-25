@@ -19,9 +19,10 @@ class Router implements \Owl\Router\RouterInterface
 
     /**
      * @param string $uri 
+     * @param array $parameters 
      * @param string $method 
      */
-	public function add($uri, $method = "GET") {}
+	public function add($uri, $parameters = array(), $method = "GET") {}
 
     /**
      * @param mixed $request 

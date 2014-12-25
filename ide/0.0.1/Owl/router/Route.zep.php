@@ -9,4 +9,6 @@ class Route
 
     protected $method = "GET";
 
+    protected $parameters;
+
 }

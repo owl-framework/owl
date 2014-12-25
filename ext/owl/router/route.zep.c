@@ -22,6 +22,8 @@ ZEPHIR_INIT_CLASS(Owl_Router_Route) {
 
 	zend_declare_property_string(owl_router_route_ce, SL("method"), "GET", ZEND_ACC_PUBLIC TSRMLS_CC);
 
+	zend_declare_property_null(owl_router_route_ce, SL("parameters"), ZEND_ACC_PUBLIC TSRMLS_CC);
+
 	return SUCCESS;
 
 }

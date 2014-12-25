@@ -7,13 +7,14 @@ class Router implements RouterInterface
 
     protected routers = [];
 
-    public function add(string uri, string method = "GET")
+    public function add(string uri, array! parameters = [], string method = "GET")
     {
         var route;
 
         let route = new Route;
         let route->uri = uri;
         let route->method = method;
+        let route->parameters = parameters;
 
         let this->routers[] = route;
     }
