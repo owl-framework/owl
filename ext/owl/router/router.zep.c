@@ -14,15 +14,16 @@
 #include "kernel/main.h"
 #include "kernel/object.h"
 #include "kernel/memory.h"
-#include "kernel/exception.h"
 #include "kernel/operators.h"
-
+#include "kernel/exception.h"
 
 ZEPHIR_INIT_CLASS(Owl_Router_Router) {
 
 	ZEPHIR_REGISTER_CLASS(Owl\\Router, Router, owl, router_router, owl_router_router_method_entry, 0);
 
 	zend_declare_property_string(owl_router_router_ce, SL("basePath"), "", ZEND_ACC_PROTECTED TSRMLS_CC);
+
+	zend_declare_property_null(owl_router_router_ce, SL("routers"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
 	zend_class_implements(owl_router_router_ce TSRMLS_CC, 1, owl_router_routerinterface_ce);
 	return SUCCESS;
@@ -45,6 +46,26 @@ PHP_METHOD(Owl_Router_Router, setBasePath) {
 
 
 	zephir_update_property_this(this_ptr, SL("basePath"), basePath TSRMLS_CC);
+
+}
+
+PHP_METHOD(Owl_Router_Router, add) {
+
+	zval *uri_param = NULL, *method_param = NULL;
+	zval *uri = NULL, *method = NULL;
+
+	ZEPHIR_MM_GROW();
+	zephir_fetch_params(1, 1, 1, &uri_param, &method_param);
+
+	zephir_get_strval(uri, uri_param);
+	if (!method_param) {
+		ZEPHIR_INIT_VAR(method);
+		ZVAL_STRING(method, "GET", 1);
+	} else {
+		zephir_get_strval(method, method_param);
+	}
+
+
 
 }
 
@@ -80,6 +101,19 @@ PHP_METHOD(Owl_Router_Router, match) {
 	}
 
 
+
+}
+
+PHP_METHOD(Owl_Router_Router, __construct) {
+
+	zval *_0;
+
+	ZEPHIR_MM_GROW();
+
+	ZEPHIR_INIT_VAR(_0);
+	array_init(_0);
+	zephir_update_property_this(this_ptr, SL("routers"), _0 TSRMLS_CC);
+	ZEPHIR_MM_RESTORE();
 
 }
 

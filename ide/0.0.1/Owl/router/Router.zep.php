@@ -7,6 +7,8 @@ class Router implements \Owl\Router\RouterInterface
 
     protected $basePath = "";
 
+    protected $routers = array();
+
 
 	public function getBasePath() {}
 
@@ -14,6 +16,12 @@ class Router implements \Owl\Router\RouterInterface
      * @param mixed $basePath 
      */
 	public function setBasePath($basePath) {}
+
+    /**
+     * @param string $uri 
+     * @param string $method 
+     */
+	public function add($uri, $method = "GET") {}
 
     /**
      * @param mixed $request 
@@ -26,5 +34,8 @@ class Router implements \Owl\Router\RouterInterface
      * @return object|bool 
      */
 	public function match($uri, $method = "GET") {}
+
+
+	public function __construct() {}
 
 }
