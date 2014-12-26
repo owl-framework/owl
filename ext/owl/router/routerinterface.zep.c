@@ -14,9 +14,11 @@
 
 ZEPHIR_INIT_CLASS(Owl_Router_RouterInterface) {
 
-	ZEPHIR_REGISTER_INTERFACE(Owl\\Router, RouterInterface, owl, router_routerinterface, NULL);
+	ZEPHIR_REGISTER_INTERFACE(Owl\\Router, RouterInterface, owl, router_routerinterface, owl_router_routerinterface_method_entry);
 
 	return SUCCESS;
 
 }
+
+ZEPHIR_DOC_METHOD(Owl_Router_RouterInterface, match);
 
