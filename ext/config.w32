@@ -6,6 +6,7 @@ if (PHP_OWL != "no") {
   ADD_SOURCES(configure_module_dirname + "/kernel/extended", "array.c", "owl");
   
   ADD_SOURCES(configure_module_dirname + "/owl", "application.zep.c exception.zep.c", "owl");
+	ADD_SOURCES(configure_module_dirname + "/owl/bridge/lynx/rest", "entitycontroller.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/http", "request.zep.c response.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/module", "manager.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/mvc", "controller.zep.c", "owl");

@@ -25,6 +25,11 @@ class Router implements \Owl\Router\RouterInterface
 	public function add($uri, $parameters = array(), $method = "GET") {}
 
     /**
+     * @param mixed $route 
+     */
+	public function addRoute(Route $route) {}
+
+    /**
      * @param mixed $request 
      */
 	public function matchRequest(Owl\Http\Request $request) {}

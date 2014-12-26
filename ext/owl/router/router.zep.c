@@ -92,6 +92,22 @@ PHP_METHOD(Owl_Router_Router, add) {
 
 }
 
+PHP_METHOD(Owl_Router_Router, addRoute) {
+
+	zval *route;
+
+	zephir_fetch_params(0, 1, 0, &route);
+
+
+
+	if (!(zephir_instance_of_ev(route, owl_router_route_ce TSRMLS_CC))) {
+		ZEPHIR_THROW_EXCEPTION_DEBUG_STRW(spl_ce_InvalidArgumentException, "Parameter 'route' must be an instance of 'Owl\\Router\\Route'", "", 0);
+		return;
+	}
+	zephir_update_property_array_append(this_ptr, SL("routers"), route TSRMLS_CC);
+
+}
+
 PHP_METHOD(Owl_Router_Router, matchRequest) {
 
 	zval *request;
@@ -127,7 +143,7 @@ PHP_METHOD(Owl_Router_Router, match) {
 
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("routers"), PH_NOISY_CC);
-	zephir_is_iterable(_0, &_2, &_1, 0, 0, "owl/Router/Router.zep", 37);
+	zephir_is_iterable(_0, &_2, &_1, 0, 0, "owl/Router/Router.zep", 42);
 	for (
 	  ; zephir_hash_get_current_data_ex(_2, (void**) &_3, &_1) == SUCCESS
 	  ; zephir_hash_move_forward_ex(_2, &_1)
