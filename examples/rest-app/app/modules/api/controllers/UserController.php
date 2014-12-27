@@ -22,7 +22,7 @@ class IndexController extends \Owl\Rest\Controller
         );
     }
 
-    /**
+    /**x
      * @Post
      * @Url("/user/{id:int}/")
      */
