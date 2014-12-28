@@ -33,7 +33,7 @@
 #define JJLIMIT (s->end)
 #define JJMARKER q
 
-int get_token(phannot_scanner_state *s, phannot_scanner_token *token) {
+int phannot_get_token(phannot_scanner_state *s, phannot_scanner_token *token) {
 
 	char next, *q = JJCURSOR, *start = JJCURSOR;
 	int status = PHANNOT_SCANNER_RETCODE_IMPOSSIBLE;
