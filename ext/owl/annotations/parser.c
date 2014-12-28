@@ -1300,12 +1300,12 @@ int phannot_parse_annotations(zval *result, zval *comment, zval *file_path, zval
 	ZVAL_NULL(result);
 
 	if (Z_TYPE_P(comment) != IS_STRING) {
-		ZEPHIR_THROW_EXCEPTION_STR(phalcon_annotations_exception_ce, "Comment must be a string");
+		ZEPHIR_THROW_EXCEPTION_STR(owl_annotations_exception_ce, "Comment must be a string");
 		return FAILURE;
 	}
 
 	if (phannot_internal_parse_annotations(&result, comment, file_path, line, &error_msg TSRMLS_CC) == FAILURE){
-		ZEPHIR_THROW_EXCEPTION_STR(phalcon_annotations_exception_ce, Z_STRVAL_P(error_msg));
+		ZEPHIR_THROW_EXCEPTION_STR(owl_annotations_exception_ce, Z_STRVAL_P(error_msg));
 		return FAILURE;
 	}
 

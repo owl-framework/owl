@@ -1,7 +1,7 @@
 
 namespace Owl\Annotations;
 
-class Parser
+class Reader
 {
     static public function parse(string comment)
     {

@@ -5,7 +5,7 @@
 #define ZEPHIR_CLASS_ENTRIES_H
 
 #include "owl/annotations/exception.zep.h"
-#include "owl/annotations/parser.zep.h"
+#include "owl/annotations/reader.zep.h"
 #include "owl/application.zep.h"
 #include "owl/bridge/lynx/rest/entitycontroller.zep.h"
 #include "owl/exception.zep.h"

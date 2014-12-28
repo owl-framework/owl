@@ -22,7 +22,7 @@
 #endif
 
 #include "php.h"
-#include "php_phalcon.h"
+#include "php_owl.h"
 
 #include "scanner.h"
 
