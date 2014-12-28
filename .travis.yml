@@ -21,3 +21,7 @@ before_script:
 script:
   - php examples/simple/index.php
   - phpunit
+
+after_failure:
+  - sudo apt-get -qq install gdb
+  - ./tests/ci/after_failure.sh
