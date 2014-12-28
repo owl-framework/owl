@@ -26,7 +26,11 @@ $router->add("/user/1/", ['name' => 'user-view-static', 'action' => 'view', 'con
 
 var_dump($router->match("/"));
 
-var_dump(\Owl\Annotations\Reader::parse("/**
-* @Post
-*/
-"));
+var_dump(
+    \Owl\Annotations\Reader::parse('
+        /**
+         * @Post
+         * @Url("/user/:id/")
+         */
+    ')
+);
