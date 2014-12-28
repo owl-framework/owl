@@ -9,6 +9,10 @@
     "constants-sources": [
         "ext/owl/annotations/scanner.h"
     ],
+    "extra-sources": [
+        "owl/annotations/scanner.c",
+        "owl/annotations/parser.c"
+    ],
     "warnings": {
         "unused-variable": true,
         "unused-variable-external": false,

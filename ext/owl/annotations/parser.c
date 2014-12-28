@@ -13,8 +13,8 @@
 
 #include "php.h"
 #include "ext/standard/php_smart_str.h"
-#include "php_phalcon.h"
-#include "phalcon.h"
+#include "php_owl.h"
+#include "owl.h"
 
 #include "parser.h"
 #include "scanner.h"
