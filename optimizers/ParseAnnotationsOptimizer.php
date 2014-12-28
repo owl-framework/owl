@@ -29,27 +29,32 @@ use Zephir\HeadersManager;
 class ParseAnnotationsOptimizer extends OptimizerAbstract
 {
     /**
-     *
      * @param array $expression
      * @param Call $call
      * @param CompilationContext $context
+     * @return bool|CompiledExpression
+     * @throws CompilerException
      */
     public function optimize(array $expression, Call $call, CompilationContext $context)
     {
         if (!isset($expression['parameters'])) {
             return false;
         }
+
         if (count($expression['parameters']) != 3) {
-            throw new CompilerException("phannot_parse_annotations only accepts three parameter", $expression);
+            throw new CompilerException("parse_annotations only accepts three parameter", $expression);
         }
+
         /**
          * Process the expected symbol to be returned
          */
         $call->processExpectedReturn($context);
         $symbolVariable = $call->getSymbolVariable();
+
         if ($symbolVariable->getType() != 'variable') {
             throw new CompilerException("Returned values by functions can only be assigned to variant variables", $expression);
         }
+
         if ($call->mustInitSymbolVariable()) {
             $symbolVariable->initVariant($context);
         }
@@ -59,7 +64,8 @@ class ParseAnnotationsOptimizer extends OptimizerAbstract
 
         $symbolVariable->setDynamicTypes('array');
         $resolvedParams = $call->getReadOnlyResolvedParams($expression['parameters'], $context, $expression);
-        $context->codePrinter->output('parse_annotations(' . $symbolVariable->getName() . ', ' . $resolvedParams[0] . ', ' . $resolvedParams[1] . ', ' . $resolvedParams[2] . ' TSRMLS_CC);');
+
+        $context->codePrinter->output('phannot_parse_annotations(' . $symbolVariable->getName() . ', ' . $resolvedParams[0] . ', ' . $resolvedParams[1] . ', ' . $resolvedParams[2] . ' TSRMLS_CC);');
 
         return new CompiledExpression('variable', $symbolVariable->getRealName(), $expression);
     }

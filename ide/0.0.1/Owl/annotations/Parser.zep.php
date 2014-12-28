@@ -8,6 +8,6 @@ class Parser
     /**
      * @param string $comment 
      */
-	public function parser($comment) {}
+	static public function parse($comment) {}
 
 }

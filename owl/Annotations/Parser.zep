@@ -3,7 +3,7 @@ namespace Owl\Annotations;
 
 class Parser
 {
-    public function parser(string comment)
+    static public function parse(string comment)
     {
         return parse_annotations(comment, 1, 2);
     }

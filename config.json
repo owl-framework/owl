@@ -3,6 +3,12 @@
         "path": "ide\/%version%\/%namespace%\/",
         "stubs-run-after-generate": true
     },
+    "optimizer-dirs": [
+        "optimizers"
+    ],
+    "constants-sources": [
+        "ext/owl/annotations/scanner.h"
+    ],
     "warnings": {
         "unused-variable": true,
         "unused-variable-external": false,
