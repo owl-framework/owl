@@ -16,7 +16,7 @@
 
 ZEPHIR_INIT_CLASS(Owl_Annotations_Exception) {
 
-	ZEPHIR_REGISTER_CLASS_EX(Owl\\Annotations, Exception, owl, annotations_exception, zend_exception_get_default(TSRMLS_C), NULL, 0);
+	ZEPHIR_REGISTER_CLASS_EX(Owl\\Annotations, Exception, owl, annotations_exception, owl_exception_ce, NULL, 0);
 
 	return SUCCESS;
 

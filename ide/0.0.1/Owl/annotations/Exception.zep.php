@@ -2,7 +2,7 @@
 
 namespace Owl\Annotations;
 
-class Exception extends \\Exception
+class Exception extends \Owl\Exception
 {
 
 }
