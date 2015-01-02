@@ -72,6 +72,6 @@ class Request implements RequestInterface
 
     public static fn createFromGlobals()
     {
-        return new Request(_GET, _POST, _SERVER, [], _FILES, null);
+        return new Request(_GET, _POST, _SERVER, [], _FILES, _COOKIE);
     }
 }
