@@ -58,4 +58,17 @@ class Request implements \Owl\Http\RequestInterface
 
 	public function getScheme() {}
 
+    /**
+     * @param mixed $get 
+     * @param mixed $post 
+     * @param mixed $server 
+     * @param mixed $headers 
+     * @param mixed $files 
+     * @param mixed $cookies 
+     */
+	public function __construct($get, $post, $server, $headers, $files, $cookies) {}
+
+
+	public static function createFromGlobals() {}
+
 }

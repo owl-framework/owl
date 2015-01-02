@@ -59,4 +59,19 @@ class Request implements RequestInterface
          */
         return "http";
     }
+
+    public fn __construct(var get, var post, var server, var headers, var files, var cookies)
+    {
+        let this->get = get;
+        let this->get = get;
+        let this->server = server;
+        let this->headers = headers;
+        let this->files = files;
+        let this->cookies = cookies;
+    }
+
+    public static fn createFromGlobals()
+    {
+        return new Request(_GET, _POST, _SERVER, [], _FILES, null);
+    }
 }

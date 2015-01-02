@@ -18,6 +18,7 @@
 #include "kernel/exception.h"
 #include "kernel/operators.h"
 #include "kernel/memory.h"
+#include "kernel/fcall.h"
 
 
 ZEPHIR_INIT_CLASS(Owl_Http_Request) {
@@ -142,6 +143,45 @@ PHP_METHOD(Owl_Http_Request, getScheme) {
 
 
 	RETURN_STRING("http", 1);
+
+}
+
+PHP_METHOD(Owl_Http_Request, __construct) {
+
+	zval *get, *post, *server, *headers, *files, *cookies;
+
+	zephir_fetch_params(0, 6, 0, &get, &post, &server, &headers, &files, &cookies);
+
+
+
+	zephir_update_property_this(this_ptr, SL("get"), get TSRMLS_CC);
+	zephir_update_property_this(this_ptr, SL("get"), get TSRMLS_CC);
+	zephir_update_property_this(this_ptr, SL("server"), server TSRMLS_CC);
+	zephir_update_property_this(this_ptr, SL("headers"), headers TSRMLS_CC);
+	zephir_update_property_this(this_ptr, SL("files"), files TSRMLS_CC);
+	zephir_update_property_this(this_ptr, SL("cookies"), cookies TSRMLS_CC);
+
+}
+
+PHP_METHOD(Owl_Http_Request, createFromGlobals) {
+
+	int ZEPHIR_LAST_CALL_STATUS;
+	zval *_0, *_GET, *_POST, *_SERVER, *_FILES, *_1;
+
+	ZEPHIR_MM_GROW();
+
+	object_init_ex(return_value, owl_http_request_ce);
+	ZEPHIR_INIT_VAR(_0);
+	array_init(_0);
+	zephir_get_global(&_GET, SS("_GET") TSRMLS_CC);
+	zephir_get_global(&_POST, SS("_POST") TSRMLS_CC);
+	zephir_get_global(&_SERVER, SS("_SERVER") TSRMLS_CC);
+	zephir_get_global(&_FILES, SS("_FILES") TSRMLS_CC);
+	ZEPHIR_INIT_VAR(_1);
+	ZVAL_NULL(_1);
+	ZEPHIR_CALL_METHOD(NULL, return_value, "__construct", NULL, _GET, _POST, _SERVER, _0, _FILES, _1);
+	zephir_check_call_status();
+	RETURN_MM();
 
 }
 
