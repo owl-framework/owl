@@ -7,7 +7,7 @@ class Route
 
     protected $uri;
 
-    protected $method = "GET";
+    protected $method;
 
     protected $parameters;
 
