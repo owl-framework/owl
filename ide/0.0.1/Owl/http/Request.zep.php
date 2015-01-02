@@ -42,20 +42,26 @@ class Request implements \Owl\Http\RequestInterface
 
 	public function getMethod() {}
 
-
+    /**
+     * @return variable|bool 
+     */
 	public function getParam() {}
 
     /**
      * @param string $key 
+     * @return variable|bool 
      */
 	public function getPost($key) {}
 
     /**
      * @param string $key 
+     * @return variable|bool 
      */
 	public function getServer($key) {}
 
-
+    /**
+     * @return string 
+     */
 	public function getScheme() {}
 
     /**

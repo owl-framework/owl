@@ -29,12 +29,12 @@ class Request implements RequestInterface
 
     protected cookies;
 
-    public fn getParam()
+    public fn getParam() -> var|boolean
     {
 
     }
 
-    public fn getPost(string! key)
+    public fn getPost(string! key) -> var|boolean
     {
         if isset this->post[key] {
             return this->post[key];
@@ -43,7 +43,7 @@ class Request implements RequestInterface
         return false;
     }
 
-    public fn getServer(string! key)
+    public fn getServer(string! key) -> var|boolean
     {
         if isset this->server[key] {
             return this->server[key];
@@ -52,7 +52,7 @@ class Request implements RequestInterface
         return false;
     }
 
-    public fn getScheme()
+    public fn getScheme() -> string
     {
         /**
          * @todo implement it
