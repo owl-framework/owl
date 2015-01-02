@@ -77,7 +77,7 @@ PHP_METHOD(Owl_Http_Request, getParam) {
 
 PHP_METHOD(Owl_Http_Request, getPost) {
 
-	zval *key_param = NULL, *_POST, *_0;
+	zval *key_param = NULL, *_0, *_1, *_2;
 	zval *key = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -96,10 +96,11 @@ PHP_METHOD(Owl_Http_Request, getPost) {
 	}
 
 
-	zephir_get_global(&_POST, SS("_POST") TSRMLS_CC);
-	if (zephir_array_isset(_POST, key)) {
-		zephir_array_fetch(&_0, _POST, key, PH_NOISY | PH_READONLY, "owl/Http/Request.zep", 40 TSRMLS_CC);
-		RETURN_CTOR(_0);
+	_0 = zephir_fetch_nproperty_this(this_ptr, SL("post"), PH_NOISY_CC);
+	if (zephir_array_isset(_0, key)) {
+		_1 = zephir_fetch_nproperty_this(this_ptr, SL("post"), PH_NOISY_CC);
+		zephir_array_fetch(&_2, _1, key, PH_NOISY | PH_READONLY, "owl/Http/Request.zep", 40 TSRMLS_CC);
+		RETURN_CTOR(_2);
 	}
 	RETURN_MM_BOOL(0);
 
@@ -107,7 +108,7 @@ PHP_METHOD(Owl_Http_Request, getPost) {
 
 PHP_METHOD(Owl_Http_Request, getServer) {
 
-	zval *key_param = NULL, *_SERVER, *_0;
+	zval *key_param = NULL, *_0, *_1, *_2;
 	zval *key = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -126,10 +127,11 @@ PHP_METHOD(Owl_Http_Request, getServer) {
 	}
 
 
-	zephir_get_global(&_SERVER, SS("_SERVER") TSRMLS_CC);
-	if (zephir_array_isset(_SERVER, key)) {
-		zephir_array_fetch(&_0, _SERVER, key, PH_NOISY | PH_READONLY, "owl/Http/Request.zep", 49 TSRMLS_CC);
-		RETURN_CTOR(_0);
+	_0 = zephir_fetch_nproperty_this(this_ptr, SL("server"), PH_NOISY_CC);
+	if (zephir_array_isset(_0, key)) {
+		_1 = zephir_fetch_nproperty_this(this_ptr, SL("server"), PH_NOISY_CC);
+		zephir_array_fetch(&_2, _1, key, PH_NOISY | PH_READONLY, "owl/Http/Request.zep", 49 TSRMLS_CC);
+		RETURN_CTOR(_2);
 	}
 	RETURN_MM_BOOL(0);
 

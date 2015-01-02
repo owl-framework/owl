@@ -36,8 +36,8 @@ class Request
 
     public fn getPost(string! key)
     {
-        if isset _POST[key] {
-            return _POST[key];
+        if isset this->post[key] {
+            return this->post[key];
         }
 
         return false;
@@ -45,8 +45,8 @@ class Request
 
     public fn getServer(string! key)
     {
-        if isset _SERVER[key] {
-            return _SERVER[key];
+        if isset this->server[key] {
+            return this->server[key];
         }
 
         return false;
