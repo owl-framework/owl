@@ -10,6 +10,6 @@ interface RouterInterface
      * @param string $method 
      * @return object|bool 
      */
-	public function match($uri, $method = "GET");
+	public function match($uri, $method = Request::GET);
 
 }

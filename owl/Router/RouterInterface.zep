@@ -1,7 +1,9 @@
 
 namespace Owl\Router;
 
+use Owl\Http\Request;
+
 interface RouterInterface
 {
-     public function match(string uri, string method = "GET") -> object|boolean;
+     public function match(string uri, string method = Request::GET) -> object|boolean;
 }

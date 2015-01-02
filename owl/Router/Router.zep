@@ -1,13 +1,15 @@
 
 namespace Owl\Router;
 
+use Owl\Http\Request;
+
 class Router implements RouterInterface
 {
     protected basePath = "" {get, set};
 
     protected routers = [];
 
-    public function add(string uri, array! parameters = [], string method = "GET")
+    public function add(string uri, array! parameters = [], string method = Request::GET)
     {
         var route;
 
@@ -29,7 +31,7 @@ class Router implements RouterInterface
 
     }
 
-    public function match(string uri, string method = "GET") -> object|boolean
+    public function match(string uri, string method = Request::GET) -> object|boolean
     {
         var router;
 

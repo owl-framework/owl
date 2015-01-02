@@ -22,7 +22,7 @@ class Router implements \Owl\Router\RouterInterface
      * @param array $parameters 
      * @param string $method 
      */
-	public function add($uri, $parameters = array(), $method = "GET") {}
+	public function add($uri, $parameters = array(), $method = Request::GET) {}
 
     /**
      * @param mixed $route 
@@ -39,7 +39,7 @@ class Router implements \Owl\Router\RouterInterface
      * @param string $method 
      * @return object|bool 
      */
-	public function match($uri, $method = "GET") {}
+	public function match($uri, $method = Request::GET) {}
 
 
 	public function __construct() {}
