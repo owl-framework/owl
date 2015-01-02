@@ -1,7 +1,7 @@
 
 namespace Owl\Http;
 
-class Request
+class Request implements RequestInterface
 {
     const GET      = "GET";
     const POST     = "POST";

@@ -58,6 +58,7 @@ ZEPHIR_INIT_CLASS(Owl_Http_Request) {
 
 	zend_declare_class_constant_string(owl_http_request_ce, SL("PROPFIND"), "PROPFIND" TSRMLS_CC);
 
+	zend_class_implements(owl_http_request_ce TSRMLS_CC, 1, owl_http_requestinterface_ce);
 	return SUCCESS;
 
 }

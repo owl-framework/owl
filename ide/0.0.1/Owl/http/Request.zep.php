@@ -2,7 +2,7 @@
 
 namespace Owl\Http;
 
-class Request
+class Request implements \Owl\Http\RequestInterface
 {
 
     const GET = "GET";
