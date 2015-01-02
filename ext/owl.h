@@ -18,5 +18,6 @@
 #include "owl/router/router.zep.h"
 #include "owl/router/routerinterface.zep.h"
 #include "owl/service/manager.zep.h"
+#include "owl/session/managerinterface.zep.h"
 
 #endif
