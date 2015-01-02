@@ -68,7 +68,9 @@ class Request implements \Owl\Http\RequestInterface
      */
 	public function __construct($get, $post, $server, $headers, $files, $cookies) {}
 
-
+    /**
+     * @return Request 
+     */
 	public static function createFromGlobals() {}
 
 }

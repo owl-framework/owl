@@ -70,7 +70,7 @@ class Request implements RequestInterface
         let this->cookies = cookies;
     }
 
-    public static fn createFromGlobals()
+    public static fn createFromGlobals() -> <Request>
     {
         return new Request(_GET, _POST, _SERVER, [], _FILES, _COOKIE);
     }
