@@ -10,7 +10,7 @@ function preparePattern($string)
     $len = strlen($string);
 
     if ($len > 3) {
-        if ($string[0] === '/' && $string[$len-1] == '/') {
+        if ($string[0] === '/' && $string[$len - 1] == '/') {
             $parts = explode('/', $string);
 
             unset($parts[0]);
@@ -25,7 +25,7 @@ function preparePattern($string)
                 $string = str_replace($part, '([0-9]++)', $string);
             }
 
-            if ($params[1][0] == '{' && $params[1][strlen($params[1])-1] == '}') {
+            if ($params[1][0] == '{' && $params[1][strlen($params[1]) - 1] == '}') {
                 $str = substr($params[1], 1, -1);
 
                 $string = str_replace($part, $str, $string);
