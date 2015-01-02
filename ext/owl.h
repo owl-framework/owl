@@ -10,6 +10,7 @@
 #include "owl/bridge/lynx/rest/entitycontroller.zep.h"
 #include "owl/exception.zep.h"
 #include "owl/http/request.zep.h"
+#include "owl/http/requestinterface.zep.h"
 #include "owl/http/response.zep.h"
 #include "owl/module/manager.zep.h"
 #include "owl/mvc/controller.zep.h"
