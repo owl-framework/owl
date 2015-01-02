@@ -7,6 +7,13 @@ class Router implements RouterInterface
 {
     protected basePath = "" {get, set};
 
+    protected types = [
+        "i"   : "[0-9]++",
+        "int" : "[0-9]++",
+		"*"   : ".+?",
+		"**"  : ".++"
+    ];
+
     protected routers = [];
 
     public function add(string uri, array! parameters = [], string method = Request::GET)

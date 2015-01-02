@@ -26,6 +26,8 @@ ZEPHIR_INIT_CLASS(Owl_Router_Router) {
 
 	zend_declare_property_string(owl_router_router_ce, SL("basePath"), "", ZEND_ACC_PROTECTED TSRMLS_CC);
 
+	zend_declare_property_null(owl_router_router_ce, SL("types"), ZEND_ACC_PROTECTED TSRMLS_CC);
+
 	zend_declare_property_null(owl_router_router_ce, SL("routers"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
 	zend_class_implements(owl_router_router_ce TSRMLS_CC, 1, owl_router_routerinterface_ce);
@@ -143,7 +145,7 @@ PHP_METHOD(Owl_Router_Router, match) {
 
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("routers"), PH_NOISY_CC);
-	zephir_is_iterable(_0, &_2, &_1, 0, 0, "owl/Router/Router.zep", 44);
+	zephir_is_iterable(_0, &_2, &_1, 0, 0, "owl/Router/Router.zep", 51);
 	for (
 	  ; zephir_hash_get_current_data_ex(_2, (void**) &_3, &_1) == SUCCESS
 	  ; zephir_hash_move_forward_ex(_2, &_1)
@@ -161,6 +163,7 @@ PHP_METHOD(Owl_Router_Router, match) {
 
 PHP_METHOD(Owl_Router_Router, __construct) {
 
+	zval *_1;
 	zval *_0;
 
 	ZEPHIR_MM_GROW();
@@ -168,6 +171,13 @@ PHP_METHOD(Owl_Router_Router, __construct) {
 	ZEPHIR_INIT_VAR(_0);
 	array_init(_0);
 	zephir_update_property_this(this_ptr, SL("routers"), _0 TSRMLS_CC);
+	ZEPHIR_INIT_VAR(_1);
+	array_init_size(_1, 7);
+	add_assoc_stringl_ex(_1, SS("i"), SL("[0-9]++"), 1);
+	add_assoc_stringl_ex(_1, SS("int"), SL("[0-9]++"), 1);
+	add_assoc_stringl_ex(_1, SS("*"), SL(".+?"), 1);
+	add_assoc_stringl_ex(_1, SS("**"), SL(".++"), 1);
+	zephir_update_property_this(this_ptr, SL("types"), _1 TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();
 
 }
