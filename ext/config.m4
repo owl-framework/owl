@@ -13,6 +13,7 @@ if test "$PHP_OWL" = "yes"; then
 	owl/annotations/reader.zep.c
 	owl/application.zep.c
 	owl/bridge/lynx/rest/entitycontroller.zep.c
+	owl/event/manager.zep.c
 	owl/exception.zep.c
 	owl/http/request.zep.c
 	owl/http/requestinterface.zep.c

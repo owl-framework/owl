@@ -35,6 +35,7 @@ zend_class_entry *owl_annotations_exception_ce;
 zend_class_entry *owl_annotations_reader_ce;
 zend_class_entry *owl_application_ce;
 zend_class_entry *owl_bridge_lynx_rest_entitycontroller_ce;
+zend_class_entry *owl_event_manager_ce;
 zend_class_entry *owl_http_request_ce;
 zend_class_entry *owl_http_response_ce;
 zend_class_entry *owl_module_manager_ce;
@@ -71,6 +72,7 @@ static PHP_MINIT_FUNCTION(owl)
 	ZEPHIR_INIT(Owl_Annotations_Reader);
 	ZEPHIR_INIT(Owl_Application);
 	ZEPHIR_INIT(Owl_Bridge_Lynx_Rest_EntityController);
+	ZEPHIR_INIT(Owl_Event_Manager);
 	ZEPHIR_INIT(Owl_Http_Request);
 	ZEPHIR_INIT(Owl_Http_Response);
 	ZEPHIR_INIT(Owl_Module_Manager);
