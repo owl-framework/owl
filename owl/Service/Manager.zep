@@ -3,11 +3,17 @@ namespace Owl\Service;
 
 class Manager
 {
+    protected instances = [];
+
     protected services = [];
 
     public fn setService(string! name, var service)
     {
-        let this->services[name] = service;
+        if (is_object(service)) {
+            let this->instances[name] = service;
+        } else {
+            let this->services[name] = service;
+        }
     }
 
     public fn getService(string! name) -> <mixed>

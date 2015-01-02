@@ -5,6 +5,8 @@ namespace Owl\Service;
 class Manager
 {
 
+    protected $instances = array();
+
     protected $services = array();
 
     /**
