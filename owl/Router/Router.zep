@@ -33,7 +33,7 @@ class Router implements RouterInterface
         let this->routers[] = route;
     }
 
-    public function matchRequest(<Owl\Http\Request> request)
+    public function matchRequest(<Owl\Http\RequestInterface> request)
     {
 
     }

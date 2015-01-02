@@ -26,7 +26,7 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_router_router_addroute, 0, 0, 1)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_router_router_matchrequest, 0, 0, 1)
-	ZEND_ARG_OBJ_INFO(0, request, Owl\\Router\\Owl\\Http\\Request, 0)
+	ZEND_ARG_OBJ_INFO(0, request, Owl\\Router\\Owl\\Http\\RequestInterface, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_router_router_match, 0, 0, 1)

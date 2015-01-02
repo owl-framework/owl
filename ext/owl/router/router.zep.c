@@ -118,8 +118,8 @@ PHP_METHOD(Owl_Router_Router, matchRequest) {
 
 
 
-	if (!(zephir_is_instance_of(request, SL("Owl\\Router\\Owl\\Http\\Request") TSRMLS_CC))) {
-		ZEPHIR_THROW_EXCEPTION_DEBUG_STRW(spl_ce_InvalidArgumentException, "Parameter 'request' must be an instance of 'Owl\\Router\\Owl\\Http\\Request'", "", 0);
+	if (!(zephir_is_instance_of(request, SL("Owl\\Router\\Owl\\Http\\RequestInterface") TSRMLS_CC))) {
+		ZEPHIR_THROW_EXCEPTION_DEBUG_STRW(spl_ce_InvalidArgumentException, "Parameter 'request' must be an instance of 'Owl\\Router\\Owl\\Http\\RequestInterface'", "", 0);
 		return;
 	}
 

@@ -34,7 +34,7 @@ class Router implements \Owl\Router\RouterInterface
     /**
      * @param mixed $request 
      */
-	public function matchRequest(Owl\Http\Request $request) {}
+	public function matchRequest(Owl\Http\RequestInterface $request) {}
 
     /**
      * @param string $uri 
