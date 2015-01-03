@@ -20,5 +20,7 @@ ZEPHIR_INIT_CLASS(Owl_Router_RouterInterface) {
 
 }
 
+ZEPHIR_DOC_METHOD(Owl_Router_RouterInterface, matchRequest);
+
 ZEPHIR_DOC_METHOD(Owl_Router_RouterInterface, match);
 
