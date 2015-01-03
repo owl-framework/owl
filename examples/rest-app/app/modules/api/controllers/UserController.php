@@ -24,7 +24,7 @@ class IndexController extends \Owl\Rest\Controller
 
     /**x
      * @Post
-     * @Url("/user/{id:int}/")
+     * @Url("/user")
      */
     public function createAction()
     {
