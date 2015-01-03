@@ -8,7 +8,7 @@ interface RouterInterface
     /**
      * @param mixed $request 
      */
-	public function matchRequest(Owl\Http\RequestInterface $request);
+	public function matchRequest(\Owl\Http\RequestInterface $request);
 
     /**
      * @param string $uri 
