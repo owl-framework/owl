@@ -29,6 +29,11 @@ class Request implements RequestInterface
 
     protected cookies;
 
+    public function getUri()
+    {
+        return this->server["REQUEST_URI"];
+    }
+
     public fn getParam() -> var|boolean
     {
 
