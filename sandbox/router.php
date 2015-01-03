@@ -49,7 +49,7 @@ class Route
             $params = explode(':', $part);
             if (count($params) == 2) {
                 if ($params[1] == 'int') {
-                    $string = str_replace($part, '(?P<'.$params[1].'>[0-9]++)', $string);
+                    $string = str_replace($part, '(?P<'.$params[0].'>[0-9]++)', $string);
                 }
 
                 if ($params[1][0] == '{' && $params[1][strlen($params[1]) - 1] == '}') {
