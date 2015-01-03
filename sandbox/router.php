@@ -75,9 +75,7 @@ class RouterService {
     public function match($uri)
     {
         foreach ($this->routers as $route) {
-            var_dump($route->compile());
-            var_dump(preg_match($route->compile(), $uri, $params));
-            var_dump($params);
+            preg_match($route->compile(), $uri, $params);
         }
     }
 }
