@@ -27,6 +27,10 @@ class Route
 
     public function compile()
     {
+        if ($this->pattern) {
+            return $this->pattern;
+        }
+
         $string = $this->uri;
         $len = strlen($this->uri);
 
@@ -56,14 +60,31 @@ class Route
             }
         }
 
-        return $this->pattern = $string;
+        return $this->pattern = ('`^' . $string . '$`u');
     }
 }
 
+class RouterService {
+    protected $routers = [];
 
-$route = new Route('/user/id:int/');
+    public function add(Route $route)
+    {
+        $this->routers[] = $route;
+    }
 
-$match = preg_match('`^' . $route->compile() . '$`u', "/user/1/", $params);
+    public function match($uri)
+    {
+        foreach ($this->routers as $route) {
+            var_dump($route->compile());
+            var_dump(preg_match($route->compile(), $uri, $params));
+            var_dump($params);
+        }
+    }
+}
 
-var_dump($match);
-var_dump($params);
+$service = new RouterService();
+$service->add(new Route('/user/id:int/'));
+
+for ($i = 0; $i < 100000; $i++) {
+    $service->match('/user/1/');
+}
