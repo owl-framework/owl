@@ -5,40 +5,65 @@
 
 $string = "/user/id:{[0-9]++}/";
 
-function preparePattern($string)
+class Route
 {
-    $len = strlen($string);
+    const GET = 2;
 
-    if ($len > 3) {
-        if ($string[0] === '/' && $string[$len - 1] == '/') {
-            $parts = explode('/', $string);
+    const POST = 4;
 
-            unset($parts[0]);
-            unset($parts[count($parts)]);
-        }
+    const ALL = self::GET | self::POST;
+
+    protected $uri;
+
+    protected $method;
+
+    protected $pattern;
+
+    public function __construct($uri, $method = self::ALL)
+    {
+        $this->uri = $uri;
+        $this->method = self::ALL;
     }
 
-    foreach ($parts as $key => $part) {
-        $params = explode(':', $part);
-        if (count($params) == 2) {
-            if ($params[1] == 'int') {
-                $string = str_replace($part, '([0-9]++)', $string);
-            }
+    public function compile()
+    {
+        $string = $this->uri;
+        $len = strlen($this->uri);
 
-            if ($params[1][0] == '{' && $params[1][strlen($params[1]) - 1] == '}') {
-                $str = substr($params[1], 1, -1);
+        $parts = [];
 
-                $string = str_replace($part, $str, $string);
+        if ($len > 3) {
+            if ($string[0] === '/' && $string[$len - 1] == '/') {
+                $parts = explode('/', $string);
+
+                unset($parts[0]);
+                unset($parts[count($parts)]);
             }
         }
-    }
 
-    return $string;
+        foreach ($parts as $key => $part) {
+            $params = explode(':', $part);
+            if (count($params) == 2) {
+                if ($params[1] == 'int') {
+                    $string = str_replace($part, '(?P<'.$params[1].'>[0-9]++)', $string);
+                }
+
+                if ($params[1][0] == '{' && $params[1][strlen($params[1]) - 1] == '}') {
+                    $str = substr($params[1], 1, -1);
+
+                    $string = str_replace($part, $str, $string);
+                }
+            }
+        }
+
+        return $this->pattern = $string;
+    }
 }
 
-var_dump(preparePattern('/user/id:{[0-9]++}/'));
 
-$match = preg_match('`^' . preparePattern('/user/id:{([0-9]++)}/') . '$`u', "/user/1/", $params);
+$route = new Route('/user/id:int/');
+
+$match = preg_match('`^' . $route->compile() . '$`u', "/user/1/", $params);
 
 var_dump($match);
 var_dump($params);
