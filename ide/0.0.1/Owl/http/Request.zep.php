@@ -42,6 +42,9 @@ class Request implements \Owl\Http\RequestInterface
 
 	public function getMethod() {}
 
+
+	public function getUri() {}
+
     /**
      * @return variable|bool 
      */

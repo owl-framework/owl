@@ -112,16 +112,25 @@ PHP_METHOD(Owl_Router_Router, addRoute) {
 
 PHP_METHOD(Owl_Router_Router, matchRequest) {
 
-	zval *request;
+	int ZEPHIR_LAST_CALL_STATUS;
+	zval *request, *_0 = NULL, *_1 = NULL;
 
-	zephir_fetch_params(0, 1, 0, &request);
+	ZEPHIR_MM_GROW();
+	zephir_fetch_params(1, 1, 0, &request);
 
 
 
-	if (!(zephir_is_instance_of(request, SL("Owl\\Router\\Owl\\Http\\RequestInterface") TSRMLS_CC))) {
-		ZEPHIR_THROW_EXCEPTION_DEBUG_STRW(spl_ce_InvalidArgumentException, "Parameter 'request' must be an instance of 'Owl\\Router\\Owl\\Http\\RequestInterface'", "", 0);
+	if (!(zephir_instance_of_ev(request, owl_http_requestinterface_ce TSRMLS_CC))) {
+		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(spl_ce_InvalidArgumentException, "Parameter 'request' must be an instance of 'Owl\\Http\\RequestInterface'", "", 0);
 		return;
 	}
+	ZEPHIR_CALL_METHOD(&_0, request, "geturi", NULL);
+	zephir_check_call_status();
+	ZEPHIR_CALL_METHOD(&_1, request, "getmethod", NULL);
+	zephir_check_call_status();
+	ZEPHIR_RETURN_CALL_METHOD(this_ptr, "match", NULL, _0, _1);
+	zephir_check_call_status();
+	RETURN_MM();
 
 }
 

@@ -33,12 +33,12 @@ class Router implements RouterInterface
         let this->routers[] = route;
     }
 
-    public function matchRequest(<Owl\Http\RequestInterface> request)
+    public function matchRequest(<\Owl\Http\RequestInterface> request)
     {
-
+        return this->match(request->getUri(), request->getMethod());
     }
 
-    public function match(string uri, string method = Request::GET) -> object|boolean
+    inline public function match(string uri, string method = Request::GET) -> object|boolean
     {
         var router;
 
