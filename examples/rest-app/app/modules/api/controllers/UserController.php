@@ -7,7 +7,7 @@
  * Class UserController
  * @Path("/api/")
  */
-class UserController extends \Owl\Rest\Controller
+class UserController extends \Owl\Mvc\Controller
 {
     /**
      * @Get
