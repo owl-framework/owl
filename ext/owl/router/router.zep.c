@@ -150,6 +150,7 @@ PHP_METHOD(Owl_Router_Router, matchRequest) {
 PHP_METHOD(Owl_Router_Router, match) {
 
 	zend_bool _5, _7;
+	int ZEPHIR_LAST_CALL_STATUS;
 	HashTable *_2;
 	HashPosition _1;
 	zval *uri_param = NULL, *method_param = NULL, *router = NULL, *_0, **_3, *_4 = NULL, *_6 = NULL, *_8 = NULL;
@@ -174,9 +175,9 @@ PHP_METHOD(Owl_Router_Router, match) {
 	  ; zephir_hash_move_forward_ex(_2, &_1)
 	) {
 		ZEPHIR_GET_HVALUE(router, _3);
-		ZEPHIR_OBS_NVAR(_4);
-		zephir_read_property(&_4, router, SL("uri"), PH_NOISY_CC);
-		_5 = ZEPHIR_IS_EQUAL(_4, uri);
+		ZEPHIR_CALL_METHOD(&_4, router, "match", NULL, uri);
+		zephir_check_call_status();
+		_5 = zephir_is_true(_4);
 		if (_5) {
 			ZEPHIR_OBS_NVAR(_6);
 			zephir_read_property(&_6, router, SL("method"), PH_NOISY_CC);
