@@ -1,5 +1,5 @@
 
-namespace Owl\Annotation;
+namespace Owl\Annotations;
 
 class ClassAnnotationsResult
 {
@@ -9,7 +9,7 @@ class ClassAnnotationsResult
 
     public function __construct(array! annotations, array! methods = null)
     {
-        this->annotations = annotations;
-        this->methods = methods;
+        let this->annotations = annotations;
+        let this->methods = methods;
     }
 }

@@ -13,5 +13,6 @@ foreach ($parse as $expr) {
 
 foreach ($refClass->getMethods() as $method) {
     $parse = \Owl\Annotations\Reader::parse($method->getDocComment());
+    if ($parse)
     var_dump($parse);
 }
