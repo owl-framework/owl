@@ -22,6 +22,17 @@ class IndexController extends \Owl\Rest\Controller
         );
     }
 
+    /**
+     * @Get
+     * @Url("/users")
+     */
+    public function listAction()
+    {
+        //Get users from db
+
+        return true;
+    }
+
     /**x
      * @Post
      * @Url("/user")
