@@ -9,11 +9,21 @@ class Application
 
     protected $response;
 
+    protected $di;
+
 
 	public function getRequest() {}
 
 
 	public function getResponse() {}
+
+
+	public function getDi() {}
+
+    /**
+     * @param mixed $di 
+     */
+	public function __construct($di) {}
 
 
 	public function bootstrap() {}
