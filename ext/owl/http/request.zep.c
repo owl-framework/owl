@@ -91,7 +91,38 @@ PHP_METHOD(Owl_Http_Request, getUri) {
 
 PHP_METHOD(Owl_Http_Request, getParam) {
 
+	zval *key_param = NULL, *tmp = NULL, *_0, *_1, *_2;
+	zval *key = NULL;
 
+	ZEPHIR_MM_GROW();
+	zephir_fetch_params(1, 1, 0, &key_param);
+
+	if (unlikely(Z_TYPE_P(key_param) != IS_STRING && Z_TYPE_P(key_param) != IS_NULL)) {
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be a string") TSRMLS_CC);
+		RETURN_MM_NULL();
+	}
+
+	if (likely(Z_TYPE_P(key_param) == IS_STRING)) {
+		zephir_get_strval(key, key_param);
+	} else {
+		ZEPHIR_INIT_VAR(key);
+		ZVAL_EMPTY_STRING(key);
+	}
+
+
+	_0 = zephir_fetch_nproperty_this(this_ptr, SL("get"), PH_NOISY_CC);
+	if (zephir_array_isset(_0, key)) {
+		_1 = zephir_fetch_nproperty_this(this_ptr, SL("get"), PH_NOISY_CC);
+		ZEPHIR_OBS_VAR(tmp);
+		zephir_array_fetch(&tmp, _1, key, PH_NOISY, "owl/Http/Request.zep", 42 TSRMLS_CC);
+	}
+	_1 = zephir_fetch_nproperty_this(this_ptr, SL("post"), PH_NOISY_CC);
+	if (zephir_array_isset(_1, key)) {
+		_2 = zephir_fetch_nproperty_this(this_ptr, SL("post"), PH_NOISY_CC);
+		ZEPHIR_OBS_NVAR(tmp);
+		zephir_array_fetch(&tmp, _2, key, PH_NOISY, "owl/Http/Request.zep", 46 TSRMLS_CC);
+	}
+	RETURN_CCTOR(tmp);
 
 }
 
@@ -119,7 +150,7 @@ PHP_METHOD(Owl_Http_Request, getPost) {
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("post"), PH_NOISY_CC);
 	if (zephir_array_isset(_0, key)) {
 		_1 = zephir_fetch_nproperty_this(this_ptr, SL("post"), PH_NOISY_CC);
-		zephir_array_fetch(&_2, _1, key, PH_NOISY | PH_READONLY, "owl/Http/Request.zep", 45 TSRMLS_CC);
+		zephir_array_fetch(&_2, _1, key, PH_NOISY | PH_READONLY, "owl/Http/Request.zep", 55 TSRMLS_CC);
 		RETURN_CTOR(_2);
 	}
 	RETURN_MM_BOOL(0);
@@ -150,7 +181,7 @@ PHP_METHOD(Owl_Http_Request, getServer) {
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("server"), PH_NOISY_CC);
 	if (zephir_array_isset(_0, key)) {
 		_1 = zephir_fetch_nproperty_this(this_ptr, SL("server"), PH_NOISY_CC);
-		zephir_array_fetch(&_2, _1, key, PH_NOISY | PH_READONLY, "owl/Http/Request.zep", 54 TSRMLS_CC);
+		zephir_array_fetch(&_2, _1, key, PH_NOISY | PH_READONLY, "owl/Http/Request.zep", 64 TSRMLS_CC);
 		RETURN_CTOR(_2);
 	}
 	RETURN_MM_BOOL(0);

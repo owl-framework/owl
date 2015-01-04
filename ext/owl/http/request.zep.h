@@ -12,6 +12,10 @@ PHP_METHOD(Owl_Http_Request, getScheme);
 PHP_METHOD(Owl_Http_Request, __construct);
 PHP_METHOD(Owl_Http_Request, createFromGlobals);
 
+ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_http_request_getparam, 0, 0, 1)
+	ZEND_ARG_INFO(0, key)
+ZEND_END_ARG_INFO()
+
 ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_http_request_getpost, 0, 0, 1)
 	ZEND_ARG_INFO(0, key)
 ZEND_END_ARG_INFO()
@@ -32,7 +36,7 @@ ZEND_END_ARG_INFO()
 ZEPHIR_INIT_FUNCS(owl_http_request_method_entry) {
 	PHP_ME(Owl_Http_Request, getMethod, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Http_Request, getUri, NULL, ZEND_ACC_PUBLIC)
-	PHP_ME(Owl_Http_Request, getParam, NULL, ZEND_ACC_PUBLIC)
+	PHP_ME(Owl_Http_Request, getParam, arginfo_owl_http_request_getparam, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Http_Request, getPost, arginfo_owl_http_request_getpost, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Http_Request, getServer, arginfo_owl_http_request_getserver, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Http_Request, getScheme, NULL, ZEND_ACC_PUBLIC)

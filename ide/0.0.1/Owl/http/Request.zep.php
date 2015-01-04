@@ -48,9 +48,10 @@ class Request implements \Owl\Http\RequestInterface
 	public function getUri() {}
 
     /**
+     * @param string $key 
      * @return variable|bool 
      */
-	public function getParam() {}
+	public function getParam($key) {}
 
     /**
      * @param string $key 

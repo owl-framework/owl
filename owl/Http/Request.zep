@@ -34,9 +34,19 @@ class Request implements RequestInterface
         return isset(this->server["REQUEST_URI"]) ? this->server["REQUEST_URI"] : null;
     }
 
-    public fn getParam() -> var|boolean
+    public fn getParam(string! key) -> var|boolean
     {
+        var tmp;
 
+        if isset this->get[key] {
+            let tmp = this->get[key];
+        }
+
+        if isset this->post[key] {
+            let tmp = this->post[key];
+        }
+
+        return tmp;
     }
 
     public fn getPost(string! key) -> var|boolean
