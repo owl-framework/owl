@@ -8,6 +8,7 @@ class RouterTest extends \PHPUnit_Framework_TestCase
     public function testGetFixturesStatic()
     {
         $router = new \Owl\Router\Router();
+
         $router->add("/", ['name' => 'default', 'action' => 'index', 'controller' => 'index', 'module' => 'index']);
         $router->add("/user/1/", ['name' => 'user-view-static-1', 'action' => 'view', 'controller' => 'user', 'module' => 'user']);
         $router->add("/user/100/", ['name' => 'user-view-static-100', 'action' => 'view', 'controller' => 'user', 'module' => 'user']);

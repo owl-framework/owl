@@ -81,7 +81,7 @@ PHP_METHOD(Owl_Router_Router, add) {
 
 
 	ZEPHIR_INIT_VAR(route);
-	object_init_ex(route, owl_router_route_ce);
+	object_init_ex(route, owl_router_http_staticroute_ce);
 	if (zephir_has_constructor(route TSRMLS_CC)) {
 		ZEPHIR_CALL_METHOD(NULL, route, "__construct", NULL);
 		zephir_check_call_status();

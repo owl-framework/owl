@@ -21,7 +21,7 @@ class Router implements RouterInterface
     {
         var route;
 
-        let route = new Route;
+        let route = new Http\StaticRoute;
         let route->uri = uri;
         let route->method = method;
         let route->parameters = parameters;
