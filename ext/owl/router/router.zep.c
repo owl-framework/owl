@@ -166,7 +166,7 @@ PHP_METHOD(Owl_Router_Router, match) {
 		_5 = ZEPHIR_IS_EQUAL(_4, uri);
 		if (_5) {
 			ZEPHIR_OBS_NVAR(_6);
-			zephir_read_property(&_6, router, SL("mehtod"), PH_NOISY_CC);
+			zephir_read_property(&_6, router, SL("method"), PH_NOISY_CC);
 			_7 = ZEPHIR_IS_STRING(_6, "all");
 			if (!(_7)) {
 				ZEPHIR_OBS_NVAR(_8);

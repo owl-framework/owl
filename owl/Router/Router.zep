@@ -44,7 +44,7 @@ class Router implements RouterInterface
         var router;
 
         for router in this->routers {
-            if (router->uri == uri && (router->mehtod == "all" || router->method == method)) {
+            if (router->uri == uri && (router->method == "all" || router->method == method)) {
                 return router;
             }
         }
