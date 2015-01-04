@@ -13,11 +13,11 @@
 
 #include "kernel/main.h"
 #include "kernel/object.h"
+#include "kernel/memory.h"
 #include "kernel/array.h"
 #include "ext/spl/spl_exceptions.h"
 #include "kernel/exception.h"
 #include "kernel/operators.h"
-#include "kernel/memory.h"
 #include "kernel/fcall.h"
 
 
@@ -73,12 +73,19 @@ PHP_METHOD(Owl_Http_Request, getMethod) {
 
 PHP_METHOD(Owl_Http_Request, getUri) {
 
-	zval *_0, *_1;
+	zval *_0, *_1, *_2;
 
+	ZEPHIR_MM_GROW();
 
-	_0 = zephir_fetch_nproperty_this(this_ptr, SL("server"), PH_NOISY_CC);
-	zephir_array_fetch_string(&_1, _0, SL("REQUEST_URI"), PH_NOISY | PH_READONLY, "owl/Http/Request.zep", 34 TSRMLS_CC);
-	RETURN_CTORW(_1);
+	ZEPHIR_INIT_VAR(_0);
+	_1 = zephir_fetch_nproperty_this(this_ptr, SL("server"), PH_NOISY_CC);
+	if (zephir_array_isset_string(_1, SS("REQUEST_URI"))) {
+		_2 = zephir_fetch_nproperty_this(this_ptr, SL("server"), PH_NOISY_CC);
+		zephir_array_fetch_string(&_0, _2, SL("REQUEST_URI"), PH_NOISY, "owl/Http/Request.zep", 34 TSRMLS_CC);
+	} else {
+		ZVAL_NULL(_0);
+	}
+	RETURN_CCTOR(_0);
 
 }
 

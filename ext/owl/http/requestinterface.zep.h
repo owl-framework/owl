@@ -12,6 +12,7 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_http_requestinterface_getserver, 0, 0, 1)
 ZEND_END_ARG_INFO()
 
 ZEPHIR_INIT_FUNCS(owl_http_requestinterface_method_entry) {
+	PHP_ABSTRACT_ME(Owl_Http_RequestInterface, getUri, NULL)
 	PHP_ABSTRACT_ME(Owl_Http_RequestInterface, getPost, arginfo_owl_http_requestinterface_getpost)
 	PHP_ABSTRACT_ME(Owl_Http_RequestInterface, getServer, arginfo_owl_http_requestinterface_getserver)
 	PHP_ABSTRACT_ME(Owl_Http_RequestInterface, getScheme, NULL)

@@ -20,6 +20,8 @@ ZEPHIR_INIT_CLASS(Owl_Http_RequestInterface) {
 
 }
 
+ZEPHIR_DOC_METHOD(Owl_Http_RequestInterface, getUri);
+
 ZEPHIR_DOC_METHOD(Owl_Http_RequestInterface, getPost);
 
 ZEPHIR_DOC_METHOD(Owl_Http_RequestInterface, getServer);

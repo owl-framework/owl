@@ -6,6 +6,11 @@ interface RequestInterface
 {
 
     /**
+     * @return string|null 
+     */
+	public function getUri();
+
+    /**
      * @param string $key 
      * @return string 
      */

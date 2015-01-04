@@ -42,7 +42,9 @@ class Request implements \Owl\Http\RequestInterface
 
 	public function getMethod() {}
 
-
+    /**
+     * @return string|null 
+     */
 	public function getUri() {}
 
     /**
