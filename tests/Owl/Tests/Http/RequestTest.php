@@ -5,8 +5,11 @@
 
 class RequestTest extends \PHPUnit_Framework_TestCase
 {
-    public function testParseAnnotation()
+    public function testRequest()
     {
-        $this->assertTrue(true);
+        $_SERVER['REQUEST_URI'] = '/';
+
+        $request = \Owl\Http\Request::createFromGlobals();
+        $this->assertEquals('/', $request->getUri());
     }
 } 
