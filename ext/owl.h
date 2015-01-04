@@ -17,6 +17,8 @@
 #include "owl/http/response.zep.h"
 #include "owl/module/manager.zep.h"
 #include "owl/mvc/controller.zep.h"
+#include "owl/router/http/dynamicroute.zep.h"
+#include "owl/router/http/staticroute.zep.h"
 #include "owl/router/route.zep.h"
 #include "owl/router/router.zep.h"
 #include "owl/router/routerinterface.zep.h"

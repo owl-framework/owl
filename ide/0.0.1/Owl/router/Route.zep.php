@@ -2,7 +2,7 @@
 
 namespace Owl\Router;
 
-class Route
+abstract class Route
 {
 
     protected $uri;

@@ -3,7 +3,7 @@ namespace Owl\Router;
 
 use Owl\Http\Request;
 
-class Route
+abstract class Route
 {
     public uri;
 

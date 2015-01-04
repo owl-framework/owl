@@ -16,7 +16,7 @@
 
 ZEPHIR_INIT_CLASS(Owl_Router_Route) {
 
-	ZEPHIR_REGISTER_CLASS(Owl\\Router, Route, owl, router_route, NULL, 0);
+	ZEPHIR_REGISTER_CLASS(Owl\\Router, Route, owl, router_route, NULL, ZEND_ACC_EXPLICIT_ABSTRACT_CLASS);
 
 	zend_declare_property_null(owl_router_route_ce, SL("uri"), ZEND_ACC_PUBLIC TSRMLS_CC);
 

@@ -29,6 +29,7 @@
 zend_class_entry *owl_http_requestinterface_ce;
 zend_class_entry *owl_router_routerinterface_ce;
 zend_class_entry *owl_session_managerinterface_ce;
+zend_class_entry *owl_router_route_ce;
 zend_class_entry *owl_exception_ce;
 zend_class_entry *owl_mvc_controller_ce;
 zend_class_entry *owl_annotations_annotation_ce;
@@ -41,7 +42,8 @@ zend_class_entry *owl_event_manager_ce;
 zend_class_entry *owl_http_request_ce;
 zend_class_entry *owl_http_response_ce;
 zend_class_entry *owl_module_manager_ce;
-zend_class_entry *owl_router_route_ce;
+zend_class_entry *owl_router_http_dynamicroute_ce;
+zend_class_entry *owl_router_http_staticroute_ce;
 zend_class_entry *owl_router_router_ce;
 zend_class_entry *owl_service_manager_ce;
 
@@ -68,6 +70,7 @@ static PHP_MINIT_FUNCTION(owl)
 	ZEPHIR_INIT(Owl_Http_RequestInterface);
 	ZEPHIR_INIT(Owl_Router_RouterInterface);
 	ZEPHIR_INIT(Owl_Session_ManagerInterface);
+	ZEPHIR_INIT(Owl_Router_Route);
 	ZEPHIR_INIT(Owl_Exception);
 	ZEPHIR_INIT(Owl_Mvc_Controller);
 	ZEPHIR_INIT(Owl_Annotations_Annotation);
@@ -80,7 +83,8 @@ static PHP_MINIT_FUNCTION(owl)
 	ZEPHIR_INIT(Owl_Http_Request);
 	ZEPHIR_INIT(Owl_Http_Response);
 	ZEPHIR_INIT(Owl_Module_Manager);
-	ZEPHIR_INIT(Owl_Router_Route);
+	ZEPHIR_INIT(Owl_Router_Http_DynamicRoute);
+	ZEPHIR_INIT(Owl_Router_Http_StaticRoute);
 	ZEPHIR_INIT(Owl_Router_Router);
 	ZEPHIR_INIT(Owl_Service_Manager);
 
