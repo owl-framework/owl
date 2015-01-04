@@ -4,6 +4,7 @@
 #ifndef ZEPHIR_CLASS_ENTRIES_H
 #define ZEPHIR_CLASS_ENTRIES_H
 
+#include "owl/annotations/annotation.zep.h"
 #include "owl/annotations/exception.zep.h"
 #include "owl/annotations/reader.zep.h"
 #include "owl/application.zep.h"
