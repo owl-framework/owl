@@ -21,7 +21,12 @@ class Router implements RouterInterface
     {
         var route;
 
-        let route = new Http\StaticRoute;
+        if (strpos(uri, "{") === false) {
+            let route = new Http\StaticRoute;
+        } else {
+            let route = new Http\DynamicRoute;
+        }
+
         let route->uri = uri;
         let route->method = method;
         let route->parameters = parameters;

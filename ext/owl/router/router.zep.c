@@ -14,8 +14,9 @@
 #include "kernel/main.h"
 #include "kernel/object.h"
 #include "kernel/memory.h"
-#include "kernel/fcall.h"
+#include "kernel/string.h"
 #include "kernel/operators.h"
+#include "kernel/fcall.h"
 #include "ext/spl/spl_exceptions.h"
 #include "kernel/exception.h"
 #include "kernel/hash.h"
@@ -58,7 +59,7 @@ PHP_METHOD(Owl_Router_Router, add) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
 	zval *parameters = NULL;
-	zval *uri_param = NULL, *parameters_param = NULL, *method_param = NULL, *route;
+	zval *uri_param = NULL, *parameters_param = NULL, *method_param = NULL, *route, _0, *_1;
 	zval *uri = NULL, *method = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -80,11 +81,23 @@ PHP_METHOD(Owl_Router_Router, add) {
 	}
 
 
+	ZEPHIR_SINIT_VAR(_0);
+	ZVAL_STRING(&_0, "{", 0);
+	ZEPHIR_INIT_VAR(_1);
+	zephir_fast_strpos(_1, uri, &_0, 0 );
 	ZEPHIR_INIT_VAR(route);
-	object_init_ex(route, owl_router_http_staticroute_ce);
-	if (zephir_has_constructor(route TSRMLS_CC)) {
-		ZEPHIR_CALL_METHOD(NULL, route, "__construct", NULL);
-		zephir_check_call_status();
+	if (ZEPHIR_IS_FALSE_IDENTICAL(_1)) {
+		object_init_ex(route, owl_router_http_staticroute_ce);
+		if (zephir_has_constructor(route TSRMLS_CC)) {
+			ZEPHIR_CALL_METHOD(NULL, route, "__construct", NULL);
+			zephir_check_call_status();
+		}
+	} else {
+		object_init_ex(route, owl_router_http_dynamicroute_ce);
+		if (zephir_has_constructor(route TSRMLS_CC)) {
+			ZEPHIR_CALL_METHOD(NULL, route, "__construct", NULL);
+			zephir_check_call_status();
+		}
 	}
 	zephir_update_property_zval(route, SL("uri"), uri TSRMLS_CC);
 	zephir_update_property_zval(route, SL("method"), method TSRMLS_CC);
@@ -155,7 +168,7 @@ PHP_METHOD(Owl_Router_Router, match) {
 
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("routers"), PH_NOISY_CC);
-	zephir_is_iterable(_0, &_2, &_1, 0, 0, "owl/Router/Router.zep", 52);
+	zephir_is_iterable(_0, &_2, &_1, 0, 0, "owl/Router/Router.zep", 57);
 	for (
 	  ; zephir_hash_get_current_data_ex(_2, (void**) &_3, &_1) == SUCCESS
 	  ; zephir_hash_move_forward_ex(_2, &_1)
