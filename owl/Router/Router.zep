@@ -2,6 +2,7 @@
 namespace Owl\Router;
 
 use Owl\Http\Request;
+use Owl\Http\RequestInterface;
 
 class Router implements RouterInterface
 {
@@ -33,7 +34,7 @@ class Router implements RouterInterface
         let this->routers[] = route;
     }
 
-    public function matchRequest(<\Owl\Http\RequestInterface> request)
+    public function matchRequest(<RequestInterface> request)
     {
         return this->match(request->getUri(), request->getMethod());
     }

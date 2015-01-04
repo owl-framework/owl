@@ -154,7 +154,7 @@ PHP_METHOD(Owl_Router_Router, match) {
 
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("routers"), PH_NOISY_CC);
-	zephir_is_iterable(_0, &_2, &_1, 0, 0, "owl/Router/Router.zep", 51);
+	zephir_is_iterable(_0, &_2, &_1, 0, 0, "owl/Router/Router.zep", 52);
 	for (
 	  ; zephir_hash_get_current_data_ex(_2, (void**) &_3, &_1) == SUCCESS
 	  ; zephir_hash_move_forward_ex(_2, &_1)

@@ -75,7 +75,8 @@ class RouterService {
     public function match($uri)
     {
         foreach ($this->routers as $route) {
-            preg_match($route->compile(), $uri, $params);
+            preg_match('~\\{(?:([^{}]+):)*([a-zA-Z][a-zA-Z0-9_]*)\\}~', $uri, $params);
+            var_dump($params);
         }
     }
 }
