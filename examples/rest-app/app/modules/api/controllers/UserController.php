@@ -4,10 +4,10 @@
  */
 
 /**
- * Class IndexController
+ * Class UserController
  * @Path("/api/")
  */
-class IndexController extends \Owl\Rest\Controller
+class UserController extends \Owl\Rest\Controller
 {
     /**
      * @Get
