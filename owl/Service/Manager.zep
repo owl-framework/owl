@@ -16,7 +16,21 @@ class Manager
         }
     }
 
-    public fn getService(string! name) -> <mixed>
+    public fn get(string! name)
+    {
+        return this->getInstance(name);
+    }
+
+    public fn getInstance(string! name) -> var
+    {
+        if (isset(this->instances[name])) {
+            return this->instances[name];
+        }
+
+        throw new \Owl\Exception("No instance was founded by name : " . name);
+    }
+
+    public fn getService(string! name) -> var
     {
         if (isset(this->services[name])) {
             return this->services[name];

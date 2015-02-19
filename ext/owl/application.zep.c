@@ -16,7 +16,6 @@
 #include "kernel/memory.h"
 #include "kernel/exception.h"
 #include "kernel/fcall.h"
-#include "kernel/variables.h"
 
 
 ZEPHIR_INIT_CLASS(Owl_Application) {
@@ -56,10 +55,13 @@ PHP_METHOD(Owl_Application, getDi) {
 
 PHP_METHOD(Owl_Application, __construct) {
 
-	zval *di;
+	zval *di = NULL;
 
-	zephir_fetch_params(0, 1, 0, &di);
+	zephir_fetch_params(0, 0, 1, &di);
 
+	if (!di) {
+		di = ZEPHIR_GLOBAL(global_null);
+	}
 
 
 	zephir_update_property_this(this_ptr, SL("di"), di TSRMLS_CC);
@@ -94,7 +96,7 @@ PHP_METHOD(Owl_Application, handle) {
 	}
 	_0 = Z_TYPE_P(response) != IS_NULL;
 	if (_0) {
-		_0 = !zephir_instance_of_ev(response, owl_http_response_ce TSRMLS_CC);
+		_0 = !(zephir_instance_of_ev(response, owl_http_response_ce TSRMLS_CC));
 	}
 	if (_0) {
 		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(spl_ce_InvalidArgumentException, "Parameter 'response' must be an instance of 'Owl\\Http\\Response'", "", 0);
@@ -106,9 +108,8 @@ PHP_METHOD(Owl_Application, handle) {
 	ZEPHIR_CALL_METHOD(&router, _1, "get", NULL, _2);
 	zephir_check_temp_parameter(_2);
 	zephir_check_call_status();
-	ZEPHIR_CALL_METHOD(&matchedRoute, router, "match", NULL, request);
+	ZEPHIR_CALL_METHOD(&matchedRoute, router, "matchrequest", NULL, request);
 	zephir_check_call_status();
-	zephir_var_dump(&matchedRoute TSRMLS_CC);
 	if (Z_TYPE_P(response) == IS_NULL) {
 		ZEPHIR_INIT_NVAR(response);
 		object_init_ex(response, owl_http_response_ce);

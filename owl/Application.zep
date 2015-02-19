@@ -24,9 +24,7 @@ class Application
         var matchedRoute, router;
 
         let router = this->di->get("router");
-        let matchedRoute = router->match(request);
-
-        var_dump(matchedRoute);
+        let matchedRoute = router->matchRequest(request);
 
         if (is_null(response)) {
             let response = new Http\Response();

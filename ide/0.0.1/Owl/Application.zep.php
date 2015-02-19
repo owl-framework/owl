@@ -23,7 +23,7 @@ class Application
     /**
      * @param mixed $di 
      */
-	public function __construct($di) {}
+	public function __construct($di = null) {}
 
 
 	public function bootstrap() {}

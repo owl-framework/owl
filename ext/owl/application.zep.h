@@ -10,7 +10,7 @@ PHP_METHOD(Owl_Application, __construct);
 PHP_METHOD(Owl_Application, bootstrap);
 PHP_METHOD(Owl_Application, handle);
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_application___construct, 0, 0, 1)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_application___construct, 0, 0, 0)
 	ZEND_ARG_INFO(0, di)
 ZEND_END_ARG_INFO()
 

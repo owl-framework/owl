@@ -17,8 +17,8 @@
 #include "kernel/exception.h"
 #include "kernel/operators.h"
 #include "kernel/memory.h"
-#include "kernel/array.h"
 #include "kernel/fcall.h"
+#include "kernel/array.h"
 #include "kernel/concat.h"
 
 ZEPHIR_INIT_CLASS(Owl_Service_Manager) {
@@ -63,6 +63,74 @@ PHP_METHOD(Owl_Service_Manager, setService) {
 
 }
 
+PHP_METHOD(Owl_Service_Manager, get) {
+
+	int ZEPHIR_LAST_CALL_STATUS;
+	zval *name_param = NULL;
+	zval *name = NULL;
+
+	ZEPHIR_MM_GROW();
+	zephir_fetch_params(1, 1, 0, &name_param);
+
+	if (unlikely(Z_TYPE_P(name_param) != IS_STRING && Z_TYPE_P(name_param) != IS_NULL)) {
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'name' must be a string") TSRMLS_CC);
+		RETURN_MM_NULL();
+	}
+
+	if (likely(Z_TYPE_P(name_param) == IS_STRING)) {
+		zephir_get_strval(name, name_param);
+	} else {
+		ZEPHIR_INIT_VAR(name);
+		ZVAL_EMPTY_STRING(name);
+	}
+
+
+	ZEPHIR_RETURN_CALL_METHOD(this_ptr, "getinstance", NULL, name);
+	zephir_check_call_status();
+	RETURN_MM();
+
+}
+
+PHP_METHOD(Owl_Service_Manager, getInstance) {
+
+	int ZEPHIR_LAST_CALL_STATUS;
+	zval *name_param = NULL, *_0, *_1, *_2, *_3;
+	zval *name = NULL, *_4;
+
+	ZEPHIR_MM_GROW();
+	zephir_fetch_params(1, 1, 0, &name_param);
+
+	if (unlikely(Z_TYPE_P(name_param) != IS_STRING && Z_TYPE_P(name_param) != IS_NULL)) {
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'name' must be a string") TSRMLS_CC);
+		RETURN_MM_NULL();
+	}
+
+	if (likely(Z_TYPE_P(name_param) == IS_STRING)) {
+		zephir_get_strval(name, name_param);
+	} else {
+		ZEPHIR_INIT_VAR(name);
+		ZVAL_EMPTY_STRING(name);
+	}
+
+
+	_0 = zephir_fetch_nproperty_this(this_ptr, SL("instances"), PH_NOISY_CC);
+	if (zephir_array_isset(_0, name)) {
+		_1 = zephir_fetch_nproperty_this(this_ptr, SL("instances"), PH_NOISY_CC);
+		zephir_array_fetch(&_2, _1, name, PH_NOISY | PH_READONLY, "owl/Service/Manager.zep", 27 TSRMLS_CC);
+		RETURN_CTOR(_2);
+	}
+	ZEPHIR_INIT_VAR(_3);
+	object_init_ex(_3, owl_exception_ce);
+	ZEPHIR_INIT_VAR(_4);
+	ZEPHIR_CONCAT_SV(_4, "No instance was founded by name : ", name);
+	ZEPHIR_CALL_METHOD(NULL, _3, "__construct", NULL, _4);
+	zephir_check_call_status();
+	zephir_throw_exception_debug(_3, "owl/Service/Manager.zep", 30 TSRMLS_CC);
+	ZEPHIR_MM_RESTORE();
+	return;
+
+}
+
 PHP_METHOD(Owl_Service_Manager, getService) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
@@ -88,7 +156,7 @@ PHP_METHOD(Owl_Service_Manager, getService) {
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("services"), PH_NOISY_CC);
 	if (zephir_array_isset(_0, name)) {
 		_1 = zephir_fetch_nproperty_this(this_ptr, SL("services"), PH_NOISY_CC);
-		zephir_array_fetch(&_2, _1, name, PH_NOISY | PH_READONLY, "owl/Service/Manager.zep", 22 TSRMLS_CC);
+		zephir_array_fetch(&_2, _1, name, PH_NOISY | PH_READONLY, "owl/Service/Manager.zep", 36 TSRMLS_CC);
 		RETURN_CTOR(_2);
 	}
 	ZEPHIR_INIT_VAR(_3);
@@ -97,7 +165,7 @@ PHP_METHOD(Owl_Service_Manager, getService) {
 	ZEPHIR_CONCAT_SV(_4, "No service was founded by name : ", name);
 	ZEPHIR_CALL_METHOD(NULL, _3, "__construct", NULL, _4);
 	zephir_check_call_status();
-	zephir_throw_exception_debug(_3, "owl/Service/Manager.zep", 25 TSRMLS_CC);
+	zephir_throw_exception_debug(_3, "owl/Service/Manager.zep", 39 TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();
 	return;
 

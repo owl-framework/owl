@@ -6,19 +6,13 @@
 use Owl\Application;
 use Owl\Http\Request;
 
-$application = new Application();
-$response = $application->handle(Request::createFromGlobals());
-
-var_dump($response);
-
-class Router {
-
-}
-
 $serviceManager = new Owl\Service\Manager();
-$serviceManager->setService('router', new Router());
-var_dump($serviceManager->getService('router'));
+$serviceManager->setService('router', new \Owl\Router\Router());
+var_dump($serviceManager->getInstance('router'));
 
+$application = new Application($serviceManager);
+$response = $application->handle(Request::createFromGlobals());
+var_dump($response);
 
 $router = new \Owl\Router\Router();
 $router->add("/", ['name' => 'default', 'action' => 'index', 'controller' => 'index', 'module' => 'index']);
