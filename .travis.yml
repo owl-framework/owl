@@ -2,6 +2,10 @@ language:
   - php
   - c
 
+compiler:
+  - gcc
+  - clang
+  
 php:
   - 5.4
   - 5.5
