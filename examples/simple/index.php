@@ -7,7 +7,7 @@ use Owl\Application;
 use Owl\Http\Request;
 
 $application = new Application();
-$response = $application->handle(new Request());
+$response = $application->handle(Request::createFromGlobals());
 
 var_dump($response);
 
