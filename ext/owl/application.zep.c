@@ -68,12 +68,9 @@ PHP_METHOD(Owl_Application, __construct) {
 
 }
 
-PHP_METHOD(Owl_Application, bootstrap) {
-
-
-
-}
-
+/**
+ * Handle Http Request
+ */
 PHP_METHOD(Owl_Application, handle) {
 
 	int ZEPHIR_LAST_CALL_STATUS;

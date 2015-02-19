@@ -25,10 +25,9 @@ class Application
      */
 	public function __construct($di = null) {}
 
-
-	public function bootstrap() {}
-
     /**
+     * Handle Http Request
+     *
      * @param mixed $request 
      * @param mixed $response 
      * @return Http\Response 

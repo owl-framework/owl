@@ -9,17 +9,15 @@ class Application
 
     protected di {get};
 
-    public function __construct(var di = null)
+    public fn __construct(var di = null)
     {
         let this->di = di;
     }
 
-    public function bootstrap()
-    {
-
-    }
-
-    public function handle(<Http\Request> request, <Http\Response> response = null) -> <Http\Response>
+    /**
+     * Handle Http Request
+     */
+    public fn handle(<Http\Request> request, <Http\Response> response = null) -> <Http\Response>
     {
         var matchedRoute, router;
 
