@@ -9,7 +9,7 @@ class Application
 
     protected di {get};
 
-    public function __construct(var di)
+    public function __construct(var di = null)
     {
         let this->di = di;
     }
