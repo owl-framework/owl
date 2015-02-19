@@ -11,6 +11,10 @@ php:
   - 5.5
   - 5.6
 
+env:
+  - CC="gcc"
+  - CC="clang"
+  
 install:
   - composer --prefer-source install
   - composer require phalcon/zephir:dev-master --prefer-source
