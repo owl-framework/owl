@@ -1,6 +1,10 @@
 
 namespace Owl;
 
+use Owl\Service\Manager;
+use Http\Request;
+use Http\Response;
+
 class Application
 {
     protected request {get};
@@ -9,7 +13,7 @@ class Application
 
     protected di {get};
 
-    public fn __construct(var di = null)
+    public fn __construct(<Manager> di = null)
     {
         let this->di = di;
     }
@@ -17,16 +21,18 @@ class Application
     /**
      * Handle Http Request
      */
-    public fn handle(<Http\Request> request, <Http\Response> response = null) -> <Http\Response>
+    public fn handle(<Request> request, <Response> response = null) -> <Response>
     {
         var matchedRoute, router;
 
+        if (is_null(response)) {
+            let response = new Response();
+        }
+        
         let router = this->di->get("router");
         let matchedRoute = router->matchRequest(request);
 
-        if (is_null(response)) {
-            let response = new Http\Response();
-        }
+        var_dump(matchedRoute);
 
         return response;
     }
