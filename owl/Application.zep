@@ -7,15 +7,21 @@ use Http\Response;
 
 class Application
 {
+    const ENV_PRODUCTION = 'production';
+    const ENV_DEVELOPMENT = 'development';
+
     protected request {get};
 
     protected response {get};
 
     protected di {get};
 
-    public fn __construct(<Manager> di = null)
+    protected env {get};
+    
+    public fn __construct(<Manager> di = null, string env = self::ENV_PRODUCTION)
     {
         let this->di = di;
+        let this->env = env;
     }
 
     /**
