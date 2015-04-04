@@ -22,5 +22,5 @@ $router->add('/users/:id', ['module' => 'Api', 'controller' => 'User', 'action' 
 $serviceManager->setService('router', $router);
 
 $application = new Application($serviceManager);
-$response = $application->handle(Request::createFromGlobals());
+$response = $application->handle(Request::createFromGlobals(), new \Owl\Http\Response\Json());
 $response->send();
