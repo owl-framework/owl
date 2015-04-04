@@ -3,7 +3,7 @@
  * @author Patsura Dmitry @ovr <talk@dmtry.me>
  */
 
-namespace RestApp\Api\Controller;
+namespace RestApp\Frontend\Controller;
 
 use Owl\Mvc\Controller;
 
