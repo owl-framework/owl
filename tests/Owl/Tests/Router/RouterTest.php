@@ -16,6 +16,9 @@ class RouterTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Owl\Router\Route', $result = $router->match("/"));
         $this->assertSame("default", $result->parameters["name"]);
 
+        $this->assertFalse($router->match("/user/50/"));
+        $this->assertFalse($router->match("/user/100/a"));
+
         $this->assertInstanceOf('Owl\Router\Route', $result = $router->match("/user/1/"));
         $this->assertSame("user-view-static-1", $result->parameters["name"]);
 
