@@ -7,12 +7,7 @@ class Response implements ResponseInterface
 
     protected code = Response::STATUS_CODE_OK {get, set};
 
-    protected content {get};
-
-    public function setContent(var content)
-    {
-        let this->content = json_encode(content);
-    }
+    protected content {get, set};
 
     public function send() -> boolean
     {
