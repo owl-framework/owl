@@ -115,10 +115,6 @@ PHP_METHOD(Owl_Router_Router, addRoute) {
 
 
 
-	if (!(zephir_instance_of_ev(route, owl_router_route_ce TSRMLS_CC))) {
-		ZEPHIR_THROW_EXCEPTION_DEBUG_STRW(spl_ce_InvalidArgumentException, "Parameter 'route' must be an instance of 'Owl\\Router\\Route'", "", 0);
-		return;
-	}
 	zephir_update_property_array_append(this_ptr, SL("routers"), route TSRMLS_CC);
 
 }
@@ -133,10 +129,6 @@ PHP_METHOD(Owl_Router_Router, matchRequest) {
 
 
 
-	if (!(zephir_instance_of_ev(request, owl_http_requestinterface_ce TSRMLS_CC))) {
-		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(spl_ce_InvalidArgumentException, "Parameter 'request' must be an instance of 'Owl\\Http\\RequestInterface'", "", 0);
-		return;
-	}
 	ZEPHIR_CALL_METHOD(&_0, request, "geturi", NULL);
 	zephir_check_call_status();
 	ZEPHIR_CALL_METHOD(&_1, request, "getmethod", NULL);

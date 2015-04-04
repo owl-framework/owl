@@ -7,8 +7,11 @@ abstract class Route
 
     protected $uri;
 
-    protected $method;
+
+    protected $method = Request::GET;
+
 
     protected $parameters;
+
 
 }

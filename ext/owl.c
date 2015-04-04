@@ -175,12 +175,18 @@ static PHP_GSHUTDOWN_FUNCTION(owl)
 
 }
 
+
+zend_function_entry php_owl_functions[] = {
+ZEND_FE_END
+
+};
+
 zend_module_entry owl_module_entry = {
 	STANDARD_MODULE_HEADER_EX,
 	NULL,
 	NULL,
 	PHP_OWL_EXTNAME,
-	NULL,
+	php_owl_functions,
 	PHP_MINIT(owl),
 #ifndef ZEPHIR_RELEASE
 	PHP_MSHUTDOWN(owl),

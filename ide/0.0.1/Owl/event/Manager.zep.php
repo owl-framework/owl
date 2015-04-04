@@ -7,6 +7,7 @@ class Manager
 
     protected $listeners = array();
 
+
     /**
      * @param mixed $eventName 
      * @param callable $callback 

@@ -13,7 +13,6 @@
 
 #include "kernel/main.h"
 #include "kernel/object.h"
-#include "kernel/exception.h"
 #include "kernel/memory.h"
 
 
@@ -36,7 +35,6 @@ PHP_METHOD(Owl_Mvc_Controller, getRequest) {
 
 PHP_METHOD(Owl_Mvc_Controller, dispatch) {
 
-	zend_bool _0;
 	zval *request, *response = NULL;
 
 	zephir_fetch_params(0, 1, 1, &request, &response);
@@ -46,18 +44,6 @@ PHP_METHOD(Owl_Mvc_Controller, dispatch) {
 	}
 
 
-	if (!(zephir_instance_of_ev(request, owl_http_request_ce TSRMLS_CC))) {
-		ZEPHIR_THROW_EXCEPTION_DEBUG_STRW(spl_ce_InvalidArgumentException, "Parameter 'request' must be an instance of 'Owl\\Http\\Request'", "", 0);
-		return;
-	}
-	_0 = Z_TYPE_P(response) != IS_NULL;
-	if (_0) {
-		_0 = !(zephir_instance_of_ev(response, owl_http_response_ce TSRMLS_CC));
-	}
-	if (_0) {
-		ZEPHIR_THROW_EXCEPTION_DEBUG_STRW(spl_ce_InvalidArgumentException, "Parameter 'response' must be an instance of 'Owl\\Http\\Response'", "", 0);
-		return;
-	}
 
 }
 

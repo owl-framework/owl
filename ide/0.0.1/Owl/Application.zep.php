@@ -5,11 +5,23 @@ namespace Owl;
 class Application
 {
 
+    const ENV_PRODUCTION = "production";
+
+
+    const ENV_DEVELOPMENT = "development";
+
+
     protected $request;
+
 
     protected $response;
 
+
     protected $di;
+
+
+    protected $env;
+
 
 
 	public function getRequest() {}
@@ -20,18 +32,22 @@ class Application
 
 	public function getDi() {}
 
+
+	public function getEnv() {}
+
     /**
      * @param mixed $di 
+     * @param string $env 
      */
-	public function __construct($di = null) {}
+	public function __construct(\Owl\Service\Manager $di = null, $env = self::ENV_PRODUCTION) {}
 
     /**
      * Handle Http Request
      *
      * @param mixed $request 
      * @param mixed $response 
-     * @return Http\Response 
+     * @return Response 
      */
-	public function handle(Http\Request $request, Http\Response $response = null) {}
+	public function handle(\Owl\Http\Request $request, \Owl\Http\Response $response = null) {}
 
 }

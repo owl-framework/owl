@@ -204,7 +204,7 @@ PHP_METHOD(Owl_Http_Request, __construct) {
 
 
 	zephir_update_property_this(this_ptr, SL("get"), get TSRMLS_CC);
-	zephir_update_property_this(this_ptr, SL("get"), get TSRMLS_CC);
+	zephir_update_property_this(this_ptr, SL("post"), post TSRMLS_CC);
 	zephir_update_property_this(this_ptr, SL("server"), server TSRMLS_CC);
 	zephir_update_property_this(this_ptr, SL("headers"), headers TSRMLS_CC);
 	zephir_update_property_this(this_ptr, SL("files"), files TSRMLS_CC);

@@ -9,7 +9,7 @@ if test "$PHP_OWL" = "yes"; then
 	fi
 
 	AC_DEFINE(HAVE_OWL, 1, [Whether you have Owl])
-	owl_sources="owl.c kernel/main.c kernel/memory.c kernel/exception.c kernel/hash.c kernel/debug.c kernel/backtrace.c kernel/object.c kernel/array.c kernel/extended/array.c kernel/string.c kernel/fcall.c kernel/require.c kernel/file.c kernel/operators.c kernel/concat.c kernel/variables.c kernel/filter.c kernel/iterator.c kernel/exit.c owl/annotations/annotation.zep.c
+	owl_sources="owl.c kernel/main.c kernel/memory.c kernel/exception.c kernel/hash.c kernel/debug.c kernel/backtrace.c kernel/object.c kernel/array.c kernel/extended/array.c kernel/string.c kernel/fcall.c kernel/extended/fcall.c kernel/require.c kernel/file.c kernel/operators.c kernel/concat.c kernel/variables.c kernel/filter.c kernel/iterator.c kernel/time.c kernel/exit.c owl/annotations/annotation.zep.c
 	owl/annotations/classannotationsresult.zep.c
 	owl/annotations/exception.zep.c
 	owl/annotations/reader.zep.c

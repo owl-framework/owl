@@ -2,13 +2,13 @@
 namespace Owl;
 
 use Owl\Service\Manager;
-use Http\Request;
-use Http\Response;
+use Owl\Http\Request;
+use Owl\Http\Response;
 
 class Application
 {
-    const ENV_PRODUCTION = 'production';
-    const ENV_DEVELOPMENT = 'development';
+    const ENV_PRODUCTION = "production";
+    const ENV_DEVELOPMENT = "development";
 
     protected request {get};
 

@@ -14,7 +14,7 @@
 #define PHP_OWL_VERSION     "0.0.1"
 #define PHP_OWL_EXTNAME     "owl"
 #define PHP_OWL_AUTHOR      ""
-#define PHP_OWL_ZEPVERSION  "0.5.9a"
+#define PHP_OWL_ZEPVERSION  "0.6.1a"
 #define PHP_OWL_DESCRIPTION ""
 
 

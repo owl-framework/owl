@@ -7,7 +7,9 @@ class ClassAnnotationsResult
 
     protected $annotations;
 
+
     protected $methods;
+
 
     /**
      * @param array $annotations 

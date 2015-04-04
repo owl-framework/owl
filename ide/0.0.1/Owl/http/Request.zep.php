@@ -7,37 +7,54 @@ class Request implements \Owl\Http\RequestInterface
 
     const GET = "GET";
 
+
     const POST = "POST";
+
 
     const PUT = "PUT";
 
+
     const DELETE = "DELETE";
+
 
     const OPTIONS = "OPTIONS";
 
+
     const HEAD = "HEAD";
+
 
     const TRACE = "TRACE";
 
+
     const CONNECT = "CONNECT";
+
 
     const PATCH = "PATCH";
 
+
     const PROPFIND = "PROPFIND";
 
-    protected $method;
+
+    protected $method = self::GET;
+
 
     protected $get;
 
+
     protected $post;
+
 
     protected $server;
 
+
     protected $headers;
+
 
     protected $files;
 
+
     protected $cookies;
+
 
 
 	public function getMethod() {}

@@ -8,6 +8,7 @@ class DynamicRoute extends \Owl\Router\Route
     protected $pattern;
 
 
+
 	public function getPattern() {}
 
     /**

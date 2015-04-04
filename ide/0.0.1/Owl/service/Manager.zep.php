@@ -7,7 +7,9 @@ class Manager
 
     protected $instances = array();
 
+
     protected $services = array();
+
 
     /**
      * @param string $name 

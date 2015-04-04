@@ -14,8 +14,9 @@
 #include "kernel/main.h"
 #include "kernel/object.h"
 #include "kernel/memory.h"
-#include "kernel/exception.h"
+#include "kernel/operators.h"
 #include "kernel/fcall.h"
+#include "kernel/variables.h"
 
 
 ZEPHIR_INIT_CLASS(Owl_Application) {
@@ -27,6 +28,12 @@ ZEPHIR_INIT_CLASS(Owl_Application) {
 	zend_declare_property_null(owl_application_ce, SL("response"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
 	zend_declare_property_null(owl_application_ce, SL("di"), ZEND_ACC_PROTECTED TSRMLS_CC);
+
+	zend_declare_property_null(owl_application_ce, SL("env"), ZEND_ACC_PROTECTED TSRMLS_CC);
+
+	zend_declare_class_constant_string(owl_application_ce, SL("ENV_PRODUCTION"), "production" TSRMLS_CC);
+
+	zend_declare_class_constant_string(owl_application_ce, SL("ENV_DEVELOPMENT"), "development" TSRMLS_CC);
 
 	return SUCCESS;
 
@@ -53,18 +60,35 @@ PHP_METHOD(Owl_Application, getDi) {
 
 }
 
+PHP_METHOD(Owl_Application, getEnv) {
+
+
+	RETURN_MEMBER(this_ptr, "env");
+
+}
+
 PHP_METHOD(Owl_Application, __construct) {
 
-	zval *di = NULL;
+	zval *env = NULL;
+	zval *di = NULL, *env_param = NULL;
 
-	zephir_fetch_params(0, 0, 1, &di);
+	ZEPHIR_MM_GROW();
+	zephir_fetch_params(1, 0, 2, &di, &env_param);
 
 	if (!di) {
 		di = ZEPHIR_GLOBAL(global_null);
 	}
+	if (!env_param) {
+		ZEPHIR_INIT_VAR(env);
+		ZVAL_STRING(env, "production", 1);
+	} else {
+		zephir_get_strval(env, env_param);
+	}
 
 
 	zephir_update_property_this(this_ptr, SL("di"), di TSRMLS_CC);
+	zephir_update_property_this(this_ptr, SL("env"), env TSRMLS_CC);
+	ZEPHIR_MM_RESTORE();
 
 }
 
@@ -74,8 +98,7 @@ PHP_METHOD(Owl_Application, __construct) {
 PHP_METHOD(Owl_Application, handle) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
-	zend_bool _0;
-	zval *request, *response = NULL, *matchedRoute = NULL, *router = NULL, *_1, *_2;
+	zval *request, *response = NULL, *matchedRoute = NULL, *router = NULL, *_0, *_1;
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 1, &request, &response);
@@ -87,26 +110,6 @@ PHP_METHOD(Owl_Application, handle) {
 	}
 
 
-	if (!(zephir_instance_of_ev(request, owl_http_request_ce TSRMLS_CC))) {
-		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(spl_ce_InvalidArgumentException, "Parameter 'request' must be an instance of 'Owl\\Http\\Request'", "", 0);
-		return;
-	}
-	_0 = Z_TYPE_P(response) != IS_NULL;
-	if (_0) {
-		_0 = !(zephir_instance_of_ev(response, owl_http_response_ce TSRMLS_CC));
-	}
-	if (_0) {
-		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(spl_ce_InvalidArgumentException, "Parameter 'response' must be an instance of 'Owl\\Http\\Response'", "", 0);
-		return;
-	}
-	_1 = zephir_fetch_nproperty_this(this_ptr, SL("di"), PH_NOISY_CC);
-	ZEPHIR_INIT_VAR(_2);
-	ZVAL_STRING(_2, "router", ZEPHIR_TEMP_PARAM_COPY);
-	ZEPHIR_CALL_METHOD(&router, _1, "get", NULL, _2);
-	zephir_check_temp_parameter(_2);
-	zephir_check_call_status();
-	ZEPHIR_CALL_METHOD(&matchedRoute, router, "matchrequest", NULL, request);
-	zephir_check_call_status();
 	if (Z_TYPE_P(response) == IS_NULL) {
 		ZEPHIR_INIT_NVAR(response);
 		object_init_ex(response, owl_http_response_ce);
@@ -115,6 +118,15 @@ PHP_METHOD(Owl_Application, handle) {
 			zephir_check_call_status();
 		}
 	}
+	_0 = zephir_fetch_nproperty_this(this_ptr, SL("di"), PH_NOISY_CC);
+	ZEPHIR_INIT_VAR(_1);
+	ZVAL_STRING(_1, "router", ZEPHIR_TEMP_PARAM_COPY);
+	ZEPHIR_CALL_METHOD(&router, _0, "get", NULL, _1);
+	zephir_check_temp_parameter(_1);
+	zephir_check_call_status();
+	ZEPHIR_CALL_METHOD(&matchedRoute, router, "matchrequest", NULL, request);
+	zephir_check_call_status();
+	zephir_var_dump(&matchedRoute TSRMLS_CC);
 	RETVAL_ZVAL(response, 1, 0);
 	RETURN_MM();
 
