@@ -5,22 +5,49 @@
 
 namespace RestApp\Api\Controller;
 
+use Exception;
+
 /**
  * Class UserController
  * @Path("/api/")
  */
 class UserController extends \Owl\Mvc\Controller
 {
+    protected $users = array(
+        1 => array(
+            'id' => 1,
+            'firstname' => 'Dmitry',
+            'lastname' => 'Patsura',
+            'nick' => 'ovr'
+        ),
+        2 => array(
+            'id' => 2,
+            'firstname' => 'Sergey',
+            'lastname' => 'Ilin',
+            'nick' => 'serebro'
+        ),
+        3 => array(
+            'id' => 3,
+            'firstname' => 'Nikolay',
+            'lastname' => 'Kirsh',
+            'nick' => 'Xboston'
+        )
+    );
+
     /**
      * @Get
      * @Url("/user/{id:int}/")
      */
     public function indexAction($id)
     {
+        $id = 1; //@todo
+
+        if (!isset($this->users[$id])) {
+            throw new Exception('User is not exists', 404);
+        }
+
         return array(
-            'user' => array(
-                'id' => $id
-            )
+            'data' => $this->users
         );
     }
 
@@ -30,9 +57,10 @@ class UserController extends \Owl\Mvc\Controller
      */
     public function listAction()
     {
-        //Get users from db
-
-        return true;
+        return array(
+            'data' => $this->users,
+            'total' => count($this->users)
+        );
     }
 
     /**x
@@ -41,9 +69,11 @@ class UserController extends \Owl\Mvc\Controller
      */
     public function createAction()
     {
-        //Create new user in db
-
-        return true;
+        return array(
+            'data' => array(
+                'message' => 'Thanks'
+            )
+        );
     }
 
     /**
@@ -52,8 +82,10 @@ class UserController extends \Owl\Mvc\Controller
      */
     public function deleteAction()
     {
-        //Remove user from db
-
-        return true;
+        return array(
+            'data' => array(
+                'message' => 'No no no no'
+            )
+        );
     }
 }
