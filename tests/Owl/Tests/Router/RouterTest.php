@@ -46,6 +46,16 @@ class RouterTest extends \PHPUnit_Framework_TestCase
 
         $this->assertFalse($router->match('/not-found-route'));
 
-        $this->assertTrue(true);
+        $router->add("/usr/id:int/", ['name' => 'user-view-int', 'action' => 'view', 'controller' => 'user', 'module' => 'user']);
+
+        $this->assertInstanceOf('Owl\Router\Route', $result = $router->match("/usr/1/"));
+        $this->assertSame('user-view-int', $result->parameters["name"]);
+
+        $this->assertInstanceOf('Owl\Router\Route', $result = $router->match("/usr/100/"));
+        $this->assertSame('user-view-int', $result->parameters["name"]);
+
+        $this->assertFalse($router->match("/usr/f/"));
+        $this->assertFalse($router->match("/usr/0f/"));
+        $this->assertFalse($router->match("/usr/0ads/"));
     }
 }
