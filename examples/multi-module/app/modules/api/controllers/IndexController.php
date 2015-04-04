@@ -5,15 +5,17 @@
 
 namespace RestApp\Api\Controller;
 
+use Owl\Mvc\Controller;
+
 /**
  * Class IndexController
- * @Path("/")
+ * @Path("/api")
  */
-class IndexController extends \Owl\Mvc\Controller
+class IndexController extends Controller
 {
     /**
      * @Get
-     * @Url("/api/", name="default")
+     * @Url("/", name="default")
      */
     public function indexAction()
     {
