@@ -3,13 +3,17 @@
  * @author Patsura Dmitry <zaets28rus@gmail.com>
  */
 
+use Owl\Http\Request;
+
 class RequestTest extends \PHPUnit_Framework_TestCase
 {
     public function testRequest()
     {
         $_SERVER['REQUEST_URI'] = '/';
 
-        $request = \Owl\Http\Request::createFromGlobals();
+        $request = Request::createFromGlobals();
+        
         $this->assertEquals('/', $request->getUri());
+        $this->assertEquals(Request::GET, $request->getMethod());
     }
 } 
