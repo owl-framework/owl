@@ -31,7 +31,7 @@ class Application
      */
     public fn handle(<RequestInterface> request, <Response> response = null) -> <Response>
     {
-        var matchedRoute, router;
+        var matchedRoute, router, e;
 
         if (is_null(response)) {
             let response = new Response();
@@ -46,10 +46,14 @@ class Application
             let handlerClass = "\\RestApp" . "\\" . matchedRoute->parameters["module"] . "\\Controller\\" . matchedRoute->parameters["controller"] . "Controller";
             let action = matchedRoute->parameters["action"] . "Action";
 
-            let controller = new {handlerClass};
-            let result = controller->{action}();
+            try {
+                let controller = new {handlerClass};
+                let result = controller->{action}();
 
-            response->setContent(result);
+                response->setContent(result);
+            } catch Exception, e {
+                response->setCode(500);
+            }
         } else {
             response->setCode(404);
         }

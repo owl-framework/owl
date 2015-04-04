@@ -18,7 +18,6 @@
 #include "kernel/fcall.h"
 #include "kernel/concat.h"
 #include "kernel/array.h"
-#include "kernel/string.h"
 
 
 ZEPHIR_INIT_CLASS(Owl_Application) {
@@ -101,7 +100,7 @@ PHP_METHOD(Owl_Application, handle) {
 
 	zend_class_entry *_9;
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *request, *response = NULL, *matchedRoute = NULL, *router = NULL, *_0, *_1 = NULL, *handlerClass, *controller, *result = NULL, *action, *_2, *_3, *_4, *_5, *_6, *_7, *_8 = NULL, *_10;
+	zval *request, *response = NULL, *matchedRoute = NULL, *router = NULL, *e = NULL, *_0, *_1 = NULL, *handlerClass, *controller, *result = NULL, *action, *_2, *_3, *_4, *_5, *_6, *_7, *_8 = NULL;
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 1, &request, &response);
@@ -143,24 +142,38 @@ PHP_METHOD(Owl_Application, handle) {
 		zephir_array_fetch_string(&_7, _6, SL("action"), PH_NOISY | PH_READONLY, "owl/Application.zep", 47 TSRMLS_CC);
 		ZEPHIR_INIT_VAR(action);
 		ZEPHIR_CONCAT_VS(action, _7, "Action");
-		ZEPHIR_INIT_VAR(controller);
-		zephir_fetch_safe_class(_8, handlerClass);
-		_9 = zend_fetch_class(Z_STRVAL_P(_8), Z_STRLEN_P(_8), ZEND_FETCH_CLASS_AUTO TSRMLS_CC);
-		object_init_ex(controller, _9);
-		if (zephir_has_constructor(controller TSRMLS_CC)) {
-			ZEPHIR_CALL_METHOD(NULL, controller, "__construct", NULL);
-			zephir_check_call_status();
+
+		/* try_start_1: */
+
+			ZEPHIR_INIT_VAR(controller);
+			zephir_fetch_safe_class(_8, handlerClass);
+			_9 = zend_fetch_class(Z_STRVAL_P(_8), Z_STRLEN_P(_8), ZEND_FETCH_CLASS_AUTO TSRMLS_CC);
+			object_init_ex(controller, _9);
+			if (zephir_has_constructor(controller TSRMLS_CC)) {
+				ZEPHIR_CALL_METHOD(NULL, controller, "__construct", NULL);
+				zephir_check_call_status_or_jump(try_end_1);
+			}
+			ZEPHIR_CALL_METHOD_ZVAL(&result, controller, action,  NULL);
+			zephir_check_call_status_or_jump(try_end_1);
+			ZEPHIR_CALL_METHOD(NULL, response, "setcontent", NULL, result);
+			zephir_check_call_status_or_jump(try_end_1);
+
+		try_end_1:
+
+		if (EG(exception)) {
+			ZEPHIR_CPY_WRT(e, EG(exception));
+			if (zephir_instance_of_ev(e, owl_exception_ce TSRMLS_CC)) {
+				zend_clear_exception(TSRMLS_C);
+				ZEPHIR_INIT_NVAR(_1);
+				ZVAL_LONG(_1, 500);
+				ZEPHIR_CALL_METHOD(NULL, response, "setcode", NULL, _1);
+				zephir_check_call_status();
+			}
 		}
-		ZEPHIR_CALL_METHOD_ZVAL(&result, controller, action,  NULL);
-		zephir_check_call_status();
-		ZEPHIR_INIT_NVAR(_1);
-		zephir_json_encode(_1, &(_1), result, 0  TSRMLS_CC);
-		ZEPHIR_CALL_METHOD(NULL, response, "setcontent", NULL, _1);
-		zephir_check_call_status();
 	} else {
-		ZEPHIR_INIT_VAR(_10);
-		ZVAL_LONG(_10, 404);
-		ZEPHIR_CALL_METHOD(NULL, response, "setcode", NULL, _10);
+		ZEPHIR_INIT_NVAR(_1);
+		ZVAL_LONG(_1, 404);
+		ZEPHIR_CALL_METHOD(NULL, response, "setcode", NULL, _1);
 		zephir_check_call_status();
 	}
 	RETVAL_ZVAL(response, 1, 0);
