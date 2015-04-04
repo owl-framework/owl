@@ -23,5 +23,4 @@ $serviceManager->setService('router', $router);
 
 $application = new Application($serviceManager);
 $response = $application->handle(Request::createFromGlobals());
-
-var_dump($response);
+$response->send();

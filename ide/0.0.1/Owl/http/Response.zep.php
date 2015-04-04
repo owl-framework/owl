@@ -22,9 +22,17 @@ class Response
      */
 	public function setCode($code) {}
 
+
+	public function getContent() {}
+
     /**
      * @param mixed $content 
      */
 	public function setContent($content) {}
+
+    /**
+     * @return bool 
+     */
+	public function send() {}
 
 }

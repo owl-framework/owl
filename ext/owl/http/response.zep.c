@@ -14,6 +14,7 @@
 #include "kernel/main.h"
 #include "kernel/object.h"
 #include "kernel/memory.h"
+#include "kernel/string.h"
 
 
 ZEPHIR_INIT_CLASS(Owl_Http_Response) {
@@ -49,15 +50,37 @@ PHP_METHOD(Owl_Http_Response, setCode) {
 
 }
 
+PHP_METHOD(Owl_Http_Response, getContent) {
+
+
+	RETURN_MEMBER(this_ptr, "content");
+
+}
+
 PHP_METHOD(Owl_Http_Response, setContent) {
 
-	zval *content;
+	zval *content, *_0;
 
-	zephir_fetch_params(0, 1, 0, &content);
+	ZEPHIR_MM_GROW();
+	zephir_fetch_params(1, 1, 0, &content);
 
 
 
-	zephir_update_property_this(this_ptr, SL("content"), content TSRMLS_CC);
+	ZEPHIR_INIT_VAR(_0);
+	zephir_json_encode(_0, &(_0), content, 0  TSRMLS_CC);
+	zephir_update_property_this(this_ptr, SL("content"), _0 TSRMLS_CC);
+	ZEPHIR_MM_RESTORE();
+
+}
+
+PHP_METHOD(Owl_Http_Response, send) {
+
+	zval *_0;
+
+
+	_0 = zephir_fetch_nproperty_this(this_ptr, SL("content"), PH_NOISY_CC);
+	zend_print_zval(_0, 0);
+	RETURN_BOOL(1);
 
 }
 
