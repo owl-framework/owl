@@ -3,6 +3,8 @@
  * @author Patsura Dmitry @ovr <talk@dmtry.me>
  */
 
+namespace RestApp\Api\Controller;
+
 /**
  * Class UserController
  * @Path("/api/")

@@ -8,6 +8,8 @@ use Owl\Http\Request;
 use Owl\Router\Route;
 use Owl\Router\Router;
 
+include_once __DIR__ . '/../vendor/autoload.php';
+
 $serviceManager = new Owl\Service\Manager();
 
 $router = new Router();
