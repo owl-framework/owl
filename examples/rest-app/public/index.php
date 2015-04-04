@@ -17,7 +17,7 @@ $router->add('/', ['module' => 'Api', 'controller' => 'Index', 'action' => 'inde
 $router->add('/users', ['module' => 'Api', 'controller' => 'User', 'action' => 'list']);
 $router->add('/users/:id', ['module' => 'Api', 'controller' => 'User', 'action' => 'index']);
 $router->add('/users/:id', ['module' => 'Api', 'controller' => 'User', 'action' => 'create'], Route::POST);
-$router->add('/users/:id', ['module' => 'Api', 'controller' => 'User', 'action' => 'create'], Route::DELETE);
+$router->add('/users/:id', ['module' => 'Api', 'controller' => 'User', 'action' => 'delete'], Route::DELETE);
 
 $serviceManager->setService('router', $router);
 
