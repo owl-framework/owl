@@ -20,9 +20,19 @@ ZEPHIR_INIT_CLASS(Owl_Router_Route) {
 
 	zend_declare_property_null(owl_router_route_ce, SL("uri"), ZEND_ACC_PUBLIC TSRMLS_CC);
 
-	zend_declare_property_string(owl_router_route_ce, SL("method"), "GET", ZEND_ACC_PUBLIC TSRMLS_CC);
+	zend_declare_property_long(owl_router_route_ce, SL("method"), 7, ZEND_ACC_PUBLIC TSRMLS_CC);
 
 	zend_declare_property_null(owl_router_route_ce, SL("parameters"), ZEND_ACC_PUBLIC TSRMLS_CC);
+
+	zend_declare_class_constant_long(owl_router_route_ce, SL("GET"), 1 TSRMLS_CC);
+
+	zend_declare_class_constant_long(owl_router_route_ce, SL("POST"), 2 TSRMLS_CC);
+
+	zend_declare_class_constant_long(owl_router_route_ce, SL("DELETE"), 3 TSRMLS_CC);
+
+	zend_declare_class_constant_long(owl_router_route_ce, SL("PUT"), 4 TSRMLS_CC);
+
+	zend_declare_class_constant_long(owl_router_route_ce, SL("ALL"), 7 TSRMLS_CC);
 
 	return SUCCESS;
 
