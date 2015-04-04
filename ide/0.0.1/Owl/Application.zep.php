@@ -48,6 +48,6 @@ class Application
      * @param mixed $response 
      * @return Response 
      */
-	public function handle(\Owl\Http\Request $request, \Owl\Http\Response $response = null) {}
+	public function handle(\Owl\Http\RequestInterface $request, \Owl\Http\Response $response = null) {}
 
 }

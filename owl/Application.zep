@@ -2,7 +2,9 @@
 namespace Owl;
 
 use Owl\Service\Manager;
+
 use Owl\Http\Request;
+use Owl\Http\RequestInterface;
 use Owl\Http\Response;
 
 class Application
@@ -27,7 +29,7 @@ class Application
     /**
      * Handle Http Request
      */
-    public fn handle(<Request> request, <Response> response = null) -> <Response>
+    public fn handle(<RequestInterface> request, <Response> response = null) -> <Response>
     {
         var matchedRoute, router;
 
