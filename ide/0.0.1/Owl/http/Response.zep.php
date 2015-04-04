@@ -11,6 +11,9 @@ class Response
     protected $code = Response::STATUS_CODE_OK;
 
 
+    protected $content;
+
+
 
 	public function getCode() {}
 
@@ -18,5 +21,10 @@ class Response
      * @param mixed $code 
      */
 	public function setCode($code) {}
+
+    /**
+     * @param mixed $content 
+     */
+	public function setContent($content) {}
 
 }

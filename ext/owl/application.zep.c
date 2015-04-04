@@ -18,7 +18,7 @@
 #include "kernel/fcall.h"
 #include "kernel/concat.h"
 #include "kernel/array.h"
-#include "kernel/variables.h"
+#include "kernel/string.h"
 
 
 ZEPHIR_INIT_CLASS(Owl_Application) {
@@ -101,7 +101,7 @@ PHP_METHOD(Owl_Application, handle) {
 
 	zend_class_entry *_9;
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *request, *response = NULL, *matchedRoute = NULL, *router = NULL, *_0, *_1 = NULL, *handlerClass, *controller, *result = NULL, *action, *_2, *_3, *_4, *_5, *_6, *_7, *_8 = NULL;
+	zval *request, *response = NULL, *matchedRoute = NULL, *router = NULL, *_0, *_1 = NULL, *handlerClass, *controller, *result = NULL, *action, *_2, *_3, *_4, *_5, *_6, *_7, *_8 = NULL, *_10;
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 1, &request, &response);
@@ -153,11 +153,14 @@ PHP_METHOD(Owl_Application, handle) {
 		}
 		ZEPHIR_CALL_METHOD_ZVAL(&result, controller, action,  NULL);
 		zephir_check_call_status();
-		zephir_var_dump(&result TSRMLS_CC);
-	} else {
 		ZEPHIR_INIT_NVAR(_1);
-		ZVAL_LONG(_1, 404);
-		ZEPHIR_CALL_METHOD(NULL, response, "setcode", NULL, _1);
+		zephir_json_encode(_1, &(_1), result, 0  TSRMLS_CC);
+		ZEPHIR_CALL_METHOD(NULL, response, "setcontent", NULL, _1);
+		zephir_check_call_status();
+	} else {
+		ZEPHIR_INIT_VAR(_10);
+		ZVAL_LONG(_10, 404);
+		ZEPHIR_CALL_METHOD(NULL, response, "setcode", NULL, _10);
 		zephir_check_call_status();
 	}
 	RETVAL_ZVAL(response, 1, 0);

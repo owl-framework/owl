@@ -49,7 +49,7 @@ class Application
             let controller = new {handlerClass};
             let result = controller->{action}();
 
-            var_dump(result);
+            response->setContent(result);
         } else {
             response->setCode(404);
         }

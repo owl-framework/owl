@@ -22,6 +22,8 @@ ZEPHIR_INIT_CLASS(Owl_Http_Response) {
 
 	zend_declare_property_long(owl_http_response_ce, SL("code"), 200, ZEND_ACC_PROTECTED TSRMLS_CC);
 
+	zend_declare_property_null(owl_http_response_ce, SL("content"), ZEND_ACC_PROTECTED TSRMLS_CC);
+
 	zend_declare_class_constant_long(owl_http_response_ce, SL("STATUS_CODE_OK"), 200 TSRMLS_CC);
 
 	return SUCCESS;
@@ -44,6 +46,18 @@ PHP_METHOD(Owl_Http_Response, setCode) {
 
 
 	zephir_update_property_this(this_ptr, SL("code"), code TSRMLS_CC);
+
+}
+
+PHP_METHOD(Owl_Http_Response, setContent) {
+
+	zval *content;
+
+	zephir_fetch_params(0, 1, 0, &content);
+
+
+
+	zephir_update_property_this(this_ptr, SL("content"), content TSRMLS_CC);
 
 }
 
