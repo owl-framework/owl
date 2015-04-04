@@ -31,7 +31,7 @@ class Request implements RequestInterface
 
     public function getUri() -> string|null
     {
-        return isset(this->server["REQUEST_URI"]) ? this->server["REQUEST_URI"] : null;
+        return isset(this->server["REQUEST_URI"]) ? this->server["REQUEST_URI"] : "/";
     }
 
     public fn getParam(string! key) -> var|boolean

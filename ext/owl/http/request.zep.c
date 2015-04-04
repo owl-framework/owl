@@ -83,7 +83,7 @@ PHP_METHOD(Owl_Http_Request, getUri) {
 		_2 = zephir_fetch_nproperty_this(this_ptr, SL("server"), PH_NOISY_CC);
 		zephir_array_fetch_string(&_0, _2, SL("REQUEST_URI"), PH_NOISY, "owl/Http/Request.zep", 34 TSRMLS_CC);
 	} else {
-		ZVAL_NULL(_0);
+		ZVAL_STRING(_0, "/", 1);
 	}
 	RETURN_CCTOR(_0);
 
