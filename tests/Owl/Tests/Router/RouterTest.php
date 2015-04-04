@@ -27,7 +27,6 @@ class RouterTest extends \PHPUnit_Framework_TestCase
 
     public function testGetFixturesDynamic()
     {
-        /*
         $router = new \Owl\Router\Router();
         $router->add("/", ['name' => 'default', 'action' => 'index', 'controller' => 'index', 'module' => 'index']);
         $router->add("/user/:id/", ['name' => 'user-view', 'action' => 'view', 'controller' => 'user', 'module' => 'user']);
@@ -41,8 +40,11 @@ class RouterTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Owl\Router\Route', $result = $router->match("/user/100/"));
         $this->assertSame("user-view", $result->parameters["name"]);
 
+        $this->assertFalse($router->match("/user/f/"));
+        $this->assertFalse($router->match("/user/0f/"));
+        $this->assertFalse($router->match("/user/0ads/"));
+
         $this->assertFalse($router->match('/not-found-route'));
-        */
 
         $this->assertTrue(true);
     }

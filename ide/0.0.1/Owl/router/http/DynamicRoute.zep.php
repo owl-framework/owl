@@ -13,6 +13,7 @@ class DynamicRoute extends \Owl\Router\Route
 
     /**
      * @param string $uri 
+     * @return bool|array 
      */
 	public function match($uri) {}
 

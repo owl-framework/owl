@@ -12,7 +12,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
         $_SERVER['REQUEST_URI'] = '/';
 
         $request = Request::createFromGlobals();
-        
+
         $this->assertEquals('/', $request->getUri());
         $this->assertEquals(Request::GET, $request->getMethod());
     }
