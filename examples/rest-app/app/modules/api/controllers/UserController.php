@@ -47,7 +47,7 @@ class UserController extends \Owl\Mvc\Controller
         }
 
         return array(
-            'data' => $this->users
+            'data' => $this->users[$id]
         );
     }
 
