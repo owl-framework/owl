@@ -18,39 +18,39 @@ class DynamicRoute extends \Owl\Router\Route
         let str = this->uri;
 
         var len;
-        let len = strlen(this->uri);
+        let len = strlen(str);
 
         var parts = [], part, params;
 
         if (len > 3) {
-            if (substr(str, 0, 1) === "/" && substr(str, (len - 1), 1) == "/") {
+            if (substr(str, 0, 1) === "/") {
                 let parts = explode("/", str);
 
-                unset($parts[0]);
-                unset($parts[count($parts)]);
+                unset(parts[0]);
             }
         }
 
         for _, part in parts {
             let params = explode(":", part);
 
-            if (count(params) == 2) {
-                if (empty(params[0])) {
-                    let str = str_replace(part, "(?P<" . params[1] . ">[0-9]++)", str);
-                } elseif (params[1] == "int") {
-                    let str = str_replace(part, "(?P<" . params[0] . ">[0-9]++)", str);
-                } elseif (substr(params[1], 0, 1) == '{' && $params[1][strlen($params[1]) - 1] == '}') {
-                    let str = substr(params[1], 1, -1);
+            switch (count(params)) {
+                case 2:
+                    if (empty(params[0])) {
+                        let str = str_replace(part, "(?P<" . params[1] . ">[0-9]++)", str);
+                    } elseif (params[1] == "int") {
+                        let str = str_replace(part, "(?P<" . params[0] . ">[0-9]++)", str);
+                    } elseif (substr(params[1], 0, 1) == '{' && $params[1][strlen($params[1]) - 1] == '}') {
+                        let str = substr(params[1], 1, -1);
 
-                    let str = str_replace(part, str, str);
-                }
-            } elseif (count(params) == 1) {
-
+                        let str = str_replace(part, str, str);
+                    }
+                    break;
+                case 1:
+                    break;
             }
         }
 
         let this->pattern = ("`^" . str . "$`u");
-
         return this->pattern;
     }
 
