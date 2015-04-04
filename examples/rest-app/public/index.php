@@ -13,11 +13,11 @@ include_once __DIR__ . '/../vendor/autoload.php';
 $serviceManager = new Owl\Service\Manager();
 
 $router = new Router();
-$router->add('/', ['module' => 'api', 'controller' => 'index', 'action' => 'default']);
-$router->add('/users', ['module' => 'api', 'controller' => 'user', 'action' => 'list']);
-$router->add('/users/:id', ['module' => 'api', 'controller' => 'user', 'action' => 'index']);
-$router->add('/users/:id', ['module' => 'api', 'controller' => 'user', 'action' => 'create'], Route::POST);
-$router->add('/users/:id', ['module' => 'api', 'controller' => 'user', 'action' => 'create'], Route::DELETE);
+$router->add('/', ['module' => 'Api', 'controller' => 'Index', 'action' => 'index']);
+$router->add('/users', ['module' => 'Api', 'controller' => 'User', 'action' => 'list']);
+$router->add('/users/:id', ['module' => 'Api', 'controller' => 'User', 'action' => 'index']);
+$router->add('/users/:id', ['module' => 'Api', 'controller' => 'User', 'action' => 'create'], Route::POST);
+$router->add('/users/:id', ['module' => 'Api', 'controller' => 'User', 'action' => 'create'], Route::DELETE);
 
 $serviceManager->setService('router', $router);
 

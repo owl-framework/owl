@@ -14,4 +14,9 @@ class Response
 
 	public function getCode() {}
 
+    /**
+     * @param mixed $code 
+     */
+	public function setCode($code) {}
+
 }

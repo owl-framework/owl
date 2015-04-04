@@ -13,6 +13,7 @@
 
 #include "kernel/main.h"
 #include "kernel/object.h"
+#include "kernel/memory.h"
 
 
 ZEPHIR_INIT_CLASS(Owl_Http_Response) {
@@ -31,6 +32,18 @@ PHP_METHOD(Owl_Http_Response, getCode) {
 
 
 	RETURN_MEMBER(this_ptr, "code");
+
+}
+
+PHP_METHOD(Owl_Http_Response, setCode) {
+
+	zval *code;
+
+	zephir_fetch_params(0, 1, 0, &code);
+
+
+
+	zephir_update_property_this(this_ptr, SL("code"), code TSRMLS_CC);
 
 }
 

@@ -40,7 +40,19 @@ class Application
         let router = this->di->get("router");
         let matchedRoute = router->matchRequest(request);
 
-        var_dump(matchedRoute);
+        if (matchedRoute) {
+            var handlerClass, controller, result, action;
+
+            let handlerClass = "\\RestApp" . "\\" . matchedRoute->parameters["module"] . "\\Controller\\" . matchedRoute->parameters["controller"] . "Controller";
+            let action = matchedRoute->parameters["action"] . "Action";
+
+            let controller = new {handlerClass};
+            let result = controller->{action}();
+
+            var_dump(result);
+        } else {
+            response->setCode(404);
+        }
 
         return response;
     }
