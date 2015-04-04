@@ -1,7 +1,7 @@
 
 namespace Owl\Http;
 
-class Response
+class Response implements ResponseInterface
 {
     const STATUS_CODE_OK = 200;
 

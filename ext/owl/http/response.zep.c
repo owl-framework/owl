@@ -27,6 +27,7 @@ ZEPHIR_INIT_CLASS(Owl_Http_Response) {
 
 	zend_declare_class_constant_long(owl_http_response_ce, SL("STATUS_CODE_OK"), 200 TSRMLS_CC);
 
+	zend_class_implements(owl_http_response_ce TSRMLS_CC, 1, owl_http_responseinterface_ce);
 	return SUCCESS;
 
 }
