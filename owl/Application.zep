@@ -67,7 +67,7 @@ class Application
 
                 let controller = new {handlerClass}(request, response);
                 let result = call_user_func_array([controller, action], matchedRoute->uriParameters);
-                
+
                 response->setContent(result);
             } catch Exception, e {
                 response->setCode(500);

@@ -40,10 +40,8 @@ class UserController extends \Owl\Mvc\Controller
      */
     public function indexAction($id)
     {
-        $id = 1; //@todo
-
         if (!isset($this->users[$id])) {
-            throw new Exception('User is not exists', 404);
+            throw new Exception('User with id = ' . $id . ' is not exists', 404);
         }
 
         return array(
