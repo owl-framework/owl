@@ -50,6 +50,6 @@ $eventManager->listen('app:afterHandle', function($app) {
     var_dump('app:afterHandle');
 });
 
-$application = new Application($serviceManager);
+$application = new Application($serviceManager, $eventManager);
 $response = $application->handle(Request::createFromGlobals(), new \Owl\Http\Response\Json());
 $response->send();
