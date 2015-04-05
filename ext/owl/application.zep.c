@@ -127,10 +127,11 @@ PHP_METHOD(Owl_Application, __construct) {
  */
 PHP_METHOD(Owl_Application, handle) {
 
+	zval *_12;
 	zend_class_entry *_11;
-	zephir_nts_static zephir_fcall_cache_entry *_9 = NULL, *_13 = NULL, *_14 = NULL;
+	zephir_nts_static zephir_fcall_cache_entry *_9 = NULL, *_14 = NULL, *_15 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *request, *response = NULL, *matchedRoute = NULL, *router = NULL, *e = NULL, *_0, *_1 = NULL, *handlerClass, *controller, *result = NULL, *action, *_2, *_3, *_4, *_5, *_6, *_7, *_8, *_10 = NULL, *_12;
+	zval *request, *response = NULL, *matchedRoute = NULL, *router = NULL, *e = NULL, *_0, *_1 = NULL, *handlerClass, *controller, *result, *action, *_2, *_3, *_4, *_5, *_6, *_7, *_8, *_10 = NULL, *_13;
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 1, &request, &response);
@@ -194,11 +195,16 @@ PHP_METHOD(Owl_Application, handle) {
 				ZEPHIR_CALL_METHOD(NULL, controller, "__construct", NULL, request, response);
 				zephir_check_call_status_or_jump(try_end_1);
 			}
-			ZEPHIR_OBS_VAR(_12);
-			zephir_read_property(&_12, matchedRoute, SL("uriParameters"), PH_NOISY_CC);
-			ZEPHIR_CALL_METHOD_ZVAL(&result, controller, action, NULL, _12);
+			ZEPHIR_INIT_VAR(result);
+			ZEPHIR_INIT_VAR(_12);
+			array_init_size(_12, 3);
+			zephir_array_fast_append(_12, controller);
+			zephir_array_fast_append(_12, action);
+			ZEPHIR_OBS_VAR(_13);
+			zephir_read_property(&_13, matchedRoute, SL("uriParameters"), PH_NOISY_CC);
+			ZEPHIR_CALL_USER_FUNC_ARRAY(result, _12, _13);
 			zephir_check_call_status_or_jump(try_end_1);
-			ZEPHIR_CALL_METHOD(NULL, response, "setcontent", &_13, result);
+			ZEPHIR_CALL_METHOD(NULL, response, "setcontent", &_14, result);
 			zephir_check_call_status_or_jump(try_end_1);
 
 		try_end_1:
@@ -209,14 +215,14 @@ PHP_METHOD(Owl_Application, handle) {
 				zend_clear_exception(TSRMLS_C);
 				ZEPHIR_INIT_NVAR(_1);
 				ZVAL_LONG(_1, 500);
-				ZEPHIR_CALL_METHOD(NULL, response, "setcode", &_14, _1);
+				ZEPHIR_CALL_METHOD(NULL, response, "setcode", &_15, _1);
 				zephir_check_call_status();
 			}
 		}
 	} else {
 		ZEPHIR_INIT_NVAR(_1);
 		ZVAL_LONG(_1, 404);
-		ZEPHIR_CALL_METHOD(NULL, response, "setcode", &_14, _1);
+		ZEPHIR_CALL_METHOD(NULL, response, "setcode", &_15, _1);
 		zephir_check_call_status();
 	}
 	RETVAL_ZVAL(response, 1, 0);
