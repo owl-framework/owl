@@ -8,9 +8,6 @@ class Router implements \Owl\Router\RouterInterface
     protected $basePath = "";
 
 
-    protected $types = array("i" => "[0-9]++", "int" => "[0-9]++", "*" => ".+?", "**" => ".++");
-
-
     protected $routers = array();
 
 

@@ -8,13 +8,6 @@ class Router implements RouterInterface
 {
     protected basePath = "" {get, set};
 
-    protected types = [
-        "i"   : "[0-9]++",
-        "int" : "[0-9]++",
-		"*"   : ".+?",
-		"**"  : ".++"
-    ];
-
     protected routers = [];
 
     public function add(string uri, array! parameters = [], string method = Request::GET)
@@ -49,7 +42,7 @@ class Router implements RouterInterface
         var router;
 
         for router in this->routers {
-            if (router->match(uri) && (router->method == "all" || router->method == method)) {
+            if (router->match(uri) && (router->method == Route::ALL || router->method == method)) {
                 return router;
             }
         }
