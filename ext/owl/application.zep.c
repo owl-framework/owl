@@ -154,7 +154,7 @@ PHP_METHOD(Owl_Application, handle) {
 				ZEPHIR_CALL_METHOD(NULL, controller, "__construct", NULL);
 				zephir_check_call_status_or_jump(try_end_1);
 			}
-			ZEPHIR_CALL_METHOD_ZVAL(&result, controller, action,  NULL);
+			ZEPHIR_CALL_METHOD_ZVAL(&result, controller, action, NULL, request, response);
 			zephir_check_call_status_or_jump(try_end_1);
 			ZEPHIR_CALL_METHOD(NULL, response, "setcontent", &_10, result);
 			zephir_check_call_status_or_jump(try_end_1);

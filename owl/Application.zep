@@ -48,7 +48,7 @@ class Application
 
             try {
                 let controller = new {handlerClass};
-                let result = controller->{action}();
+                let result = controller->{action}(request, response);
 
                 response->setContent(result);
             } catch Exception, e {
