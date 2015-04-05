@@ -72,6 +72,9 @@ class Application
                 if (matchedRoute instanceof StaticRoute) {
                     let result = controller->{action}();
                 } else {
+                    /**
+                     * @todo It's not a performance, 7200 vs 8300 RPS, maybe only request parameters?
+                     */
                     let result = call_user_func_array([controller, action], matchedRoute->uriParameters);
                 }
 
