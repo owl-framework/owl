@@ -25,12 +25,26 @@ ZEPHIR_INIT_CLASS(Owl_Application) {
 
 	ZEPHIR_REGISTER_CLASS(Owl, Application, owl, application, owl_application_method_entry, 0);
 
+	/**
+	 * @var \Owl\Http\RequestInterface
+	 */
 	zend_declare_property_null(owl_application_ce, SL("request"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
+	/**
+	 * @var \Owl\Http\Response
+	 */
 	zend_declare_property_null(owl_application_ce, SL("response"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
+	/**
+	 * @var \Owl\Service\Manager
+	 */
 	zend_declare_property_null(owl_application_ce, SL("di"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
+	/**
+	 * Current env, see ENV_* constants
+	 *
+	 * @var string
+	 */
 	zend_declare_property_null(owl_application_ce, SL("env"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
 	zend_declare_class_constant_string(owl_application_ce, SL("ENV_PRODUCTION"), "production" TSRMLS_CC);
@@ -41,6 +55,9 @@ ZEPHIR_INIT_CLASS(Owl_Application) {
 
 }
 
+/**
+ * @var \Owl\Http\RequestInterface
+ */
 PHP_METHOD(Owl_Application, getRequest) {
 
 
@@ -48,6 +65,9 @@ PHP_METHOD(Owl_Application, getRequest) {
 
 }
 
+/**
+ * @var \Owl\Http\Response
+ */
 PHP_METHOD(Owl_Application, getResponse) {
 
 
@@ -55,6 +75,9 @@ PHP_METHOD(Owl_Application, getResponse) {
 
 }
 
+/**
+ * @var \Owl\Service\Manager
+ */
 PHP_METHOD(Owl_Application, getDi) {
 
 
@@ -62,6 +85,11 @@ PHP_METHOD(Owl_Application, getDi) {
 
 }
 
+/**
+ * Current env, see ENV_* constants
+ *
+ * @var string
+ */
 PHP_METHOD(Owl_Application, getEnv) {
 
 
@@ -133,15 +161,15 @@ PHP_METHOD(Owl_Application, handle) {
 	if (zephir_is_true(matchedRoute)) {
 		ZEPHIR_OBS_VAR(_2);
 		zephir_read_property(&_2, matchedRoute, SL("parameters"), PH_NOISY_CC);
-		zephir_array_fetch_string(&_3, _2, SL("module"), PH_NOISY | PH_READONLY, "owl/Application.zep", 46 TSRMLS_CC);
+		zephir_array_fetch_string(&_3, _2, SL("module"), PH_NOISY | PH_READONLY, "owl/Application.zep", 60 TSRMLS_CC);
 		ZEPHIR_OBS_VAR(_4);
 		zephir_read_property(&_4, matchedRoute, SL("parameters"), PH_NOISY_CC);
-		zephir_array_fetch_string(&_5, _4, SL("controller"), PH_NOISY | PH_READONLY, "owl/Application.zep", 46 TSRMLS_CC);
+		zephir_array_fetch_string(&_5, _4, SL("controller"), PH_NOISY | PH_READONLY, "owl/Application.zep", 60 TSRMLS_CC);
 		ZEPHIR_INIT_VAR(handlerClass);
 		ZEPHIR_CONCAT_SSVSVS(handlerClass, "\\RestApp", "\\", _3, "\\Controller\\", _5, "Controller");
 		ZEPHIR_OBS_VAR(_6);
 		zephir_read_property(&_6, matchedRoute, SL("parameters"), PH_NOISY_CC);
-		zephir_array_fetch_string(&_7, _6, SL("action"), PH_NOISY | PH_READONLY, "owl/Application.zep", 47 TSRMLS_CC);
+		zephir_array_fetch_string(&_7, _6, SL("action"), PH_NOISY | PH_READONLY, "owl/Application.zep", 61 TSRMLS_CC);
 		ZEPHIR_INIT_VAR(action);
 		ZEPHIR_CONCAT_VS(action, _7, "Action");
 
@@ -154,7 +182,7 @@ PHP_METHOD(Owl_Application, handle) {
 				ZEPHIR_CONCAT_SVS(_8, "Class handler: '", handlerClass, "' is not exists");
 				ZEPHIR_CALL_METHOD(NULL, _1, "__construct", &_9, _8);
 				zephir_check_call_status_or_jump(try_end_1);
-				zephir_throw_exception_debug(_1, "owl/Application.zep", 51 TSRMLS_CC);
+				zephir_throw_exception_debug(_1, "owl/Application.zep", 65 TSRMLS_CC);
 				goto try_end_1;
 
 			}

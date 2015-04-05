@@ -12,12 +12,26 @@ class Application
     const ENV_PRODUCTION = "production";
     const ENV_DEVELOPMENT = "development";
 
+    /**
+     * @var \Owl\Http\RequestInterface
+     */
     protected request {get};
 
+    /**
+     * @var \Owl\Http\Response
+     */
     protected response {get};
 
+    /**
+     * @var \Owl\Service\Manager
+     */
     protected di {get};
 
+    /**
+     * Current env, see ENV_* constants
+     *
+     * @var string
+     */
     protected env {get};
     
     public fn __construct(<Manager> di = null, string env = self::ENV_PRODUCTION)
