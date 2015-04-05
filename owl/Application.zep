@@ -35,6 +35,8 @@ class Application
      * @var string
      */
     protected env {get};
+
+    protected currentLoop = 0;
     
     public fn __construct(<Manager> di = null, string env = self::ENV_PRODUCTION)
     {
@@ -42,12 +44,49 @@ class Application
         let this->env = env;
     }
 
+    inline protected fn dispatch(var parameters, var matchedRoute, var response)
+    {
+        var handlerClass, controller, result, action, e;
+
+        let this->currentLoop++;
+
+        let handlerClass = "\\RestApp" . "\\" . parameters["module"] . "\\Controller\\" . parameters["controller"] . "Controller";
+        let action = parameters["action"] . "Action";
+
+        if (this->currentLoop > 3) {
+            echo "Hello, World was crashed";
+            die();
+        }
+
+        try {
+            if (!class_exists(handlerClass)) {
+                throw new Exception("Class handler: '" . handlerClass . "' is not exists");
+            }
+
+            let controller = new {handlerClass}(this->request, response);
+
+            if (matchedRoute instanceof StaticRoute) {
+                let result = controller->{action}();
+            } else {
+                /**
+                 * @todo It's not a performance, 7200 vs 8300 RPS, maybe only request parameters?
+                 */
+                let result = call_user_func_array([controller, action], matchedRoute->uriParameters);
+            }
+
+            response->setContent(result);
+        } catch Exception, e {
+            response->setCode(500);
+            this->dispatch(parameters, matchedRoute, response);
+        }
+    }
+
     /**
      * Handle Http Request
      */
     public fn handle(<RequestInterface> request, <Response> response = null) -> <Response>
     {
-        var matchedRoute, router, e;
+        var matchedRoute, router;
 
         if (is_null(response)) {
             let response = new Response();
@@ -57,33 +96,14 @@ class Application
         let matchedRoute = router->matchRequest(request);
 
         if (matchedRoute) {
-            var handlerClass, controller, result, action;
+            var parameters;
+            let parameters = matchedRoute->parameters;
 
-            let handlerClass = "\\RestApp" . "\\" . matchedRoute->parameters["module"] . "\\Controller\\" . matchedRoute->parameters["controller"] . "Controller";
-            let action = matchedRoute->parameters["action"] . "Action";
-
-            try {
-                if (!class_exists(handlerClass)) {
-                    throw new Exception("Class handler: '" . handlerClass . "' is not exists");
-                }
-
-                let controller = new {handlerClass}(request, response);
-
-                if (matchedRoute instanceof StaticRoute) {
-                    let result = controller->{action}();
-                } else {
-                    /**
-                     * @todo It's not a performance, 7200 vs 8300 RPS, maybe only request parameters?
-                     */
-                    let result = call_user_func_array([controller, action], matchedRoute->uriParameters);
-                }
-
-                response->setContent(result);
-            } catch Exception, e {
-                response->setCode(500);
-            }
+            let this->request = request;
+            this->dispatch(parameters, matchedRoute, response);
         } else {
             response->setCode(404);
+            this->dispatch(parameters, matchedRoute, response);
         }
 
         return response;

@@ -33,6 +33,9 @@ class Application
     protected $env;
 
 
+    protected $currentLoop = 0;
+
+
     /**
      * @return \Owl\Http\RequestInterface 
      */
@@ -60,6 +63,13 @@ class Application
      * @param string $env 
      */
 	public function __construct(\Owl\Service\Manager $di = null, $env = self::ENV_PRODUCTION) {}
+
+    /**
+     * @param mixed $parameters 
+     * @param mixed $matchedRoute 
+     * @param mixed $response 
+     */
+	protected function dispatch($parameters, $matchedRoute, $response) {}
 
     /**
      * Handle Http Request
