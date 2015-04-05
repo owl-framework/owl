@@ -46,19 +46,15 @@ PHP_METHOD(Owl_Event_Manager, emit) {
 	int ZEPHIR_LAST_CALL_STATUS;
 	HashTable *_2;
 	HashPosition _1;
-	zval *data = NULL;
-	zval *eventName_param = NULL, *data_param = NULL, *events, *callback = NULL, *_0, **_3;
+	zval *eventName_param = NULL, *data = NULL, *events, *callback = NULL, *_0, **_3;
 	zval *eventName = NULL;
 
 	ZEPHIR_MM_GROW();
-	zephir_fetch_params(1, 1, 1, &eventName_param, &data_param);
+	zephir_fetch_params(1, 1, 1, &eventName_param, &data);
 
 	zephir_get_strval(eventName, eventName_param);
-	if (!data_param) {
-		ZEPHIR_INIT_VAR(data);
-		array_init(data);
-	} else {
-		zephir_get_arrval(data, data_param);
+	if (!data) {
+		data = ZEPHIR_GLOBAL(global_null);
 	}
 
 

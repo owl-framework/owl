@@ -36,6 +36,9 @@ class Application
     protected $currentLoop = 0;
 
 
+    protected $eventManager;
+
+
     /**
      * @return \Owl\Http\RequestInterface 
      */

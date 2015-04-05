@@ -16,9 +16,9 @@ class Manager
 
     /**
      * @param string $eventName 
-     * @param array $data 
+     * @param mixed $data 
      */
-	public function emit($eventName, $data = array()) {}
+	public function emit($eventName, $data = null) {}
 
 
 	public function __construct() {}

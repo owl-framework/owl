@@ -10,7 +10,7 @@ class Manager
         let this->listeners[eventName][] = callback;
     }
 
-    public function emit(string eventName, array data = [])
+    public function emit(string eventName, var data = null)
     {
         var events, callback;
 

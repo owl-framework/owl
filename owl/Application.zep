@@ -37,11 +37,14 @@ class Application
     protected env {get};
 
     protected currentLoop = 0;
+
+    protected eventManager;
     
     public fn __construct(<Manager> di = null, string env = self::ENV_PRODUCTION)
     {
         let this->di = di;
         let this->env = env;
+        let this->eventManager = new Event\Manager();
     }
 
     inline protected fn dispatch(var parameters, var matchedRoute, var response)
@@ -67,6 +70,8 @@ class Application
 
             let controller = new {handlerClass}(this->request, response);
 
+            this->eventManager->emit("dispatch:afterInitialize", this);
+
             if (matchedRoute instanceof StaticRoute) {
                 let result = controller->{action}();
             } else {
@@ -75,6 +80,8 @@ class Application
                  */
                 let result = call_user_func_array([controller, action], matchedRoute->uriParameters);
             }
+
+            this->eventManager->emit("dispatch:afterAction", this);
 
             response->setContent(result);
         } catch Exception, e {
@@ -93,9 +100,13 @@ class Application
         if (is_null(response)) {
             let response = new Response();
         }
-        
+
+        this->eventManager->emit("dispatch:beforeExecuteRoute", this);
+
         let router = this->di->get("router");
         let matchedRoute = router->matchRequest(request);
+
+        this->eventManager->emit("dispatch:afterExecuteRoute", this);
 
         if (matchedRoute) {
             var parameters;
@@ -107,6 +118,8 @@ class Application
             response->setCode(404);
             this->dispatch(parameters, matchedRoute, response);
         }
+
+        this->eventManager->emit("app:afterHandle", this);
 
         return response;
     }
