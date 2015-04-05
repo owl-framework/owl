@@ -93,6 +93,7 @@ PHP_METHOD(Owl_Service_Manager, get) {
 
 PHP_METHOD(Owl_Service_Manager, getInstance) {
 
+	zephir_nts_static zephir_fcall_cache_entry *_5 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
 	zval *name_param = NULL, *_0, *_1, *_2, *_3;
 	zval *name = NULL, *_4;
@@ -123,7 +124,7 @@ PHP_METHOD(Owl_Service_Manager, getInstance) {
 	object_init_ex(_3, owl_exception_ce);
 	ZEPHIR_INIT_VAR(_4);
 	ZEPHIR_CONCAT_SV(_4, "No instance was founded by name : ", name);
-	ZEPHIR_CALL_METHOD(NULL, _3, "__construct", NULL, _4);
+	ZEPHIR_CALL_METHOD(NULL, _3, "__construct", &_5, _4);
 	zephir_check_call_status();
 	zephir_throw_exception_debug(_3, "owl/Service/Manager.zep", 30 TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();
@@ -133,6 +134,7 @@ PHP_METHOD(Owl_Service_Manager, getInstance) {
 
 PHP_METHOD(Owl_Service_Manager, getService) {
 
+	zephir_nts_static zephir_fcall_cache_entry *_5 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
 	zval *name_param = NULL, *_0, *_1, *_2, *_3;
 	zval *name = NULL, *_4;
@@ -163,7 +165,7 @@ PHP_METHOD(Owl_Service_Manager, getService) {
 	object_init_ex(_3, owl_exception_ce);
 	ZEPHIR_INIT_VAR(_4);
 	ZEPHIR_CONCAT_SV(_4, "No service was founded by name : ", name);
-	ZEPHIR_CALL_METHOD(NULL, _3, "__construct", NULL, _4);
+	ZEPHIR_CALL_METHOD(NULL, _3, "__construct", &_5, _4);
 	zephir_check_call_status();
 	zephir_throw_exception_debug(_3, "owl/Service/Manager.zep", 39 TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();

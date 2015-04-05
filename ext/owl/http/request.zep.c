@@ -214,6 +214,7 @@ PHP_METHOD(Owl_Http_Request, __construct) {
 
 PHP_METHOD(Owl_Http_Request, createFromGlobals) {
 
+	zephir_nts_static zephir_fcall_cache_entry *_1 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
 	zval *_0, *_GET, *_POST, *_SERVER, *_FILES, *_COOKIE;
 
@@ -227,7 +228,7 @@ PHP_METHOD(Owl_Http_Request, createFromGlobals) {
 	zephir_get_global(&_SERVER, SS("_SERVER") TSRMLS_CC);
 	zephir_get_global(&_FILES, SS("_FILES") TSRMLS_CC);
 	zephir_get_global(&_COOKIE, SS("_COOKIE") TSRMLS_CC);
-	ZEPHIR_CALL_METHOD(NULL, return_value, "__construct", NULL, _GET, _POST, _SERVER, _0, _FILES, _COOKIE);
+	ZEPHIR_CALL_METHOD(NULL, return_value, "__construct", &_1, _GET, _POST, _SERVER, _0, _FILES, _COOKIE);
 	zephir_check_call_status();
 	RETURN_MM();
 

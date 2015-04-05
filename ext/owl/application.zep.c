@@ -98,6 +98,7 @@ PHP_METHOD(Owl_Application, __construct) {
  */
 PHP_METHOD(Owl_Application, handle) {
 
+	zephir_nts_static zephir_fcall_cache_entry *_10 = NULL, *_11 = NULL;
 	zend_class_entry *_9;
 	int ZEPHIR_LAST_CALL_STATUS;
 	zval *request, *response = NULL, *matchedRoute = NULL, *router = NULL, *e = NULL, *_0, *_1 = NULL, *handlerClass, *controller, *result = NULL, *action, *_2, *_3, *_4, *_5, *_6, *_7, *_8 = NULL;
@@ -155,7 +156,7 @@ PHP_METHOD(Owl_Application, handle) {
 			}
 			ZEPHIR_CALL_METHOD_ZVAL(&result, controller, action,  NULL);
 			zephir_check_call_status_or_jump(try_end_1);
-			ZEPHIR_CALL_METHOD(NULL, response, "setcontent", NULL, result);
+			ZEPHIR_CALL_METHOD(NULL, response, "setcontent", &_10, result);
 			zephir_check_call_status_or_jump(try_end_1);
 
 		try_end_1:
@@ -166,14 +167,14 @@ PHP_METHOD(Owl_Application, handle) {
 				zend_clear_exception(TSRMLS_C);
 				ZEPHIR_INIT_NVAR(_1);
 				ZVAL_LONG(_1, 500);
-				ZEPHIR_CALL_METHOD(NULL, response, "setcode", NULL, _1);
+				ZEPHIR_CALL_METHOD(NULL, response, "setcode", &_11, _1);
 				zephir_check_call_status();
 			}
 		}
 	} else {
 		ZEPHIR_INIT_NVAR(_1);
 		ZVAL_LONG(_1, 404);
-		ZEPHIR_CALL_METHOD(NULL, response, "setcode", NULL, _1);
+		ZEPHIR_CALL_METHOD(NULL, response, "setcode", &_11, _1);
 		zephir_check_call_status();
 	}
 	RETVAL_ZVAL(response, 1, 0);
