@@ -55,6 +55,7 @@ PHP_METHOD(Owl_Router_Router, setBasePath) {
 
 PHP_METHOD(Owl_Router_Router, add) {
 
+	zephir_nts_static zephir_fcall_cache_entry *_5 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
 	zend_bool _2;
 	zval *parameters = NULL;
@@ -95,18 +96,13 @@ PHP_METHOD(Owl_Router_Router, add) {
 	ZEPHIR_INIT_VAR(route);
 	if (_2) {
 		object_init_ex(route, owl_router_http_staticroute_ce);
-		if (zephir_has_constructor(route TSRMLS_CC)) {
-			ZEPHIR_CALL_METHOD(NULL, route, "__construct", NULL);
-			zephir_check_call_status();
-		}
+		ZEPHIR_CALL_METHOD(NULL, route, "__construct", &_5, uri);
+		zephir_check_call_status();
 	} else {
 		object_init_ex(route, owl_router_http_dynamicroute_ce);
-		if (zephir_has_constructor(route TSRMLS_CC)) {
-			ZEPHIR_CALL_METHOD(NULL, route, "__construct", NULL);
-			zephir_check_call_status();
-		}
+		ZEPHIR_CALL_METHOD(NULL, route, "__construct", &_5, uri);
+		zephir_check_call_status();
 	}
-	zephir_update_property_zval(route, SL("uri"), uri TSRMLS_CC);
 	zephir_update_property_zval(route, SL("method"), method TSRMLS_CC);
 	zephir_update_property_zval(route, SL("parameters"), parameters TSRMLS_CC);
 	zephir_update_property_array_append(this_ptr, SL("routers"), route TSRMLS_CC);
@@ -168,7 +164,7 @@ PHP_METHOD(Owl_Router_Router, match) {
 
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("routers"), PH_NOISY_CC);
-	zephir_is_iterable(_0, &_2, &_1, 0, 0, "owl/Router/Router.zep", 50);
+	zephir_is_iterable(_0, &_2, &_1, 0, 0, "owl/Router/Router.zep", 49);
 	for (
 	  ; zephir_hash_get_current_data_ex(_2, (void**) &_3, &_1) == SUCCESS
 	  ; zephir_hash_move_forward_ex(_2, &_1)

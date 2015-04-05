@@ -66,7 +66,7 @@ class Application
                 }
 
                 let controller = new {handlerClass}(request, response);
-                let result = controller->{action}(matchedRoute->parameters);
+                let result = controller->{action}(matchedRoute->uriParameters);
 
                 response->setContent(result);
             } catch Exception, e {

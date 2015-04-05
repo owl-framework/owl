@@ -15,12 +15,11 @@ class Router implements RouterInterface
         var route;
 
         if (strpos(uri, "{") === false && strpos(uri, ":") === false) {
-            let route = new Http\StaticRoute;
+            let route = new Http\StaticRoute(uri);
         } else {
-            let route = new Http\DynamicRoute;
+            let route = new Http\DynamicRoute(uri);
         }
 
-        let route->uri = uri;
         let route->method = method;
         let route->parameters = parameters;
 

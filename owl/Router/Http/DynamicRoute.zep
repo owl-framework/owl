@@ -5,6 +5,13 @@ class DynamicRoute extends \Owl\Router\Route
 {
     protected pattern;
 
+    protected uriParameters;
+
+    public function __construct(string uri)
+    {
+        let this->uri = uri;
+    }
+
     public fn getPattern()
     {
         if (this->pattern) {
@@ -56,15 +63,15 @@ class DynamicRoute extends \Owl\Router\Route
 
     public function match(string uri) -> boolean|array
     {
-        array parameters = [];
-
-        if (!preg_match(this->getPattern(), uri, parameters)) {
+        if (!preg_match(this->getPattern(), uri, this->uriParameters)) {
             return false;
         }
 
-        unset(parameters[0]);
+        unset(this->uriParameters[0]);
 
-        let this->parameters = array_merge(this->parameters, parameters);
-        return this->parameters;
+        // rly?
+        unset(this->uriParameters[count(this->uriParameters - 1)]);
+
+        return this->uriParameters;
     }
 }

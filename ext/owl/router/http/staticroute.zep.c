@@ -25,6 +25,22 @@ ZEPHIR_INIT_CLASS(Owl_Router_Http_StaticRoute) {
 
 }
 
+PHP_METHOD(Owl_Router_Http_StaticRoute, __construct) {
+
+	zval *uri_param = NULL;
+	zval *uri = NULL;
+
+	ZEPHIR_MM_GROW();
+	zephir_fetch_params(1, 1, 0, &uri_param);
+
+	zephir_get_strval(uri, uri_param);
+
+
+	zephir_update_property_this(this_ptr, SL("uri"), uri TSRMLS_CC);
+	ZEPHIR_MM_RESTORE();
+
+}
+
 PHP_METHOD(Owl_Router_Http_StaticRoute, match) {
 
 	zval *uri_param = NULL, *_0;

@@ -195,7 +195,7 @@ PHP_METHOD(Owl_Application, handle) {
 				zephir_check_call_status_or_jump(try_end_1);
 			}
 			ZEPHIR_OBS_VAR(_12);
-			zephir_read_property(&_12, matchedRoute, SL("parameters"), PH_NOISY_CC);
+			zephir_read_property(&_12, matchedRoute, SL("uriParameters"), PH_NOISY_CC);
 			ZEPHIR_CALL_METHOD_ZVAL(&result, controller, action, NULL, _12);
 			zephir_check_call_status_or_jump(try_end_1);
 			ZEPHIR_CALL_METHOD(NULL, response, "setcontent", &_13, result);
