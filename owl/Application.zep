@@ -54,8 +54,10 @@ class Application
         let action = parameters["action"] . "Action";
 
         if (this->currentLoop > 3) {
-            echo "Hello, World was crashed";
-            die();
+            response->setContent("World was crashed");
+            response->setCode(500);
+
+            return false;
         }
 
         try {
