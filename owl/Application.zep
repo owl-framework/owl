@@ -65,8 +65,8 @@ class Application
                     throw new Exception("Class handler: '" . handlerClass . "' is not exists");
                 }
 
-                let controller = new {handlerClass};
-                let result = controller->{action}(request, response);
+                let controller = new {handlerClass}(request, response);
+                let result = controller->{action}(matchedRoute->parameters);
 
                 response->setContent(result);
             } catch Exception, e {
