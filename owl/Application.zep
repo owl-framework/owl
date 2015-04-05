@@ -47,6 +47,10 @@ class Application
             let action = matchedRoute->parameters["action"] . "Action";
 
             try {
+                if (!class_exists(handlerClass)) {
+                    throw new Exception("Class handler: '" . handlerClass . "' is not exists");
+                }
+
                 let controller = new {handlerClass};
                 let result = controller->{action}(request, response);
 
