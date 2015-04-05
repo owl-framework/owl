@@ -63,15 +63,18 @@ class DynamicRoute extends \Owl\Router\Route
 
     public function match(string uri) -> boolean|array
     {
-        if (!preg_match(this->getPattern(), uri, this->uriParameters)) {
+        array parameters = [];
+
+        if (!preg_match(this->getPattern(), uri, parameters)) {
             return false;
         }
 
-        unset(this->uriParameters[0]);
+        unset(parameters[0]);
 
         // rly?
-        unset(this->uriParameters[count(this->uriParameters - 1)]);
+        unset(parameters[count(parameters) - 1]);
 
-        return this->uriParameters;
+        let this->uriParameters = parameters;
+        return parameters;
     }
 }

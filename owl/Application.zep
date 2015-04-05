@@ -7,6 +7,8 @@ use Owl\Http\Request;
 use Owl\Http\RequestInterface;
 use Owl\Http\Response;
 
+use Owl\Router\Http\StaticRoute;
+
 class Application
 {
     const ENV_PRODUCTION = "production";
@@ -66,7 +68,12 @@ class Application
                 }
 
                 let controller = new {handlerClass}(request, response);
-                let result = call_user_func_array([controller, action], matchedRoute->uriParameters);
+
+                if (matchedRoute instanceof StaticRoute) {
+                    let result = controller->{action}();
+                } else {
+                    let result = call_user_func_array([controller, action], matchedRoute->uriParameters);
+                }
 
                 response->setContent(result);
             } catch Exception, e {
