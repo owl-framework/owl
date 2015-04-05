@@ -15,6 +15,9 @@
 #include "kernel/object.h"
 #include "kernel/operators.h"
 #include "kernel/memory.h"
+#include "kernel/array.h"
+#include "kernel/hash.h"
+#include "kernel/fcall.h"
 
 ZEPHIR_INIT_CLASS(Owl_Event_Manager) {
 
@@ -35,6 +38,44 @@ PHP_METHOD(Owl_Event_Manager, listen) {
 
 
 	zephir_update_property_array_multi(this_ptr, SL("listeners"), &callback TSRMLS_CC, SL("za"), 1, eventName);
+
+}
+
+PHP_METHOD(Owl_Event_Manager, emit) {
+
+	int ZEPHIR_LAST_CALL_STATUS;
+	HashTable *_2;
+	HashPosition _1;
+	zval *data = NULL;
+	zval *eventName_param = NULL, *data_param = NULL, *events, *callback = NULL, *_0, **_3;
+	zval *eventName = NULL;
+
+	ZEPHIR_MM_GROW();
+	zephir_fetch_params(1, 1, 1, &eventName_param, &data_param);
+
+	zephir_get_strval(eventName, eventName_param);
+	if (!data_param) {
+		ZEPHIR_INIT_VAR(data);
+		array_init(data);
+	} else {
+		zephir_get_arrval(data, data_param);
+	}
+
+
+	ZEPHIR_OBS_VAR(events);
+	_0 = zephir_fetch_nproperty_this(this_ptr, SL("listeners"), PH_NOISY_CC);
+	if (zephir_array_isset_fetch(&events, _0, eventName, 0 TSRMLS_CC)) {
+		zephir_is_iterable(events, &_2, &_1, 0, 0, "owl/Event/Manager.zep", 21);
+		for (
+		  ; zephir_hash_get_current_data_ex(_2, (void**) &_3, &_1) == SUCCESS
+		  ; zephir_hash_move_forward_ex(_2, &_1)
+		) {
+			ZEPHIR_GET_HVALUE(callback, _3);
+			ZEPHIR_CALL_ZVAL_FUNCTION(NULL, callback, NULL, data);
+			zephir_check_call_status();
+		}
+	}
+	ZEPHIR_MM_RESTORE();
 
 }
 

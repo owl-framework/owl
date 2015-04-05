@@ -14,6 +14,12 @@ class Manager
      */
 	public function listen($eventName, $callback) {}
 
+    /**
+     * @param string $eventName 
+     * @param array $data 
+     */
+	public function emit($eventName, $data = array()) {}
+
 
 	public function __construct() {}
 

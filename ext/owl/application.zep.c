@@ -17,9 +17,8 @@
 #include "kernel/operators.h"
 #include "kernel/concat.h"
 #include "kernel/array.h"
-#include "kernel/exit.h"
-#include "kernel/exception.h"
 #include "kernel/fcall.h"
+#include "kernel/exception.h"
 
 
 ZEPHIR_INIT_CLASS(Owl_Application) {
@@ -148,21 +147,28 @@ PHP_METHOD(Owl_Application, dispatch) {
 	ZEPHIR_CONCAT_VS(action, _2, "Action");
 	_3 = zephir_fetch_nproperty_this(this_ptr, SL("currentLoop"), PH_NOISY_CC);
 	if (ZEPHIR_GT_LONG(_3, 3)) {
-		php_printf("%s", "Hello, World was crashed");
-		zephir_exit_empty();
-		ZEPHIR_MM_RESTORE();
+		ZEPHIR_INIT_VAR(_4);
+		ZVAL_STRING(_4, "World was crashed", ZEPHIR_TEMP_PARAM_COPY);
+		ZEPHIR_CALL_METHOD(NULL, response, "setcontent", NULL, _4);
+		zephir_check_temp_parameter(_4);
+		zephir_check_call_status();
+		ZEPHIR_INIT_NVAR(_4);
+		ZVAL_LONG(_4, 500);
+		ZEPHIR_CALL_METHOD(NULL, response, "setcode", NULL, _4);
+		zephir_check_call_status();
+		RETURN_MM_BOOL(0);
 	}
 
 	/* try_start_1: */
 
 		if (!(zephir_class_exists(handlerClass, 1 TSRMLS_CC))) {
-			ZEPHIR_INIT_VAR(_4);
+			ZEPHIR_INIT_NVAR(_4);
 			object_init_ex(_4, owl_exception_ce);
 			ZEPHIR_INIT_VAR(_5);
 			ZEPHIR_CONCAT_SVS(_5, "Class handler: '", handlerClass, "' is not exists");
 			ZEPHIR_CALL_METHOD(NULL, _4, "__construct", &_6, _5);
 			zephir_check_call_status_or_jump(try_end_1);
-			zephir_throw_exception_debug(_4, "owl/Application.zep", 63 TSRMLS_CC);
+			zephir_throw_exception_debug(_4, "owl/Application.zep", 65 TSRMLS_CC);
 			goto try_end_1;
 
 		}
