@@ -40,11 +40,16 @@ class Application
 
     protected eventManager;
     
-    public fn __construct(<Manager> di = null, string env = self::ENV_PRODUCTION)
+    public fn __construct(<Manager> di = null, <Event\Manager> eventManager = null, string env = self::ENV_PRODUCTION)
     {
         let this->di = di;
         let this->env = env;
-        let this->eventManager = new Event\Manager();
+
+        if (is_null(eventManager)) {
+            let this->eventManager = new Event\Manager();
+        } else {
+            let this->eventManager = eventManager;
+        }
     }
 
     inline protected fn dispatch(var parameters, var matchedRoute, var response)

@@ -63,9 +63,10 @@ class Application
 
     /**
      * @param mixed $di 
+     * @param mixed $eventManager 
      * @param string $env 
      */
-	public function __construct(\Owl\Service\Manager $di = null, $env = self::ENV_PRODUCTION) {}
+	public function __construct(\Owl\Service\Manager $di = null, Event\Manager $eventManager = null, $env = self::ENV_PRODUCTION) {}
 
     /**
      * @param mixed $parameters 
