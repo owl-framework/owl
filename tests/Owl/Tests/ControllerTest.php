@@ -10,7 +10,7 @@ class ControllerTest extends \PHPUnit_Framework_TestCase
 {
     public function testSuccessConstructPass()
     {
-        $controller = new Controller(Request::createFromGlobals(), null);
+        $controller = new Controller(Request::createFromGlobals(), new \Owl\Http\Response\Json(), new \Owl\Service\Manager());
         $this->assertInstanceOf('Owl\Http\RequestInterface', $controller->getRequest());
     }
 } 
