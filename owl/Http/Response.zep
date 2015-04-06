@@ -11,8 +11,10 @@ class Response implements ResponseInterface
 
     public function send() -> boolean
     {
-        echo this->content;
+        http_response_code(this->code);
 
+        echo this->content;
+        
         return true;
     }
 }
