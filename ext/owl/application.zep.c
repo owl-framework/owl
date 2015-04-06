@@ -211,7 +211,7 @@ PHP_METHOD(Owl_Application, dispatch) {
 		} else {
 			ZEPHIR_INIT_NVAR(result);
 			ZEPHIR_INIT_VAR(_12);
-			array_init_size(_12, 3);
+			zephir_create_array(_12, 2, 0 TSRMLS_CC);
 			zephir_array_fast_append(_12, controller);
 			zephir_array_fast_append(_12, action);
 			ZEPHIR_OBS_VAR(_13);
