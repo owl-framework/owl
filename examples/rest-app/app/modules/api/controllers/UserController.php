@@ -9,7 +9,7 @@ use Exception;
 
 /**
  * Class UserController
- * @Path("/api/")
+ * @Path("/api")
  */
 class UserController extends \Owl\Mvc\Controller
 {
