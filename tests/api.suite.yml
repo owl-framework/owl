@@ -1,0 +1,8 @@
+class_name: ApiTester
+modules:
+    enabled: [PHPBrowser, REST, ApiHelper]
+    config:
+      PHPBrowser:
+          url: http://owl.ab.dmtry.me/
+      REST:
+          url: http://owl.ab.dmtry.me/
