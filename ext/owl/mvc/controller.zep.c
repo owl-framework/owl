@@ -25,6 +25,16 @@ ZEPHIR_INIT_CLASS(Owl_Mvc_Controller) {
 	 */
 	zend_declare_property_null(owl_mvc_controller_ce, SL("request"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
+	/**
+	 * @var \Owl\Http\ResponseInterface
+	 */
+	zend_declare_property_null(owl_mvc_controller_ce, SL("response"), ZEND_ACC_PROTECTED TSRMLS_CC);
+
+	/**
+	 * @var \Owl\Service\Manager
+	 */
+	zend_declare_property_null(owl_mvc_controller_ce, SL("di"), ZEND_ACC_PROTECTED TSRMLS_CC);
+
 	return SUCCESS;
 
 }
@@ -39,18 +49,37 @@ PHP_METHOD(Owl_Mvc_Controller, getRequest) {
 
 }
 
+/**
+ * @var \Owl\Http\ResponseInterface
+ */
+PHP_METHOD(Owl_Mvc_Controller, getResponse) {
+
+
+	RETURN_MEMBER(this_ptr, "response");
+
+}
+
+/**
+ * @var \Owl\Service\Manager
+ */
+PHP_METHOD(Owl_Mvc_Controller, getDi) {
+
+
+	RETURN_MEMBER(this_ptr, "di");
+
+}
+
 PHP_METHOD(Owl_Mvc_Controller, __construct) {
 
-	zval *request, *response = NULL;
+	zval *request, *response, *di;
 
-	zephir_fetch_params(0, 1, 1, &request, &response);
+	zephir_fetch_params(0, 3, 0, &request, &response, &di);
 
-	if (!response) {
-		response = ZEPHIR_GLOBAL(global_null);
-	}
 
 
 	zephir_update_property_this(this_ptr, SL("request"), request TSRMLS_CC);
+	zephir_update_property_this(this_ptr, SL("response"), response TSRMLS_CC);
+	zephir_update_property_this(this_ptr, SL("di"), di TSRMLS_CC);
 
 }
 

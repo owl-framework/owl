@@ -73,7 +73,7 @@ class Application
                 throw new Exception("Class handler: '" . handlerClass . "' is not exists");
             }
 
-            let controller = new {handlerClass}(this->request, response);
+            let controller = new {handlerClass}(this->request, response, this->di);
 
             this->eventManager->emit("dispatch:afterInitialize", this);
 
