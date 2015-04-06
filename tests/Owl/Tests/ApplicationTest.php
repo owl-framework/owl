@@ -79,6 +79,8 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('Owl\Http\ResponseInterface', $response);
 
+        $this->assertNotFalse($dispatchBeforeExecuteRoute);
+        $this->assertNotFalse($dispatchAfterExecuteRoute);
         $this->assertNotFalse($appAfterHandle);
     }
 
