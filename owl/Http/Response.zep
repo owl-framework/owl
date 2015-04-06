@@ -14,7 +14,7 @@ class Response implements ResponseInterface
         http_response_code(this->code);
 
         echo this->content;
-        
+
         return true;
     }
 }

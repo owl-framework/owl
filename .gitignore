@@ -40,3 +40,5 @@ compile-errors.log
 compile.log
 composer.lock
 phpunit.xml
+
+tests/_output/*
