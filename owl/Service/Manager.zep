@@ -1,6 +1,8 @@
 
 namespace Owl\Service;
 
+use Owl\Exception;
+
 class Manager
 {
     protected instances = [];
@@ -27,7 +29,7 @@ class Manager
             return this->instances[name];
         }
 
-        throw new \Owl\Exception("No instance was founded by name : " . name);
+        throw new Exception("No instance was founded by name : " . name);
     }
 
     public fn getService(string! name) -> var
@@ -36,6 +38,6 @@ class Manager
             return this->services[name];
         }
 
-        throw new \Owl\Exception("No service was founded by name : " . name);
+        throw new Exception("No service was founded by name : " . name);
     }
 }
