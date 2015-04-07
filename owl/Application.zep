@@ -54,12 +54,17 @@ class Application
 
     inline protected fn dispatch(var parameters, var matchedRoute, var response)
     {
-        var handlerClass, controller, result, action, e;
+        var handlerClass, controller, result, action, e, module;
 
         let this->currentLoop++;
 
-        let handlerClass = "\\RestApp" . "\\" . parameters["module"] . "\\Controller\\" . parameters["controller"] . "Controller";
-        let action = parameters["action"] . "Action";
+        let handlerClass = "\\RestApp" . "\\";
+
+        if fetch module, parameters["module"] {
+            let handlerClass .= module . "\\";
+        }
+
+        let handlerClass .= "Controller\\" . parameters["controller"] . "Controller";
 
         if (this->currentLoop > 3) {
             response->setContent("World was crashed");
@@ -76,6 +81,8 @@ class Application
             let controller = new {handlerClass}(this->request, response, this->di);
 
             this->eventManager->emit("dispatch:afterInitialize", this);
+
+            let action = parameters["action"] . "Action";
 
             if (matchedRoute instanceof StaticRoute) {
                 let result = controller->{action}();
