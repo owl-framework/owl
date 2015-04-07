@@ -14,7 +14,7 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
         $serviceManager = new \Owl\Service\Manager();
 
         $router = new Router();
-        $router->add('/', ['module' => 'Api', 'controller' => 'Index', 'action' => 'index']);
+        $router->add('/', ['controller' => 'Index', 'action' => 'index']);
 
         $serviceManager->setService('router', $router);
 
@@ -78,9 +78,12 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
         $response = $application->handle(Request::createFromGlobals(), new \Owl\Http\Response\Json());
 
         $this->assertInstanceOf('Owl\Http\ResponseInterface', $response);
+        $this->assertSame(200, $response->getCode());
 
         $this->assertNotFalse($dispatchBeforeExecuteRoute);
         $this->assertNotFalse($dispatchAfterExecuteRoute);
+        $this->assertNotFalse($dispatchAfterInitialize);
+        $this->assertNotFalse($dispatchAfterAction);
         $this->assertNotFalse($appAfterHandle);
     }
 
