@@ -39,6 +39,9 @@ class Application
     protected $eventManager;
 
 
+    protected $exceptionHandlerParameters = array("module" => "Api", "controller" => "Error", "action" => "exception");
+
+
     /**
      * @return \Owl\Http\RequestInterface 
      */

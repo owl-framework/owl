@@ -39,6 +39,12 @@ class Application
     protected currentLoop = 0;
 
     protected eventManager;
+
+    protected exceptionHandlerParameters = [
+        "module": "Api",
+        "controller": "Error",
+        "action": "exception"
+    ];
     
     public fn __construct(<Manager> di = null, <Event\Manager> eventManager = null, string env = self::ENV_PRODUCTION)
     {
@@ -98,7 +104,7 @@ class Application
             response->setContent(result);
         } catch Exception, e {
             response->setCode(500);
-            this->dispatch(parameters, matchedRoute, response);
+            this->dispatch(this->exceptionHandlerParameters, matchedRoute, response);
         }
     }
 
