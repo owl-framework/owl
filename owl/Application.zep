@@ -89,6 +89,9 @@ class Application
             this->eventManager->emit("dispatch:afterInitialize", this);
 
             let action = parameters["action"] . "Action";
+            if (!method_exists(controller, action)) {
+                throw new Exception("Action '" . action . "' is not exists on '" . handlerClass ."'");
+            }
 
             if (matchedRoute instanceof StaticRoute) {
                 let result = controller->{action}();
