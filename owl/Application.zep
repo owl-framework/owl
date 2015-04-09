@@ -11,9 +11,6 @@ use Owl\Router\Http\StaticRoute;
 
 class Application implements ApplicationInterface
 {
-    const ENV_PRODUCTION = "production";
-    const ENV_DEVELOPMENT = "development";
-
     /**
      * @var \Owl\Http\RequestInterface
      */
@@ -46,7 +43,7 @@ class Application implements ApplicationInterface
         "action": "exception"
     ];
     
-    public fn __construct(<Manager> di = null, <Event\Manager> eventManager = null, string env = self::ENV_PRODUCTION)
+    public function __construct(<Manager> di = null, <Event\Manager> eventManager = null, string env = ApplicationInterface::ENV_PRODUCTION)
     {
         let this->di = di;
         let this->env = env;

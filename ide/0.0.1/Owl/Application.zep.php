@@ -4,12 +4,6 @@ namespace Owl;
 
 class Application implements \Owl\ApplicationInterface
 {
-
-    const ENV_PRODUCTION = "production";
-
-
-    const ENV_DEVELOPMENT = "development";
-
     /**
      * @var \Owl\Http\RequestInterface
      */
@@ -69,7 +63,7 @@ class Application implements \Owl\ApplicationInterface
      * @param mixed $eventManager 
      * @param string $env 
      */
-	public function __construct(\Owl\Service\Manager $di = null, Event\Manager $eventManager = null, $env = self::ENV_PRODUCTION) {}
+	public function __construct(\Owl\Service\Manager $di = null, Event\Manager $eventManager = null, $env = ApplicationInterface::ENV_PRODUCTION) {}
 
     /**
      * @param mixed $parameters 

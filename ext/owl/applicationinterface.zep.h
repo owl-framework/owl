@@ -4,14 +4,14 @@ extern zend_class_entry *owl_applicationinterface_ce;
 ZEPHIR_INIT_CLASS(Owl_ApplicationInterface);
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_applicationinterface___construct, 0, 0, 0)
-	ZEND_ARG_OBJ_INFO(0, di, Owl\\Manager, 1)
+	ZEND_ARG_OBJ_INFO(0, di, Owl\\Service\\Manager, 1)
 	ZEND_ARG_OBJ_INFO(0, eventManager, Owl\\Event\\Manager, 1)
 	ZEND_ARG_INFO(0, env)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_applicationinterface_handle, 0, 0, 1)
-	ZEND_ARG_OBJ_INFO(0, request, Owl\\RequestInterface, 0)
-	ZEND_ARG_OBJ_INFO(0, response, Owl\\Response, 1)
+	ZEND_ARG_OBJ_INFO(0, request, Owl\\Http\\RequestInterface, 0)
+	ZEND_ARG_OBJ_INFO(0, response, Owl\\Http\\Response, 1)
 ZEND_END_ARG_INFO()
 
 ZEPHIR_INIT_FUNCS(owl_applicationinterface_method_entry) {
