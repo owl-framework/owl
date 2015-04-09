@@ -56,6 +56,7 @@ ZEPHIR_INIT_CLASS(Owl_Application) {
 
 	zend_declare_class_constant_string(owl_application_ce, SL("ENV_DEVELOPMENT"), "development" TSRMLS_CC);
 
+	zend_class_implements(owl_application_ce TSRMLS_CC, 1, owl_applicationinterface_ce);
 	return SUCCESS;
 
 }

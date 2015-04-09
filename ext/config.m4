@@ -14,6 +14,7 @@ if test "$PHP_OWL" = "yes"; then
 	owl/annotations/exception.zep.c
 	owl/annotations/reader.zep.c
 	owl/application.zep.c
+	owl/applicationinterface.zep.c
 	owl/bridge/lynx/rest/entitycontroller.zep.c
 	owl/event/manager.zep.c
 	owl/exception.zep.c

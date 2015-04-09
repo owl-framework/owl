@@ -2,7 +2,7 @@
 
 namespace Owl;
 
-class Application
+class Application implements \Owl\ApplicationInterface
 {
 
     const ENV_PRODUCTION = "production";

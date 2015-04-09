@@ -9,7 +9,7 @@ use Owl\Http\Response;
 
 use Owl\Router\Http\StaticRoute;
 
-class Application
+class Application implements ApplicationInterface
 {
     const ENV_PRODUCTION = "production";
     const ENV_DEVELOPMENT = "development";
