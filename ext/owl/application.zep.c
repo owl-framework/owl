@@ -153,7 +153,7 @@ PHP_METHOD(Owl_Application, dispatch) {
 
 	zval *_13;
 	zend_class_entry *_7;
-	zephir_nts_static zephir_fcall_cache_entry *_5 = NULL;
+	zephir_nts_static zephir_fcall_cache_entry *_5 = NULL, *_16 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
 	zval *_0;
 	zval *parameters, *matchedRoute, *response, *handlerClass = NULL, *controller, *result = NULL, *action, *e = NULL, *module, *_1 = NULL, *_2, *_3, *_4 = NULL, *_6 = NULL, *_8, *_9, *_10, *_11, *_12, *_14, *_15;
@@ -268,7 +268,7 @@ PHP_METHOD(Owl_Application, dispatch) {
 			ZEPHIR_CALL_METHOD(NULL, response, "setcode", NULL, _4);
 			zephir_check_call_status();
 			_8 = zephir_fetch_nproperty_this(this_ptr, SL("exceptionHandlerParameters"), PH_NOISY_CC);
-			ZEPHIR_CALL_METHOD(NULL, this_ptr, "dispatch", NULL, _8, matchedRoute, response);
+			ZEPHIR_CALL_METHOD(NULL, this_ptr, "dispatch", &_16, _8, matchedRoute, response);
 			zephir_check_call_status();
 		}
 	}

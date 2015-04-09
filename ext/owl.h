@@ -17,6 +17,7 @@
 #include "owl/http/response.zep.h"
 #include "owl/http/response/json.zep.h"
 #include "owl/http/responseinterface.zep.h"
+#include "owl/log/loggerinterface.zep.h"
 #include "owl/module/manager.zep.h"
 #include "owl/mvc/controller.zep.h"
 #include "owl/router/http/dynamicroute.zep.h"
