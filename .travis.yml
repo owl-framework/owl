@@ -27,7 +27,7 @@ before_script:
   - ulimit -c unlimited || true
 
 script:
-  - php examples/simple/index.php
+  - cd examples/rest-app && composer install && php public/index.php
   - phpunit
 
 after_failure:
