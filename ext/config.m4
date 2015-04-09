@@ -22,6 +22,7 @@ if test "$PHP_OWL" = "yes"; then
 	owl/http/response.zep.c
 	owl/http/response/json.zep.c
 	owl/http/responseinterface.zep.c
+	owl/log/logger.zep.c
 	owl/log/loggerinterface.zep.c
 	owl/module/manager.zep.c
 	owl/mvc/controller.zep.c

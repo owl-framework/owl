@@ -22,10 +22,6 @@ ZEPHIR_INIT_CLASS(Owl_Log_LoggerInterface) {
 
 /**
  * System is unusable.
- *
- * @param string $message
- * @param array $context
- * @return null
  */
 ZEPHIR_DOC_METHOD(Owl_Log_LoggerInterface, emergency);
 

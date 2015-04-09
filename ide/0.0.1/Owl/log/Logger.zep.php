@@ -2,8 +2,32 @@
 
 namespace Owl\Log;
 
-interface LoggerInterface
+class Logger implements \Owl\Log\LoggerInterface
 {
+
+    const EMERGENCY = "emergency";
+
+
+    const ALERT = "alert";
+
+
+    const CRITICAL = "critical";
+
+
+    const ERROR = "error";
+
+
+    const WARNING = "warning";
+
+
+    const NOTICE = "notice";
+
+
+    const INFO = "info";
+
+
+    const DEBUG = "debug";
+
 
     /**
      * System is unusable.
@@ -11,7 +35,7 @@ interface LoggerInterface
      * @param string $message 
      * @param array $context 
      */
-	public function emergency($message, $context = array());
+	public function emergency($message, $context = array()) {}
 
     /**
      * Action must be taken immediately.
@@ -21,7 +45,7 @@ interface LoggerInterface
      * @param string $message 
      * @param array $context 
      */
-	public function alert($message, $context = array());
+	public function alert($message, $context = array()) {}
 
     /**
      * Critical conditions.
@@ -30,7 +54,7 @@ interface LoggerInterface
      * @param string $message 
      * @param array $context 
      */
-	public function critical($message, $context = array());
+	public function critical($message, $context = array()) {}
 
     /**
      * Runtime errors that do not require immediate action but should typically
@@ -39,7 +63,7 @@ interface LoggerInterface
      * @param string $message 
      * @param array $context 
      */
-	public function error($message, $context = array());
+	public function error($message, $context = array()) {}
 
     /**
      * Exceptional occurrences that are not errors.
@@ -49,7 +73,7 @@ interface LoggerInterface
      * @param string $message 
      * @param array $context 
      */
-	public function warning($message, $context = array());
+	public function warning($message, $context = array()) {}
 
     /**
      * Normal but significant events.
@@ -57,7 +81,7 @@ interface LoggerInterface
      * @param string $message 
      * @param array $context 
      */
-	public function notice($message, $context = array());
+	public function notice($message, $context = array()) {}
 
     /**
      * Interesting events.
@@ -66,7 +90,7 @@ interface LoggerInterface
      * @param string $message 
      * @param array $context 
      */
-	public function info($message, $context = array());
+	public function info($message, $context = array()) {}
 
     /**
      * Detailed debug information.
@@ -74,7 +98,7 @@ interface LoggerInterface
      * @param string $message 
      * @param array $context 
      */
-	public function debug($message, $context = array());
+	public function debug($message, $context = array()) {}
 
     /**
      * Logs with an arbitrary level.
@@ -83,6 +107,6 @@ interface LoggerInterface
      * @param string $message 
      * @param array $context 
      */
-	public function log($level, $message, $context = array());
+	public function log($level, $message, $context = array()) {}
 
 }

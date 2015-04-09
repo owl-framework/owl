@@ -5,10 +5,6 @@ interface LoggerInterface
 {
     /**
      * System is unusable.
-     *
-     * @param string $message
-     * @param array $context
-     * @return null
      */
     public function emergency(string message, array context = []);
 
