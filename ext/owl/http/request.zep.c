@@ -15,10 +15,9 @@
 #include "kernel/object.h"
 #include "kernel/fcall.h"
 #include "kernel/memory.h"
-#include "kernel/array.h"
+#include "kernel/operators.h"
 #include "ext/spl/spl_exceptions.h"
 #include "kernel/exception.h"
-#include "kernel/operators.h"
 
 
 ZEPHIR_INIT_CLASS(Owl_Http_Request) {
@@ -111,7 +110,8 @@ PHP_METHOD(Owl_Http_Request, getUri) {
 
 PHP_METHOD(Owl_Http_Request, getParam) {
 
-	zval *key_param = NULL, *tmp = NULL, *_0, *_1, *_2;
+	int ZEPHIR_LAST_CALL_STATUS;
+	zval *key_param = NULL, *tmp = NULL, *_0, *_1 = NULL, *_2;
 	zval *key = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -131,24 +131,26 @@ PHP_METHOD(Owl_Http_Request, getParam) {
 
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("get"), PH_NOISY_CC);
-	if (zephir_array_isset(_0, key)) {
-		_1 = zephir_fetch_nproperty_this(this_ptr, SL("get"), PH_NOISY_CC);
-		ZEPHIR_OBS_VAR(tmp);
-		zephir_array_fetch(&tmp, _1, key, PH_NOISY, "owl/Http/Request.zep", 62 TSRMLS_CC);
+	ZEPHIR_INIT_VAR(_1);
+	ZVAL_NULL(_1);
+	ZEPHIR_CALL_METHOD(&tmp, _0, "get", NULL, key, _1);
+	zephir_check_call_status();
+	if (zephir_is_true(tmp)) {
+		RETURN_CCTOR(tmp);
 	}
-	_1 = zephir_fetch_nproperty_this(this_ptr, SL("post"), PH_NOISY_CC);
-	if (zephir_array_isset(_1, key)) {
-		_2 = zephir_fetch_nproperty_this(this_ptr, SL("post"), PH_NOISY_CC);
-		ZEPHIR_OBS_NVAR(tmp);
-		zephir_array_fetch(&tmp, _2, key, PH_NOISY, "owl/Http/Request.zep", 66 TSRMLS_CC);
-	}
+	_2 = zephir_fetch_nproperty_this(this_ptr, SL("post"), PH_NOISY_CC);
+	ZEPHIR_INIT_NVAR(_1);
+	ZVAL_NULL(_1);
+	ZEPHIR_CALL_METHOD(&tmp, _2, "get", NULL, key, _1);
+	zephir_check_call_status();
 	RETURN_CCTOR(tmp);
 
 }
 
 PHP_METHOD(Owl_Http_Request, getPost) {
 
-	zval *key_param = NULL, *_0, *_1, *_2;
+	int ZEPHIR_LAST_CALL_STATUS;
+	zval *key_param = NULL, *_0, *_1;
 	zval *key = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -168,18 +170,18 @@ PHP_METHOD(Owl_Http_Request, getPost) {
 
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("post"), PH_NOISY_CC);
-	if (zephir_array_isset(_0, key)) {
-		_1 = zephir_fetch_nproperty_this(this_ptr, SL("post"), PH_NOISY_CC);
-		zephir_array_fetch(&_2, _1, key, PH_NOISY | PH_READONLY, "owl/Http/Request.zep", 75 TSRMLS_CC);
-		RETURN_CTOR(_2);
-	}
-	RETURN_MM_BOOL(0);
+	ZEPHIR_INIT_VAR(_1);
+	ZVAL_BOOL(_1, 0);
+	ZEPHIR_RETURN_CALL_METHOD(_0, "get", NULL, key, _1);
+	zephir_check_call_status();
+	RETURN_MM();
 
 }
 
 PHP_METHOD(Owl_Http_Request, getServer) {
 
-	zval *key_param = NULL, *_0, *_1, *_2;
+	int ZEPHIR_LAST_CALL_STATUS;
+	zval *key_param = NULL, *_0, *_1;
 	zval *key = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -199,12 +201,11 @@ PHP_METHOD(Owl_Http_Request, getServer) {
 
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("server"), PH_NOISY_CC);
-	if (zephir_array_isset(_0, key)) {
-		_1 = zephir_fetch_nproperty_this(this_ptr, SL("server"), PH_NOISY_CC);
-		zephir_array_fetch(&_2, _1, key, PH_NOISY | PH_READONLY, "owl/Http/Request.zep", 84 TSRMLS_CC);
-		RETURN_CTOR(_2);
-	}
-	RETURN_MM_BOOL(0);
+	ZEPHIR_INIT_VAR(_1);
+	ZVAL_BOOL(_1, 0);
+	ZEPHIR_RETURN_CALL_METHOD(_0, "get", NULL, key, _1);
+	zephir_check_call_status();
+	RETURN_MM();
 
 }
 

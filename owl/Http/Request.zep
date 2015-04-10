@@ -58,33 +58,23 @@ class Request implements RequestInterface
     {
         var tmp;
 
-        if isset this->get[key] {
-            let tmp = this->get[key];
+        let tmp = this->get->get(key, null);
+        if (tmp) {
+            return tmp;
         }
 
-        if isset this->post[key] {
-            let tmp = this->post[key];
-        }
-
+        let tmp = this->post->get(key, null);
         return tmp;
     }
 
     public fn getPost(string! key) -> var|boolean
     {
-        if isset this->post[key] {
-            return this->post[key];
-        }
-
-        return false;
+        return this->post->get(key, false);
     }
 
     public fn getServer(string! key) -> var|boolean
     {
-        if isset this->server[key] {
-            return this->server[key];
-        }
-
-        return false;
+        return this->server->get(key, false);
     }
 
     public fn getScheme() -> string
