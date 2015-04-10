@@ -29,5 +29,6 @@
 #include "owl/router/routerinterface.zep.h"
 #include "owl/service/manager.zep.h"
 #include "owl/session/managerinterface.zep.h"
+#include "owl/std/arraybag.zep.h"
 
 #endif

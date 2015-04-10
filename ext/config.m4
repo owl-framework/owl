@@ -33,7 +33,8 @@ if test "$PHP_OWL" = "yes"; then
 	owl/router/router.zep.c
 	owl/router/routerinterface.zep.c
 	owl/service/manager.zep.c
-	owl/session/managerinterface.zep.c owl/annotations/scanner.c
+	owl/session/managerinterface.zep.c
+	owl/std/arraybag.zep.c owl/annotations/scanner.c
 	owl/annotations/parser.c"
 	PHP_NEW_EXTENSION(owl, $owl_sources, $ext_shared,, )
 	PHP_SUBST(OWL_SHARED_LIBADD)

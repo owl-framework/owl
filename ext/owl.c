@@ -51,6 +51,7 @@ zend_class_entry *owl_router_http_dynamicroute_ce;
 zend_class_entry *owl_router_http_staticroute_ce;
 zend_class_entry *owl_router_router_ce;
 zend_class_entry *owl_service_manager_ce;
+zend_class_entry *owl_std_arraybag_ce;
 
 ZEND_DECLARE_MODULE_GLOBALS(owl)
 
@@ -97,6 +98,7 @@ static PHP_MINIT_FUNCTION(owl)
 	ZEPHIR_INIT(Owl_Router_Http_StaticRoute);
 	ZEPHIR_INIT(Owl_Router_Router);
 	ZEPHIR_INIT(Owl_Service_Manager);
+	ZEPHIR_INIT(Owl_Std_ArrayBag);
 
 #if PHP_VERSION_ID < 50500
 	setlocale(LC_ALL, old_lc_all);
