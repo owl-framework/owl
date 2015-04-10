@@ -27,4 +27,42 @@ class RequestTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('/test', $request->getUri());
         $this->assertEquals(Request::GET, $request->getMethod());
     }
+
+    public function testOwnRequest()
+    {
+        $request = new Request(
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
+        );
+
+        $this->assertEquals('/', $request->getUri()); // By default it's /
+        $this->assertEquals(Request::GET, $request->getMethod());
+
+        $request = new Request(
+            [
+                'param1' => 5
+            ],
+            [
+                'post1' => 5,
+                'post2' => "test string"
+            ],
+            [
+                'REQUEST_URI' => '/testuri'
+            ],
+            [],
+            [],
+            []
+        );
+
+        $this->assertEquals('/testuri', $request->getUri());
+        $this->assertEquals(Request::GET, $request->getMethod());
+
+        $this->assertSame(5, $request->getParam('param1'));
+        $this->assertSame(5, $request->getPost('post1'));
+        $this->assertSame("test string", $request->getPost('post2'));
+    }
 } 
