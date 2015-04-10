@@ -1,6 +1,8 @@
 
 namespace Owl\Http;
 
+use Owl\Std\ArrayBag;
+
 class Request implements RequestInterface
 {
     const GET      = "GET";
@@ -31,7 +33,7 @@ class Request implements RequestInterface
 
     public function getUri() -> string|null
     {
-        return isset(this->server["REQUEST_URI"]) ? this->server["REQUEST_URI"] : "/";
+        return this->server->get("REQUEST_URI", "/");
     }
 
     public fn getParam(string! key) -> var|boolean
@@ -77,12 +79,12 @@ class Request implements RequestInterface
 
     public fn __construct(var get, var post, var server, var headers, var files, var cookies)
     {
-        let this->get = get;
-        let this->post = post;
-        let this->server = server;
-        let this->headers = headers;
-        let this->files = files;
-        let this->cookies = cookies;
+        let this->get = new ArrayBag(get);
+        let this->post = new ArrayBag(post);
+        let this->server = new ArrayBag(server);
+        let this->headers = new ArrayBag(headers);
+        let this->files = new ArrayBag(files);
+        let this->cookies = new ArrayBag(cookies);
     }
 
     public static fn createFromGlobals() -> <Request>
