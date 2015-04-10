@@ -37,22 +37,34 @@ class Request implements \Owl\Http\RequestInterface
 
     protected $method = self::GET;
 
-
+    /**
+     * @var \Owl\Std\ArrayBag
+     */
     protected $get;
 
-
+    /**
+     * @var \Owl\Std\ArrayBag
+     */
     protected $post;
 
-
+    /**
+     * @var \Owl\Std\ArrayBag
+     */
     protected $server;
 
-
+    /**
+     * @var \Owl\Std\ArrayBag
+     */
     protected $headers;
 
-
+    /**
+     * @var \Owl\Std\ArrayBag
+     */
     protected $files;
 
-
+    /**
+     * @var \Owl\Std\ArrayBag
+     */
     protected $cookies;
 
 

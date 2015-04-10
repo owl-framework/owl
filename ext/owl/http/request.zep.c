@@ -27,16 +27,34 @@ ZEPHIR_INIT_CLASS(Owl_Http_Request) {
 
 	zend_declare_property_string(owl_http_request_ce, SL("method"), "GET", ZEND_ACC_PROTECTED TSRMLS_CC);
 
+	/**
+	 * @var \Owl\Std\ArrayBag
+	 */
 	zend_declare_property_null(owl_http_request_ce, SL("get"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
+	/**
+	 * @var \Owl\Std\ArrayBag
+	 */
 	zend_declare_property_null(owl_http_request_ce, SL("post"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
+	/**
+	 * @var \Owl\Std\ArrayBag
+	 */
 	zend_declare_property_null(owl_http_request_ce, SL("server"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
+	/**
+	 * @var \Owl\Std\ArrayBag
+	 */
 	zend_declare_property_null(owl_http_request_ce, SL("headers"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
+	/**
+	 * @var \Owl\Std\ArrayBag
+	 */
 	zend_declare_property_null(owl_http_request_ce, SL("files"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
+	/**
+	 * @var \Owl\Std\ArrayBag
+	 */
 	zend_declare_property_null(owl_http_request_ce, SL("cookies"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
 	zend_declare_class_constant_string(owl_http_request_ce, SL("GET"), "GET" TSRMLS_CC);
@@ -116,13 +134,13 @@ PHP_METHOD(Owl_Http_Request, getParam) {
 	if (zephir_array_isset(_0, key)) {
 		_1 = zephir_fetch_nproperty_this(this_ptr, SL("get"), PH_NOISY_CC);
 		ZEPHIR_OBS_VAR(tmp);
-		zephir_array_fetch(&tmp, _1, key, PH_NOISY, "owl/Http/Request.zep", 44 TSRMLS_CC);
+		zephir_array_fetch(&tmp, _1, key, PH_NOISY, "owl/Http/Request.zep", 62 TSRMLS_CC);
 	}
 	_1 = zephir_fetch_nproperty_this(this_ptr, SL("post"), PH_NOISY_CC);
 	if (zephir_array_isset(_1, key)) {
 		_2 = zephir_fetch_nproperty_this(this_ptr, SL("post"), PH_NOISY_CC);
 		ZEPHIR_OBS_NVAR(tmp);
-		zephir_array_fetch(&tmp, _2, key, PH_NOISY, "owl/Http/Request.zep", 48 TSRMLS_CC);
+		zephir_array_fetch(&tmp, _2, key, PH_NOISY, "owl/Http/Request.zep", 66 TSRMLS_CC);
 	}
 	RETURN_CCTOR(tmp);
 
@@ -152,7 +170,7 @@ PHP_METHOD(Owl_Http_Request, getPost) {
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("post"), PH_NOISY_CC);
 	if (zephir_array_isset(_0, key)) {
 		_1 = zephir_fetch_nproperty_this(this_ptr, SL("post"), PH_NOISY_CC);
-		zephir_array_fetch(&_2, _1, key, PH_NOISY | PH_READONLY, "owl/Http/Request.zep", 57 TSRMLS_CC);
+		zephir_array_fetch(&_2, _1, key, PH_NOISY | PH_READONLY, "owl/Http/Request.zep", 75 TSRMLS_CC);
 		RETURN_CTOR(_2);
 	}
 	RETURN_MM_BOOL(0);
@@ -183,7 +201,7 @@ PHP_METHOD(Owl_Http_Request, getServer) {
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("server"), PH_NOISY_CC);
 	if (zephir_array_isset(_0, key)) {
 		_1 = zephir_fetch_nproperty_this(this_ptr, SL("server"), PH_NOISY_CC);
-		zephir_array_fetch(&_2, _1, key, PH_NOISY | PH_READONLY, "owl/Http/Request.zep", 66 TSRMLS_CC);
+		zephir_array_fetch(&_2, _1, key, PH_NOISY | PH_READONLY, "owl/Http/Request.zep", 84 TSRMLS_CC);
 		RETURN_CTOR(_2);
 	}
 	RETURN_MM_BOOL(0);
