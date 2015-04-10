@@ -15,9 +15,9 @@
 #include "kernel/object.h"
 #include "kernel/fcall.h"
 #include "kernel/memory.h"
-#include "kernel/operators.h"
 #include "ext/spl/spl_exceptions.h"
 #include "kernel/exception.h"
+#include "kernel/operators.h"
 
 
 ZEPHIR_INIT_CLASS(Owl_Http_Request) {
@@ -111,11 +111,11 @@ PHP_METHOD(Owl_Http_Request, getUri) {
 PHP_METHOD(Owl_Http_Request, getParam) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *key_param = NULL, *tmp = NULL, *_0, *_1 = NULL, *_2;
+	zval *key_param = NULL, *defaultValue = NULL, *_0;
 	zval *key = NULL;
 
 	ZEPHIR_MM_GROW();
-	zephir_fetch_params(1, 1, 0, &key_param);
+	zephir_fetch_params(1, 1, 1, &key_param, &defaultValue);
 
 	if (unlikely(Z_TYPE_P(key_param) != IS_STRING && Z_TYPE_P(key_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be a string") TSRMLS_CC);
@@ -128,33 +128,26 @@ PHP_METHOD(Owl_Http_Request, getParam) {
 		ZEPHIR_INIT_VAR(key);
 		ZVAL_EMPTY_STRING(key);
 	}
+	if (!defaultValue) {
+		defaultValue = ZEPHIR_GLOBAL(global_null);
+	}
 
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("get"), PH_NOISY_CC);
-	ZEPHIR_INIT_VAR(_1);
-	ZVAL_NULL(_1);
-	ZEPHIR_CALL_METHOD(&tmp, _0, "get", NULL, key, _1);
+	ZEPHIR_RETURN_CALL_METHOD(_0, "get", NULL, key, defaultValue);
 	zephir_check_call_status();
-	if (zephir_is_true(tmp)) {
-		RETURN_CCTOR(tmp);
-	}
-	_2 = zephir_fetch_nproperty_this(this_ptr, SL("post"), PH_NOISY_CC);
-	ZEPHIR_INIT_NVAR(_1);
-	ZVAL_NULL(_1);
-	ZEPHIR_CALL_METHOD(&tmp, _2, "get", NULL, key, _1);
-	zephir_check_call_status();
-	RETURN_CCTOR(tmp);
+	RETURN_MM();
 
 }
 
 PHP_METHOD(Owl_Http_Request, getPost) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *key_param = NULL, *_0, *_1;
+	zval *key_param = NULL, *defaultValue = NULL, *_0;
 	zval *key = NULL;
 
 	ZEPHIR_MM_GROW();
-	zephir_fetch_params(1, 1, 0, &key_param);
+	zephir_fetch_params(1, 1, 1, &key_param, &defaultValue);
 
 	if (unlikely(Z_TYPE_P(key_param) != IS_STRING && Z_TYPE_P(key_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be a string") TSRMLS_CC);
@@ -167,12 +160,13 @@ PHP_METHOD(Owl_Http_Request, getPost) {
 		ZEPHIR_INIT_VAR(key);
 		ZVAL_EMPTY_STRING(key);
 	}
+	if (!defaultValue) {
+		defaultValue = ZEPHIR_GLOBAL(global_null);
+	}
 
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("post"), PH_NOISY_CC);
-	ZEPHIR_INIT_VAR(_1);
-	ZVAL_BOOL(_1, 0);
-	ZEPHIR_RETURN_CALL_METHOD(_0, "get", NULL, key, _1);
+	ZEPHIR_RETURN_CALL_METHOD(_0, "get", NULL, key, defaultValue);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -181,11 +175,11 @@ PHP_METHOD(Owl_Http_Request, getPost) {
 PHP_METHOD(Owl_Http_Request, getServer) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *key_param = NULL, *_0, *_1;
+	zval *key_param = NULL, *defaultValue = NULL, *_0;
 	zval *key = NULL;
 
 	ZEPHIR_MM_GROW();
-	zephir_fetch_params(1, 1, 0, &key_param);
+	zephir_fetch_params(1, 1, 1, &key_param, &defaultValue);
 
 	if (unlikely(Z_TYPE_P(key_param) != IS_STRING && Z_TYPE_P(key_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be a string") TSRMLS_CC);
@@ -198,12 +192,13 @@ PHP_METHOD(Owl_Http_Request, getServer) {
 		ZEPHIR_INIT_VAR(key);
 		ZVAL_EMPTY_STRING(key);
 	}
+	if (!defaultValue) {
+		defaultValue = ZEPHIR_GLOBAL(global_null);
+	}
 
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("server"), PH_NOISY_CC);
-	ZEPHIR_INIT_VAR(_1);
-	ZVAL_BOOL(_1, 0);
-	ZEPHIR_RETURN_CALL_METHOD(_0, "get", NULL, key, _1);
+	ZEPHIR_RETURN_CALL_METHOD(_0, "get", NULL, key, defaultValue);
 	zephir_check_call_status();
 	RETURN_MM();
 

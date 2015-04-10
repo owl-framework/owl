@@ -12,15 +12,17 @@ interface RequestInterface
 
     /**
      * @param string $key 
+     * @param mixed $defaultValue 
      * @return string 
      */
-	public function getPost($key);
+	public function getPost($key, $defaultValue = null);
 
     /**
      * @param string $key 
+     * @param mixed $defaultValue 
      * @return string 
      */
-	public function getServer($key);
+	public function getServer($key, $defaultValue = null);
 
     /**
      * @return string 

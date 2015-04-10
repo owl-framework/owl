@@ -14,14 +14,17 @@ PHP_METHOD(Owl_Http_Request, createFromGlobals);
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_http_request_getparam, 0, 0, 1)
 	ZEND_ARG_INFO(0, key)
+	ZEND_ARG_INFO(0, defaultValue)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_http_request_getpost, 0, 0, 1)
 	ZEND_ARG_INFO(0, key)
+	ZEND_ARG_INFO(0, defaultValue)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_http_request_getserver, 0, 0, 1)
 	ZEND_ARG_INFO(0, key)
+	ZEND_ARG_INFO(0, defaultValue)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_http_request___construct, 0, 0, 6)

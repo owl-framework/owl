@@ -78,21 +78,23 @@ class Request implements \Owl\Http\RequestInterface
 
     /**
      * @param string $key 
-     * @return variable|bool 
+     * @param mixed $defaultValue 
      */
-	public function getParam($key) {}
+	public function getParam($key, $defaultValue = null) {}
 
     /**
      * @param string $key 
+     * @param mixed $defaultValue 
      * @return variable|bool 
      */
-	public function getPost($key) {}
+	public function getPost($key, $defaultValue = null) {}
 
     /**
      * @param string $key 
+     * @param mixed $defaultValue 
      * @return variable|bool 
      */
-	public function getServer($key) {}
+	public function getServer($key, $defaultValue = null) {}
 
     /**
      * @return string 

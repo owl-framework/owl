@@ -54,27 +54,19 @@ class Request implements RequestInterface
         return this->server->get("REQUEST_URI", "/");
     }
 
-    public fn getParam(string! key) -> var|boolean
+    public fn getParam(string! key, var defaultValue = null)
     {
-        var tmp;
-
-        let tmp = this->get->get(key, null);
-        if (tmp) {
-            return tmp;
-        }
-
-        let tmp = this->post->get(key, null);
-        return tmp;
+        return this->get->get(key, defaultValue);
     }
 
-    public fn getPost(string! key) -> var|boolean
+    public fn getPost(string! key, var defaultValue = null) -> var|boolean
     {
-        return this->post->get(key, false);
+        return this->post->get(key, defaultValue);
     }
 
-    public fn getServer(string! key) -> var|boolean
+    public fn getServer(string! key, var defaultValue = null) -> var|boolean
     {
-        return this->server->get(key, false);
+        return this->server->get(key, defaultValue);
     }
 
     public fn getScheme() -> string
