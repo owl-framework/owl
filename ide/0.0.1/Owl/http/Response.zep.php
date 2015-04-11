@@ -14,6 +14,9 @@ class Response implements \Owl\Http\ResponseInterface
     protected $content;
 
 
+    protected $headers;
+
+
 
 	public function getCode() {}
 
@@ -29,6 +32,12 @@ class Response implements \Owl\Http\ResponseInterface
      * @param mixed $content 
      */
 	public function setContent($content) {}
+
+
+	public function getHeaders() {}
+
+
+	public function __construct() {}
 
     /**
      * @return bool 

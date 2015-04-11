@@ -25,6 +25,8 @@ ZEPHIR_INIT_CLASS(Owl_Http_Response) {
 
 	zend_declare_property_null(owl_http_response_ce, SL("content"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
+	zend_declare_property_null(owl_http_response_ce, SL("headers"), ZEND_ACC_PROTECTED TSRMLS_CC);
+
 	zend_declare_class_constant_long(owl_http_response_ce, SL("STATUS_CODE_OK"), 200 TSRMLS_CC);
 
 	zend_class_implements(owl_http_response_ce TSRMLS_CC, 1, owl_http_responseinterface_ce);
@@ -67,6 +69,32 @@ PHP_METHOD(Owl_Http_Response, setContent) {
 
 
 	zephir_update_property_this(this_ptr, SL("content"), content TSRMLS_CC);
+
+}
+
+PHP_METHOD(Owl_Http_Response, getHeaders) {
+
+
+	RETURN_MEMBER(this_ptr, "headers");
+
+}
+
+PHP_METHOD(Owl_Http_Response, __construct) {
+
+	zephir_nts_static zephir_fcall_cache_entry *_2 = NULL;
+	int ZEPHIR_LAST_CALL_STATUS;
+	zval *_0, *_1;
+
+	ZEPHIR_MM_GROW();
+
+	ZEPHIR_INIT_VAR(_0);
+	object_init_ex(_0, owl_std_arraybag_ce);
+	ZEPHIR_INIT_VAR(_1);
+	array_init(_1);
+	ZEPHIR_CALL_METHOD(NULL, _0, "__construct", &_2, _1);
+	zephir_check_call_status();
+	zephir_update_property_this(this_ptr, SL("headers"), _0 TSRMLS_CC);
+	ZEPHIR_MM_RESTORE();
 
 }
 
