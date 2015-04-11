@@ -11,6 +11,7 @@
 #include "owl/application.zep.h"
 #include "owl/applicationinterface.zep.h"
 #include "owl/bridge/lynx/rest/entitycontroller.zep.h"
+#include "owl/cache/driver.zep.h"
 #include "owl/event/manager.zep.h"
 #include "owl/exception.zep.h"
 #include "owl/http/request.zep.h"

@@ -31,6 +31,7 @@ zend_class_entry *owl_applicationinterface_ce;
 zend_class_entry *owl_http_requestinterface_ce;
 zend_class_entry *owl_log_loggerinterface_ce;
 zend_class_entry *owl_router_routerinterface_ce;
+zend_class_entry *owl_cache_driver_ce;
 zend_class_entry *owl_session_managerinterface_ce;
 zend_class_entry *owl_router_route_ce;
 zend_class_entry *owl_exception_ce;
@@ -78,6 +79,7 @@ static PHP_MINIT_FUNCTION(owl)
 	ZEPHIR_INIT(Owl_Http_RequestInterface);
 	ZEPHIR_INIT(Owl_Log_LoggerInterface);
 	ZEPHIR_INIT(Owl_Router_RouterInterface);
+	ZEPHIR_INIT(Owl_Cache_Driver);
 	ZEPHIR_INIT(Owl_Session_ManagerInterface);
 	ZEPHIR_INIT(Owl_Router_Route);
 	ZEPHIR_INIT(Owl_Exception);
