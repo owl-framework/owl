@@ -26,14 +26,15 @@
 
 
 
+zend_class_entry *owl_cache_driver_ce;
 zend_class_entry *owl_http_responseinterface_ce;
 zend_class_entry *owl_applicationinterface_ce;
 zend_class_entry *owl_http_requestinterface_ce;
 zend_class_entry *owl_log_loggerinterface_ce;
 zend_class_entry *owl_router_routerinterface_ce;
-zend_class_entry *owl_cache_driver_ce;
 zend_class_entry *owl_session_managerinterface_ce;
 zend_class_entry *owl_router_route_ce;
+zend_class_entry *owl_cache_driver_cachedriver_ce;
 zend_class_entry *owl_exception_ce;
 zend_class_entry *owl_http_response_ce;
 zend_class_entry *owl_mvc_controller_ce;
@@ -43,6 +44,7 @@ zend_class_entry *owl_annotations_exception_ce;
 zend_class_entry *owl_annotations_reader_ce;
 zend_class_entry *owl_application_ce;
 zend_class_entry *owl_bridge_lynx_rest_entitycontroller_ce;
+zend_class_entry *owl_cache_driver_nativearray_ce;
 zend_class_entry *owl_event_manager_ce;
 zend_class_entry *owl_http_request_ce;
 zend_class_entry *owl_http_response_json_ce;
@@ -74,14 +76,15 @@ static PHP_MINIT_FUNCTION(owl)
 	setlocale(LC_ALL, "C");
 #endif
 
+	ZEPHIR_INIT(Owl_Cache_Driver);
 	ZEPHIR_INIT(Owl_Http_ResponseInterface);
 	ZEPHIR_INIT(Owl_ApplicationInterface);
 	ZEPHIR_INIT(Owl_Http_RequestInterface);
 	ZEPHIR_INIT(Owl_Log_LoggerInterface);
 	ZEPHIR_INIT(Owl_Router_RouterInterface);
-	ZEPHIR_INIT(Owl_Cache_Driver);
 	ZEPHIR_INIT(Owl_Session_ManagerInterface);
 	ZEPHIR_INIT(Owl_Router_Route);
+	ZEPHIR_INIT(Owl_Cache_Driver_CacheDriver);
 	ZEPHIR_INIT(Owl_Exception);
 	ZEPHIR_INIT(Owl_Http_Response);
 	ZEPHIR_INIT(Owl_Mvc_Controller);
@@ -91,6 +94,7 @@ static PHP_MINIT_FUNCTION(owl)
 	ZEPHIR_INIT(Owl_Annotations_Reader);
 	ZEPHIR_INIT(Owl_Application);
 	ZEPHIR_INIT(Owl_Bridge_Lynx_Rest_EntityController);
+	ZEPHIR_INIT(Owl_Cache_Driver_NativeArray);
 	ZEPHIR_INIT(Owl_Event_Manager);
 	ZEPHIR_INIT(Owl_Http_Request);
 	ZEPHIR_INIT(Owl_Http_Response_Json);

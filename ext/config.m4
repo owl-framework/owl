@@ -17,6 +17,8 @@ if test "$PHP_OWL" = "yes"; then
 	owl/applicationinterface.zep.c
 	owl/bridge/lynx/rest/entitycontroller.zep.c
 	owl/cache/driver.zep.c
+	owl/cache/driver/cachedriver.zep.c
+	owl/cache/driver/nativearray.zep.c
 	owl/event/manager.zep.c
 	owl/exception.zep.c
 	owl/http/request.zep.c
