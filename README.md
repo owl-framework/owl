@@ -2,8 +2,10 @@
 
 Owl
 ===
+
 # [Website](http://owl.dmtry.me/) :: [Documentation](http://docs.owl.dmtry.me/) :: [Vagrant](https://github.com/owl-framework/vagrant)
 
+[![Latest Stable Version](http://img.shields.io/packagist/v/owl/owl.svg?style=flat)](https://packagist.org/packages/owl/owl)
 [![Author](http://img.shields.io/badge/author-@ovr-blue.svg?style=flat-square)](https://twitter.com/ovrweb)
 [![Build Status](https://img.shields.io/travis/owl-framework/owl/master.svg?style=flat-square)](https://travis-ci.org/owl-framework/owl)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
