@@ -1,8 +1,5 @@
 ![Logo](http://owl.dmtry.me/img/repository.png "Owl Framework")
 
-Welcome to the Owl framework!
-=============================
-
 # [Website](http://owl.dmtry.me/) :: [Documentation](http://docs.owl.dmtry.me/) :: [Vagrant](https://github.com/owl-framework/vagrant)
 
 [![Latest Stable Version](http://img.shields.io/packagist/v/owl/owl.svg?style=flat)](https://packagist.org/packages/owl/owl)
