@@ -7,7 +7,7 @@
 [![Build Status](https://img.shields.io/travis/owl-framework/owl/master.svg?style=flat-square)](https://travis-ci.org/owl-framework/owl)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
-Owl is an extrem fast PHP framework powered by [Zephir](https://github.com/phalcon/zephir) language and delivered as C-extension.
+Owl is an extreme fast PHP framework powered by [Zephir](https://github.com/phalcon/zephir) language and delivered as C-extension.
 
 *This is a development branch and We need to focus on the doc, tests, fixes and cleaning code, so we need your help ;)*
 
