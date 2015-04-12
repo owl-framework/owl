@@ -17,7 +17,7 @@ Owl is an extrem fast PHP framework powered by Zephir language and delivered as 
 2. Create a new branch for each feature or improvement. `git checkout -b my-branch`
 3. Send a pull request from each feature branch to the master branch.
 
-*Please do not send files from `/ext` directory, just those from the `/ice`.
+*Please do not send files from `/ext` directory, just those from the `/owl`.
 
 ### Components
 
