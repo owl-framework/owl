@@ -7,12 +7,12 @@
          processIsolation="false"
          stopOnFailure="true"
          syntaxCheck="false"
-         bootstrap="./tests/Owl/Tests/Bootstrap.php"
+         bootstrap="./unit-tests/Owl/Tests/Bootstrap.php"
         >
 
     <testsuites>
         <testsuite name="Owl">
-            <directory>./tests/Owl/Tests/</directory>
+            <directory>./unit-tests/Owl/Tests/</directory>
         </testsuite>
     </testsuites>
 </phpunit>
