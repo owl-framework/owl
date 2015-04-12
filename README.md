@@ -1,7 +1,7 @@
 ![Logo](http://owl.dmtry.me/img/repository.png "Owl Framework")
 
-Owl
-===
+Welcome to the Owl framework!
+=============================
 
 # [Website](http://owl.dmtry.me/) :: [Documentation](http://docs.owl.dmtry.me/) :: [Vagrant](https://github.com/owl-framework/vagrant)
 
