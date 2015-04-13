@@ -9,7 +9,7 @@ if (PHP_OWL != "no") {
 	ADD_SOURCES(configure_module_dirname + "/owl", "application.zep.c applicationinterface.zep.c exception.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/bridge/lynx/rest", "entitycontroller.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/cache", "driver.zep.c", "owl");
-	ADD_SOURCES(configure_module_dirname + "/owl/cache/driver", "cachedriver.zep.c nativearray.zep.c", "owl");
+	ADD_SOURCES(configure_module_dirname + "/owl/cache/driver", "cachedriver.zep.c memcache.zep.c memcached.zep.c nativearray.zep.c redis.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/event", "manager.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/http", "request.zep.c requestinterface.zep.c response.zep.c responseinterface.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/http/response", "json.zep.c", "owl");
