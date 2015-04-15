@@ -11,6 +11,46 @@ Owl is an extreme fast PHP framework powered by [Zephir](https://github.com/phal
 
 *This is a development branch and We need to focus on the doc, tests, fixes and cleaning code, so we need your help ;)*
 
+### System Requirements
+
+To build it you need the following requirements:
+
+* g++ >= 4.4/clang++ >= 3.x/vc++ 9
+* gnu make 3.81 or later
+* autoconf 2.31 or later
+* automake 1.14 or later
+* PHP development headers and tools
+
+If you're using Ubuntu, you can install the required packages this way:
+
+```
+sudo apt-get update
+sudo apt-get install git gcc make re2c php5 php5-json php5-dev libpcre3-dev
+```
+
+### Installation
+
+You can build extension and install it like:
+
+```
+git clone https://github.com/lynx/lynx.git
+git submodule update --init
+cd ext
+./install
+echo extension=lynx.so > /etc/php5/fpm/conf.d/lynx.ini
+echo extension=lynx.so > /etc/php5/cli/conf.d/lynx.ini
+```
+
+Don't forget to restart your php-fpm:
+```
+sudo service php5-fpm restart
+```
+
+### Build Zephir code
+
+To build the zep Source to C extension:
+* [zephir](https://github.com/phalcon/zephir)
+
 ### Contributing
 
 1. Fork the current repository by fork button.
