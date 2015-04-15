@@ -23,7 +23,7 @@ To build it you need the following requirements:
 
 If you're using Ubuntu, you can install the required packages this way:
 
-```
+```bash
 sudo apt-get update
 sudo apt-get install git gcc make re2c php5 php5-json php5-dev libpcre3-dev
 ```
@@ -32,7 +32,7 @@ sudo apt-get install git gcc make re2c php5 php5-json php5-dev libpcre3-dev
 
 You can build extension and install it like:
 
-```
+```bash
 git clone https://github.com/owl-framework/owl.git
 git submodule update --init
 cd ext
@@ -42,7 +42,8 @@ echo extension=owl.so > /etc/php5/cli/conf.d/owl.ini
 ```
 
 Don't forget to restart your php-fpm:
-```
+
+```bash
 sudo service php5-fpm restart
 ```
 
