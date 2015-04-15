@@ -33,12 +33,12 @@ sudo apt-get install git gcc make re2c php5 php5-json php5-dev libpcre3-dev
 You can build extension and install it like:
 
 ```
-git clone https://github.com/lynx/lynx.git
+git clone https://github.com/owl-framework/owl.git
 git submodule update --init
 cd ext
 ./install
-echo extension=lynx.so > /etc/php5/fpm/conf.d/lynx.ini
-echo extension=lynx.so > /etc/php5/cli/conf.d/lynx.ini
+echo extension=owl.so > /etc/php5/fpm/conf.d/owl.ini
+echo extension=owl.so > /etc/php5/cli/conf.d/owl.ini
 ```
 
 Don't forget to restart your php-fpm:
