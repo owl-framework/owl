@@ -9,7 +9,7 @@
 
 Owl is an extreme fast PHP framework powered by [Zephir](https://github.com/phalcon/zephir) language and delivered as C-extension.
 
-*This is a development branch and We need to focus on the doc, tests, fixes and cleaning code, so we need your help ;)*
+*This is a development branch and We need to focus on the docs, tests, fixes and cleaning code, so we need your help ;)*
 
 ### System Requirements
 
