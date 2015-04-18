@@ -17,6 +17,8 @@
 #include "owl/cache/driver/memcached.zep.h"
 #include "owl/cache/driver/nativearray.zep.h"
 #include "owl/cache/driver/redis.zep.h"
+#include "owl/console/application.zep.h"
+#include "owl/console/commandinterface.zep.h"
 #include "owl/event/manager.zep.h"
 #include "owl/exception.zep.h"
 #include "owl/http/request.zep.h"
