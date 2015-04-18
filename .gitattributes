@@ -1,3 +1,5 @@
 ext/* linguist-vendored
 ide/* linguist-vendored
 examples/* linguist-vendored
+sandbox/* linguist-vendored
+tests/* linguist-vendored
