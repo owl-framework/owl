@@ -4,6 +4,8 @@
 
 namespace Owl\Cache\Driver;
 
+use Memcache;
+
 class Memcache extends CacheDriver
 {
     protected options;
@@ -18,18 +20,15 @@ class Memcache extends CacheDriver
         let this->options = options;
     }
 
-    public fn setInstance(<\Memcache> instance)
+    public fn setInstance(<Memcache> instance)
     {
         let this->instance = $instance;
     }
 
-    /**
-     * @return \Memcache
-     */
-    public fn getInstance()
+    public fn getInstance() -> <Memcache>
     {
         if (is_null($this->instance)) {
-            let this->instance = new \Memcache;
+            let this->instance = new Memcache;
             this->instance->connect("localhost", 11211);
 
             return this->instance;

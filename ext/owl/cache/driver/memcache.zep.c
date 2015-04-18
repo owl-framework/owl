@@ -70,9 +70,6 @@ PHP_METHOD(Owl_Cache_Driver_Memcache, setInstance) {
 
 }
 
-/**
- * @return \Memcache
- */
 PHP_METHOD(Owl_Cache_Driver_Memcache, getInstance) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
