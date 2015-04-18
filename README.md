@@ -15,7 +15,7 @@ Owl is an extreme fast PHP framework powered by [Zephir](https://github.com/phal
 
 To build it you need the following requirements:
 
-* `g++` >= 4.4/`clang++` >= 3.x or `vc++` 9 for Windows users
+* `g++` >= 4.4/`clang++` >= 3.x or `vc++` >= 9 for Windows users
 * `make` 3.81 or later
 * `autoconf` 2.31 or later
 * `automake` 1.14 or later
