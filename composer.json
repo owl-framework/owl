@@ -1,10 +1,13 @@
 {
     "name": "owl/owl",
+    "type": "extension",
+    "description": "Owl is an extreme fast PHP framework powered by Zephir language and delivered as C-extension.",
     "license": "MIT",
     "authors": [
         {
             "name": "Dmitry Patsura",
-            "email": "talk@dmtry.me"
+            "email": "talk@dmtry.me",
+            "homepage": "http://dmtry.me/about"
         }
     ],
     "require": {
