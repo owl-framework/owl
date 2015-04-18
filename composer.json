@@ -18,5 +18,11 @@
         "phalcon/zephir": "dev-master",
         "phpunit/phpunit": "4.5",
         "codeception/codeception": "~2.0.12"
+    },
+    "suggest": {
+        "ext-apc": "Allow using APC Cache\\Driver",
+        "ext-memcache": "Allow using Memcache Cache\\Driver",
+        "ext-memcached": "Allow using Memcached Cache\\Driver",
+        "ext-phpredis": "Allow using Redis Cache\\Driver"
     }
 }
