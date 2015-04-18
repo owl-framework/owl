@@ -26,7 +26,6 @@ services:
 
 install:
   - composer --prefer-source install
-  - composer require phalcon/zephir:dev-master --prefer-source
 
 before_script:
   - phpenv config-add tests/ci/drivers.ini
