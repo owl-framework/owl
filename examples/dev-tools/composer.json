@@ -1,0 +1,19 @@
+{
+    "name": "ovr/dev-tools",
+    "description": "Developer tools for Owl framework.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dmitry Patsura",
+            "email": "talk@dmtry.me"
+        }
+    ],
+    "require": {
+
+    },
+    "autoload": {
+        "psr-4": {
+            "Command\\": "app/Command"
+        }
+    }
+}

@@ -13,7 +13,7 @@ class Application
     public function addCommands(array! commands)
     {
         var command;
-        
+
         for command in commands {
             this->addCommand(command);
         }
