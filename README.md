@@ -25,7 +25,7 @@ If you're using Ubuntu, you can install the required packages this way:
 
 ```bash
 sudo apt-get update
-sudo apt-get install git gcc make re2c php5 php5-json php5-dev libpcre3-dev
+sudo apt-get install git gcc make re2c php5-cli php5-json php5-dev libpcre3-dev
 ```
 
 ### Installation
