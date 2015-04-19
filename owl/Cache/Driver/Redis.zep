@@ -4,12 +4,14 @@
 
 namespace Owl\Cache\Driver;
 
+use Redis;
+
 class Redis extends CacheDriver
 {
     protected options;
 
     /**
-     * @var \Memcache
+     * @var \Redis
      */
     protected instance;
 
@@ -18,18 +20,15 @@ class Redis extends CacheDriver
         let this->options = options;
     }
 
-    public fn setInstance(<\Redis> instance)
+    public fn setInstance(<Redis> instance)
     {
         let this->instance = instance;
     }
 
-    /**
-     * @return \Redis
-     */
-    public fn getInstance()
+    public fn getInstance() -> <Redis>
     {
         if (is_null($this->instance)) {
-            let this->instance = new \Redis();
+            let this->instance = new Redis();
             this->instance->connect("localhost");
 
             this->instance->setOption(\Redis::OPT_SERIALIZER, \Redis::SERIALIZER_PHP);
