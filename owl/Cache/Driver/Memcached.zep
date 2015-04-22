@@ -4,12 +4,14 @@
 
 namespace Owl\Cache\Driver;
 
+use Memcached;
+
 class Memcached extends CacheDriver
 {
     protected options;
 
     /**
-     * @var \Memcache
+     * @var \Memcached
      */
     protected instance;
 
@@ -18,15 +20,12 @@ class Memcached extends CacheDriver
         let this->options = options;
     }
 
-    public fn setInstance(<\Memcached> instance)
+    public fn setInstance(<Memcached> instance)
     {
         let this->instance = $instance;
     }
 
-    /**
-     * @return \Memcached
-     */
-    public fn getInstance()
+    public fn getInstance() -> <Memcached>
     {
         if (is_null($this->instance)) {
             let this->instance = new \Memcached;
