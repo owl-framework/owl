@@ -295,7 +295,7 @@ PHP_METHOD(Owl_Application, handle) {
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("eventManager"), PH_NOISY_CC);
 	ZEPHIR_INIT_VAR(_1);
-	ZVAL_STRING(_1, "beforeHandle", ZEPHIR_TEMP_PARAM_COPY);
+	ZVAL_STRING(_1, "app:beforeHandle", ZEPHIR_TEMP_PARAM_COPY);
 	ZEPHIR_CALL_METHOD(NULL, _0, "emit", NULL, _1, this_ptr);
 	zephir_check_temp_parameter(_1);
 	zephir_check_call_status();
@@ -342,7 +342,7 @@ PHP_METHOD(Owl_Application, handle) {
 	}
 	_9 = zephir_fetch_nproperty_this(this_ptr, SL("eventManager"), PH_NOISY_CC);
 	ZEPHIR_INIT_NVAR(_1);
-	ZVAL_STRING(_1, "afterHandle", ZEPHIR_TEMP_PARAM_COPY);
+	ZVAL_STRING(_1, "app:afterHandle", ZEPHIR_TEMP_PARAM_COPY);
 	ZEPHIR_CALL_METHOD(NULL, _9, "emit", NULL, _1, this_ptr);
 	zephir_check_temp_parameter(_1);
 	zephir_check_call_status();

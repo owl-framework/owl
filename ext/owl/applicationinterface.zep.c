@@ -20,9 +20,9 @@ ZEPHIR_INIT_CLASS(Owl_ApplicationInterface) {
 
 	zend_declare_class_constant_string(owl_applicationinterface_ce, SL("ENV_DEVELOPMENT"), "development" TSRMLS_CC);
 
-	zend_declare_class_constant_string(owl_applicationinterface_ce, SL("EVENT_BEFORE_HANDLE"), "beforeHandle" TSRMLS_CC);
+	zend_declare_class_constant_string(owl_applicationinterface_ce, SL("EVENT_BEFORE_HANDLE"), "app:beforeHandle" TSRMLS_CC);
 
-	zend_declare_class_constant_string(owl_applicationinterface_ce, SL("EVENT_AFTER_HANDLE"), "afterHandle" TSRMLS_CC);
+	zend_declare_class_constant_string(owl_applicationinterface_ce, SL("EVENT_AFTER_HANDLE"), "app:afterHandle" TSRMLS_CC);
 
 	return SUCCESS;
 

@@ -11,10 +11,10 @@ interface ApplicationInterface
     const ENV_DEVELOPMENT = "development";
 
 
-    const EVENT_BEFORE_HANDLE = "beforeHandle";
+    const EVENT_BEFORE_HANDLE = "app:beforeHandle";
 
 
-    const EVENT_AFTER_HANDLE = "afterHandle";
+    const EVENT_AFTER_HANDLE = "app:afterHandle";
 
 
     /**

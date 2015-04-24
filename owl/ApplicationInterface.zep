@@ -14,8 +14,8 @@ interface ApplicationInterface
 	const ENV_PRODUCTION = "production";
 	const ENV_DEVELOPMENT = "development";
 
-	const EVENT_BEFORE_HANDLE = "beforeHandle";
-	const EVENT_AFTER_HANDLE = "afterHandle";
+	const EVENT_BEFORE_HANDLE = "app:beforeHandle";
+	const EVENT_AFTER_HANDLE = "app:afterHandle";
 
 
 	public fn __construct(<Manager> di = null, <Event\Manager> eventManager = null, string env = self::ENV_PRODUCTION);
