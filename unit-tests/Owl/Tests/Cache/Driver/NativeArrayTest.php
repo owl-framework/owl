@@ -12,14 +12,22 @@ class NativeArrayTest extends TestCase
     {
         return 'NativeArray';
     }
+
     public function testConstruct()
     {
         $driver = $this->getDriver();
         $this->assertTrue(true);
     }
+
     public function testSetInstanceSuccess()
     {
         $driver = $this->getDriver();
         $driver->setInstance(array());
+    }
+
+    public function testGetInstance()
+    {
+        $driver = $this->getDriver();
+        $this->assertInternalType('array', $driver->getInstance());
     }
 }
