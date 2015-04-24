@@ -31,7 +31,7 @@ class Redis extends CacheDriver
             let this->instance = new Redis();
             this->instance->connect("localhost");
 
-            this->instance->setOption(\Redis::OPT_SERIALIZER, \Redis::SERIALIZER_PHP);
+            this->instance->setOption(Redis::OPT_SERIALIZER, Redis::SERIALIZER_PHP);
 
             return this->instance;
         }
