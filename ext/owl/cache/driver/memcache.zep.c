@@ -138,7 +138,7 @@ PHP_METHOD(Owl_Cache_Driver_Memcache, save) {
 	ZEPHIR_CALL_METHOD(&_0, this_ptr, "getinstance", NULL);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(_1);
-	ZEPHIR_GET_CONSTANT(_1, "MEMCACHE_COMPRESSED");
+	ZVAL_LONG(_1, 2);
 	ZEPHIR_RETURN_CALL_METHOD(_0, "set", NULL, id, data, _1, lifeTime);
 	zephir_check_call_status();
 	RETURN_MM();

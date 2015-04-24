@@ -8,7 +8,7 @@ class Redis extends \Owl\Cache\Driver\CacheDriver
     protected $options;
 
     /**
-     * @var \Memcache
+     * @var \Redis
      */
     protected $instance;
 

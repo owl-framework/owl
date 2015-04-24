@@ -8,7 +8,7 @@ class Memcached extends \Owl\Cache\Driver\CacheDriver
     protected $options;
 
     /**
-     * @var \Memcache
+     * @var \Memcached
      */
     protected $instance;
 

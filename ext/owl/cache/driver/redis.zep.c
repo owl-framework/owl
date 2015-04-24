@@ -29,7 +29,7 @@ ZEPHIR_INIT_CLASS(Owl_Cache_Driver_Redis) {
 	zend_declare_property_null(owl_cache_driver_redis_ce, SL("options"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
 	/**
-	 * @var \Memcache
+	 * @var \Redis
 	 */
 	zend_declare_property_null(owl_cache_driver_redis_ce, SL("instance"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
@@ -70,9 +70,6 @@ PHP_METHOD(Owl_Cache_Driver_Redis, setInstance) {
 
 }
 
-/**
- * @return \Redis
- */
 PHP_METHOD(Owl_Cache_Driver_Redis, getInstance) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
