@@ -11,6 +11,12 @@ interface ApplicationInterface
     const ENV_DEVELOPMENT = "development";
 
 
+    const EVENT_BEFORE_HANDLE = "beforeHandle";
+
+
+    const EVENT_AFTER_HANDLE = "afterHandle";
+
+
     /**
      * @param mixed $di 
      * @param mixed $eventManager 

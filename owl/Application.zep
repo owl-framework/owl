@@ -42,7 +42,7 @@ class Application implements ApplicationInterface
         "controller": "Error",
         "action": "exception"
     ];
-    
+
     public function __construct(<Manager> di = null, <Event\Manager> eventManager = null, string env = ApplicationInterface::ENV_PRODUCTION)
     {
         let this->di = di;
@@ -115,6 +115,8 @@ class Application implements ApplicationInterface
     {
         var matchedRoute, router;
 
+        this->eventManager->emit(ApplicationInterface::EVENT_BEFORE_HANDLE, this);
+
         if (is_null(response)) {
             let response = new Response();
         }
@@ -137,7 +139,7 @@ class Application implements ApplicationInterface
             this->dispatch(parameters, matchedRoute, response);
         }
 
-        this->eventManager->emit("app:afterHandle", this);
+        this->eventManager->emit(ApplicationInterface::EVENT_AFTER_HANDLE, this);
 
         return response;
     }

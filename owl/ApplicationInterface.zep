@@ -11,13 +11,17 @@ use Owl\Router\Http\StaticRoute;
 
 interface ApplicationInterface
 {
-    const ENV_PRODUCTION = "production";
-    const ENV_DEVELOPMENT = "development";
+	const ENV_PRODUCTION = "production";
+	const ENV_DEVELOPMENT = "development";
 
-    public fn __construct(<Manager> di = null, <Event\Manager> eventManager = null, string env = self::ENV_PRODUCTION);
+	const EVENT_BEFORE_HANDLE = "beforeHandle";
+	const EVENT_AFTER_HANDLE = "afterHandle";
 
-    /**
-     * Handle Http Request
-     */
-    public fn handle(<RequestInterface> request, <Response> response = null) -> <Response>;
+
+	public fn __construct(<Manager> di = null, <Event\Manager> eventManager = null, string env = self::ENV_PRODUCTION);
+
+	/**
+	 * Handle Http Request
+	 */
+	public fn handle(<RequestInterface> request, <Response> response = null) -> <Response>;
 }
