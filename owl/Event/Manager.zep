@@ -5,7 +5,7 @@ class Manager
 {
     protected listeners = [];
 
-    public fn listen(var eventName, callable callback)
+    public fn listen(var eventName, callable! callback)
     {
         let this->listeners[eventName][] = callback;
     }

@@ -13,11 +13,13 @@
 
 #include "kernel/main.h"
 #include "kernel/object.h"
-#include "kernel/operators.h"
+#include "ext/spl/spl_exceptions.h"
+#include "kernel/exception.h"
 #include "kernel/memory.h"
 #include "kernel/array.h"
 #include "kernel/hash.h"
 #include "kernel/fcall.h"
+#include "kernel/operators.h"
 
 ZEPHIR_INIT_CLASS(Owl_Event_Manager) {
 
@@ -34,6 +36,11 @@ PHP_METHOD(Owl_Event_Manager, listen) {
 	zval *eventName, *callback;
 
 	zephir_fetch_params(0, 2, 0, &eventName, &callback);
+
+	if (unlikely(zephir_is_callable(callback TSRMLS_CC) != 1)) {
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'callback' must be callable") TSRMLS_CC);
+		RETURN_NULL();
+	}
 
 
 
