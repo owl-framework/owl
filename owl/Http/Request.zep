@@ -49,9 +49,20 @@ class Request implements RequestInterface
      */
     protected cookies;
 
-    public function getUri() -> string|null
+    /**
+     * Get request URI
+     */
+    inline public function getUri() -> string|null
     {
         return this->server->get("REQUEST_URI", "/");
+    }
+
+    /**
+     * Get request path (URI without GET parameters)
+     */
+    public function getPath() -> string
+    {
+        return parse_url(this->getUri(), PHP_URL_PATH);
     }
 
     public fn getParam(string! key, var defaultValue = null)
