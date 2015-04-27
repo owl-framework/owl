@@ -24,6 +24,7 @@ if test "$PHP_OWL" = "yes"; then
 	owl/cache/driver/redis.zep.c
 	owl/console/application.zep.c
 	owl/console/commandinterface.zep.c
+	owl/debug/profiler.zep.c
 	owl/event/manager.zep.c
 	owl/exception.zep.c
 	owl/http/request.zep.c

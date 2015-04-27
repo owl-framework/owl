@@ -50,6 +50,7 @@ zend_class_entry *owl_cache_driver_memcached_ce;
 zend_class_entry *owl_cache_driver_nativearray_ce;
 zend_class_entry *owl_cache_driver_redis_ce;
 zend_class_entry *owl_console_application_ce;
+zend_class_entry *owl_debug_profiler_ce;
 zend_class_entry *owl_event_manager_ce;
 zend_class_entry *owl_http_request_ce;
 zend_class_entry *owl_http_response_json_ce;
@@ -105,6 +106,7 @@ static PHP_MINIT_FUNCTION(owl)
 	ZEPHIR_INIT(Owl_Cache_Driver_NativeArray);
 	ZEPHIR_INIT(Owl_Cache_Driver_Redis);
 	ZEPHIR_INIT(Owl_Console_Application);
+	ZEPHIR_INIT(Owl_Debug_Profiler);
 	ZEPHIR_INIT(Owl_Event_Manager);
 	ZEPHIR_INIT(Owl_Http_Request);
 	ZEPHIR_INIT(Owl_Http_Response_Json);
