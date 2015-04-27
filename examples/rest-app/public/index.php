@@ -40,5 +40,5 @@ $serviceManager->setService('router', $router);
 $application = new Application($serviceManager, $eventManager);
 $response = $application->handle(Request::createFromGlobals(), new \Owl\Http\Response\Json());
 
-$profiler->show();
+$response = $profiler->setContent($response);
 $response->send();

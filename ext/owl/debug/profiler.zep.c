@@ -18,6 +18,7 @@
 #include "kernel/fcall.h"
 #include "kernel/array.h"
 #include "kernel/operators.h"
+#include "kernel/string.h"
 
 
 ZEPHIR_INIT_CLASS(Owl_Debug_Profiler) {
@@ -121,43 +122,64 @@ PHP_METHOD(Owl_Debug_Profiler, listen) {
 
 }
 
-PHP_METHOD(Owl_Debug_Profiler, show) {
+PHP_METHOD(Owl_Debug_Profiler, setContent) {
 
+	zephir_nts_static zephir_fcall_cache_entry *_0 = NULL, *_6 = NULL, *_8 = NULL, *_13 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
-	zephir_nts_static zephir_fcall_cache_entry *_5 = NULL, *_7 = NULL;
-	zval *html, *_0, *_1, _2, _3 = zval_used_for_init, *_4 = NULL, *_6 = NULL, _8, *_9 = NULL;
+	zval *response, *html, *resp, *_1 = NULL, *_2, _3, _4 = zval_used_for_init, *_5 = NULL, *_7 = NULL, _9, *_10 = NULL, *_11, *_12 = NULL;
 
 	ZEPHIR_MM_GROW();
+	zephir_fetch_params(1, 1, 0, &response);
 
+
+
+	ZEPHIR_INIT_VAR(resp);
+	object_init_ex(resp, owl_http_response_ce);
+	ZEPHIR_CALL_METHOD(NULL, resp, "__construct", &_0);
+	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(html);
-	ZVAL_STRING(html, "<style>", 1);
+	ZVAL_STRING(html, "<html><body>", 1);
+	zephir_concat_self_str(&html, SL("<style>") TSRMLS_CC);
 	zephir_concat_self_str(&html, SL("#owl-debug-bar {width: 100%;height: 40px;line-height: 40px;border-bottom: 1px solid black;margin-bottom: 20px;background-color: #f8f8f8;}") TSRMLS_CC);
 	zephir_concat_self_str(&html, SL("body {margin: 0; padding: 0;}") TSRMLS_CC);
 	zephir_concat_self_str(&html, SL("</style>") TSRMLS_CC);
 	zephir_concat_self_str(&html, SL("<div id='owl-debug-bar'>") TSRMLS_CC);
-	ZEPHIR_INIT_VAR(_0);
-	zephir_microtime(_0, ZEPHIR_GLOBAL(global_true) TSRMLS_CC);
-	_1 = zephir_fetch_nproperty_this(this_ptr, SL("startTime"), PH_NOISY_CC);
-	ZEPHIR_SINIT_VAR(_2);
-	sub_function(&_2, _0, _1 TSRMLS_CC);
+	ZEPHIR_INIT_VAR(_1);
+	zephir_microtime(_1, ZEPHIR_GLOBAL(global_true) TSRMLS_CC);
+	_2 = zephir_fetch_nproperty_this(this_ptr, SL("startTime"), PH_NOISY_CC);
 	ZEPHIR_SINIT_VAR(_3);
-	ZVAL_STRING(&_3, "%.4F ms", 0);
-	ZEPHIR_CALL_FUNCTION(&_4, "sprintf", &_5, &_3, &_2);
+	sub_function(&_3, _1, _2 TSRMLS_CC);
+	ZEPHIR_SINIT_VAR(_4);
+	ZVAL_STRING(&_4, "%.4F ms", 0);
+	ZEPHIR_CALL_FUNCTION(&_5, "sprintf", &_6, &_4, &_3);
 	zephir_check_call_status();
-	zephir_concat_self(&html, _4 TSRMLS_CC);
+	zephir_concat_self(&html, _5 TSRMLS_CC);
 	zephir_concat_self_str(&html, SL("\t") TSRMLS_CC);
-	ZEPHIR_CALL_FUNCTION(&_6, "memory_get_peak_usage", &_7);
+	ZEPHIR_CALL_FUNCTION(&_7, "memory_get_peak_usage", &_8);
 	zephir_check_call_status();
-	ZEPHIR_SINIT_NVAR(_3);
-	ZVAL_STRING(&_3, "%.3f MB", 0);
-	ZEPHIR_SINIT_VAR(_8);
-	ZVAL_DOUBLE(&_8, zephir_safe_div_double_long(zephir_safe_div_zval_long(_6, 1024 TSRMLS_CC), (double) (1024) TSRMLS_CC));
-	ZEPHIR_CALL_FUNCTION(&_9, "sprintf", &_5, &_3, &_8);
+	ZEPHIR_SINIT_NVAR(_4);
+	ZVAL_STRING(&_4, "%.3f MB", 0);
+	ZEPHIR_SINIT_VAR(_9);
+	ZVAL_DOUBLE(&_9, zephir_safe_div_double_long(zephir_safe_div_zval_long(_7, 1024 TSRMLS_CC), (double) (1024) TSRMLS_CC));
+	ZEPHIR_CALL_FUNCTION(&_10, "sprintf", &_6, &_4, &_9);
 	zephir_check_call_status();
-	zephir_concat_self(&html, _9 TSRMLS_CC);
+	zephir_concat_self(&html, _10 TSRMLS_CC);
 	zephir_concat_self_str(&html, SL("</div>") TSRMLS_CC);
-	zend_print_zval(html, 0);
-	ZEPHIR_MM_RESTORE();
+	zephir_concat_self_str(&html, SL("<pre><code>") TSRMLS_CC);
+	ZEPHIR_INIT_NVAR(_1);
+	ZEPHIR_INIT_VAR(_11);
+	ZEPHIR_CALL_METHOD(&_12, response, "getcontent", NULL);
+	zephir_check_call_status();
+	zephir_json_decode(_11, &(_11), _12, 0  TSRMLS_CC);
+	ZEPHIR_SINIT_NVAR(_4);
+	ZVAL_LONG(&_4, 128);
+	zephir_json_encode(_1, &(_1), _11, zephir_get_intval(&_4)  TSRMLS_CC);
+	zephir_concat_self(&html, _1 TSRMLS_CC);
+	zephir_concat_self_str(&html, SL("</code></pre>") TSRMLS_CC);
+	zephir_concat_self_str(&html, SL("</body></html>") TSRMLS_CC);
+	ZEPHIR_CALL_METHOD(NULL, resp, "setcontent", &_13, html);
+	zephir_check_call_status();
+	RETURN_CCTOR(resp);
 
 }
 

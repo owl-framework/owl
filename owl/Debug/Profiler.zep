@@ -3,6 +3,7 @@ namespace Owl\Debug;
 
 use Owl\ApplicationInterface;
 use Owl\DispatcherInterface;
+use Owl\Http\ResponseInterface;
 
 use Owl\Event\Manager as EventManager;
 use Owl\Event\Event;
@@ -40,11 +41,15 @@ class Profiler {
 		//em->listen(DispatcherInterface::EVENT_AFTER_INIT, [this, "logEvent"]);
 	}
 
-	public function show()
+	public function setContent(<ResponseInterface> response) -> <ResponseInterface>
 	{
-	    var html;
+	    var html, resp;
 
-	    let html = "<style>";
+		let resp = new \Owl\Http\Response();
+
+	    let html = "<html><body>";
+
+	    let html .= "<style>";
 	    	let html .= "#owl-debug-bar {width: 100%;height: 40px;line-height: 40px;border-bottom: 1px solid black;margin-bottom: 20px;background-color: #f8f8f8;}";
 	    	let html .= "body {margin: 0; padding: 0;}";
 	    let html .= "</style>";
@@ -55,6 +60,15 @@ class Profiler {
 			let html .= sprintf("%.3f MB", memory_get_peak_usage() / 1024 / 1024);
   	    let html .= "</div>";
 
-        echo html;
+
+		let html .= "<pre><code>";
+				let html .= json_encode(json_decode(response->getContent()), JSON_PRETTY_PRINT);
+		let html .= "</code></pre>";
+
+		let html .= "</body></html>";
+
+        resp->setContent(html);
+
+        return resp;
 	}
 }

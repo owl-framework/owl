@@ -24,7 +24,10 @@ class Profiler
      */
     public function listen(\Owl\Event\Manager $em) {}
 
-
-    public function show() {}
+    /**
+     * @param mixed $response 
+     * @return \Owl\Http\ResponseInterface 
+     */
+    public function setContent(\Owl\Http\ResponseInterface $response) {}
 
 }
