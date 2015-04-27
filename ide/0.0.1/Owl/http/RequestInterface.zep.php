@@ -8,25 +8,25 @@ interface RequestInterface
     /**
      * @return string|null 
      */
-	public function getUri();
+    public function getUri();
 
     /**
      * @param string $key 
      * @param mixed $defaultValue 
      * @return string 
      */
-	public function getPost($key, $defaultValue = null);
+    public function getPost($key, $defaultValue = null);
 
     /**
      * @param string $key 
      * @param mixed $defaultValue 
      * @return string 
      */
-	public function getServer($key, $defaultValue = null);
+    public function getServer($key, $defaultValue = null);
 
     /**
      * @return string 
      */
-	public function getScheme();
+    public function getScheme();
 
 }

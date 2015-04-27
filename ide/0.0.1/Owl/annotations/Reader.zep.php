@@ -8,6 +8,6 @@ class Reader
     /**
      * @param string $comment 
      */
-	static public function parse($comment) {}
+    static public function parse($comment) {}
 
 }

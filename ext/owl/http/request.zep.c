@@ -88,6 +88,9 @@ PHP_METHOD(Owl_Http_Request, getMethod) {
 
 }
 
+/**
+ * Get request URI
+ */
 PHP_METHOD(Owl_Http_Request, getUri) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
@@ -103,6 +106,27 @@ PHP_METHOD(Owl_Http_Request, getUri) {
 	ZEPHIR_RETURN_CALL_METHOD(_0, "get", NULL, _1, _2);
 	zephir_check_temp_parameter(_1);
 	zephir_check_temp_parameter(_2);
+	zephir_check_call_status();
+	RETURN_MM();
+
+}
+
+/**
+ * Get request path (URI without GET parameters)
+ */
+PHP_METHOD(Owl_Http_Request, getPath) {
+
+	zephir_nts_static zephir_fcall_cache_entry *_2 = NULL;
+	int ZEPHIR_LAST_CALL_STATUS;
+	zval *_0 = NULL, _1;
+
+	ZEPHIR_MM_GROW();
+
+	ZEPHIR_CALL_METHOD(&_0, this_ptr, "geturi", NULL);
+	zephir_check_call_status();
+	ZEPHIR_SINIT_VAR(_1);
+	ZVAL_LONG(&_1, 5);
+	ZEPHIR_RETURN_CALL_FUNCTION("parse_url", &_2, _0, &_1);
 	zephir_check_call_status();
 	RETURN_MM();
 

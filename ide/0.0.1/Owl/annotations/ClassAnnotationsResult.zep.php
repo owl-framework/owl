@@ -15,6 +15,6 @@ class ClassAnnotationsResult
      * @param array $annotations 
      * @param array $methods 
      */
-	public function __construct($annotations, $methods = null) {}
+    public function __construct($annotations, $methods = null) {}
 
 }

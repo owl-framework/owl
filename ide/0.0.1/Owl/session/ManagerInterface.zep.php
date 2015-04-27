@@ -8,19 +8,19 @@ interface ManagerInterface
     /**
      * @return bool 
      */
-	public function start();
+    public function start();
 
     /**
      * @return string 
      */
-	public function getId();
+    public function getId();
 
     /**
      * @param int $ttl 
      */
-	public function rememberMe($ttl);
+    public function rememberMe($ttl);
 
 
-	public function forgetMe();
+    public function forgetMe();
 
 }

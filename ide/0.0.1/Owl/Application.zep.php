@@ -39,38 +39,38 @@ class Application implements \Owl\ApplicationInterface
     /**
      * @return \Owl\Http\RequestInterface 
      */
-	public function getRequest() {}
+    public function getRequest() {}
 
     /**
      * @return \Owl\Http\Response 
      */
-	public function getResponse() {}
+    public function getResponse() {}
 
     /**
      * @return \Owl\Service\Manager 
      */
-	public function getDi() {}
+    public function getDi() {}
 
     /**
      * Current env, see ENV_* constants
      *
      * @return string 
      */
-	public function getEnv() {}
+    public function getEnv() {}
 
     /**
      * @param mixed $di 
      * @param mixed $eventManager 
      * @param string $env 
      */
-	public function __construct(\Owl\Service\Manager $di = null, Event\Manager $eventManager = null, $env = ApplicationInterface::ENV_PRODUCTION) {}
+    public function __construct(\Owl\Service\Manager $di = null, Event\Manager $eventManager = null, $env = ApplicationInterface::ENV_PRODUCTION) {}
 
     /**
      * @param mixed $parameters 
      * @param mixed $matchedRoute 
      * @param mixed $response 
      */
-	protected function dispatch($parameters, $matchedRoute, $response) {}
+    protected function dispatch($parameters, $matchedRoute, $response) {}
 
     /**
      * Handle Http Request
@@ -79,6 +79,6 @@ class Application implements \Owl\ApplicationInterface
      * @param mixed $response 
      * @return \Owl\Http\Response 
      */
-	public function handle(\Owl\Http\RequestInterface $request, \Owl\Http\Response $response = null) {}
+    public function handle(\Owl\Http\RequestInterface $request, \Owl\Http\Response $response = null) {}
 
 }

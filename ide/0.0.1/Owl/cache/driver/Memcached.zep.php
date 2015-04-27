@@ -16,20 +16,20 @@ class Memcached extends \Owl\Cache\Driver\CacheDriver
     /**
      * @param array $options 
      */
-	public function __construct($options = null) {}
+    public function __construct($options = null) {}
 
     /**
      * @param mixed $instance 
      */
-	public function setInstance(\Memcached $instance) {}
+    public function setInstance(\Memcached $instance) {}
 
     /**
      * @return \Memcached 
      */
-	public function getInstance() {}
+    public function getInstance() {}
 
 
-	public function __destruct() {}
+    public function __destruct() {}
 
     /**
      * {@inheritDoc}
@@ -38,25 +38,25 @@ class Memcached extends \Owl\Cache\Driver\CacheDriver
      * @param mixed $data 
      * @param mixed $lifeTime 
      */
-	public function save($id, $data, $lifeTime = 3600) {}
+    public function save($id, $data, $lifeTime = 3600) {}
 
     /**
      * {@inheritDoc}
      *
      * @param mixed $id 
      */
-	public function delete($id) {}
+    public function delete($id) {}
 
     /**
      * {@inheritDoc}
      *
      * @param mixed $id 
      */
-	public function get($id) {}
+    public function get($id) {}
 
     /**
      * {@inheritDoc}
      */
-	public function flush() {}
+    public function flush() {}
 
 }

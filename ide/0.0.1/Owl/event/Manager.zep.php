@@ -12,15 +12,15 @@ class Manager
      * @param mixed $eventName 
      * @param callable $callback 
      */
-	public function listen($eventName, $callback) {}
+    public function listen($eventName, $callback) {}
 
     /**
      * @param string $eventName 
      * @param mixed $data 
      */
-	public function emit($eventName, $data = null) {}
+    public function emit($eventName, $data = null) {}
 
 
-	public function __construct() {}
+    public function __construct() {}
 
 }

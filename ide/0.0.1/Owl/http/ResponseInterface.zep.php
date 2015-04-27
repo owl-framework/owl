@@ -8,6 +8,6 @@ interface ResponseInterface
     /**
      * @return bool 
      */
-	public function send();
+    public function send();
 
 }

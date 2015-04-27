@@ -11,12 +11,12 @@ class ArrayBag
     /**
      * @param array $input 
      */
-	public function __construct($input) {}
+    public function __construct($input) {}
 
     /**
      * @param string $key 
      * @param mixed $defaultValue 
      */
-	public function get($key, $defaultValue = null) {}
+    public function get($key, $defaultValue = null) {}
 
 }

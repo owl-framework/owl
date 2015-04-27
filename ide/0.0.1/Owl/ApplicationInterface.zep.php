@@ -22,7 +22,7 @@ interface ApplicationInterface
      * @param mixed $eventManager 
      * @param string $env 
      */
-	public function __construct(\Owl\Service\Manager $di = null, Event\Manager $eventManager = null, $env = self::ENV_PRODUCTION);
+    public function __construct(\Owl\Service\Manager $di = null, Event\Manager $eventManager = null, $env = self::ENV_PRODUCTION);
 
     /**
      * Handle Http Request
@@ -31,6 +31,6 @@ interface ApplicationInterface
      * @param mixed $response 
      * @return \Owl\Http\Response 
      */
-	public function handle(\Owl\Http\RequestInterface $request, \Owl\Http\Response $response = null);
+    public function handle(\Owl\Http\RequestInterface $request, \Owl\Http\Response $response = null);
 
 }

@@ -6,11 +6,11 @@ class Json extends \Owl\Http\Response
 {
 
 
-	public function __construct() {}
+    public function __construct() {}
 
     /**
      * @param mixed $content 
      */
-	public function setContent($content) {}
+    public function setContent($content) {}
 
 }

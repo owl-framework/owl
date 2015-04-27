@@ -6,12 +6,12 @@ class EntityController extends \Owl\Mvc\Controller
 {
 
 
-	public function getAction() {}
+    public function getAction() {}
 
 
-	public function deleteAction() {}
+    public function deleteAction() {}
 
 
-	public function createAction() {}
+    public function createAction() {}
 
 }

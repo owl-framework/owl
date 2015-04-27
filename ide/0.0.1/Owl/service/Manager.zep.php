@@ -15,26 +15,26 @@ class Manager
      * @param string $name 
      * @param mixed $service 
      */
-	public function setService($name, $service) {}
+    public function setService($name, $service) {}
 
     /**
      * @param string $name 
      */
-	public function get($name) {}
-
-    /**
-     * @param string $name 
-     * @return variable 
-     */
-	public function getInstance($name) {}
+    public function get($name) {}
 
     /**
      * @param string $name 
      * @return variable 
      */
-	public function getService($name) {}
+    public function getInstance($name) {}
+
+    /**
+     * @param string $name 
+     * @return variable 
+     */
+    public function getService($name) {}
 
 
-	public function __construct() {}
+    public function __construct() {}
 
 }

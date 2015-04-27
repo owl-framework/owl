@@ -10,7 +10,7 @@ interface Driver
      *
      * @return mixed 
      */
-	public function getInstance();
+    public function getInstance();
 
     /**
      * Save data
@@ -22,7 +22,7 @@ interface Driver
      * @param int $$lifeTime 
      * @return boolean 
      */
-	public function save($id, $data, $lifeTime = 3600);
+    public function save($id, $data, $lifeTime = 3600);
 
     /**
      * Save data by id
@@ -31,7 +31,7 @@ interface Driver
      * @param $id  
      * @return boolean 
      */
-	public function delete($id);
+    public function delete($id);
 
     /**
      * Fetch data by id
@@ -40,7 +40,7 @@ interface Driver
      * @param $id  
      * @return mixed 
      */
-	public function get($id);
+    public function get($id);
 
     /**
      * Is value exist?
@@ -49,13 +49,13 @@ interface Driver
      * @param $id  
      * @return boolean 
      */
-	public function exists($id);
+    public function exists($id);
 
     /**
      * Flush all values
      *
      * @return boolean 
      */
-	public function flush();
+    public function flush();
 
 }

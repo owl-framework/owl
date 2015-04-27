@@ -69,37 +69,46 @@ class Request implements \Owl\Http\RequestInterface
 
 
 
-	public function getMethod() {}
+    public function getMethod() {}
 
     /**
+     * Get request URI
+     *
      * @return string|null 
      */
-	public function getUri() {}
+    public function getUri() {}
+
+    /**
+     * Get request path (URI without GET parameters)
+     *
+     * @return string 
+     */
+    public function getPath() {}
 
     /**
      * @param string $key 
      * @param mixed $defaultValue 
      */
-	public function getParam($key, $defaultValue = null) {}
+    public function getParam($key, $defaultValue = null) {}
 
     /**
      * @param string $key 
      * @param mixed $defaultValue 
      * @return variable|bool 
      */
-	public function getPost($key, $defaultValue = null) {}
+    public function getPost($key, $defaultValue = null) {}
 
     /**
      * @param string $key 
      * @param mixed $defaultValue 
      * @return variable|bool 
      */
-	public function getServer($key, $defaultValue = null) {}
+    public function getServer($key, $defaultValue = null) {}
 
     /**
      * @return string 
      */
-	public function getScheme() {}
+    public function getScheme() {}
 
     /**
      * @param mixed $get 
@@ -109,11 +118,11 @@ class Request implements \Owl\Http\RequestInterface
      * @param mixed $files 
      * @param mixed $cookies 
      */
-	public function __construct($get, $post, $server, $headers, $files, $cookies) {}
+    public function __construct($get, $post, $server, $headers, $files, $cookies) {}
 
     /**
      * @return Request 
      */
-	public static function createFromGlobals() {}
+    public static function createFromGlobals() {}
 
 }

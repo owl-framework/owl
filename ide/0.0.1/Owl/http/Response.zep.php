@@ -18,30 +18,30 @@ class Response implements \Owl\Http\ResponseInterface
 
 
 
-	public function getCode() {}
+    public function getCode() {}
 
     /**
      * @param mixed $code 
      */
-	public function setCode($code) {}
+    public function setCode($code) {}
 
 
-	public function getContent() {}
+    public function getContent() {}
 
     /**
      * @param mixed $content 
      */
-	public function setContent($content) {}
+    public function setContent($content) {}
 
 
-	public function getHeaders() {}
+    public function getHeaders() {}
 
 
-	public function __construct() {}
+    public function __construct() {}
 
     /**
      * @return bool 
      */
-	public function send() {}
+    public function send() {}
 
 }
