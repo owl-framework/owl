@@ -52,7 +52,7 @@ class Request implements RequestInterface
     /**
      * Get request URI
      */
-    inline public function getUri() -> string|null
+    inline public function getUri() -> string
     {
         return this->server->get("REQUEST_URI", "/");
     }

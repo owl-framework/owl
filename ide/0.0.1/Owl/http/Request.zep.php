@@ -74,7 +74,7 @@ class Request implements \Owl\Http\RequestInterface
     /**
      * Get request URI
      *
-     * @return string|null 
+     * @return string 
      */
     public function getUri() {}
 
