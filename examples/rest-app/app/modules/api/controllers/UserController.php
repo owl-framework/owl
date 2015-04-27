@@ -30,7 +30,7 @@ class UserController extends \Owl\Mvc\Controller
             'id' => 3,
             'firstname' => 'Nikolay',
             'lastname' => 'Kirsh',
-            'nick' => 'Xboston'
+            'nick' => 'xboston'
         )
     );
 
