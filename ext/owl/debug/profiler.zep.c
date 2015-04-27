@@ -124,8 +124,8 @@ PHP_METHOD(Owl_Debug_Profiler, listen) {
 PHP_METHOD(Owl_Debug_Profiler, show) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
-	zephir_nts_static zephir_fcall_cache_entry *_5 = NULL;
-	zval *html, *_0, *_1, _2, _3, *_4 = NULL;
+	zephir_nts_static zephir_fcall_cache_entry *_5 = NULL, *_7 = NULL;
+	zval *html, *_0, *_1, _2, _3 = zval_used_for_init, *_4 = NULL, *_6 = NULL, _8, *_9 = NULL;
 
 	ZEPHIR_MM_GROW();
 
@@ -145,6 +145,16 @@ PHP_METHOD(Owl_Debug_Profiler, show) {
 	ZEPHIR_CALL_FUNCTION(&_4, "sprintf", &_5, &_3, &_2);
 	zephir_check_call_status();
 	zephir_concat_self(&html, _4 TSRMLS_CC);
+	zephir_concat_self_str(&html, SL("\t") TSRMLS_CC);
+	ZEPHIR_CALL_FUNCTION(&_6, "memory_get_peak_usage", &_7);
+	zephir_check_call_status();
+	ZEPHIR_SINIT_NVAR(_3);
+	ZVAL_STRING(&_3, "%.3f MB", 0);
+	ZEPHIR_SINIT_VAR(_8);
+	ZVAL_DOUBLE(&_8, zephir_safe_div_double_long(zephir_safe_div_zval_long(_6, 1024 TSRMLS_CC), (double) (1024) TSRMLS_CC));
+	ZEPHIR_CALL_FUNCTION(&_9, "sprintf", &_5, &_3, &_8);
+	zephir_check_call_status();
+	zephir_concat_self(&html, _9 TSRMLS_CC);
 	zephir_concat_self_str(&html, SL("</div>") TSRMLS_CC);
 	zend_print_zval(html, 0);
 	ZEPHIR_MM_RESTORE();
