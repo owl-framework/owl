@@ -16,8 +16,12 @@ class Manager
 
         if fetch events, this->listeners[eventName] {
             for callback in events {
-                {callback}(data);
+                if typeof callback == "array" {
+                    call_user_func_array(callback, [data]);
+                } else {
+                    {callback}(data);
+                }
             }
         }
-    }
+	}
 }
