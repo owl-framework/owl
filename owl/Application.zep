@@ -83,7 +83,7 @@ class Application implements ApplicationInterface
 
             let controller = new {handlerClass}(this->request, response, this->di);
 
-            this->eventManager->emit("dispatch:afterInitialize", this);
+            this->eventManager->emit(DispatcherInterface::EVENT_AFTER_INIT, this);
 
             let action = parameters["action"] . "Action";
             if (!method_exists(controller, action)) {
@@ -99,7 +99,7 @@ class Application implements ApplicationInterface
                 let result = call_user_func_array([controller, action], matchedRoute->uriParameters);
             }
 
-            this->eventManager->emit("dispatch:afterAction", this);
+            this->eventManager->emit(DispatcherInterface::EVENT_AFTER_ACTION, this);
 
             response->setContent(result);
         } catch Exception, e {
@@ -121,12 +121,12 @@ class Application implements ApplicationInterface
             let response = new Response();
         }
 
-        this->eventManager->emit("dispatch:beforeExecuteRoute", this);
+        this->eventManager->emit(DispatcherInterface::EVENT_ROUTER_BEFORE_EXECUTE, this);
 
         let router = this->di->get("router");
         let matchedRoute = router->matchRequest(request);
 
-        this->eventManager->emit("dispatch:afterExecuteRoute", this);
+        this->eventManager->emit(DispatcherInterface::EVENT_ROUTER_AFTER_EXECUTE, this);
 
         if (matchedRoute) {
             var parameters;

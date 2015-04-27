@@ -50,11 +50,12 @@ PHP_METHOD(Owl_Event_Manager, listen) {
 
 PHP_METHOD(Owl_Event_Manager, emit) {
 
+	zephir_fcall_cache_entry *_7 = NULL;
 	zval *_5 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
 	HashTable *_2;
 	HashPosition _1;
-	zval *eventName_param = NULL, *data = NULL, *events, *callback = NULL, *_0, **_3, *_4 = NULL;
+	zval *eventName_param = NULL, *data = NULL, *events, *callback = NULL, *_0, **_3, *_4 = NULL, *_6 = NULL;
 	zval *eventName = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -79,11 +80,19 @@ PHP_METHOD(Owl_Event_Manager, emit) {
 				ZEPHIR_INIT_NVAR(_4);
 				ZEPHIR_INIT_NVAR(_5);
 				zephir_create_array(_5, 1, 0 TSRMLS_CC);
-				zephir_array_fast_append(_5, data);
+				ZEPHIR_INIT_NVAR(_6);
+				object_init_ex(_6, owl_event_event_ce);
+				ZEPHIR_CALL_METHOD(NULL, _6, "__construct", &_7, eventName, data);
+				zephir_check_call_status();
+				zephir_array_fast_append(_5, _6);
 				ZEPHIR_CALL_USER_FUNC_ARRAY(_4, callback, _5);
 				zephir_check_call_status();
 			} else {
-				ZEPHIR_CALL_ZVAL_FUNCTION(NULL, callback, NULL, data);
+				ZEPHIR_INIT_NVAR(_4);
+				object_init_ex(_4, owl_event_event_ce);
+				ZEPHIR_CALL_METHOD(NULL, _4, "__construct", &_7, eventName, data);
+				zephir_check_call_status();
+				ZEPHIR_CALL_ZVAL_FUNCTION(NULL, callback, NULL, _4);
 				zephir_check_call_status();
 			}
 		}

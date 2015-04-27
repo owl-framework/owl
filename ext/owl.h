@@ -20,6 +20,8 @@
 #include "owl/console/application.zep.h"
 #include "owl/console/commandinterface.zep.h"
 #include "owl/debug/profiler.zep.h"
+#include "owl/dispatcherinterface.zep.h"
+#include "owl/event/event.zep.h"
 #include "owl/event/manager.zep.h"
 #include "owl/exception.zep.h"
 #include "owl/http/request.zep.h"

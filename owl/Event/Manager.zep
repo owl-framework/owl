@@ -17,9 +17,9 @@ class Manager
         if fetch events, this->listeners[eventName] {
             for callback in events {
                 if typeof callback == "array" {
-                    call_user_func_array(callback, [data]);
+                    call_user_func_array(callback, [new Event(eventName, data)]);
                 } else {
-                    {callback}(data);
+                    {callback}(new Event(eventName, data));
                 }
             }
         }

@@ -13,6 +13,11 @@ use Owl\Router\Router;
 
 include_once __DIR__ . '/../vendor/autoload.php';
 
+$eventManager = new \Owl\Event\Manager();
+
+$profiler = new Owl\Debug\Profiler();
+$profiler->listen($eventManager);
+
 $serviceManager = new Owl\Service\Manager();
 
 $router = new Router();
@@ -24,8 +29,6 @@ $router->add('/users/:id', ['module' => 'Api', 'controller' => 'User', 'action' 
 
 $serviceManager->setService('router', $router);
 
-$eventManager = new \Owl\Event\Manager();
-
 //$eventManager->listen(\Owl\ApplicationInterface::EVENT_BEFORE_HANDLE, function() use(&$startTime) {
 //    printf('Before handle %.4F сек. <br/>', microtime(true)-$startTime);
 //});
@@ -36,4 +39,6 @@ $eventManager = new \Owl\Event\Manager();
 
 $application = new Application($serviceManager, $eventManager);
 $response = $application->handle(Request::createFromGlobals(), new \Owl\Http\Response\Json());
+
+$profiler->show();
 $response->send();
