@@ -117,10 +117,12 @@ class Application implements ApplicationInterface
 
         this->eventManager->emit(ApplicationInterface::EVENT_BEFORE_HANDLE, this);
 
+
         if (is_null(response)) {
             let response = new Response();
         }
 
+	let this->currentLoop = 0;
         this->eventManager->emit(DispatcherInterface::EVENT_ROUTER_BEFORE_EXECUTE, this);
 
         let router = this->di->get("router");

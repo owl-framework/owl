@@ -305,6 +305,9 @@ PHP_METHOD(Owl_Application, handle) {
 		ZEPHIR_CALL_METHOD(NULL, response, "__construct", &_2);
 		zephir_check_call_status();
 	}
+	ZEPHIR_INIT_ZVAL_NREF(_3);
+	ZVAL_LONG(_3, 0);
+	zephir_update_property_this(this_ptr, SL("currentLoop"), _3 TSRMLS_CC);
 	_3 = zephir_fetch_nproperty_this(this_ptr, SL("eventManager"), PH_NOISY_CC);
 	ZEPHIR_INIT_NVAR(_1);
 	ZVAL_STRING(_1, "dispatch:beforeExecuteRoute", ZEPHIR_TEMP_PARAM_COPY);
