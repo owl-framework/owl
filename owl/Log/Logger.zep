@@ -27,12 +27,109 @@ namespace Owl\Log;
  */
 class Logger extends AbstractLogger implements LoggerInterface
 {
+    /**
+     * Log records
+     */
+    protected records = [] {
+        get
+    };
 
     /**
-     * Logs with an arbitrary level.
+     * Records limit to commit them to writers
+     */
+    protected recordsInterval = 1000 {
+        get
+    };
+
+    /**
+     * Log writers
+     */
+    protected writers = [] {
+        get
+    };
+
+    public function __construct(writers = null)
+    {
+        var writer;
+
+        for writer in writers {
+            let this->writers[] = this->factoryWriter(writer);
+        }
+    }
+
+    public function __destruct() {
+
+        var writer;
+
+        if (count(this->records) > 0 ) {
+            for writer in this->writers {
+                writer->commit(this->records);
+            }
+
+            let this->records = [];
+        }
+    }
+
+    /**
+     * Create writer
+     */
+    protected function factoryWriter(array writerDescription = []) -> <WriterInterface> {
+
+        var writer, writerClass;
+
+        if (!isset(writerDescription["class"])) {
+            throw new InvalidWriterException("Writer options 'class' is not exists");
+        }
+
+        if (!class_exists(writerDescription["class"])) {
+            throw new InvalidWriterException("Writer class is not exists");
+        }
+
+        let writerClass = writerDescription["class"];
+        let writer = new {writerClass}();
+
+        if isset( writerDescription["levels"] ) {
+            writer->setLevels( writerDescription["levels"] );
+        }
+
+        if isset( writerDescription["options"] ) {
+            writer->setOptions( writerDescription["options"] );
+        }
+
+        if isset( writerDescription["formatter"] ) {
+            writer->setFormatter( writerDescription["formatter"] );
+        }
+
+        return writer;
+    }
+
+    /**
+     * Get writer
+     */
+    public function getWriter(string name) -> <WriterInterface> | boolean
+    {
+        if isset(this->writers[name]) {
+            return this->writers[name];
+        }
+
+        return false;
+    }
+
+    /**
+     * @inheritdoc
      */
     public function log(var level, string message, array context = [])
     {
+        var writer;
 
+        let this->records[] = [level, microtime(true), message, context];
+
+        if (count(this->records) >= this->recordsInterval) {
+            for writer in this->writers {
+                writer->commit(this->records);
+            }
+
+            let this->records = [];
+        }
     }
 }
