@@ -1,97 +1,138 @@
 
 namespace Owl\Log;
 
-class Logger implements LoggerInterface
+use Owl\Log\WriterInterface;
+use Owl\Log\Exception\InvalidWriterException;
+
+/**
+ * Logger usage:
+ *
+ * $Logger = new Logger([
+ *     [
+ *         'class' => '\Owl\Log\Writer\File',
+ *         'levels' => ['error', 'warning'],
+ *         'formatter' => '\Owl\Log\Formatter\Syslog',
+ *         'options' => [
+ *             'logFile' => APP_ROOT '/logs/my.log'
+ *         ]
+ *     ],
+ *     [
+ *         'class' => '\Owl\Log\Writer\Email',
+ *         'levels' => ['alert'],
+ *         'formatter' => '\Owl\Log\Formatter\Line',
+ *         'options' => [
+ *             'from'  => 'robot@localhost',
+ *             'to' => 'support@localhost',
+ *             'subject' => 'System Alert log'
+ *         ]
+ *     ],
+ * ]);
+ */
+class Logger extends AbstractLogger implements LoggerInterface
 {
-    const EMERGENCY = "emergency";
-    const ALERT     = "alert";
-    const CRITICAL  = "critical";
-    const ERROR     = "error";
-    const WARNING   = "warning";
-    const NOTICE    = "notice";
-    const INFO      = "info";
-    const DEBUG     = "debug";
+    /**
+     * Log records
+     */
+    protected records = [] {
+        get
+    };
 
     /**
-     * System is unusable.
+     * Records limit to commit them to writers
      */
-    public function emergency(string message, array context = [])
+    protected recordsInterval = 1000 {
+        get
+    };
+
+    /**
+     * Log writers
+     */
+    protected writers = [] {
+        get
+    };
+
+    public function __construct(writers = null)
     {
-        return this->log(self::EMERGENCY, message, context);
+        var writer;
+
+        for writer in writers {
+            let this->writers[] = this->factoryWriter(writer);
+        }
+    }
+
+    public function __destruct() {
+
+        var writer;
+
+        if (count(this->records) > 0 ) {
+            for writer in this->writers {
+                writer->commit(this->records);
+            }
+
+            let this->records = [];
+        }
     }
 
     /**
-     * Action must be taken immediately.
-     *
-     * Example: Entire website down, database unavailable, etc. This should
-     * trigger the SMS alerts and wake you up.
+     * Create writer
      */
-    public function alert(string message, array context = [])
-    {
-        return this->log(self::ALERT, message, context);
+    protected function factoryWriter(array writerDescription = []) -> <WriterInterface> {
+
+        var writer, writerClass;
+
+        if (!isset(writerDescription["class"])) {
+            throw new InvalidWriterException("Writer options 'class' is not exists");
+        }
+
+        if (!class_exists(writerDescription["class"])) {
+            throw new InvalidWriterException("Writer class is not exists");
+        }
+
+        let writerClass = writerDescription["class"];
+        let writer = new {writerClass}();
+
+        if isset( writerDescription["levels"] ) {
+            writer->setLevels( writerDescription["levels"] );
+        }
+
+        if isset( writerDescription["options"] ) {
+            writer->setOptions( writerDescription["options"] );
+        }
+
+        if isset( writerDescription["formatter"] ) {
+            writer->setFormatter( writerDescription["formatter"] );
+        }
+
+        return writer;
     }
 
     /**
-     * Critical conditions.
-     *
-     * Example: Application component unavailable, unexpected exception.
+     * Get writer
      */
-    public function critical(string message, array context = [])
+    public function getWriter(string name) -> <WriterInterface> | boolean
     {
-        return this->log(self::CRITICAL, message, context);
+        if isset(this->writers[name]) {
+            return this->writers[name];
+        }
+
+        return false;
     }
 
     /**
-     * Runtime errors that do not require immediate action but should typically
-     * be logged and monitored.
-     */
-    public function error(string message, array context = [])
-    {
-        return this->log(self::ERROR, message, context);
-    }
-
-    /**
-     * Exceptional occurrences that are not errors.
-     *
-     * Example: Use of deprecated APIs, poor use of an API, undesirable things
-     * that are not necessarily wrong.
-     */
-    public function warning(string message, array context = [])
-    {
-        return this->log(self::WARNING, message, context);
-    }
-
-    /**
-     * Normal but significant events.
-     */
-    public function notice(string message, array context = [])
-    {
-        return this->log(self::NOTICE, message, context);
-    }
-
-    /**
-     * Interesting events.
-     *
-     * Example: User logs in, SQL logs.
-     */
-    public function info(string message, array context = [])
-    {
-        return this->log(self::INFO, message, context);
-    }
-
-    /**
-     * Detailed debug information.
-     */
-    public function debug(string message, array context = [])
-    {
-        return this->log(self::DEBUG, message, context);
-    }
-
-    /**
-     * Logs with an arbitrary level.
+     * @inheritdoc
      */
     public function log(var level, string message, array context = [])
     {
-        echo "[" . level . "]" . " " . message;
+        var writer;
+
+        let this->records[] = [level, microtime(true), message, context];
+
+        if (count(this->records) >= this->recordsInterval) {
+            for writer in this->writers {
+                writer->commit(this->records);
+            }
+
+            let this->records = [];
+        }
     }
 }

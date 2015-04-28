@@ -1,6 +1,11 @@
 
 namespace Owl\Log;
 
+/**
+ * Describes a logger instance
+ *
+ * @see https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md
+ */
 interface LoggerInterface
 {
     /**
