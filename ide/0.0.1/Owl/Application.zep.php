@@ -66,6 +66,8 @@ class Application implements \Owl\ApplicationInterface
     public function __construct(\Owl\Service\Manager $di = null, Event\Manager $eventManager = null, $env = ApplicationInterface::ENV_PRODUCTION) {}
 
     /**
+     * Dispatch the action
+     *
      * @param mixed $parameters 
      * @param mixed $matchedRoute 
      * @param mixed $response 

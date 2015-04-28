@@ -2,107 +2,65 @@
 
 namespace Owl\Log;
 
-class Logger implements \Owl\Log\LoggerInterface
+class Logger extends \Owl\Log\AbstractLogger implements \Owl\Log\LoggerInterface
 {
-
-    const EMERGENCY = "emergency";
-
-
-    const ALERT = "alert";
-
-
-    const CRITICAL = "critical";
-
-
-    const ERROR = "error";
-
-
-    const WARNING = "warning";
-
-
-    const NOTICE = "notice";
-
-
-    const INFO = "info";
-
-
-    const DEBUG = "debug";
-
-
     /**
-     * System is unusable.
-     *
-     * @param string $message 
-     * @param array $context 
+     * Log records
      */
-    public function emergency($message, $context = array()) {}
+    protected $records = array();
 
     /**
-     * Action must be taken immediately.
-     * Example: Entire website down, database unavailable, etc. This should
-     * trigger the SMS alerts and wake you up.
-     *
-     * @param string $message 
-     * @param array $context 
+     * Records limit to commit them to writers
      */
-    public function alert($message, $context = array()) {}
+    protected $recordsInterval = 1000;
 
     /**
-     * Critical conditions.
-     * Example: Application component unavailable, unexpected exception.
-     *
-     * @param string $message 
-     * @param array $context 
+     * Log writers
      */
-    public function critical($message, $context = array()) {}
+    protected $writers = array();
+
 
     /**
-     * Runtime errors that do not require immediate action but should typically
-     * be logged and monitored.
-     *
-     * @param string $message 
-     * @param array $context 
+     * Log records
      */
-    public function error($message, $context = array()) {}
+    public function getRecords() {}
 
     /**
-     * Exceptional occurrences that are not errors.
-     * Example: Use of deprecated APIs, poor use of an API, undesirable things
-     * that are not necessarily wrong.
-     *
-     * @param string $message 
-     * @param array $context 
+     * Records limit to commit them to writers
      */
-    public function warning($message, $context = array()) {}
+    public function getRecordsInterval() {}
 
     /**
-     * Normal but significant events.
-     *
-     * @param string $message 
-     * @param array $context 
+     * Log writers
      */
-    public function notice($message, $context = array()) {}
+    public function getWriters() {}
 
     /**
-     * Interesting events.
-     * Example: User logs in, SQL logs.
-     *
-     * @param string $message 
-     * @param array $context 
+     * @param mixed $writers 
      */
-    public function info($message, $context = array()) {}
+    public function __construct($writers = null) {}
+
+
+    public function __destruct() {}
 
     /**
-     * Detailed debug information.
+     * Create writer
      *
-     * @param string $message 
-     * @param array $context 
+     * @param array $writerDescription 
+     * @return \Owl\Log\WriterInterface 
      */
-    public function debug($message, $context = array()) {}
+    protected function factoryWriter($writerDescription = array()) {}
 
     /**
-     * Logs with an arbitrary level.
+     * Get writer
      *
+     * @param string $name 
+     * @return bool|\Owl\Log\WriterInterface 
+     */
+    public function getWriter($name) {}
+
+    /**
+     * @inheritdoc
      * @param mixed $level 
      * @param string $message 
      * @param array $context 
