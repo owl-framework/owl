@@ -49,8 +49,8 @@
     },
     "namespace": "owl",
     "name": "owl",
-    "description": "",
-    "author": "",
-    "version": "0.0.1",
+    "description": "Owl is an extreme fast PHP framework for building REST and MVC applications",
+    "author": "Owl team and Contributors",
+    "version": "0.0.3",
     "verbose": false
 }

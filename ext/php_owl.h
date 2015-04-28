@@ -11,11 +11,11 @@
 #include "kernel/globals.h"
 
 #define PHP_OWL_NAME        "owl"
-#define PHP_OWL_VERSION     "0.0.1"
+#define PHP_OWL_VERSION     "0.0.3"
 #define PHP_OWL_EXTNAME     "owl"
-#define PHP_OWL_AUTHOR      ""
+#define PHP_OWL_AUTHOR      "Owl team and Contributors"
 #define PHP_OWL_ZEPVERSION  "0.6.2a"
-#define PHP_OWL_DESCRIPTION ""
+#define PHP_OWL_DESCRIPTION "Owl is an extreme fast PHP framework for building REST and MVC applications"
 
 
 
