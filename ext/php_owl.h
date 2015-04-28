@@ -11,7 +11,7 @@
 #include "kernel/globals.h"
 
 #define PHP_OWL_NAME        "owl"
-#define PHP_OWL_VERSION     "0.0.3"
+#define PHP_OWL_VERSION     "0.3"
 #define PHP_OWL_EXTNAME     "owl"
 #define PHP_OWL_AUTHOR      "Owl team and Contributors"
 #define PHP_OWL_ZEPVERSION  "0.6.2a"

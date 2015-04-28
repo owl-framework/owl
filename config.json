@@ -1,6 +1,6 @@
 {
     "stubs": {
-        "path": "ide\/%version%\/%namespace%\/",
+        "path": "ide\/%namespace%\/",
         "stubs-run-after-generate": true
     },
     "optimizer-dirs": [
@@ -51,6 +51,6 @@
     "name": "owl",
     "description": "Owl is an extreme fast PHP framework for building REST and MVC applications",
     "author": "Owl team and Contributors",
-    "version": "0.0.3",
+    "version": "0.3",
     "verbose": false
 }
