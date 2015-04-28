@@ -1,0 +1,5 @@
+
+extern zend_class_entry *owl_log_exception_invalidwriterexception_ce;
+
+ZEPHIR_INIT_CLASS(Owl_Log_Exception_InvalidWriterException);
+

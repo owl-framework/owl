@@ -1,0 +1,5 @@
+
+extern zend_class_entry *owl_log_exception_invalidformatterexception_ce;
+
+ZEPHIR_INIT_CLASS(Owl_Log_Exception_InvalidFormatterException);
+

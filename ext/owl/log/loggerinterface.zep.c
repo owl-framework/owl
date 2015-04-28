@@ -12,6 +12,11 @@
 #include "kernel/main.h"
 
 
+/**
+ * Describes a logger instance
+ *
+ * @see https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md
+ */
 ZEPHIR_INIT_CLASS(Owl_Log_LoggerInterface) {
 
 	ZEPHIR_REGISTER_INTERFACE(Owl\\Log, LoggerInterface, owl, log_loggerinterface, owl_log_loggerinterface_method_entry);

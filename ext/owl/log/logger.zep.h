@@ -3,54 +3,25 @@ extern zend_class_entry *owl_log_logger_ce;
 
 ZEPHIR_INIT_CLASS(Owl_Log_Logger);
 
-PHP_METHOD(Owl_Log_Logger, emergency);
-PHP_METHOD(Owl_Log_Logger, alert);
-PHP_METHOD(Owl_Log_Logger, critical);
-PHP_METHOD(Owl_Log_Logger, error);
-PHP_METHOD(Owl_Log_Logger, warning);
-PHP_METHOD(Owl_Log_Logger, notice);
-PHP_METHOD(Owl_Log_Logger, info);
-PHP_METHOD(Owl_Log_Logger, debug);
+PHP_METHOD(Owl_Log_Logger, getRecords);
+PHP_METHOD(Owl_Log_Logger, getRecordsInterval);
+PHP_METHOD(Owl_Log_Logger, getWriters);
+PHP_METHOD(Owl_Log_Logger, __construct);
+PHP_METHOD(Owl_Log_Logger, __destruct);
+PHP_METHOD(Owl_Log_Logger, factoryWriter);
+PHP_METHOD(Owl_Log_Logger, getWriter);
 PHP_METHOD(Owl_Log_Logger, log);
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_log_logger_emergency, 0, 0, 1)
-	ZEND_ARG_INFO(0, message)
-	ZEND_ARG_ARRAY_INFO(0, context, 1)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_log_logger___construct, 0, 0, 0)
+	ZEND_ARG_INFO(0, writers)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_log_logger_alert, 0, 0, 1)
-	ZEND_ARG_INFO(0, message)
-	ZEND_ARG_ARRAY_INFO(0, context, 1)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_log_logger_factorywriter, 0, 0, 0)
+	ZEND_ARG_ARRAY_INFO(0, writerDescription, 1)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_log_logger_critical, 0, 0, 1)
-	ZEND_ARG_INFO(0, message)
-	ZEND_ARG_ARRAY_INFO(0, context, 1)
-ZEND_END_ARG_INFO()
-
-ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_log_logger_error, 0, 0, 1)
-	ZEND_ARG_INFO(0, message)
-	ZEND_ARG_ARRAY_INFO(0, context, 1)
-ZEND_END_ARG_INFO()
-
-ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_log_logger_warning, 0, 0, 1)
-	ZEND_ARG_INFO(0, message)
-	ZEND_ARG_ARRAY_INFO(0, context, 1)
-ZEND_END_ARG_INFO()
-
-ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_log_logger_notice, 0, 0, 1)
-	ZEND_ARG_INFO(0, message)
-	ZEND_ARG_ARRAY_INFO(0, context, 1)
-ZEND_END_ARG_INFO()
-
-ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_log_logger_info, 0, 0, 1)
-	ZEND_ARG_INFO(0, message)
-	ZEND_ARG_ARRAY_INFO(0, context, 1)
-ZEND_END_ARG_INFO()
-
-ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_log_logger_debug, 0, 0, 1)
-	ZEND_ARG_INFO(0, message)
-	ZEND_ARG_ARRAY_INFO(0, context, 1)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_log_logger_getwriter, 0, 0, 1)
+	ZEND_ARG_INFO(0, name)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_log_logger_log, 0, 0, 2)
@@ -60,14 +31,13 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_log_logger_log, 0, 0, 2)
 ZEND_END_ARG_INFO()
 
 ZEPHIR_INIT_FUNCS(owl_log_logger_method_entry) {
-	PHP_ME(Owl_Log_Logger, emergency, arginfo_owl_log_logger_emergency, ZEND_ACC_PUBLIC)
-	PHP_ME(Owl_Log_Logger, alert, arginfo_owl_log_logger_alert, ZEND_ACC_PUBLIC)
-	PHP_ME(Owl_Log_Logger, critical, arginfo_owl_log_logger_critical, ZEND_ACC_PUBLIC)
-	PHP_ME(Owl_Log_Logger, error, arginfo_owl_log_logger_error, ZEND_ACC_PUBLIC)
-	PHP_ME(Owl_Log_Logger, warning, arginfo_owl_log_logger_warning, ZEND_ACC_PUBLIC)
-	PHP_ME(Owl_Log_Logger, notice, arginfo_owl_log_logger_notice, ZEND_ACC_PUBLIC)
-	PHP_ME(Owl_Log_Logger, info, arginfo_owl_log_logger_info, ZEND_ACC_PUBLIC)
-	PHP_ME(Owl_Log_Logger, debug, arginfo_owl_log_logger_debug, ZEND_ACC_PUBLIC)
+	PHP_ME(Owl_Log_Logger, getRecords, NULL, ZEND_ACC_PUBLIC)
+	PHP_ME(Owl_Log_Logger, getRecordsInterval, NULL, ZEND_ACC_PUBLIC)
+	PHP_ME(Owl_Log_Logger, getWriters, NULL, ZEND_ACC_PUBLIC)
+	PHP_ME(Owl_Log_Logger, __construct, arginfo_owl_log_logger___construct, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
+	PHP_ME(Owl_Log_Logger, __destruct, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_DTOR)
+	PHP_ME(Owl_Log_Logger, factoryWriter, arginfo_owl_log_logger_factorywriter, ZEND_ACC_PROTECTED)
+	PHP_ME(Owl_Log_Logger, getWriter, arginfo_owl_log_logger_getwriter, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Log_Logger, log, arginfo_owl_log_logger_log, ZEND_ACC_PUBLIC)
   PHP_FE_END
 };

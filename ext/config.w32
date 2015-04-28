@@ -21,7 +21,10 @@ if (PHP_OWL != "no") {
 	ADD_SOURCES(configure_module_dirname + "/owl/event", "event.zep.c manager.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/http", "request.zep.c requestinterface.zep.c response.zep.c responseinterface.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/http/response", "json.zep.c", "owl");
-	ADD_SOURCES(configure_module_dirname + "/owl/log", "logger.zep.c loggerinterface.zep.c", "owl");
+	ADD_SOURCES(configure_module_dirname + "/owl/log", "abstractformatter.zep.c abstractlogger.zep.c abstractwriter.zep.c formatterinterface.zep.c logger.zep.c loggerinterface.zep.c writerinterface.zep.c", "owl");
+	ADD_SOURCES(configure_module_dirname + "/owl/log/exception", "invalidformatterexception.zep.c invalidwriterexception.zep.c", "owl");
+	ADD_SOURCES(configure_module_dirname + "/owl/log/formatter", "json.zep.c line.zep.c", "owl");
+	ADD_SOURCES(configure_module_dirname + "/owl/log/writer", "echobrowser.zep.c file.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/module", "manager.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/mvc", "controller.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/router/http", "dynamicroute.zep.c staticroute.zep.c", "owl");

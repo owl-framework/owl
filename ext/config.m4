@@ -34,8 +34,19 @@ if test "$PHP_OWL" = "yes"; then
 	owl/http/response.zep.c
 	owl/http/response/json.zep.c
 	owl/http/responseinterface.zep.c
+	owl/log/abstractformatter.zep.c
+	owl/log/abstractlogger.zep.c
+	owl/log/abstractwriter.zep.c
+	owl/log/exception/invalidformatterexception.zep.c
+	owl/log/exception/invalidwriterexception.zep.c
+	owl/log/formatter/json.zep.c
+	owl/log/formatter/line.zep.c
+	owl/log/formatterinterface.zep.c
 	owl/log/logger.zep.c
 	owl/log/loggerinterface.zep.c
+	owl/log/writer/echobrowser.zep.c
+	owl/log/writer/file.zep.c
+	owl/log/writerinterface.zep.c
 	owl/module/manager.zep.c
 	owl/mvc/controller.zep.c
 	owl/router/http/dynamicroute.zep.c

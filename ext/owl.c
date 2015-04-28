@@ -27,18 +27,23 @@
 
 
 zend_class_entry *owl_cache_driver_ce;
+zend_class_entry *owl_log_formatterinterface_ce;
+zend_class_entry *owl_log_loggerinterface_ce;
+zend_class_entry *owl_log_writerinterface_ce;
 zend_class_entry *owl_http_responseinterface_ce;
 zend_class_entry *owl_applicationinterface_ce;
 zend_class_entry *owl_http_requestinterface_ce;
-zend_class_entry *owl_log_loggerinterface_ce;
 zend_class_entry *owl_router_routerinterface_ce;
 zend_class_entry *owl_console_commandinterface_ce;
 zend_class_entry *owl_dispatcherinterface_ce;
 zend_class_entry *owl_session_managerinterface_ce;
 zend_class_entry *owl_cache_driver_cachedriver_ce;
+zend_class_entry *owl_log_abstractformatter_ce;
+zend_class_entry *owl_log_abstractwriter_ce;
 zend_class_entry *owl_router_route_ce;
 zend_class_entry *owl_exception_ce;
 zend_class_entry *owl_http_response_ce;
+zend_class_entry *owl_log_abstractlogger_ce;
 zend_class_entry *owl_mvc_controller_ce;
 zend_class_entry *owl_annotations_annotation_ce;
 zend_class_entry *owl_annotations_classannotationsresult_ce;
@@ -56,7 +61,13 @@ zend_class_entry *owl_event_event_ce;
 zend_class_entry *owl_event_manager_ce;
 zend_class_entry *owl_http_request_ce;
 zend_class_entry *owl_http_response_json_ce;
+zend_class_entry *owl_log_exception_invalidformatterexception_ce;
+zend_class_entry *owl_log_exception_invalidwriterexception_ce;
+zend_class_entry *owl_log_formatter_json_ce;
+zend_class_entry *owl_log_formatter_line_ce;
 zend_class_entry *owl_log_logger_ce;
+zend_class_entry *owl_log_writer_echobrowser_ce;
+zend_class_entry *owl_log_writer_file_ce;
 zend_class_entry *owl_module_manager_ce;
 zend_class_entry *owl_router_http_dynamicroute_ce;
 zend_class_entry *owl_router_http_staticroute_ce;
@@ -85,18 +96,23 @@ static PHP_MINIT_FUNCTION(owl)
 #endif
 
 	ZEPHIR_INIT(Owl_Cache_Driver);
+	ZEPHIR_INIT(Owl_Log_FormatterInterface);
+	ZEPHIR_INIT(Owl_Log_LoggerInterface);
+	ZEPHIR_INIT(Owl_Log_WriterInterface);
 	ZEPHIR_INIT(Owl_Http_ResponseInterface);
 	ZEPHIR_INIT(Owl_ApplicationInterface);
 	ZEPHIR_INIT(Owl_Http_RequestInterface);
-	ZEPHIR_INIT(Owl_Log_LoggerInterface);
 	ZEPHIR_INIT(Owl_Router_RouterInterface);
 	ZEPHIR_INIT(Owl_Console_CommandInterface);
 	ZEPHIR_INIT(Owl_DispatcherInterface);
 	ZEPHIR_INIT(Owl_Session_ManagerInterface);
 	ZEPHIR_INIT(Owl_Cache_Driver_CacheDriver);
+	ZEPHIR_INIT(Owl_Log_AbstractFormatter);
+	ZEPHIR_INIT(Owl_Log_AbstractWriter);
 	ZEPHIR_INIT(Owl_Router_Route);
 	ZEPHIR_INIT(Owl_Exception);
 	ZEPHIR_INIT(Owl_Http_Response);
+	ZEPHIR_INIT(Owl_Log_AbstractLogger);
 	ZEPHIR_INIT(Owl_Mvc_Controller);
 	ZEPHIR_INIT(Owl_Annotations_Annotation);
 	ZEPHIR_INIT(Owl_Annotations_ClassAnnotationsResult);
@@ -114,7 +130,13 @@ static PHP_MINIT_FUNCTION(owl)
 	ZEPHIR_INIT(Owl_Event_Manager);
 	ZEPHIR_INIT(Owl_Http_Request);
 	ZEPHIR_INIT(Owl_Http_Response_Json);
+	ZEPHIR_INIT(Owl_Log_Exception_InvalidFormatterException);
+	ZEPHIR_INIT(Owl_Log_Exception_InvalidWriterException);
+	ZEPHIR_INIT(Owl_Log_Formatter_Json);
+	ZEPHIR_INIT(Owl_Log_Formatter_Line);
 	ZEPHIR_INIT(Owl_Log_Logger);
+	ZEPHIR_INIT(Owl_Log_Writer_EchoBrowser);
+	ZEPHIR_INIT(Owl_Log_Writer_File);
 	ZEPHIR_INIT(Owl_Module_Manager);
 	ZEPHIR_INIT(Owl_Router_Http_DynamicRoute);
 	ZEPHIR_INIT(Owl_Router_Http_StaticRoute);

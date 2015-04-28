@@ -146,6 +146,9 @@ PHP_METHOD(Owl_Application, __construct) {
 
 }
 
+/**
+ * Dispatch the action
+ */
 PHP_METHOD(Owl_Application, dispatch) {
 
 	zval *_13;
@@ -170,7 +173,7 @@ PHP_METHOD(Owl_Application, dispatch) {
 		ZEPHIR_CONCAT_VS(_1, module, "\\");
 		zephir_concat_self(&handlerClass, _1 TSRMLS_CC);
 	}
-	zephir_array_fetch_string(&_2, parameters, SL("controller"), PH_NOISY | PH_READONLY, "owl/Application.zep", 70 TSRMLS_CC);
+	zephir_array_fetch_string(&_2, parameters, SL("controller"), PH_NOISY | PH_READONLY, "owl/Application.zep", 73 TSRMLS_CC);
 	ZEPHIR_INIT_LNVAR(_1);
 	ZEPHIR_CONCAT_SVS(_1, "Controller\\", _2, "Controller");
 	zephir_concat_self(&handlerClass, _1 TSRMLS_CC);
@@ -197,7 +200,7 @@ PHP_METHOD(Owl_Application, dispatch) {
 			ZEPHIR_CONCAT_SVS(_1, "Class handler: '", handlerClass, "' is not exists");
 			ZEPHIR_CALL_METHOD(NULL, _4, "__construct", &_5, _1);
 			zephir_check_call_status_or_jump(try_end_1);
-			zephir_throw_exception_debug(_4, "owl/Application.zep", 81 TSRMLS_CC);
+			zephir_throw_exception_debug(_4, "owl/Application.zep", 84 TSRMLS_CC);
 			goto try_end_1;
 
 		}
@@ -217,7 +220,7 @@ PHP_METHOD(Owl_Application, dispatch) {
 		ZEPHIR_CALL_METHOD(NULL, _10, "emit", NULL, _4, this_ptr);
 		zephir_check_temp_parameter(_4);
 		zephir_check_call_status_or_jump(try_end_1);
-		zephir_array_fetch_string(&_11, parameters, SL("action"), PH_NOISY | PH_READONLY, "owl/Application.zep", 88 TSRMLS_CC);
+		zephir_array_fetch_string(&_11, parameters, SL("action"), PH_NOISY | PH_READONLY, "owl/Application.zep", 91 TSRMLS_CC);
 		ZEPHIR_INIT_VAR(action);
 		ZEPHIR_CONCAT_VS(action, _11, "Action");
 		if (!((zephir_method_exists(controller, action TSRMLS_CC)  == SUCCESS))) {
@@ -227,7 +230,7 @@ PHP_METHOD(Owl_Application, dispatch) {
 			ZEPHIR_CONCAT_SVSVS(_12, "Action '", action, "' is not exists on '", handlerClass, "'");
 			ZEPHIR_CALL_METHOD(NULL, _4, "__construct", &_5, _12);
 			zephir_check_call_status_or_jump(try_end_1);
-			zephir_throw_exception_debug(_4, "owl/Application.zep", 90 TSRMLS_CC);
+			zephir_throw_exception_debug(_4, "owl/Application.zep", 93 TSRMLS_CC);
 			goto try_end_1;
 
 		}
