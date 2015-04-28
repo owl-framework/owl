@@ -33,7 +33,7 @@ class Application implements \Owl\ApplicationInterface
     protected $eventManager;
 
 
-    protected $exceptionHandlerParameters = array("module" => "Api", "controller" => "Error", "action" => "exception");
+    protected $exceptionHandlerParameters = array("module" => "Api", "controller" => "Index", "action" => "exception");
 
 
     /**

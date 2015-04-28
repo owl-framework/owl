@@ -126,7 +126,7 @@ PHP_METHOD(Owl_Application, __construct) {
 	ZEPHIR_INIT_VAR(_0);
 	zephir_create_array(_0, 3, 0 TSRMLS_CC);
 	add_assoc_stringl_ex(_0, SS("module"), SL("Api"), 1);
-	add_assoc_stringl_ex(_0, SS("controller"), SL("Error"), 1);
+	add_assoc_stringl_ex(_0, SS("controller"), SL("Index"), 1);
 	add_assoc_stringl_ex(_0, SS("action"), SL("exception"), 1);
 	zephir_update_property_this(this_ptr, SL("exceptionHandlerParameters"), _0 TSRMLS_CC);
 	zephir_update_property_this(this_ptr, SL("di"), di TSRMLS_CC);
@@ -258,7 +258,7 @@ PHP_METHOD(Owl_Application, dispatch) {
 
 	if (EG(exception)) {
 		ZEPHIR_CPY_WRT(e, EG(exception));
-		if (zephir_instance_of_ev(e, owl_exception_ce TSRMLS_CC)) {
+		if (zephir_instance_of_ev(e, zend_exception_get_default(TSRMLS_C) TSRMLS_CC)) {
 			zend_clear_exception(TSRMLS_C);
 			ZEPHIR_INIT_NVAR(_4);
 			ZVAL_LONG(_4, 500);

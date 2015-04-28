@@ -39,7 +39,7 @@ class Application implements ApplicationInterface
 
     protected exceptionHandlerParameters = [
         "module": "Api",
-        "controller": "Error",
+        "controller": "Index",
         "action": "exception"
     ];
 
@@ -102,7 +102,7 @@ class Application implements ApplicationInterface
             this->eventManager->emit(DispatcherInterface::EVENT_AFTER_ACTION, this);
 
             response->setContent(result);
-        } catch Exception, e {
+        } catch \Exception, e {
             response->setCode(500);
             this->dispatch(this->exceptionHandlerParameters, matchedRoute, response);
         }
