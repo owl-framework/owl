@@ -1,6 +1,9 @@
 
 namespace Owl\Log;
 
+use Owl\Log\WriterInterface;
+use Owl\Log\Exception\InvalidWriterException;
+
 /**
  * Logger usage:
  *
