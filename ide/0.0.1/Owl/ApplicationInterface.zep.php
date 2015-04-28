@@ -29,8 +29,8 @@ interface ApplicationInterface
      *
      * @param mixed $request 
      * @param mixed $response 
-     * @return \Owl\Http\Response 
+     * @return \Owl\Http\ResponseInterface 
      */
-    public function handle(\Owl\Http\RequestInterface $request, \Owl\Http\Response $response = null);
+    public function handle(\Owl\Http\RequestInterface $request, \Owl\Http\ResponseInterface $response = null);
 
 }

@@ -10,7 +10,7 @@ class Application implements \Owl\ApplicationInterface
     protected $request;
 
     /**
-     * @var \Owl\Http\Response
+     * @var \Owl\Http\ResponseInterface
      */
     protected $response;
 
@@ -42,7 +42,7 @@ class Application implements \Owl\ApplicationInterface
     public function getRequest() {}
 
     /**
-     * @return \Owl\Http\Response 
+     * @return \Owl\Http\ResponseInterface 
      */
     public function getResponse() {}
 
@@ -79,8 +79,8 @@ class Application implements \Owl\ApplicationInterface
      *
      * @param mixed $request 
      * @param mixed $response 
-     * @return \Owl\Http\Response 
+     * @return \Owl\Http\ResponseInterface 
      */
-    public function handle(\Owl\Http\RequestInterface $request, \Owl\Http\Response $response = null) {}
+    public function handle(\Owl\Http\RequestInterface $request, \Owl\Http\ResponseInterface $response = null) {}
 
 }

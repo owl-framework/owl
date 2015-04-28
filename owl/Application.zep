@@ -6,6 +6,7 @@ use Owl\Service\Manager;
 use Owl\Http\Request;
 use Owl\Http\RequestInterface;
 use Owl\Http\Response;
+use Owl\Http\ResponseInterface;
 
 use Owl\Router\Http\StaticRoute;
 
@@ -17,7 +18,7 @@ class Application implements ApplicationInterface
 	protected request {get};
 
 	/**
-	 * @var \Owl\Http\Response
+	 * @var \Owl\Http\ResponseInterface
 	 */
 	protected response {get};
 
@@ -114,7 +115,7 @@ class Application implements ApplicationInterface
 	/**
 	 * Handle Http Request
 	 */
-	public fn handle(<RequestInterface> request, <Response> response = null) -> <Response>
+	public fn handle(<RequestInterface> request, <ResponseInterface> response = null) -> <ResponseInterface>
 	{
 		var matchedRoute, router;
 
