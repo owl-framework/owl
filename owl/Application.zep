@@ -13,19 +13,20 @@ use Owl\Router\Http\StaticRoute;
 class Application implements ApplicationInterface
 {
 	/**
+	 * Latest Request
+	 *
 	 * @var \Owl\Http\RequestInterface
 	 */
-	protected request {get};
-
-	/**
-	 * @var \Owl\Http\ResponseInterface
-	 */
-	protected response {get};
+	protected request {
+		get
+	};
 
 	/**
 	 * @var \Owl\Service\Manager
 	 */
-	protected di {get};
+	protected di {
+		get
+	};
 
 	/**
 	 * Current env, see ENV_* constants
@@ -34,15 +35,28 @@ class Application implements ApplicationInterface
 	 */
 	protected env {get};
 
+	/**
+	 * Count for dispatches
+	 */
 	protected currentLoop = 0;
 
+	/**
+	 * @var \Owl\Event\Manager
+	 */
 	protected eventManager;
 
+	/**
+	 * Handle parameters for exception catch
+	 *
+	 * @var array
+	 */
 	protected exceptionHandlerParameters = [
 		"module": "Api",
 		"controller": "Index",
 		"action": "exception"
-	];
+	] {
+		set, get
+	};
 
 	public function __construct(<Manager> di = null, <Event\Manager> eventManager = null, string env = ApplicationInterface::ENV_PRODUCTION)
 	{

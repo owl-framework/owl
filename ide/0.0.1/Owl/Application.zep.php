@@ -5,14 +5,11 @@ namespace Owl;
 class Application implements \Owl\ApplicationInterface
 {
     /**
+     * Latest Request
+     *
      * @var \Owl\Http\RequestInterface
      */
     protected $request;
-
-    /**
-     * @var \Owl\Http\ResponseInterface
-     */
-    protected $response;
 
     /**
      * @var \Owl\Service\Manager
@@ -26,25 +23,30 @@ class Application implements \Owl\ApplicationInterface
      */
     protected $env;
 
-
+    /**
+     * Count for dispatches
+     */
     protected $currentLoop = 0;
 
-
+    /**
+     * @var \Owl\Event\Manager
+     */
     protected $eventManager;
 
-
+    /**
+     * Handle parameters for exception catch
+     *
+     * @var array
+     */
     protected $exceptionHandlerParameters = array("module" => "Api", "controller" => "Index", "action" => "exception");
 
 
     /**
+     * Latest Request
+     *
      * @return \Owl\Http\RequestInterface 
      */
     public function getRequest() {}
-
-    /**
-     * @return \Owl\Http\ResponseInterface 
-     */
-    public function getResponse() {}
 
     /**
      * @return \Owl\Service\Manager 
@@ -57,6 +59,20 @@ class Application implements \Owl\ApplicationInterface
      * @return string 
      */
     public function getEnv() {}
+
+    /**
+     * Handle parameters for exception catch
+     *
+     * @param array $exceptionHandlerParameters 
+     */
+    public function setExceptionHandlerParameters($exceptionHandlerParameters) {}
+
+    /**
+     * Handle parameters for exception catch
+     *
+     * @return array 
+     */
+    public function getExceptionHandlerParameters() {}
 
     /**
      * @param mixed $di 

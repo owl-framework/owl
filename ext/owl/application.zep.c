@@ -25,14 +25,11 @@ ZEPHIR_INIT_CLASS(Owl_Application) {
 	ZEPHIR_REGISTER_CLASS(Owl, Application, owl, application, owl_application_method_entry, 0);
 
 	/**
+	 * Latest Request
+	 *
 	 * @var \Owl\Http\RequestInterface
 	 */
 	zend_declare_property_null(owl_application_ce, SL("request"), ZEND_ACC_PROTECTED TSRMLS_CC);
-
-	/**
-	 * @var \Owl\Http\ResponseInterface
-	 */
-	zend_declare_property_null(owl_application_ce, SL("response"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
 	/**
 	 * @var \Owl\Service\Manager
@@ -46,10 +43,21 @@ ZEPHIR_INIT_CLASS(Owl_Application) {
 	 */
 	zend_declare_property_null(owl_application_ce, SL("env"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
+	/**
+	 * Count for dispatches
+	 */
 	zend_declare_property_long(owl_application_ce, SL("currentLoop"), 0, ZEND_ACC_PROTECTED TSRMLS_CC);
 
+	/**
+	 * @var \Owl\Event\Manager
+	 */
 	zend_declare_property_null(owl_application_ce, SL("eventManager"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
+	/**
+	 * Handle parameters for exception catch
+	 *
+	 * @var array
+	 */
 	zend_declare_property_null(owl_application_ce, SL("exceptionHandlerParameters"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
 	zend_class_implements(owl_application_ce TSRMLS_CC, 1, owl_applicationinterface_ce);
@@ -58,22 +66,14 @@ ZEPHIR_INIT_CLASS(Owl_Application) {
 }
 
 /**
+ * Latest Request
+ *
  * @var \Owl\Http\RequestInterface
  */
 PHP_METHOD(Owl_Application, getRequest) {
 
 
 	RETURN_MEMBER(this_ptr, "request");
-
-}
-
-/**
- * @var \Owl\Http\ResponseInterface
- */
-PHP_METHOD(Owl_Application, getResponse) {
-
-
-	RETURN_MEMBER(this_ptr, "response");
 
 }
 
@@ -96,6 +96,35 @@ PHP_METHOD(Owl_Application, getEnv) {
 
 
 	RETURN_MEMBER(this_ptr, "env");
+
+}
+
+/**
+ * Handle parameters for exception catch
+ *
+ * @var array
+ */
+PHP_METHOD(Owl_Application, setExceptionHandlerParameters) {
+
+	zval *exceptionHandlerParameters;
+
+	zephir_fetch_params(0, 1, 0, &exceptionHandlerParameters);
+
+
+
+	zephir_update_property_this(this_ptr, SL("exceptionHandlerParameters"), exceptionHandlerParameters TSRMLS_CC);
+
+}
+
+/**
+ * Handle parameters for exception catch
+ *
+ * @var array
+ */
+PHP_METHOD(Owl_Application, getExceptionHandlerParameters) {
+
+
+	RETURN_MEMBER(this_ptr, "exceptionHandlerParameters");
 
 }
 
@@ -173,7 +202,7 @@ PHP_METHOD(Owl_Application, dispatch) {
 		ZEPHIR_CONCAT_VS(_1, module, "\\");
 		zephir_concat_self(&handlerClass, _1 TSRMLS_CC);
 	}
-	zephir_array_fetch_string(&_2, parameters, SL("controller"), PH_NOISY | PH_READONLY, "owl/Application.zep", 74 TSRMLS_CC);
+	zephir_array_fetch_string(&_2, parameters, SL("controller"), PH_NOISY | PH_READONLY, "owl/Application.zep", 88 TSRMLS_CC);
 	ZEPHIR_INIT_LNVAR(_1);
 	ZEPHIR_CONCAT_SVS(_1, "Controller\\", _2, "Controller");
 	zephir_concat_self(&handlerClass, _1 TSRMLS_CC);
@@ -200,7 +229,7 @@ PHP_METHOD(Owl_Application, dispatch) {
 			ZEPHIR_CONCAT_SVS(_1, "Class handler: '", handlerClass, "' is not exists");
 			ZEPHIR_CALL_METHOD(NULL, _4, "__construct", &_5, _1);
 			zephir_check_call_status_or_jump(try_end_1);
-			zephir_throw_exception_debug(_4, "owl/Application.zep", 85 TSRMLS_CC);
+			zephir_throw_exception_debug(_4, "owl/Application.zep", 99 TSRMLS_CC);
 			goto try_end_1;
 
 		}
@@ -220,7 +249,7 @@ PHP_METHOD(Owl_Application, dispatch) {
 		ZEPHIR_CALL_METHOD(NULL, _10, "emit", NULL, _4, this_ptr);
 		zephir_check_temp_parameter(_4);
 		zephir_check_call_status_or_jump(try_end_1);
-		zephir_array_fetch_string(&_11, parameters, SL("action"), PH_NOISY | PH_READONLY, "owl/Application.zep", 92 TSRMLS_CC);
+		zephir_array_fetch_string(&_11, parameters, SL("action"), PH_NOISY | PH_READONLY, "owl/Application.zep", 106 TSRMLS_CC);
 		ZEPHIR_INIT_VAR(action);
 		ZEPHIR_CONCAT_VS(action, _11, "Action");
 		if (!((zephir_method_exists(controller, action TSRMLS_CC)  == SUCCESS))) {
@@ -230,7 +259,7 @@ PHP_METHOD(Owl_Application, dispatch) {
 			ZEPHIR_CONCAT_SVSVS(_12, "Action '", action, "' is not exists on '", handlerClass, "'");
 			ZEPHIR_CALL_METHOD(NULL, _4, "__construct", &_5, _12);
 			zephir_check_call_status_or_jump(try_end_1);
-			zephir_throw_exception_debug(_4, "owl/Application.zep", 94 TSRMLS_CC);
+			zephir_throw_exception_debug(_4, "owl/Application.zep", 108 TSRMLS_CC);
 			goto try_end_1;
 
 		}
