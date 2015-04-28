@@ -26,4 +26,11 @@ class IndexController extends \Owl\Mvc\Controller
             )
         );
     }
+
+    public function exceptionAction()
+    {
+        return array(
+            'Exception was corrupted'
+        );
+    }
 }
