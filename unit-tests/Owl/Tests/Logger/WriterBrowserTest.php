@@ -3,6 +3,7 @@
  * @author Ivanov Sergey <xufocoder@gmail.com>
  */
 
+use Owl\Log\Record;
 use Owl\Log\Writer\EchoBrowser;
 
 /**
@@ -12,7 +13,7 @@ class WriterBrowserTest extends \PHPUnit_Framework_TestCase {
 
     public function testWriterBrowserPush() {
 
-        $record = [ 1, 2, 3 ];
+        $record = new Record( 1, 2, 3 );
 
         $records = [
             $record
@@ -26,15 +27,15 @@ class WriterBrowserTest extends \PHPUnit_Framework_TestCase {
         $buffer = ob_get_contents();
         ob_end_clean();
 
-        $formatted_record = $writer->getFormatter()->format($record[0], $record[1], $record[2]);
+        $formatted_record = $writer->getFormatter()->format($record);
 
         $this->assertTrue( $buffer == $formatted_record );
 
     }
 
-    public function testWriterBrowserDesctruct() {
+    public function testWriterBrowserDestruct() {
 
-        $record = [ 1, 2, 3 ];
+        $record = new Record( 1, 2, 3 );
 
         $records = [
             $record
@@ -43,7 +44,7 @@ class WriterBrowserTest extends \PHPUnit_Framework_TestCase {
         $writer = new EchoBrowser();
         $writer->commit($records);
 
-        $formatted_record = $writer->getFormatter()->format($record[0], $record[1], $record[2]);
+        $formatted_record = $writer->getFormatter()->format($record);
 
         ob_start();
         unset($writer);
