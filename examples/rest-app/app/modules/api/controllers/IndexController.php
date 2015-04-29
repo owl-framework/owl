@@ -5,6 +5,7 @@
 
 namespace RestApp\Api\Controller;
 
+use Exception;
 use ReflectionExtension;
 
 /**
@@ -67,10 +68,18 @@ class IndexController extends \Owl\Mvc\Controller
         ];
     }
 
-    public function exceptionAction()
+    public function errorAction()
     {
         return array(
-            'Exception was corrupted'
+            'message' => 'Not found',
+            'requestUri' => $this->request->getUri()
+        );
+    }
+
+    public function exceptionAction(Exception $e)
+    {
+        return array(
+            $e->getMessage()
         );
     }
 }
