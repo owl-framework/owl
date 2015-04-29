@@ -24,7 +24,7 @@ $router = new Router();
 $router->add('/', ['module' => 'Api', 'controller' => 'Index', 'action' => 'index']);
 
 $router->add('/version', ['module' => 'Api', 'controller' => 'Index', 'action' => 'version']);
-$router->add('/ping', ['module' => 'Api', 'controller' => 'Index', 'action' => 'version']);
+$router->add('/ping', ['module' => 'Api', 'controller' => 'Index', 'action' => 'ping']);
 
 $router->add('/users', ['module' => 'Api', 'controller' => 'User', 'action' => 'list']);
 $router->add('/users/:id', ['module' => 'Api', 'controller' => 'User', 'action' => 'index']);
