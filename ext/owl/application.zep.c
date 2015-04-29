@@ -19,6 +19,7 @@
 #include "kernel/operators.h"
 #include "kernel/concat.h"
 #include "kernel/exception.h"
+#include "kernel/variables.h"
 
 ZEPHIR_INIT_CLASS(Owl_Application) {
 
@@ -296,6 +297,7 @@ PHP_METHOD(Owl_Application, dispatch) {
 			ZVAL_LONG(_4, 500);
 			ZEPHIR_CALL_METHOD(NULL, response, "setcode", NULL, _4);
 			zephir_check_call_status();
+			zephir_var_dump(&e TSRMLS_CC);
 			_8 = zephir_fetch_nproperty_this(this_ptr, SL("exceptionHandlerParameters"), PH_NOISY_CC);
 			ZEPHIR_CALL_METHOD(NULL, this_ptr, "dispatch", &_16, _8, matchedRoute, response);
 			zephir_check_call_status();

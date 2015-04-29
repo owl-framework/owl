@@ -8,8 +8,8 @@ use Owl\Http\Request;
 use Owl\Router\Route;
 use Owl\Router\Router;
 
-
-//$startTime = microtime(true);
+error_reporting(-1);
+ini_set('display_errors', 1);
 
 include_once __DIR__ . '/../vendor/autoload.php';
 
@@ -29,13 +29,12 @@ $router->add('/users/:id', ['module' => 'Api', 'controller' => 'User', 'action' 
 
 $serviceManager->setService('router', $router);
 
-//$eventManager->listen(\Owl\ApplicationInterface::EVENT_BEFORE_HANDLE, function() use(&$startTime) {
-//    printf('Before handle %.4F сек. <br/>', microtime(true)-$startTime);
-//});
-//
-//$eventManager->listen(\Owl\ApplicationInterface::EVENT_AFTER_HANDLE, function() use(&$startTime) {
-//    printf('Handle on %.4F сек. <br/>', microtime(true)-$startTime);
-//});
+
+$driver = new \Owl\DBAl\Driver\Mysql('mysql:host=127.0.0.1;dbname=phalcon-module-skeleton;port=49153', 'root', 'root', array());
+$connection = new \Owl\DBAL\Connection(['driver' => $driver], $eventManager);
+
+$serviceManager->setService('connection', $connection);
+
 
 $application = new Application($serviceManager, $eventManager);
 $response = $application->handle(Request::createFromGlobals(), new \Owl\Http\Response\Json());
