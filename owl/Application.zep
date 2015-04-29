@@ -168,18 +168,15 @@ class Application implements ApplicationInterface
 
 		this->eventManager->emit(DispatcherInterface::EVENT_ROUTER_AFTER_EXECUTE, this);
 
-		if (matchedRoute) {
-			var parameters;
-            let parameters = matchedRoute->parameters;
+		let this->request = request;
 
+		if (matchedRoute) {
 			if (matchedRoute instanceof StaticRoute) {
-				this->dispatch(parameters, null, response);
+				this->dispatch(matchedRoute->parameters, null, response);
 
 			} else {
-				this->dispatch(parameters, matchedRoute->uriParameters, response);
+				this->dispatch(matchedRoute->parameters, matchedRoute->uriParameters, response);
 			}
-
-			let this->request = request;
 		} else {
 			response->setCode(404);
 			this->dispatch(this->errorHandlerParameters, null, response);
