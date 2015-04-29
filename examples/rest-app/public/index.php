@@ -49,7 +49,6 @@ $serviceManager->setService('connection', $connection);
 $cache = new \Owl\Cache\Driver\Memcached();
 $serviceManager->setService('cache', $cache);
 
-//$_SERVER['REQUEST_URI'] = '/fsdfsd';
 $application = new Application($serviceManager, $eventManager);
 $response = $application->handle(Request::createFromGlobals(), new \Owl\Http\Response\Json());
 
