@@ -19,7 +19,6 @@
 #include "kernel/operators.h"
 #include "kernel/concat.h"
 #include "kernel/exception.h"
-#include "kernel/variables.h"
 
 ZEPHIR_INIT_CLASS(Owl_Application) {
 
@@ -60,6 +59,13 @@ ZEPHIR_INIT_CLASS(Owl_Application) {
 	 * @var array
 	 */
 	zend_declare_property_null(owl_application_ce, SL("exceptionHandlerParameters"), ZEND_ACC_PROTECTED TSRMLS_CC);
+
+	/**
+	 * Handle parameters for not found page
+	 *
+	 * @var array
+	 */
+	zend_declare_property_null(owl_application_ce, SL("errorHandlerParameters"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
 	zend_class_implements(owl_application_ce TSRMLS_CC, 1, owl_applicationinterface_ce);
 	return SUCCESS;
@@ -129,12 +135,41 @@ PHP_METHOD(Owl_Application, getExceptionHandlerParameters) {
 
 }
 
+/**
+ * Handle parameters for not found page
+ *
+ * @var array
+ */
+PHP_METHOD(Owl_Application, setErrorHandlerParameters) {
+
+	zval *errorHandlerParameters;
+
+	zephir_fetch_params(0, 1, 0, &errorHandlerParameters);
+
+
+
+	zephir_update_property_this(this_ptr, SL("errorHandlerParameters"), errorHandlerParameters TSRMLS_CC);
+
+}
+
+/**
+ * Handle parameters for not found page
+ *
+ * @var array
+ */
+PHP_METHOD(Owl_Application, getErrorHandlerParameters) {
+
+
+	RETURN_MEMBER(this_ptr, "errorHandlerParameters");
+
+}
+
 PHP_METHOD(Owl_Application, __construct) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *_0;
+	zval *_0, *_1;
 	zval *env = NULL;
-	zval *di = NULL, *eventManager = NULL, *env_param = NULL, *_1;
+	zval *di = NULL, *eventManager = NULL, *env_param = NULL, *_2;
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 0, 3, &di, &eventManager, &env_param);
@@ -157,18 +192,24 @@ PHP_METHOD(Owl_Application, __construct) {
 	zephir_create_array(_0, 3, 0 TSRMLS_CC);
 	add_assoc_stringl_ex(_0, SS("module"), SL("Api"), 1);
 	add_assoc_stringl_ex(_0, SS("controller"), SL("Index"), 1);
-	add_assoc_stringl_ex(_0, SS("action"), SL("exception"), 1);
-	zephir_update_property_this(this_ptr, SL("exceptionHandlerParameters"), _0 TSRMLS_CC);
+	add_assoc_stringl_ex(_0, SS("action"), SL("error"), 1);
+	zephir_update_property_this(this_ptr, SL("errorHandlerParameters"), _0 TSRMLS_CC);
+	ZEPHIR_INIT_VAR(_1);
+	zephir_create_array(_1, 3, 0 TSRMLS_CC);
+	add_assoc_stringl_ex(_1, SS("module"), SL("Api"), 1);
+	add_assoc_stringl_ex(_1, SS("controller"), SL("Index"), 1);
+	add_assoc_stringl_ex(_1, SS("action"), SL("exception"), 1);
+	zephir_update_property_this(this_ptr, SL("exceptionHandlerParameters"), _1 TSRMLS_CC);
 	zephir_update_property_this(this_ptr, SL("di"), di TSRMLS_CC);
 	zephir_update_property_this(this_ptr, SL("env"), env TSRMLS_CC);
 	if (Z_TYPE_P(eventManager) == IS_NULL) {
-		ZEPHIR_INIT_VAR(_1);
-		object_init_ex(_1, owl_event_manager_ce);
-		if (zephir_has_constructor(_1 TSRMLS_CC)) {
-			ZEPHIR_CALL_METHOD(NULL, _1, "__construct", NULL);
+		ZEPHIR_INIT_VAR(_2);
+		object_init_ex(_2, owl_event_manager_ce);
+		if (zephir_has_constructor(_2 TSRMLS_CC)) {
+			ZEPHIR_CALL_METHOD(NULL, _2, "__construct", NULL);
 			zephir_check_call_status();
 		}
-		zephir_update_property_this(this_ptr, SL("eventManager"), _1 TSRMLS_CC);
+		zephir_update_property_this(this_ptr, SL("eventManager"), _2 TSRMLS_CC);
 	} else {
 		zephir_update_property_this(this_ptr, SL("eventManager"), eventManager TSRMLS_CC);
 	}
@@ -181,42 +222,43 @@ PHP_METHOD(Owl_Application, __construct) {
  */
 PHP_METHOD(Owl_Application, dispatch) {
 
-	zval *_13;
-	zend_class_entry *_7;
-	zephir_nts_static zephir_fcall_cache_entry *_5 = NULL, *_16 = NULL;
+	zval *_13 = NULL;
+	zend_class_entry *_6;
+	zephir_nts_static zephir_fcall_cache_entry *_4 = NULL, *_14 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *_0;
-	zval *parameters, *matchedRoute, *response, *handlerClass = NULL, *controller, *result = NULL, *action, *e = NULL, *module, *_1 = NULL, *_2, *_3, *_4 = NULL, *_6 = NULL, *_8, *_9, *_10, *_11, *_12, *_14, *_15;
+	zval *parameters, *callParameters = NULL, *response, *handlerClass, *controller, *result = NULL, *action, *e = NULL, *module, *_0 = NULL, *_1, *_2, *_3 = NULL, *_5 = NULL, *_7, *_8, *_9, *_10, *_11, *_12;
 
 	ZEPHIR_MM_GROW();
-	zephir_fetch_params(1, 3, 0, &parameters, &matchedRoute, &response);
+	zephir_fetch_params(1, 2, 1, &parameters, &callParameters, &response);
 
+	if (!callParameters) {
+		callParameters = ZEPHIR_GLOBAL(global_null);
+	}
 
 
 	RETURN_ON_FAILURE(zephir_property_incr(this_ptr, SL("currentLoop") TSRMLS_CC));
-	ZEPHIR_INIT_VAR(_0);
-	ZEPHIR_CONCAT_SS(_0, "\\RestApp", "\\");
-	ZEPHIR_CPY_WRT(handlerClass, _0);
+	ZEPHIR_INIT_VAR(handlerClass);
+	ZVAL_STRING(handlerClass, "\\RestApp\\", 1);
 	ZEPHIR_OBS_VAR(module);
 	if (zephir_array_isset_string_fetch(&module, parameters, SS("module"), 0 TSRMLS_CC)) {
-		ZEPHIR_INIT_VAR(_1);
-		ZEPHIR_CONCAT_VS(_1, module, "\\");
-		zephir_concat_self(&handlerClass, _1 TSRMLS_CC);
+		ZEPHIR_INIT_VAR(_0);
+		ZEPHIR_CONCAT_VS(_0, module, "\\");
+		zephir_concat_self(&handlerClass, _0 TSRMLS_CC);
 	}
-	zephir_array_fetch_string(&_2, parameters, SL("controller"), PH_NOISY | PH_READONLY, "owl/Application.zep", 88 TSRMLS_CC);
-	ZEPHIR_INIT_LNVAR(_1);
-	ZEPHIR_CONCAT_SVS(_1, "Controller\\", _2, "Controller");
-	zephir_concat_self(&handlerClass, _1 TSRMLS_CC);
-	_3 = zephir_fetch_nproperty_this(this_ptr, SL("currentLoop"), PH_NOISY_CC);
-	if (ZEPHIR_GT_LONG(_3, 3)) {
-		ZEPHIR_INIT_VAR(_4);
-		ZVAL_STRING(_4, "World was crashed", ZEPHIR_TEMP_PARAM_COPY);
-		ZEPHIR_CALL_METHOD(NULL, response, "setcontent", NULL, _4);
-		zephir_check_temp_parameter(_4);
+	zephir_array_fetch_string(&_1, parameters, SL("controller"), PH_NOISY | PH_READONLY, "owl/Application.zep", 102 TSRMLS_CC);
+	ZEPHIR_INIT_LNVAR(_0);
+	ZEPHIR_CONCAT_SVS(_0, "Controller\\", _1, "Controller");
+	zephir_concat_self(&handlerClass, _0 TSRMLS_CC);
+	_2 = zephir_fetch_nproperty_this(this_ptr, SL("currentLoop"), PH_NOISY_CC);
+	if (ZEPHIR_GT_LONG(_2, 3)) {
+		ZEPHIR_INIT_VAR(_3);
+		ZVAL_STRING(_3, "World was crashed", ZEPHIR_TEMP_PARAM_COPY);
+		ZEPHIR_CALL_METHOD(NULL, response, "setcontent", NULL, _3);
+		zephir_check_temp_parameter(_3);
 		zephir_check_call_status();
-		ZEPHIR_INIT_NVAR(_4);
-		ZVAL_LONG(_4, 500);
-		ZEPHIR_CALL_METHOD(NULL, response, "setcode", NULL, _4);
+		ZEPHIR_INIT_NVAR(_3);
+		ZVAL_LONG(_3, 500);
+		ZEPHIR_CALL_METHOD(NULL, response, "setcode", NULL, _3);
 		zephir_check_call_status();
 		RETURN_MM_BOOL(0);
 	}
@@ -224,47 +266,53 @@ PHP_METHOD(Owl_Application, dispatch) {
 	/* try_start_1: */
 
 		if (!(zephir_class_exists(handlerClass, 1 TSRMLS_CC))) {
-			ZEPHIR_INIT_NVAR(_4);
-			object_init_ex(_4, owl_exception_ce);
-			ZEPHIR_INIT_LNVAR(_1);
-			ZEPHIR_CONCAT_SVS(_1, "Class handler: '", handlerClass, "' is not exists");
-			ZEPHIR_CALL_METHOD(NULL, _4, "__construct", &_5, _1);
+			ZEPHIR_INIT_NVAR(_3);
+			object_init_ex(_3, owl_exception_ce);
+			ZEPHIR_INIT_LNVAR(_0);
+			ZEPHIR_CONCAT_SVS(_0, "Class handler: '", handlerClass, "' is not exists");
+			ZEPHIR_CALL_METHOD(NULL, _3, "__construct", &_4, _0);
 			zephir_check_call_status_or_jump(try_end_1);
-			zephir_throw_exception_debug(_4, "owl/Application.zep", 99 TSRMLS_CC);
+			zephir_throw_exception_debug(_3, "owl/Application.zep", 113 TSRMLS_CC);
 			goto try_end_1;
 
 		}
 		ZEPHIR_INIT_VAR(controller);
-		zephir_fetch_safe_class(_6, handlerClass);
-		_7 = zend_fetch_class(Z_STRVAL_P(_6), Z_STRLEN_P(_6), ZEND_FETCH_CLASS_AUTO TSRMLS_CC);
-		object_init_ex(controller, _7);
+		zephir_fetch_safe_class(_5, handlerClass);
+		_6 = zend_fetch_class(Z_STRVAL_P(_5), Z_STRLEN_P(_5), ZEND_FETCH_CLASS_AUTO TSRMLS_CC);
+		object_init_ex(controller, _6);
 		if (zephir_has_constructor(controller TSRMLS_CC)) {
-			_8 = zephir_fetch_nproperty_this(this_ptr, SL("request"), PH_NOISY_CC);
-			_9 = zephir_fetch_nproperty_this(this_ptr, SL("di"), PH_NOISY_CC);
-			ZEPHIR_CALL_METHOD(NULL, controller, "__construct", NULL, _8, response, _9);
+			_7 = zephir_fetch_nproperty_this(this_ptr, SL("request"), PH_NOISY_CC);
+			_8 = zephir_fetch_nproperty_this(this_ptr, SL("di"), PH_NOISY_CC);
+			ZEPHIR_CALL_METHOD(NULL, controller, "__construct", NULL, _7, response, _8);
 			zephir_check_call_status_or_jump(try_end_1);
 		}
-		_10 = zephir_fetch_nproperty_this(this_ptr, SL("eventManager"), PH_NOISY_CC);
-		ZEPHIR_INIT_NVAR(_4);
-		ZVAL_STRING(_4, "dispatch:afterInitialize", ZEPHIR_TEMP_PARAM_COPY);
-		ZEPHIR_CALL_METHOD(NULL, _10, "emit", NULL, _4, this_ptr);
-		zephir_check_temp_parameter(_4);
+		_9 = zephir_fetch_nproperty_this(this_ptr, SL("eventManager"), PH_NOISY_CC);
+		ZEPHIR_INIT_NVAR(_3);
+		ZVAL_STRING(_3, "dispatch:afterInitialize", ZEPHIR_TEMP_PARAM_COPY);
+		ZEPHIR_CALL_METHOD(NULL, _9, "emit", NULL, _3, this_ptr);
+		zephir_check_temp_parameter(_3);
 		zephir_check_call_status_or_jump(try_end_1);
-		zephir_array_fetch_string(&_11, parameters, SL("action"), PH_NOISY | PH_READONLY, "owl/Application.zep", 106 TSRMLS_CC);
+		zephir_array_fetch_string(&_10, parameters, SL("action"), PH_NOISY | PH_READONLY, "owl/Application.zep", 120 TSRMLS_CC);
 		ZEPHIR_INIT_VAR(action);
-		ZEPHIR_CONCAT_VS(action, _11, "Action");
+		ZEPHIR_CONCAT_VS(action, _10, "Action");
 		if (!((zephir_method_exists(controller, action TSRMLS_CC)  == SUCCESS))) {
-			ZEPHIR_INIT_NVAR(_4);
-			object_init_ex(_4, owl_exception_ce);
-			ZEPHIR_INIT_VAR(_12);
-			ZEPHIR_CONCAT_SVSVS(_12, "Action '", action, "' is not exists on '", handlerClass, "'");
-			ZEPHIR_CALL_METHOD(NULL, _4, "__construct", &_5, _12);
+			ZEPHIR_INIT_NVAR(_3);
+			object_init_ex(_3, owl_exception_ce);
+			ZEPHIR_INIT_VAR(_11);
+			ZEPHIR_CONCAT_SVSVS(_11, "Action '", action, "' is not exists on '", handlerClass, "'");
+			ZEPHIR_CALL_METHOD(NULL, _3, "__construct", &_4, _11);
 			zephir_check_call_status_or_jump(try_end_1);
-			zephir_throw_exception_debug(_4, "owl/Application.zep", 108 TSRMLS_CC);
+			zephir_throw_exception_debug(_3, "owl/Application.zep", 122 TSRMLS_CC);
 			goto try_end_1;
 
 		}
-		if (zephir_instance_of_ev(matchedRoute, owl_router_http_staticroute_ce TSRMLS_CC)) {
+		_12 = zephir_fetch_nproperty_this(this_ptr, SL("eventManager"), PH_NOISY_CC);
+		ZEPHIR_INIT_NVAR(_3);
+		ZVAL_STRING(_3, "dispatch:afterAction", ZEPHIR_TEMP_PARAM_COPY);
+		ZEPHIR_CALL_METHOD(NULL, _12, "emit", NULL, _3, this_ptr);
+		zephir_check_temp_parameter(_3);
+		zephir_check_call_status_or_jump(try_end_1);
+		if (Z_TYPE_P(callParameters) == IS_NULL) {
 			ZEPHIR_CALL_METHOD_ZVAL(&result, controller, action,  NULL);
 			zephir_check_call_status_or_jump(try_end_1);
 		} else {
@@ -273,17 +321,9 @@ PHP_METHOD(Owl_Application, dispatch) {
 			zephir_create_array(_13, 2, 0 TSRMLS_CC);
 			zephir_array_fast_append(_13, controller);
 			zephir_array_fast_append(_13, action);
-			ZEPHIR_OBS_VAR(_14);
-			zephir_read_property(&_14, matchedRoute, SL("uriParameters"), PH_NOISY_CC);
-			ZEPHIR_CALL_USER_FUNC_ARRAY(result, _13, _14);
+			ZEPHIR_CALL_USER_FUNC_ARRAY(result, _13, callParameters);
 			zephir_check_call_status_or_jump(try_end_1);
 		}
-		_15 = zephir_fetch_nproperty_this(this_ptr, SL("eventManager"), PH_NOISY_CC);
-		ZEPHIR_INIT_NVAR(_4);
-		ZVAL_STRING(_4, "dispatch:afterAction", ZEPHIR_TEMP_PARAM_COPY);
-		ZEPHIR_CALL_METHOD(NULL, _15, "emit", NULL, _4, this_ptr);
-		zephir_check_temp_parameter(_4);
-		zephir_check_call_status_or_jump(try_end_1);
 		ZEPHIR_CALL_METHOD(NULL, response, "setcontent", NULL, result);
 		zephir_check_call_status_or_jump(try_end_1);
 
@@ -293,13 +333,15 @@ PHP_METHOD(Owl_Application, dispatch) {
 		ZEPHIR_CPY_WRT(e, EG(exception));
 		if (zephir_instance_of_ev(e, zend_exception_get_default(TSRMLS_C) TSRMLS_CC)) {
 			zend_clear_exception(TSRMLS_C);
-			ZEPHIR_INIT_NVAR(_4);
-			ZVAL_LONG(_4, 500);
-			ZEPHIR_CALL_METHOD(NULL, response, "setcode", NULL, _4);
+			ZEPHIR_INIT_NVAR(_3);
+			ZVAL_LONG(_3, 500);
+			ZEPHIR_CALL_METHOD(NULL, response, "setcode", NULL, _3);
 			zephir_check_call_status();
-			zephir_var_dump(&e TSRMLS_CC);
-			_8 = zephir_fetch_nproperty_this(this_ptr, SL("exceptionHandlerParameters"), PH_NOISY_CC);
-			ZEPHIR_CALL_METHOD(NULL, this_ptr, "dispatch", &_16, _8, matchedRoute, response);
+			_7 = zephir_fetch_nproperty_this(this_ptr, SL("exceptionHandlerParameters"), PH_NOISY_CC);
+			ZEPHIR_INIT_NVAR(_13);
+			zephir_create_array(_13, 1, 0 TSRMLS_CC);
+			zephir_array_update_string(&_13, SL("exception"), &e, PH_COPY | PH_SEPARATE);
+			ZEPHIR_CALL_METHOD(NULL, this_ptr, "dispatch", &_14, _7, _13, response);
 			zephir_check_call_status();
 		}
 	}
@@ -315,7 +357,7 @@ PHP_METHOD(Owl_Application, handle) {
 	zephir_fcall_cache_entry *_7 = NULL;
 	zephir_nts_static zephir_fcall_cache_entry *_2 = NULL, *_8 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *request, *response = NULL, *matchedRoute = NULL, *router = NULL, *_0, *_1 = NULL, *_3, *_4, *_5, *parameters = NULL, *_6, *_9;
+	zval *request, *response = NULL, *matchedRoute = NULL, *router = NULL, *_0, *_1 = NULL, *_3, *_4, *_5, *parameters = NULL, *_6 = NULL, *_9;
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 1, &request, &response);
@@ -366,15 +408,27 @@ PHP_METHOD(Owl_Application, handle) {
 		ZEPHIR_OBS_VAR(_6);
 		zephir_read_property(&_6, matchedRoute, SL("parameters"), PH_NOISY_CC);
 		ZEPHIR_CPY_WRT(parameters, _6);
+		if (zephir_instance_of_ev(matchedRoute, owl_router_http_staticroute_ce TSRMLS_CC)) {
+			ZEPHIR_INIT_NVAR(_1);
+			ZVAL_NULL(_1);
+			ZEPHIR_CALL_METHOD(NULL, this_ptr, "dispatch", &_7, parameters, _1, response);
+			zephir_check_call_status();
+		} else {
+			ZEPHIR_OBS_NVAR(_6);
+			zephir_read_property(&_6, matchedRoute, SL("uriParameters"), PH_NOISY_CC);
+			ZEPHIR_CALL_METHOD(NULL, this_ptr, "dispatch", &_7, parameters, _6, response);
+			zephir_check_call_status();
+		}
 		zephir_update_property_this(this_ptr, SL("request"), request TSRMLS_CC);
-		ZEPHIR_CALL_METHOD(NULL, this_ptr, "dispatch", &_7, parameters, matchedRoute, response);
-		zephir_check_call_status();
 	} else {
 		ZEPHIR_INIT_NVAR(_1);
 		ZVAL_LONG(_1, 404);
 		ZEPHIR_CALL_METHOD(NULL, response, "setcode", &_8, _1);
 		zephir_check_call_status();
-		ZEPHIR_CALL_METHOD(NULL, this_ptr, "dispatch", &_7, parameters, matchedRoute, response);
+		_9 = zephir_fetch_nproperty_this(this_ptr, SL("errorHandlerParameters"), PH_NOISY_CC);
+		ZEPHIR_INIT_NVAR(_1);
+		ZVAL_NULL(_1);
+		ZEPHIR_CALL_METHOD(NULL, this_ptr, "dispatch", &_7, _9, _1, response);
 		zephir_check_call_status();
 	}
 	_9 = zephir_fetch_nproperty_this(this_ptr, SL("eventManager"), PH_NOISY_CC);

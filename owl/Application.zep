@@ -58,6 +58,20 @@ class Application implements ApplicationInterface
 		set, get
 	};
 
+	/**
+	 * Handle parameters for not found page
+	 *
+	 * @var array
+	 */
+	protected errorHandlerParameters = [
+		"module": "Api",
+		"controller": "Index",
+		"action": "error"
+	] {
+		set, get
+	};
+
+
 	public function __construct(<Manager> di = null, <Event\Manager> eventManager = null, string env = ApplicationInterface::ENV_PRODUCTION)
 	{
 		let this->di = di;
@@ -73,13 +87,13 @@ class Application implements ApplicationInterface
 	/**
 	 * Dispatch the action
 	 */
-	inline protected fn dispatch(var parameters, var matchedRoute, var response)
+	inline protected fn dispatch(var parameters, var callParameters = null, var response)
 	{
 		var handlerClass, controller, result, action, e, module;
 
 		let this->currentLoop++;
 
-		let handlerClass = "\\RestApp" . "\\";
+		let handlerClass = "\\RestApp\\";
 
 		if fetch module, parameters["module"] {
 			let handlerClass .= module . "\\";
@@ -108,22 +122,28 @@ class Application implements ApplicationInterface
 				throw new Exception("Action '" . action . "' is not exists on '" . handlerClass ."'");
 			}
 
-			if (matchedRoute instanceof StaticRoute) {
+			this->eventManager->emit(DispatcherInterface::EVENT_AFTER_ACTION, this);
+
+			if null === callParameters {
 				let result = controller->{action}();
 			} else {
 				/**
 				 * @todo It's not a performance, 7200 vs 8300 RPS, maybe only request parameters?
 				 */
-				let result = call_user_func_array([controller, action], matchedRoute->uriParameters);
+				let result = call_user_func_array([controller, action], callParameters);
 			}
-
-			this->eventManager->emit(DispatcherInterface::EVENT_AFTER_ACTION, this);
 
 			response->setContent(result);
 		} catch \Exception, e {
 			response->setCode(500);
-			var_dump(e);
-			this->dispatch(this->exceptionHandlerParameters, matchedRoute, response);
+
+			this->dispatch(
+				this->exceptionHandlerParameters,
+				[
+					"exception": e
+				],
+				response
+			);
 		}
 	}
 
@@ -152,11 +172,17 @@ class Application implements ApplicationInterface
 			var parameters;
             let parameters = matchedRoute->parameters;
 
+			if (matchedRoute instanceof StaticRoute) {
+				this->dispatch(parameters, null, response);
+
+			} else {
+				this->dispatch(parameters, matchedRoute->uriParameters, response);
+			}
+
 			let this->request = request;
-			this->dispatch(parameters, matchedRoute, response);
 		} else {
 			response->setCode(404);
-			this->dispatch(parameters, matchedRoute, response);
+			this->dispatch(this->errorHandlerParameters, null, response);
 		}
 
 		this->eventManager->emit(ApplicationInterface::EVENT_AFTER_HANDLE, this);

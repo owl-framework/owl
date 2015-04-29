@@ -40,6 +40,13 @@ class Application implements \Owl\ApplicationInterface
      */
     protected $exceptionHandlerParameters = array("module" => "Api", "controller" => "Index", "action" => "exception");
 
+    /**
+     * Handle parameters for not found page
+     *
+     * @var array
+     */
+    protected $errorHandlerParameters = array("module" => "Api", "controller" => "Index", "action" => "error");
+
 
     /**
      * Latest Request
@@ -75,6 +82,20 @@ class Application implements \Owl\ApplicationInterface
     public function getExceptionHandlerParameters() {}
 
     /**
+     * Handle parameters for not found page
+     *
+     * @param array $errorHandlerParameters 
+     */
+    public function setErrorHandlerParameters($errorHandlerParameters) {}
+
+    /**
+     * Handle parameters for not found page
+     *
+     * @return array 
+     */
+    public function getErrorHandlerParameters() {}
+
+    /**
      * @param mixed $di 
      * @param mixed $eventManager 
      * @param string $env 
@@ -85,10 +106,10 @@ class Application implements \Owl\ApplicationInterface
      * Dispatch the action
      *
      * @param mixed $parameters 
-     * @param mixed $matchedRoute 
+     * @param mixed $callParameters 
      * @param mixed $response 
      */
-    protected function dispatch($parameters, $matchedRoute, $response) {}
+    protected function dispatch($parameters, $callParameters = null, $response) {}
 
     /**
      * Handle Http Request
