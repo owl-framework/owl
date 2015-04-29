@@ -63,6 +63,7 @@ class MySQL
 
     /**
      * @param mixed $statement 
+     * @return \PdoStatement 
      */
     public function prepare($statement) {}
 

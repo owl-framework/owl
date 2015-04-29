@@ -17,7 +17,9 @@ class IndexController extends \Owl\Mvc\Controller
      */
     public function indexAction()
     {
-        $statement = $this->di->get('connection')->prepare("SELECT * FROM `phalcon-module-skeleton`.User__Users;");
+        /** @var \Owl\DBAL\Driver\MySQL $connection */
+        $connection = $this->di->get('connection');
+        $statement = $connection->prepare("SELECT * FROM `phalcon-module-skeleton`.User__Users;");
         $statement->execute();
 
         return $statement->fetchAll();

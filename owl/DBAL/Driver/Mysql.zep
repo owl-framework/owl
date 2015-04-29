@@ -1,6 +1,8 @@
 
 namespace Owl\DBAL\Driver;
 
+use PdoStatement;
+
 class MySQL
 {
     protected eventsManager {set, get};
@@ -64,7 +66,7 @@ class MySQL
         return this->connection->lastInsertId();
     }
 
-    public function prepare(var statement)
+    public function prepare(var statement) -> <PdoStatement>
     {
         this->connect();
 
