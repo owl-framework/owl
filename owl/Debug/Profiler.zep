@@ -8,10 +8,15 @@ use Owl\Http\ResponseInterface;
 use Owl\Event\Manager as EventManager;
 use Owl\Event\Event;
 
-class Profiler {
+class Profiler
+{
 	protected startTime;
 
 	protected lastTime;
+
+	protected assetsUri = "//owl-framework.github.io/assets/profiler/min.css" {
+		get, set
+	};
 
 	public function __construct()
 	{
@@ -43,22 +48,30 @@ class Profiler {
 
 	public function setContent(<ResponseInterface> response) -> <ResponseInterface>
 	{
-	    var html, resp;
+	    var html, resp, tmp;
 
 		let resp = new \Owl\Http\Response();
 
 	    let html = "<html><head>";
 
-	    let html .= "<link href=\"//owl-framework.github.io/assets/profiler/min.css\" media=\"all\" rel=\"stylesheet\">";
+	    let html .= "<link href=\"" . this->assetsUri . "\" media=\"all\" rel=\"stylesheet\">";
 
 		let html .= "</head><body>";
 
 	    let html .= "<div id='owl-debug-bar'>";
-			let html .= sprintf("%.4F ms", microtime(true) - this->startTime);
+			let html .= "<span class=\"label color-2\">" . sprintf("%.4Fms", microtime(true) - this->startTime) . "</span>";
+			let html .= "<span class=\"label color-3\">" . sprintf("%.3fMB", memory_get_peak_usage() / 1024 / 1024)  . "</span>";
 			let html .= "\t";
-			let html .= sprintf("%.3f MB", memory_get_peak_usage() / 1024 / 1024);
-			let html .= "\t";
-			let html .= "HTTP Code " . response->getCode();
+
+			if (response->getCode() == 200) {
+				let tmp = "2";
+			} elseif (response->getCode() == 500) {
+				let tmp = "1";
+			} else {
+				let tmp = "3";
+			}
+
+			let html .= "HTTP Code " . "<span class=\"label color-" . tmp . "\">" . response->getCode() . "</span>";
   	    let html .= "</div>";
 
 

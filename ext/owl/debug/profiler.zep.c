@@ -12,13 +12,13 @@
 #include <Zend/zend_interfaces.h>
 
 #include "kernel/main.h"
+#include "kernel/object.h"
 #include "kernel/memory.h"
 #include "kernel/time.h"
-#include "kernel/object.h"
 #include "kernel/fcall.h"
 #include "kernel/array.h"
-#include "kernel/operators.h"
 #include "kernel/concat.h"
+#include "kernel/operators.h"
 #include "kernel/string.h"
 
 
@@ -30,7 +30,28 @@ ZEPHIR_INIT_CLASS(Owl_Debug_Profiler) {
 
 	zend_declare_property_null(owl_debug_profiler_ce, SL("lastTime"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
+	zend_declare_property_string(owl_debug_profiler_ce, SL("assetsUri"), "//owl-framework.github.io/assets/profiler/min.css", ZEND_ACC_PROTECTED TSRMLS_CC);
+
 	return SUCCESS;
+
+}
+
+PHP_METHOD(Owl_Debug_Profiler, getAssetsUri) {
+
+
+	RETURN_MEMBER(this_ptr, "assetsUri");
+
+}
+
+PHP_METHOD(Owl_Debug_Profiler, setAssetsUri) {
+
+	zval *assetsUri;
+
+	zephir_fetch_params(0, 1, 0, &assetsUri);
+
+
+
+	zephir_update_property_this(this_ptr, SL("assetsUri"), assetsUri TSRMLS_CC);
 
 }
 
@@ -125,9 +146,10 @@ PHP_METHOD(Owl_Debug_Profiler, listen) {
 
 PHP_METHOD(Owl_Debug_Profiler, setContent) {
 
-	zephir_nts_static zephir_fcall_cache_entry *_0 = NULL, *_6 = NULL, *_8 = NULL, *_15 = NULL;
+	zephir_nts_static zephir_fcall_cache_entry *_0 = NULL, *_8 = NULL, *_11 = NULL, *_21 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *response, *html, *resp, *_1 = NULL, *_2, _3, _4 = zval_used_for_init, *_5 = NULL, *_7 = NULL, _9, *_10 = NULL, *_11 = NULL, *_12, *_13, *_14 = NULL;
+	long tmp;
+	zval *response, *html, *resp, *_1, *_2, *_3 = NULL, *_4, _5, _6 = zval_used_for_init, *_7 = NULL, *_9, *_10 = NULL, _12 = zval_used_for_init, *_13 = NULL, *_14, *_15 = NULL, *_16 = NULL, *_17 = NULL, *_18, *_19, *_20 = NULL;
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &response);
@@ -140,49 +162,68 @@ PHP_METHOD(Owl_Debug_Profiler, setContent) {
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(html);
 	ZVAL_STRING(html, "<html><head>", 1);
-	zephir_concat_self_str(&html, SL("<link href=\"//owl-framework.github.io/assets/profiler/min.css\" media=\"all\" rel=\"stylesheet\">") TSRMLS_CC);
+	_1 = zephir_fetch_nproperty_this(this_ptr, SL("assetsUri"), PH_NOISY_CC);
+	ZEPHIR_INIT_VAR(_2);
+	ZEPHIR_CONCAT_SVS(_2, "<link href=\"", _1, "\" media=\"all\" rel=\"stylesheet\">");
+	zephir_concat_self(&html, _2 TSRMLS_CC);
 	zephir_concat_self_str(&html, SL("</head><body>") TSRMLS_CC);
 	zephir_concat_self_str(&html, SL("<div id='owl-debug-bar'>") TSRMLS_CC);
-	ZEPHIR_INIT_VAR(_1);
-	zephir_microtime(_1, ZEPHIR_GLOBAL(global_true) TSRMLS_CC);
-	_2 = zephir_fetch_nproperty_this(this_ptr, SL("startTime"), PH_NOISY_CC);
-	ZEPHIR_SINIT_VAR(_3);
-	sub_function(&_3, _1, _2 TSRMLS_CC);
-	ZEPHIR_SINIT_VAR(_4);
-	ZVAL_STRING(&_4, "%.4F ms", 0);
-	ZEPHIR_CALL_FUNCTION(&_5, "sprintf", &_6, &_4, &_3);
+	ZEPHIR_INIT_VAR(_3);
+	zephir_microtime(_3, ZEPHIR_GLOBAL(global_true) TSRMLS_CC);
+	_4 = zephir_fetch_nproperty_this(this_ptr, SL("startTime"), PH_NOISY_CC);
+	ZEPHIR_SINIT_VAR(_5);
+	sub_function(&_5, _3, _4 TSRMLS_CC);
+	ZEPHIR_SINIT_VAR(_6);
+	ZVAL_STRING(&_6, "%.4Fms", 0);
+	ZEPHIR_CALL_FUNCTION(&_7, "sprintf", &_8, &_6, &_5);
 	zephir_check_call_status();
-	zephir_concat_self(&html, _5 TSRMLS_CC);
+	ZEPHIR_INIT_VAR(_9);
+	ZEPHIR_CONCAT_SVS(_9, "<span class=\"label color-2\">", _7, "</span>");
+	zephir_concat_self(&html, _9 TSRMLS_CC);
+	ZEPHIR_CALL_FUNCTION(&_10, "memory_get_peak_usage", &_11);
+	zephir_check_call_status();
+	ZEPHIR_SINIT_NVAR(_6);
+	ZVAL_STRING(&_6, "%.3fMB", 0);
+	ZEPHIR_SINIT_VAR(_12);
+	ZVAL_DOUBLE(&_12, zephir_safe_div_double_long(zephir_safe_div_zval_long(_10, 1024 TSRMLS_CC), (double) (1024) TSRMLS_CC));
+	ZEPHIR_CALL_FUNCTION(&_13, "sprintf", &_8, &_6, &_12);
+	zephir_check_call_status();
+	ZEPHIR_INIT_VAR(_14);
+	ZEPHIR_CONCAT_SVS(_14, "<span class=\"label color-3\">", _13, "</span>");
+	zephir_concat_self(&html, _14 TSRMLS_CC);
 	zephir_concat_self_str(&html, SL("\t") TSRMLS_CC);
-	ZEPHIR_CALL_FUNCTION(&_7, "memory_get_peak_usage", &_8);
+	ZEPHIR_CALL_METHOD(&_15, response, "getcode", NULL);
 	zephir_check_call_status();
-	ZEPHIR_SINIT_NVAR(_4);
-	ZVAL_STRING(&_4, "%.3f MB", 0);
-	ZEPHIR_SINIT_VAR(_9);
-	ZVAL_DOUBLE(&_9, zephir_safe_div_double_long(zephir_safe_div_zval_long(_7, 1024 TSRMLS_CC), (double) (1024) TSRMLS_CC));
-	ZEPHIR_CALL_FUNCTION(&_10, "sprintf", &_6, &_4, &_9);
+	ZEPHIR_CALL_METHOD(&_16, response, "getcode", NULL);
 	zephir_check_call_status();
-	zephir_concat_self(&html, _10 TSRMLS_CC);
-	zephir_concat_self_str(&html, SL("\t") TSRMLS_CC);
-	ZEPHIR_CALL_METHOD(&_11, response, "getcode", NULL);
+	if (ZEPHIR_IS_LONG(_15, 200)) {
+		tmp = 2;
+	} else if (ZEPHIR_IS_LONG(_16, 500)) {
+		tmp = 1;
+	} else {
+		tmp = 3;
+	}
+	ZEPHIR_SINIT_NVAR(_6);
+	ZVAL_LONG(&_6, tmp);
+	ZEPHIR_CALL_METHOD(&_17, response, "getcode", NULL);
 	zephir_check_call_status();
-	ZEPHIR_INIT_VAR(_12);
-	ZEPHIR_CONCAT_SV(_12, "HTTP Code ", _11);
-	zephir_concat_self(&html, _12 TSRMLS_CC);
+	ZEPHIR_INIT_VAR(_18);
+	ZEPHIR_CONCAT_SSVSVS(_18, "HTTP Code ", "<span class=\"label color-", &_6, "\">", _17, "</span>");
+	zephir_concat_self(&html, _18 TSRMLS_CC);
 	zephir_concat_self_str(&html, SL("</div>") TSRMLS_CC);
 	zephir_concat_self_str(&html, SL("<pre><code>") TSRMLS_CC);
-	ZEPHIR_INIT_NVAR(_1);
-	ZEPHIR_INIT_VAR(_13);
-	ZEPHIR_CALL_METHOD(&_14, response, "getcontent", NULL);
+	ZEPHIR_INIT_NVAR(_3);
+	ZEPHIR_INIT_VAR(_19);
+	ZEPHIR_CALL_METHOD(&_20, response, "getcontent", NULL);
 	zephir_check_call_status();
-	zephir_json_decode(_13, &(_13), _14, 0  TSRMLS_CC);
-	ZEPHIR_SINIT_NVAR(_4);
-	ZVAL_LONG(&_4, (128 | 256));
-	zephir_json_encode(_1, &(_1), _13, zephir_get_intval(&_4)  TSRMLS_CC);
-	zephir_concat_self(&html, _1 TSRMLS_CC);
+	zephir_json_decode(_19, &(_19), _20, 0  TSRMLS_CC);
+	ZEPHIR_SINIT_NVAR(_12);
+	ZVAL_LONG(&_12, (128 | 256));
+	zephir_json_encode(_3, &(_3), _19, zephir_get_intval(&_12)  TSRMLS_CC);
+	zephir_concat_self(&html, _3 TSRMLS_CC);
 	zephir_concat_self_str(&html, SL("</code></pre>") TSRMLS_CC);
 	zephir_concat_self_str(&html, SL("</body></html>") TSRMLS_CC);
-	ZEPHIR_CALL_METHOD(NULL, resp, "setcontent", &_15, html);
+	ZEPHIR_CALL_METHOD(NULL, resp, "setcontent", &_21, html);
 	zephir_check_call_status();
 	RETURN_CCTOR(resp);
 

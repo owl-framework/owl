@@ -11,6 +11,17 @@ class Profiler
     protected $lastTime;
 
 
+    protected $assetsUri = "//owl-framework.github.io/assets/profiler/min.css";
+
+
+
+    public function getAssetsUri() {}
+
+    /**
+     * @param mixed $assetsUri 
+     */
+    public function setAssetsUri($assetsUri) {}
+
 
     public function __construct() {}
 
