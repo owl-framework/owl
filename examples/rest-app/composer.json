@@ -1,6 +1,6 @@
 {
     "name": "owl-framework/rest-app",
-    "description": "Simple REST application powered by OwlPHP framework",
+    "description": "Simple REST application powered by Owl framework",
     "license": "MIT",
     "authors": [
         {
@@ -10,7 +10,8 @@
     ],
     "require": {
       "php": "~5.4",
-        "nkt/flame": "~1.0"
+      "ext-json": "*",
+      "ext-owl": ">=0.3"
     },
     "autoload": {
       "psr-4": {
