@@ -35,7 +35,8 @@ $driver = new \Owl\DBAl\Driver\Mysql(
     'root',
     'root',
     array(
-        PDO::ATTR_PERSISTENT => true // OMG Is so impossible :D
+        PDO::ATTR_PERSISTENT => true, // OMG Is so impossible :D
+        PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES "UTF8"'
     )
 );
 $connection = new \Owl\DBAL\Connection(['driver' => $driver], $eventManager);
