@@ -122,6 +122,7 @@ class Application implements ApplicationInterface
 			response->setContent(result);
 		} catch \Exception, e {
 			response->setCode(500);
+			var_dump(e);
 			this->dispatch(this->exceptionHandlerParameters, matchedRoute, response);
 		}
 	}
