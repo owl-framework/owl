@@ -58,6 +58,8 @@ class Profiler {
 			let html .= sprintf("%.4F ms", microtime(true) - this->startTime);
 			let html .= "\t";
 			let html .= sprintf("%.3f MB", memory_get_peak_usage() / 1024 / 1024);
+			let html .= "\t";
+			let html .= "HTTP Code " . response->getCode();
   	    let html .= "</div>";
 
 
