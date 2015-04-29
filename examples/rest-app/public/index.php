@@ -22,6 +22,10 @@ $serviceManager = new Owl\Service\Manager();
 
 $router = new Router();
 $router->add('/', ['module' => 'Api', 'controller' => 'Index', 'action' => 'index']);
+
+$router->add('/version', ['module' => 'Api', 'controller' => 'Index', 'action' => 'version']);
+$router->add('/ping', ['module' => 'Api', 'controller' => 'Index', 'action' => 'version']);
+
 $router->add('/users', ['module' => 'Api', 'controller' => 'User', 'action' => 'list']);
 $router->add('/users/:id', ['module' => 'Api', 'controller' => 'User', 'action' => 'index']);
 $router->add('/users/:id', ['module' => 'Api', 'controller' => 'User', 'action' => 'create'], Route::POST);
@@ -45,6 +49,7 @@ $serviceManager->setService('connection', $connection);
 $cache = new \Owl\Cache\Driver\Memcached();
 $serviceManager->setService('cache', $cache);
 
+//$_SERVER['REQUEST_URI'] = '/fsdfsd';
 $application = new Application($serviceManager, $eventManager);
 $response = $application->handle(Request::createFromGlobals(), new \Owl\Http\Response\Json());
 
