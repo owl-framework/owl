@@ -47,12 +47,11 @@ class Profiler {
 
 		let resp = new \Owl\Http\Response();
 
-	    let html = "<html><body>";
+	    let html = "<html><head>";
 
-	    let html .= "<style>";
-	    	let html .= "#owl-debug-bar {width: 100%;height: 40px;line-height: 40px;border-bottom: 1px solid black;margin-bottom: 20px;background-color: #f8f8f8;}";
-	    	let html .= "body {margin: 0; padding: 0;}";
-	    let html .= "</style>";
+	    let html .= "<link href=\"//owl-framework.github.io/assets/profiler/min.css\" media=\"all\" rel=\"stylesheet\">";
+
+		let html .= "</head><body>";
 
 	    let html .= "<div id='owl-debug-bar'>";
 			let html .= sprintf("%.4F ms", microtime(true) - this->startTime);

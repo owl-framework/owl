@@ -139,11 +139,9 @@ PHP_METHOD(Owl_Debug_Profiler, setContent) {
 	ZEPHIR_CALL_METHOD(NULL, resp, "__construct", &_0);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(html);
-	ZVAL_STRING(html, "<html><body>", 1);
-	zephir_concat_self_str(&html, SL("<style>") TSRMLS_CC);
-	zephir_concat_self_str(&html, SL("#owl-debug-bar {width: 100%;height: 40px;line-height: 40px;border-bottom: 1px solid black;margin-bottom: 20px;background-color: #f8f8f8;}") TSRMLS_CC);
-	zephir_concat_self_str(&html, SL("body {margin: 0; padding: 0;}") TSRMLS_CC);
-	zephir_concat_self_str(&html, SL("</style>") TSRMLS_CC);
+	ZVAL_STRING(html, "<html><head>", 1);
+	zephir_concat_self_str(&html, SL("<link href=\"//owl-framework.github.io/assets/profiler/min.css\" media=\"all\" rel=\"stylesheet\">") TSRMLS_CC);
+	zephir_concat_self_str(&html, SL("</head><body>") TSRMLS_CC);
 	zephir_concat_self_str(&html, SL("<div id='owl-debug-bar'>") TSRMLS_CC);
 	ZEPHIR_INIT_VAR(_1);
 	zephir_microtime(_1, ZEPHIR_GLOBAL(global_true) TSRMLS_CC);
