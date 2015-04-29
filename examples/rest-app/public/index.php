@@ -40,9 +40,10 @@ $driver = new \Owl\DBAl\Driver\Mysql(
     )
 );
 $connection = new \Owl\DBAL\Connection(['driver' => $driver], $eventManager);
-
 $serviceManager->setService('connection', $connection);
 
+$cache = new \Owl\Cache\Driver\Memcached();
+$serviceManager->setService('cache', $cache);
 
 $application = new Application($serviceManager, $eventManager);
 $response = $application->handle(Request::createFromGlobals(), new \Owl\Http\Response\Json());

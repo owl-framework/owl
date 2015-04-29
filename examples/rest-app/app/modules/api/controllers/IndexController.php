@@ -17,12 +17,20 @@ class IndexController extends \Owl\Mvc\Controller
      */
     public function indexAction()
     {
-        /** @var \Owl\DBAL\Driver\MySQL $connection */
-        $connection = $this->di->get('connection');
-        $statement = $connection->prepare("SELECT * FROM `phalcon-module-skeleton`.User__Users;");
-        $statement->execute();
-
-        return $statement->fetchAll();
+//        /** @var \Owl\Cache\Driver $cache */
+//        $cache = $this->di->get('cache');
+//
+//        return $cache->get('users');
+//
+//        /** @var \Owl\DBAL\Driver\MySQL $connection */
+//        $connection = $this->di->get('connection');
+//        $statement = $connection->prepare("SELECT * FROM `phalcon-module-skeleton`.User__Users;");
+//        $statement->execute();
+//
+//
+//        $cache->save('users', $statement->fetchAll(), 3600);
+//
+//        return $statement->fetchAll();
 
         return array(
             'info' => array(
