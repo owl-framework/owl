@@ -30,7 +30,14 @@ $router->add('/users/:id', ['module' => 'Api', 'controller' => 'User', 'action' 
 $serviceManager->setService('router', $router);
 
 
-$driver = new \Owl\DBAl\Driver\Mysql('mysql:host=127.0.0.1;dbname=phalcon-module-skeleton;port=49153', 'root', 'root', array());
+$driver = new \Owl\DBAl\Driver\Mysql(
+    'mysql:host=127.0.0.1;dbname=phalcon-module-skeleton;port=49153',
+    'root',
+    'root',
+    array(
+        PDO::ATTR_PERSISTENT => true // OMG Is so impossible :D
+    )
+);
 $connection = new \Owl\DBAL\Connection(['driver' => $driver], $eventManager);
 
 $serviceManager->setService('connection', $connection);
