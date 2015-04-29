@@ -172,7 +172,7 @@ PHP_METHOD(Owl_Debug_Profiler, setContent) {
 	zephir_check_call_status();
 	zephir_json_decode(_11, &(_11), _12, 0  TSRMLS_CC);
 	ZEPHIR_SINIT_NVAR(_4);
-	ZVAL_LONG(&_4, 128);
+	ZVAL_LONG(&_4, (128 | 256));
 	zephir_json_encode(_1, &(_1), _11, zephir_get_intval(&_4)  TSRMLS_CC);
 	zephir_concat_self(&html, _1 TSRMLS_CC);
 	zephir_concat_self_str(&html, SL("</code></pre>") TSRMLS_CC);

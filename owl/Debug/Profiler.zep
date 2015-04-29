@@ -62,7 +62,7 @@ class Profiler {
 
 
 		let html .= "<pre><code>";
-				let html .= json_encode(json_decode(response->getContent()), JSON_PRETTY_PRINT);
+				let html .= json_encode(json_decode(response->getContent()), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 		let html .= "</code></pre>";
 
 		let html .= "</body></html>";
