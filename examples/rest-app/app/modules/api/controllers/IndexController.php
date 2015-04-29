@@ -5,6 +5,8 @@
 
 namespace RestApp\Api\Controller;
 
+use ReflectionExtension;
+
 /**
  * Class IndexController
  * @Path("/api")
@@ -40,6 +42,29 @@ class IndexController extends \Owl\Mvc\Controller
                 'time' => time()
             )
         );
+    }
+
+    /**
+     * @Get
+     * @Url("/ping", name="api-ping")
+     */
+    public function pingAction()
+    {
+        return ['pong'];
+    }
+
+    /**
+     * @Get
+     * @Url("/version", name="api-show-version")
+     */
+    public function versionAction()
+    {
+        $ext = new ReflectionExtension('owl');
+
+        return [
+            'version' => '0.1-dev',
+            'owl' => $ext->getVersion()
+        ];
     }
 
     public function exceptionAction()
