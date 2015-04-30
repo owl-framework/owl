@@ -15,7 +15,7 @@
     },
     "autoload": {
       "psr-4": {
-        "RestApp\\Common\\Controller\\": "app/modules/api/controllers"
+        "RestApp\\Common\\Controller\\": "app/modules/common/controllers"
       }
     }
 }

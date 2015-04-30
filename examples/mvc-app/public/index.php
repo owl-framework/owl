@@ -42,7 +42,17 @@ $cache = new \Owl\Cache\Driver\Memcached();
 $serviceManager->setService('cache', $cache);
 
 $application = new Application($serviceManager, $eventManager);
-$response = $application->handle(Request::createFromGlobals(), new \Owl\Http\Response\Json());
+$application->setErrorHandlerParameters(array(
+    'module' => 'Common',
+    'controller' => 'Index',
+    'action' => 'error'
+));
+$application->setExceptionHandlerParameters(array(
+    'module' => 'Common',
+    'controller' => 'Index',
+    'action' => 'exception'
+));
+$response = $application->handle(Request::createFromGlobals(), new \Owl\Http\Response());
 
-$response = $profiler->setContent($response);
+//$response = $profiler->setContent($response);
 $response->send();

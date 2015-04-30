@@ -20,14 +20,7 @@ class IndexController extends \Owl\Mvc\Controller
      */
     public function indexAction()
     {
-        return array(
-            'info' => array(
-                'php' => array(
-                    'version' => PHP_VERSION
-                ),
-                'time' => time()
-            )
-        );
+        return "Hello, World!";
     }
 
     /**
