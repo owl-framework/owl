@@ -2,16 +2,14 @@
 
 namespace Owl\Log\Formatter;
 
-class Line extends \Owl\Log\AbstractFormatter
+class Line implements \Owl\Log\FormatterInterface
 {
 
     /**
-     * @param mixed $type 
-     * @param double $timestamp 
-     * @param string $message 
-     * @param array $context 
+     * @inheritdoc
+     * @param mixed $record 
      * @return string 
      */
-    public function format($type, $timestamp, $message, $context = array()) {}
+    public function format(\Owl\Log\Record $record) {}
 
 }

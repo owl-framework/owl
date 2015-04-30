@@ -12,56 +12,51 @@
 #include <Zend/zend_interfaces.h>
 
 #include "kernel/main.h"
-#include "kernel/memory.h"
-#include "kernel/fcall.h"
-#include "kernel/operators.h"
 #include "kernel/string.h"
+#include "kernel/memory.h"
 #include "kernel/array.h"
+#include "kernel/fcall.h"
+#include "kernel/object.h"
 
 
 ZEPHIR_INIT_CLASS(Owl_Log_Formatter_Json) {
 
-	ZEPHIR_REGISTER_CLASS_EX(Owl\\Log\\Formatter, Json, owl, log_formatter_json, owl_log_abstractformatter_ce, owl_log_formatter_json_method_entry, 0);
+	ZEPHIR_REGISTER_CLASS(Owl\\Log\\Formatter, Json, owl, log_formatter_json, owl_log_formatter_json_method_entry, 0);
 
+	zend_class_implements(owl_log_formatter_json_ce TSRMLS_CC, 1, owl_log_formatterinterface_ce);
 	return SUCCESS;
 
 }
 
+/**
+ * @inheritdoc
+ */
 PHP_METHOD(Owl_Log_Formatter_Json, format) {
 
-	zephir_nts_static zephir_fcall_cache_entry *_3 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *context = NULL, *_1;
-	zval *message = NULL;
-	double timestamp;
-	zval *type, *timestamp_param = NULL, *message_param = NULL, *context_param = NULL, *_0 = NULL, *_2 = NULL, *_4;
+	zephir_nts_static zephir_fcall_cache_entry *_2 = NULL;
+	zval *_0;
+	zval *record, *_1 = NULL, *_3, *_4 = NULL;
 
 	ZEPHIR_MM_GROW();
-	zephir_fetch_params(1, 3, 1, &type, &timestamp_param, &message_param, &context_param);
-
-	timestamp = zephir_get_doubleval(timestamp_param);
-	zephir_get_strval(message, message_param);
-	if (!context_param) {
-		ZEPHIR_INIT_VAR(context);
-		array_init(context);
-	} else {
-		zephir_get_arrval(context, context_param);
-	}
+	zephir_fetch_params(1, 1, 0, &record);
 
 
-	ZEPHIR_CALL_METHOD(&_0, this_ptr, "interpolate", NULL, message, context);
+
+	ZEPHIR_INIT_VAR(_0);
+	zephir_create_array(_0, 3, 0 TSRMLS_CC);
+	ZEPHIR_OBS_VAR(_3);
+	zephir_read_property(&_3, record, SL("level"), PH_NOISY_CC);
+	ZEPHIR_CALL_CE_STATIC(&_1, owl_log_logger_ce, "getleveltitle", &_2, _3);
 	zephir_check_call_status();
-	zephir_get_strval(message, _0);
-	ZEPHIR_INIT_VAR(_1);
-	zephir_create_array(_1, 3, 0 TSRMLS_CC);
-	ZEPHIR_CALL_CE_STATIC(&_2, owl_log_logger_ce, "getleveltitle", &_3, type);
-	zephir_check_call_status();
-	zephir_array_update_string(&_1, SL("type"), &_2, PH_COPY | PH_SEPARATE);
-	zephir_array_update_string(&_1, SL("message"), &message, PH_COPY | PH_SEPARATE);
-	ZEPHIR_INIT_VAR(_4);
-	ZVAL_DOUBLE(_4, timestamp);
-	zephir_array_update_string(&_1, SL("timestamp"), &_4, PH_COPY | PH_SEPARATE);
-	zephir_json_encode(return_value, &(return_value), _1, 0  TSRMLS_CC);
+	zephir_array_update_string(&_0, SL("type"), &_1, PH_COPY | PH_SEPARATE);
+	ZEPHIR_OBS_VAR(_4);
+	zephir_read_property(&_4, record, SL("message"), PH_NOISY_CC);
+	zephir_array_update_string(&_0, SL("message"), &_4, PH_COPY | PH_SEPARATE);
+	ZEPHIR_OBS_NVAR(_4);
+	zephir_read_property(&_4, record, SL("timestamp"), PH_NOISY_CC);
+	zephir_array_update_string(&_0, SL("timestamp"), &_4, PH_COPY | PH_SEPARATE);
+	zephir_json_encode(return_value, &(return_value), _0, 0  TSRMLS_CC);
 	RETURN_MM();
 
 }

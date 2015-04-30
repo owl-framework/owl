@@ -5,7 +5,7 @@ namespace Owl\Log;
 class Logger extends \Owl\Log\AbstractLogger implements \Owl\Log\LoggerInterface
 {
     /**
-     * Log records
+     * Array of <Record> elements
      */
     protected $records = array();
 
@@ -21,7 +21,7 @@ class Logger extends \Owl\Log\AbstractLogger implements \Owl\Log\LoggerInterface
 
 
     /**
-     * Log records
+     * Array of <Record> elements
      */
     public function getRecords() {}
 

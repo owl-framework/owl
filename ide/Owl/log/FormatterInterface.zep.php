@@ -8,12 +8,9 @@ interface FormatterInterface
     /**
      * Format record
      *
-     * @param mixed $level 
-     * @param double $timestamp 
-     * @param string $message 
-     * @param array $context 
+     * @param mixed $record 
      * @return string 
      */
-    public function format($level, $timestamp, $message, $context = array());
+    public function format(Record $record);
 
 }

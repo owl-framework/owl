@@ -85,10 +85,10 @@ abstract class AbstractWriter implements \Owl\Log\WriterInterface
     public function setFormatter($formatter) {}
 
     /**
-     * @param array $record 
+     * @param mixed $record 
      * @return string 
      */
-    protected function format($record) {}
+    protected function format(Record $record) {}
 
     /**
      * @param array $records 

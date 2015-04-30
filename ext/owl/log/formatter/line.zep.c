@@ -12,54 +12,48 @@
 #include <Zend/zend_interfaces.h>
 
 #include "kernel/main.h"
+#include "kernel/concat.h"
 #include "kernel/memory.h"
 #include "kernel/fcall.h"
-#include "kernel/operators.h"
-#include "kernel/concat.h"
+#include "kernel/object.h"
 
 
 ZEPHIR_INIT_CLASS(Owl_Log_Formatter_Line) {
 
-	ZEPHIR_REGISTER_CLASS_EX(Owl\\Log\\Formatter, Line, owl, log_formatter_line, owl_log_abstractformatter_ce, owl_log_formatter_line_method_entry, 0);
+	ZEPHIR_REGISTER_CLASS(Owl\\Log\\Formatter, Line, owl, log_formatter_line, owl_log_formatter_line_method_entry, 0);
 
+	zend_class_implements(owl_log_formatter_line_ce TSRMLS_CC, 1, owl_log_formatterinterface_ce);
 	return SUCCESS;
 
 }
 
+/**
+ * @inheritdoc
+ */
 PHP_METHOD(Owl_Log_Formatter_Line, format) {
 
-	zephir_nts_static zephir_fcall_cache_entry *_2 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *context = NULL;
-	zval *message = NULL;
-	double timestamp;
-	zval *type, *timestamp_param = NULL, *message_param = NULL, *context_param = NULL, *_0 = NULL, *_1 = NULL, _3, _4, *_5 = NULL;
+	zephir_nts_static zephir_fcall_cache_entry *_1 = NULL;
+	zval *record, *_0 = NULL, *_2, *_3, _4, *_5 = NULL, *_6;
 
 	ZEPHIR_MM_GROW();
-	zephir_fetch_params(1, 3, 1, &type, &timestamp_param, &message_param, &context_param);
-
-	timestamp = zephir_get_doubleval(timestamp_param);
-	zephir_get_strval(message, message_param);
-	if (!context_param) {
-		ZEPHIR_INIT_VAR(context);
-		array_init(context);
-	} else {
-		zephir_get_arrval(context, context_param);
-	}
+	zephir_fetch_params(1, 1, 0, &record);
 
 
-	ZEPHIR_CALL_METHOD(&_0, this_ptr, "interpolate", NULL, message, context);
+
+	ZEPHIR_OBS_VAR(_2);
+	zephir_read_property(&_2, record, SL("level"), PH_NOISY_CC);
+	ZEPHIR_CALL_CE_STATIC(&_0, owl_log_logger_ce, "getleveltitle", &_1, _2);
 	zephir_check_call_status();
-	zephir_get_strval(message, _0);
-	ZEPHIR_CALL_CE_STATIC(&_1, owl_log_logger_ce, "getleveltitle", &_2, type);
-	zephir_check_call_status();
-	ZEPHIR_SINIT_VAR(_3);
-	ZVAL_STRING(&_3, "D, d M Y H:i:s O", 0);
+	ZEPHIR_OBS_VAR(_3);
+	zephir_read_property(&_3, record, SL("timestamp"), PH_NOISY_CC);
 	ZEPHIR_SINIT_VAR(_4);
-	ZVAL_DOUBLE(&_4, timestamp);
-	ZEPHIR_CALL_FUNCTION(&_5, "date", NULL, &_3, &_4);
+	ZVAL_STRING(&_4, "D, d M Y H:i:s O", 0);
+	ZEPHIR_CALL_FUNCTION(&_5, "date", NULL, &_4, _3);
 	zephir_check_call_status();
-	ZEPHIR_CONCAT_VSVSV(return_value, _1, ":", _5, ":", message);
+	ZEPHIR_OBS_VAR(_6);
+	zephir_read_property(&_6, record, SL("message"), PH_NOISY_CC);
+	ZEPHIR_CONCAT_VSVSV(return_value, _0, ":", _5, ":", _6);
 	RETURN_MM();
 
 }

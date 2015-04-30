@@ -26,7 +26,7 @@ ZEPHIR_INIT_CLASS(Owl_Log_Logger) {
 	ZEPHIR_REGISTER_CLASS_EX(Owl\\Log, Logger, owl, log_logger, owl_log_abstractlogger_ce, owl_log_logger_method_entry, 0);
 
 	/**
-	 * Log records
+	 * Array of <Record> elements
 	 */
 	zend_declare_property_null(owl_log_logger_ce, SL("records"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
@@ -46,7 +46,7 @@ ZEPHIR_INIT_CLASS(Owl_Log_Logger) {
 }
 
 /**
- * Log records
+ * Array of <Record> elements
  */
 PHP_METHOD(Owl_Log_Logger, getRecords) {
 
@@ -229,12 +229,13 @@ PHP_METHOD(Owl_Log_Logger, getWriter) {
  */
 PHP_METHOD(Owl_Log_Logger, log) {
 
+	HashTable *_7;
+	HashPosition _6;
+	zephir_nts_static zephir_fcall_cache_entry *_2 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
-	HashTable *_6;
-	HashPosition _5;
-	zval *context = NULL, *_0;
+	zval *context = NULL;
 	zval *message = NULL;
-	zval *level, *message_param = NULL, *context_param = NULL, *writer = NULL, *_1 = NULL, *_2, *_3, *_4, **_7, *_8;
+	zval *level, *message_param = NULL, *context_param = NULL, *writer = NULL, *_0 = NULL, *_1, *_3, *_4, *_5, **_8, *_9;
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 2, 1, &level, &message_param, &context_param);
@@ -249,31 +250,29 @@ PHP_METHOD(Owl_Log_Logger, log) {
 
 
 	ZEPHIR_INIT_VAR(_0);
-	zephir_create_array(_0, 4, 0 TSRMLS_CC);
-	zephir_array_fast_append(_0, level);
+	object_init_ex(_0, owl_log_record_ce);
 	ZEPHIR_INIT_VAR(_1);
 	zephir_microtime(_1, ZEPHIR_GLOBAL(global_true) TSRMLS_CC);
-	zephir_array_fast_append(_0, _1);
-	zephir_array_fast_append(_0, message);
-	zephir_array_fast_append(_0, context);
+	ZEPHIR_CALL_METHOD(NULL, _0, "__construct", &_2, level, _1, message, context);
+	zephir_check_call_status();
 	zephir_update_property_array_append(this_ptr, SL("records"), _0 TSRMLS_CC);
-	_2 = zephir_fetch_nproperty_this(this_ptr, SL("records"), PH_NOISY_CC);
-	_3 = zephir_fetch_nproperty_this(this_ptr, SL("recordsInterval"), PH_NOISY_CC);
-	if (ZEPHIR_LT_LONG(_3, zephir_fast_count_int(_2 TSRMLS_CC))) {
-		_4 = zephir_fetch_nproperty_this(this_ptr, SL("writers"), PH_NOISY_CC);
-		zephir_is_iterable(_4, &_6, &_5, 0, 0, "owl/Log/Logger.zep", 135);
+	_3 = zephir_fetch_nproperty_this(this_ptr, SL("records"), PH_NOISY_CC);
+	_4 = zephir_fetch_nproperty_this(this_ptr, SL("recordsInterval"), PH_NOISY_CC);
+	if (ZEPHIR_LT_LONG(_4, zephir_fast_count_int(_3 TSRMLS_CC))) {
+		_5 = zephir_fetch_nproperty_this(this_ptr, SL("writers"), PH_NOISY_CC);
+		zephir_is_iterable(_5, &_7, &_6, 0, 0, "owl/Log/Logger.zep", 135);
 		for (
-		  ; zephir_hash_get_current_data_ex(_6, (void**) &_7, &_5) == SUCCESS
-		  ; zephir_hash_move_forward_ex(_6, &_5)
+		  ; zephir_hash_get_current_data_ex(_7, (void**) &_8, &_6) == SUCCESS
+		  ; zephir_hash_move_forward_ex(_7, &_6)
 		) {
-			ZEPHIR_GET_HVALUE(writer, _7);
-			_8 = zephir_fetch_nproperty_this(this_ptr, SL("records"), PH_NOISY_CC);
-			ZEPHIR_CALL_METHOD(NULL, writer, "commit", NULL, _8);
+			ZEPHIR_GET_HVALUE(writer, _8);
+			_9 = zephir_fetch_nproperty_this(this_ptr, SL("records"), PH_NOISY_CC);
+			ZEPHIR_CALL_METHOD(NULL, writer, "commit", NULL, _9);
 			zephir_check_call_status();
 		}
-		ZEPHIR_INIT_NVAR(_1);
-		array_init(_1);
-		zephir_update_property_this(this_ptr, SL("records"), _1 TSRMLS_CC);
+		ZEPHIR_INIT_NVAR(_0);
+		array_init(_0);
+		zephir_update_property_this(this_ptr, SL("records"), _0 TSRMLS_CC);
 	}
 	ZEPHIR_MM_RESTORE();
 

@@ -29,11 +29,12 @@ ZEPHIR_INIT_CLASS(Owl_Mvc_View) {
 
 PHP_METHOD(Owl_Mvc_View, render) {
 
-	zval *path_param = NULL, *_0 = NULL;
+	zval *parameters = NULL;
+	zval *path_param = NULL, *parameters_param = NULL, *_0 = NULL;
 	zval *path = NULL;
 
 	ZEPHIR_MM_GROW();
-	zephir_fetch_params(1, 1, 0, &path_param);
+	zephir_fetch_params(1, 1, 1, &path_param, &parameters_param);
 
 	if (unlikely(Z_TYPE_P(path_param) != IS_STRING && Z_TYPE_P(path_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'path' must be a string") TSRMLS_CC);
@@ -45,6 +46,13 @@ PHP_METHOD(Owl_Mvc_View, render) {
 	} else {
 		ZEPHIR_INIT_VAR(path);
 		ZVAL_EMPTY_STRING(path);
+	}
+	if (!parameters_param) {
+	ZEPHIR_INIT_VAR(parameters);
+	array_init(parameters);
+	} else {
+	parameters = parameters_param;
+
 	}
 
 

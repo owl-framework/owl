@@ -246,29 +246,16 @@ PHP_METHOD(Owl_Log_AbstractWriter, setFormatter) {
 PHP_METHOD(Owl_Log_AbstractWriter, format) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *record_param = NULL, *_0 = NULL, *_1, *_2, *_3, *_4 = NULL;
-	zval *record = NULL;
+	zval *record, *_0 = NULL;
 
 	ZEPHIR_MM_GROW();
-	zephir_fetch_params(1, 1, 0, &record_param);
+	zephir_fetch_params(1, 1, 0, &record);
 
-	zephir_get_arrval(record, record_param);
 
 
 	ZEPHIR_CALL_METHOD(&_0, this_ptr, "getformatter", NULL);
 	zephir_check_call_status();
-	zephir_array_fetch_long(&_1, record, 0, PH_NOISY | PH_READONLY, "owl/Log/AbstractWriter.zep", 95 TSRMLS_CC);
-	zephir_array_fetch_long(&_2, record, 1, PH_NOISY | PH_READONLY, "owl/Log/AbstractWriter.zep", 96 TSRMLS_CC);
-	zephir_array_fetch_long(&_3, record, 2, PH_NOISY | PH_READONLY, "owl/Log/AbstractWriter.zep", 97 TSRMLS_CC);
-	ZEPHIR_INIT_VAR(_4);
-	if (zephir_array_isset_long(record, 3)) {
-		ZEPHIR_OBS_NVAR(_4);
-		zephir_array_fetch_long(&_4, record, 3, PH_NOISY, "owl/Log/AbstractWriter.zep", 98 TSRMLS_CC);
-	} else {
-		ZEPHIR_INIT_NVAR(_4);
-		array_init(_4);
-	}
-	ZEPHIR_RETURN_CALL_METHOD(_0, "format", NULL, _1, _2, _3, _4);
+	ZEPHIR_RETURN_CALL_METHOD(_0, "format", NULL, record);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -331,7 +318,7 @@ PHP_METHOD(Owl_Log_AbstractWriter, push) {
 	ZEPHIR_MM_GROW();
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("records"), PH_NOISY_CC);
-	zephir_is_iterable(_0, &_2, &_1, 0, 0, "owl/Log/AbstractWriter.zep", 132);
+	zephir_is_iterable(_0, &_2, &_1, 0, 0, "owl/Log/AbstractWriter.zep", 127);
 	for (
 	  ; zephir_hash_get_current_data_ex(_2, (void**) &_3, &_1) == SUCCESS
 	  ; zephir_hash_move_forward_ex(_2, &_1)

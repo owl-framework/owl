@@ -37,7 +37,7 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_log_abstractwriter_setformatter, 0, 0, 1)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_log_abstractwriter_format, 0, 0, 1)
-	ZEND_ARG_ARRAY_INFO(0, record, 0)
+	ZEND_ARG_OBJ_INFO(0, record, Owl\\Log\\Record, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_log_abstractwriter_filterrecords, 0, 0, 1)
