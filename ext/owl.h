@@ -48,6 +48,8 @@
 #include "owl/log/writerinterface.zep.h"
 #include "owl/module/manager.zep.h"
 #include "owl/mvc/controller.zep.h"
+#include "owl/mvc/view.zep.h"
+#include "owl/mvc/view/engine/php.zep.h"
 #include "owl/router/http/dynamicroute.zep.h"
 #include "owl/router/http/staticroute.zep.h"
 #include "owl/router/route.zep.h"

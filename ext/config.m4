@@ -53,6 +53,8 @@ if test "$PHP_OWL" = "yes"; then
 	owl/log/writerinterface.zep.c
 	owl/module/manager.zep.c
 	owl/mvc/controller.zep.c
+	owl/mvc/view.zep.c
+	owl/mvc/view/engine/php.zep.c
 	owl/router/http/dynamicroute.zep.c
 	owl/router/http/staticroute.zep.c
 	owl/router/route.zep.c
