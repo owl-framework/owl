@@ -1,4 +1,4 @@
-language:
+--read-var-info=yes --error-exitcode=1 --fullpath-after= --track-origins=yes --leak-check=full language:
   - php
   - c
 
@@ -34,11 +34,11 @@ before_script:
   - (cd vendor/phalcon/zephir; ./unit-tests/ci/before_install.sh; ./install)
 
 script:
-  - valgrind ./vendor/bin/zephir generate
+  - valgrind --read-var-info=yes --error-exitcode=1 --fullpath-after= --track-origins=yes --leak-check=full ./vendor/bin/zephir generate
   - (cd ext; export CFLAGS="-g3 -O1 -std=gnu90 -Wall"; phpize && ./configure --enable-owl && make --silent -j4 && sudo make --silent install && phpenv config-add ../tests/ci/owl.ini)
   - ulimit -c unlimited || true
   - (cd examples/rest-app; composer install; php public/index.php)
-  - valgrind phpunit
+  - valgrind --read-var-info=yes --error-exitcode=1 --fullpath-after= --track-origins=yes --leak-check=full phpunit
 
 after_failure:
   - sudo apt-get -qq install gdb
