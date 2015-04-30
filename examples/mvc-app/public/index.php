@@ -22,15 +22,7 @@ $profiler->listen($eventManager);
 $serviceManager = new Owl\Service\Manager();
 
 $router = new Router();
-$router->add('/', ['module' => 'Api', 'controller' => 'Index', 'action' => 'index']);
-
-$router->add('/version', ['module' => 'Api', 'controller' => 'Index', 'action' => 'version']);
-$router->add('/ping', ['module' => 'Api', 'controller' => 'Index', 'action' => 'ping']);
-
-$router->add('/users', ['module' => 'Api', 'controller' => 'User', 'action' => 'list']);
-$router->add('/users/:id', ['module' => 'Api', 'controller' => 'User', 'action' => 'index']);
-$router->add('/users/:id', ['module' => 'Api', 'controller' => 'User', 'action' => 'create'], Route::POST);
-$router->add('/users/:id', ['module' => 'Api', 'controller' => 'User', 'action' => 'delete'], Route::DELETE);
+$router->add('/', ['module' => 'Common', 'controller' => 'Index', 'action' => 'index']);
 
 $serviceManager->setService('router', $router);
 

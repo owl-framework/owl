@@ -1,0 +1,21 @@
+{
+    "name": "owl-framework/rest-app",
+    "description": "Simple REST application powered by Owl framework",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dmitry Patsura",
+            "email": "talk@dmtry.me"
+        }
+    ],
+    "require": {
+      "php": "~5.4",
+      "ext-json": "*",
+      "ext-owl": ">=0.3"
+    },
+    "autoload": {
+      "psr-4": {
+        "RestApp\\Common\\Controller\\": "app/modules/api/controllers"
+      }
+    }
+}
