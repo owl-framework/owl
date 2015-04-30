@@ -94,9 +94,23 @@ abstract class AbstractWriter implements WriterInterface
        return this->getFormatter()->format(record);
     }
 
+    /**
+     * Filter records by levels
+     */
     protected function filterRecords(array records) -> array
     {
-        // @TODO: filter by levels
+        var index, record;
+
+        if empty(this->levels) {
+            return records;
+        }
+
+        for index, record in records {
+            if ! in_array(record->level, this->levels) {
+                unset(records[index]);
+            }
+        }
+
         return records;
     }
 
