@@ -11,5 +11,8 @@ class DevNull extends AbstractWriter
     /**
      * @inheritdoc
      */
-    public function write(string record) { }
+    public function write(string record)
+    {
+      return null;
+    }
 }

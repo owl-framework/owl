@@ -43,6 +43,11 @@ abstract class AbstractWriter implements \Owl\Log\WriterInterface
     public function setLevels($levels) {}
 
     /**
+     * Writer records
+     */
+    public function getRecords() {}
+
+    /**
      * Writer options
      */
     public function getOptions() {}
@@ -91,6 +96,8 @@ abstract class AbstractWriter implements \Owl\Log\WriterInterface
     protected function format(Record $record) {}
 
     /**
+     * Filter records by levels
+     *
      * @param array $records 
      * @return array 
      */

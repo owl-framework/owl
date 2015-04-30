@@ -48,6 +48,7 @@ if test "$PHP_OWL" = "yes"; then
 	owl/log/logger.zep.c
 	owl/log/loggerinterface.zep.c
 	owl/log/record.zep.c
+	owl/log/writer/devnull.zep.c
 	owl/log/writer/echobrowser.zep.c
 	owl/log/writer/file.zep.c
 	owl/log/writerinterface.zep.c

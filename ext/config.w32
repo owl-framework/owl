@@ -27,7 +27,7 @@ if (PHP_OWL != "no") {
 	ADD_SOURCES(configure_module_dirname + "/owl/log", "abstractlogger.zep.c abstractwriter.zep.c formatterinterface.zep.c logger.zep.c loggerinterface.zep.c record.zep.c writerinterface.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/log/exception", "invalidformatterexception.zep.c invalidwriterexception.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/log/formatter", "json.zep.c line.zep.c", "owl");
-	ADD_SOURCES(configure_module_dirname + "/owl/log/writer", "echobrowser.zep.c file.zep.c", "owl");
+	ADD_SOURCES(configure_module_dirname + "/owl/log/writer", "devnull.zep.c echobrowser.zep.c file.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/module", "manager.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/mvc", "controller.zep.c view.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/mvc/view/engine", "php.zep.c", "owl");

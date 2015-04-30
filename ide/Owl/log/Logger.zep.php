@@ -36,9 +36,9 @@ class Logger extends \Owl\Log\AbstractLogger implements \Owl\Log\LoggerInterface
     public function getWriters() {}
 
     /**
-     * @param mixed $writers 
+     * @param array $writers 
      */
-    public function __construct($writers = null) {}
+    public function __construct($writers = array()) {}
 
 
     public function __destruct() {}
@@ -58,6 +58,11 @@ class Logger extends \Owl\Log\AbstractLogger implements \Owl\Log\LoggerInterface
      * @return bool|\Owl\Log\WriterInterface 
      */
     public function getWriter($name) {}
+
+    /**
+     * Commit records
+     */
+    public function commit() {}
 
     /**
      * @inheritdoc

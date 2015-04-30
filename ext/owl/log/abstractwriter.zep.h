@@ -5,6 +5,7 @@ ZEPHIR_INIT_CLASS(Owl_Log_AbstractWriter);
 
 PHP_METHOD(Owl_Log_AbstractWriter, getLevels);
 PHP_METHOD(Owl_Log_AbstractWriter, setLevels);
+PHP_METHOD(Owl_Log_AbstractWriter, getRecords);
 PHP_METHOD(Owl_Log_AbstractWriter, getOptions);
 PHP_METHOD(Owl_Log_AbstractWriter, setOptions);
 PHP_METHOD(Owl_Log_AbstractWriter, getRecordsInterval);
@@ -55,6 +56,7 @@ ZEND_END_ARG_INFO()
 ZEPHIR_INIT_FUNCS(owl_log_abstractwriter_method_entry) {
 	PHP_ME(Owl_Log_AbstractWriter, getLevels, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Log_AbstractWriter, setLevels, arginfo_owl_log_abstractwriter_setlevels, ZEND_ACC_PUBLIC)
+	PHP_ME(Owl_Log_AbstractWriter, getRecords, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Log_AbstractWriter, getOptions, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Log_AbstractWriter, setOptions, arginfo_owl_log_abstractwriter_setoptions, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Log_AbstractWriter, getRecordsInterval, NULL, ZEND_ACC_PUBLIC)

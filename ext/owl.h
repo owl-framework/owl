@@ -43,6 +43,7 @@
 #include "owl/log/logger.zep.h"
 #include "owl/log/loggerinterface.zep.h"
 #include "owl/log/record.zep.h"
+#include "owl/log/writer/devnull.zep.h"
 #include "owl/log/writer/echobrowser.zep.h"
 #include "owl/log/writer/file.zep.h"
 #include "owl/log/writerinterface.zep.h"

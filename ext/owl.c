@@ -27,8 +27,8 @@
 
 
 zend_class_entry *owl_cache_driver_ce;
-zend_class_entry *owl_log_loggerinterface_ce;
 zend_class_entry *owl_log_writerinterface_ce;
+zend_class_entry *owl_log_loggerinterface_ce;
 zend_class_entry *owl_http_responseinterface_ce;
 zend_class_entry *owl_log_formatterinterface_ce;
 zend_class_entry *owl_applicationinterface_ce;
@@ -70,6 +70,7 @@ zend_class_entry *owl_log_formatter_json_ce;
 zend_class_entry *owl_log_formatter_line_ce;
 zend_class_entry *owl_log_logger_ce;
 zend_class_entry *owl_log_record_ce;
+zend_class_entry *owl_log_writer_devnull_ce;
 zend_class_entry *owl_log_writer_echobrowser_ce;
 zend_class_entry *owl_log_writer_file_ce;
 zend_class_entry *owl_module_manager_ce;
@@ -102,8 +103,8 @@ static PHP_MINIT_FUNCTION(owl)
 #endif
 
 	ZEPHIR_INIT(Owl_Cache_Driver);
-	ZEPHIR_INIT(Owl_Log_LoggerInterface);
 	ZEPHIR_INIT(Owl_Log_WriterInterface);
+	ZEPHIR_INIT(Owl_Log_LoggerInterface);
 	ZEPHIR_INIT(Owl_Http_ResponseInterface);
 	ZEPHIR_INIT(Owl_Log_FormatterInterface);
 	ZEPHIR_INIT(Owl_ApplicationInterface);
@@ -145,6 +146,7 @@ static PHP_MINIT_FUNCTION(owl)
 	ZEPHIR_INIT(Owl_Log_Formatter_Line);
 	ZEPHIR_INIT(Owl_Log_Logger);
 	ZEPHIR_INIT(Owl_Log_Record);
+	ZEPHIR_INIT(Owl_Log_Writer_DevNull);
 	ZEPHIR_INIT(Owl_Log_Writer_EchoBrowser);
 	ZEPHIR_INIT(Owl_Log_Writer_File);
 	ZEPHIR_INIT(Owl_Module_Manager);

@@ -81,6 +81,16 @@ PHP_METHOD(Owl_Log_AbstractWriter, setLevels) {
 }
 
 /**
+ * Writer records
+ */
+PHP_METHOD(Owl_Log_AbstractWriter, getRecords) {
+
+
+	RETURN_MEMBER(this_ptr, "records");
+
+}
+
+/**
  * Writer options
  */
 PHP_METHOD(Owl_Log_AbstractWriter, getOptions) {
@@ -155,12 +165,12 @@ PHP_METHOD(Owl_Log_AbstractWriter, getOption) {
 		ZEPHIR_CONCAT_SVS(_2, "Option ", option, " is not exists");
 		ZEPHIR_CALL_METHOD(NULL, _1, "__construct", &_3, _2);
 		zephir_check_call_status();
-		zephir_throw_exception_debug(_1, "owl/Log/AbstractWriter.zep", 57 TSRMLS_CC);
+		zephir_throw_exception_debug(_1, "owl/Log/AbstractWriter.zep", 59 TSRMLS_CC);
 		ZEPHIR_MM_RESTORE();
 		return;
 	}
 	_4 = zephir_fetch_nproperty_this(this_ptr, SL("options"), PH_NOISY_CC);
-	zephir_array_fetch(&_5, _4, option, PH_NOISY | PH_READONLY, "owl/Log/AbstractWriter.zep", 59 TSRMLS_CC);
+	zephir_array_fetch(&_5, _4, option, PH_NOISY | PH_READONLY, "owl/Log/AbstractWriter.zep", 61 TSRMLS_CC);
 	RETURN_CTOR(_5);
 
 }
@@ -226,7 +236,7 @@ PHP_METHOD(Owl_Log_AbstractWriter, setFormatter) {
 	}
 	if (Z_TYPE_P(formatter) == IS_STRING) {
 		if (!(zephir_class_exists(formatter, 1 TSRMLS_CC))) {
-			ZEPHIR_THROW_EXCEPTION_DEBUG_STR(owl_log_exception_invalidformatterexception_ce, "Formatter class is not exits", "owl/Log/AbstractWriter.zep", 86);
+			ZEPHIR_THROW_EXCEPTION_DEBUG_STR(owl_log_exception_invalidformatterexception_ce, "Formatter class is not exits", "owl/Log/AbstractWriter.zep", 88);
 			return;
 		}
 		ZEPHIR_INIT_VAR(_4);
@@ -261,9 +271,14 @@ PHP_METHOD(Owl_Log_AbstractWriter, format) {
 
 }
 
+/**
+ * Filter records by levels
+ */
 PHP_METHOD(Owl_Log_AbstractWriter, filterRecords) {
 
-	zval *records_param = NULL;
+	HashTable *_2;
+	HashPosition _1;
+	zval *records_param = NULL, *index = NULL, *record = NULL, *_0, **_3, *_4 = NULL, *_5;
 	zval *records = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -272,6 +287,25 @@ PHP_METHOD(Owl_Log_AbstractWriter, filterRecords) {
 	zephir_get_arrval(records, records_param);
 
 
+	ZEPHIR_OBS_VAR(_0);
+	zephir_read_property_this(&_0, this_ptr, SL("levels"), PH_NOISY_CC);
+	if (ZEPHIR_IS_EMPTY(_0)) {
+		RETURN_CTOR(records);
+	}
+	zephir_is_iterable(records, &_2, &_1, 1, 0, "owl/Log/AbstractWriter.zep", 116);
+	for (
+	  ; zephir_hash_get_current_data_ex(_2, (void**) &_3, &_1) == SUCCESS
+	  ; zephir_hash_move_forward_ex(_2, &_1)
+	) {
+		ZEPHIR_GET_HMKEY(index, _2, _1);
+		ZEPHIR_GET_HVALUE(record, _3);
+		ZEPHIR_OBS_NVAR(_4);
+		zephir_read_property(&_4, record, SL("level"), PH_NOISY_CC);
+		_5 = zephir_fetch_nproperty_this(this_ptr, SL("levels"), PH_NOISY_CC);
+		if (!(zephir_fast_in_array(_4, _5 TSRMLS_CC))) {
+			zephir_array_unset(&records, index, PH_SEPARATE);
+		}
+	}
 	RETURN_CTOR(records);
 
 }
@@ -318,7 +352,7 @@ PHP_METHOD(Owl_Log_AbstractWriter, push) {
 	ZEPHIR_MM_GROW();
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("records"), PH_NOISY_CC);
-	zephir_is_iterable(_0, &_2, &_1, 0, 0, "owl/Log/AbstractWriter.zep", 127);
+	zephir_is_iterable(_0, &_2, &_1, 0, 0, "owl/Log/AbstractWriter.zep", 143);
 	for (
 	  ; zephir_hash_get_current_data_ex(_2, (void**) &_3, &_1) == SUCCESS
 	  ; zephir_hash_move_forward_ex(_2, &_1)
