@@ -42,6 +42,7 @@ $cache = new \Owl\Cache\Driver\Memcached();
 $serviceManager->setService('cache', $cache);
 
 $view = new \Owl\Mvc\View();
+$view->setPath(__DIR__ . '/../app/modules/common/resources/views/');
 $serviceManager->setService('view', $view);
 
 $application = new Application($serviceManager, $eventManager);

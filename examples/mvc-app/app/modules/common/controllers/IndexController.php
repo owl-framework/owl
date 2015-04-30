@@ -22,9 +22,7 @@ class IndexController extends \Owl\Mvc\Controller
     {
         /** @var \Owl\Mvc\View $view */
         $view = $this->di->get('view');
-        $view->render('index/index.phtml');
-
-        return "Hello, World!";
+        return $view->render('index/index.phtml', null);
     }
 
     /**
