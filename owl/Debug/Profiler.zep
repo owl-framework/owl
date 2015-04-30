@@ -48,20 +48,19 @@ class Profiler
 
 	public function setContent(<ResponseInterface> response) -> <ResponseInterface>
 	{
-	    var html, resp, tmp;
+			var html, resp, tmp;
 
-		let resp = new \Owl\Http\Response();
+			let resp = new \Owl\Http\Response();
 
-	    let html = "<html><head>";
+			let html = "<html><head>";
 
-	    let html .= "<link href=\"" . this->assetsUri . "\" media=\"all\" rel=\"stylesheet\">";
+			let html .= "<link href=\"" . this->assetsUri . "\" media=\"all\" rel=\"stylesheet\">";
 
-		let html .= "</head><body>";
+			let html .= "</head><body>";
 
 	    let html .= "<div id='owl-debug-bar'>";
 			let html .= "<span class=\"label color-2\">" . sprintf("%.4Fms", microtime(true) - this->startTime) . "</span>";
 			let html .= "<span class=\"label color-3\">" . sprintf("%.3fMB", memory_get_peak_usage() / 1024 / 1024)  . "</span>";
-			let html .= "\t";
 
 			if (response->getCode() == 200) {
 				let tmp = "2";
@@ -71,22 +70,21 @@ class Profiler
 				let tmp = "3";
 			}
 
-			let html .= "HTTP Code " . "<span class=\"label color-" . tmp . "\">" . response->getCode() . "</span>";
-  	    let html .= "</div>";
+			let html .= "<span class=\"label color-" . tmp . "\">" . response->getCode() . "</span>";
+			let html .= "</div>";
 
-		if (response instanceof \Owl\Http\Response\Json) {
-			let html .= "<pre><code>";
+			if (response instanceof \Owl\Http\Response\Json) {
+				let html .= "<pre><code>";
 					let html .= json_encode(json_decode(response->getContent()), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-			let html .= "</code></pre>";
-		} else {
-			let html .= response->getContent();
-		}
+				let html .= "</code></pre>";
+			} else {
+				let html .= response->getContent();
+			}
 
+			let html .= "</body></html>";
 
-		let html .= "</body></html>";
+			resp->setContent(html);
 
-        resp->setContent(html);
-
-        return resp;
+			return resp;
 	}
 }

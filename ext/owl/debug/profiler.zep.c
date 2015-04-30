@@ -191,7 +191,6 @@ PHP_METHOD(Owl_Debug_Profiler, setContent) {
 	ZEPHIR_INIT_VAR(_14);
 	ZEPHIR_CONCAT_SVS(_14, "<span class=\"label color-3\">", _13, "</span>");
 	zephir_concat_self(&html, _14 TSRMLS_CC);
-	zephir_concat_self_str(&html, SL("\t") TSRMLS_CC);
 	ZEPHIR_CALL_METHOD(&_15, response, "getcode", NULL);
 	zephir_check_call_status();
 	ZEPHIR_CALL_METHOD(&_16, response, "getcode", NULL);
@@ -208,7 +207,7 @@ PHP_METHOD(Owl_Debug_Profiler, setContent) {
 	ZEPHIR_CALL_METHOD(&_17, response, "getcode", NULL);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(_18);
-	ZEPHIR_CONCAT_SSVSVS(_18, "HTTP Code ", "<span class=\"label color-", &_6, "\">", _17, "</span>");
+	ZEPHIR_CONCAT_SVSVS(_18, "<span class=\"label color-", &_6, "\">", _17, "</span>");
 	zephir_concat_self(&html, _18 TSRMLS_CC);
 	zephir_concat_self_str(&html, SL("</div>") TSRMLS_CC);
 	if (zephir_instance_of_ev(response, owl_http_response_json_ce TSRMLS_CC)) {
