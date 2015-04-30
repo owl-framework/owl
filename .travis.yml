@@ -23,6 +23,8 @@ services:
   - redis-server
 
 install:
+  - sudo apt-get update
+  - sudo apt-get upgrade -y
   - composer --prefer-source install
   - sudo apt-get install valgrind
 
