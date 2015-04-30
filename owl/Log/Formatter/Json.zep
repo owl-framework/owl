@@ -2,18 +2,20 @@
 namespace Owl\Log\Formatter;
 
 use Owl\Log\Logger;
-use Owl\Log\AbstractFormatter;
+use Owl\Log\Record;
+use Owl\Log\FormatterInterface;
 
-class Json extends AbstractFormatter
+class Json implements FormatterInterface
 {
-    public function format(var type, float timestamp, string message, array context = []) -> string
+    /**
+      * @inheritdoc
+      */
+    public function format(<Record> record) -> string
     {
-        let message = this->interpolate(message, context);
-
         return json_encode([
-            "type": Logger::getLevelTitle(type),
-            "message": message,
-            "timestamp": timestamp
+            "type": Logger::getLevelTitle(record->level),
+            "message": record->message,
+            "timestamp": record->timestamp
         ]);
     }
 }

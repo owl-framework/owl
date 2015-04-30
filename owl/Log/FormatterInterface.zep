@@ -1,9 +1,10 @@
 
 namespace Owl\Log;
 
-interface FormatterInterface {
+interface FormatterInterface
+{
     /**
      * Format record
      */
-    public function format(var level, float timestamp, string message, array context = []) -> string;
+    public function format(<Record> record) -> string;
 }

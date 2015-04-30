@@ -89,14 +89,9 @@ abstract class AbstractWriter implements WriterInterface
         }
     }
 
-    protected function format(array record) -> string
+    protected function format(<Record> record) -> string
     {
-       return this->getFormatter()->format(
-            record[0],
-            record[1],
-            record[2],
-            isset(record[3]) ? record[3] : []
-        );
+       return this->getFormatter()->format(record);
     }
 
     protected function filterRecords(array records) -> array

@@ -31,7 +31,7 @@ use Owl\Log\Exception\InvalidWriterException;
 class Logger extends AbstractLogger implements LoggerInterface
 {
     /**
-     * Log records
+     * Array of <Record> elements
      */
     protected records = [] {
         get
@@ -125,7 +125,7 @@ class Logger extends AbstractLogger implements LoggerInterface
     {
         var writer;
 
-        let this->records[] = [level, microtime(true), message, context];
+        let this->records[] = new Record(level, microtime(true), message, context);
 
         if (count(this->records) >= this->recordsInterval) {
             for writer in this->writers {

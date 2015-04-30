@@ -3,6 +3,7 @@
  * @author Ivanov Sergey <xufocoder@gmail.com>
  */
 
+use Owl\Log\Record;
 use Owl\Log\Writer\File;
 
 /**
@@ -12,7 +13,7 @@ class WriterFileTest extends \PHPUnit_Framework_TestCase {
 
     public function testWriterFileWrite() {
 
-        $record = [ 1, 2, 3 ];
+        $record = new Record( 1, 2, 3 );
 
         $records = [
             $record
@@ -27,7 +28,7 @@ class WriterFileTest extends \PHPUnit_Framework_TestCase {
         $writer->commit($records);
         $writer->push();
 
-        $formatted_record = $writer->getFormatter()->format($record[0], $record[1], $record[2]);
+        $formatted_record = $writer->getFormatter()->format($record);
         $written_record = trim(file_get_contents($logFile));
 
         unlink($logFile);

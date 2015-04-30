@@ -1,8 +1,22 @@
 
 namespace Owl\Log;
 
-class AbstractFormatter implements FormatterInterface
-{
+class Record {
+    /**
+     * Record level
+     */
+    public level;
+
+    /**
+     * Record timestamp
+     */
+    public timestamp;
+
+    /**
+     * Record message
+     */
+    public message;
+
     /**
      * Interpolates context values into the message placeholders.
      *
@@ -23,7 +37,15 @@ class AbstractFormatter implements FormatterInterface
     }
 
     /**
-     * @inheritdoc
+     * Create and interpolate record message
      */
-    public function format(var level, float timestamp, string message, array context = []) -> string;
+    public function __construct(var level, float timestamp, string message, array context = [])
+    {
+        let message = this->interpolate(message, context);
+
+        let this->level = level;
+        let this->timestamp = timestamp;
+        let this->message = message;
+
+    }
 }

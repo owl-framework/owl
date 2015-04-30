@@ -40,13 +40,13 @@ class LoggerTest extends \PHPUnit_Framework_TestCase {
 
         $records = $logger->getRecords();
 
-        $this->assertTrue( Logger::getLevelTitle( $records[0][0] ) == 'alert' );
-        $this->assertTrue( Logger::getLevelTitle( $records[1][0] ) == 'critical' );
-        $this->assertTrue( Logger::getLevelTitle( $records[2][0] ) == 'debug' );
-        $this->assertTrue( Logger::getLevelTitle( $records[3][0] ) == 'emergency' );
-        $this->assertTrue( Logger::getLevelTitle( $records[4][0] ) == 'info' );
-        $this->assertTrue( Logger::getLevelTitle( $records[5][0] ) == 'notice' );
-        $this->assertTrue( Logger::getLevelTitle( $records[6][0] ) == 'warning' );
+        $this->assertTrue( Logger::getLevelTitle( $records[0]->level ) == 'alert' );
+        $this->assertTrue( Logger::getLevelTitle( $records[1]->level ) == 'critical' );
+        $this->assertTrue( Logger::getLevelTitle( $records[2]->level ) == 'debug' );
+        $this->assertTrue( Logger::getLevelTitle( $records[3]->level ) == 'emergency' );
+        $this->assertTrue( Logger::getLevelTitle( $records[4]->level ) == 'info' );
+        $this->assertTrue( Logger::getLevelTitle( $records[5]->level ) == 'notice' );
+        $this->assertTrue( Logger::getLevelTitle( $records[6]->level ) == 'warning' );
 
     }
 
