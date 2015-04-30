@@ -51,12 +51,12 @@ class Logger extends AbstractLogger implements LoggerInterface
         get
     };
 
-    public function __construct(writers = null)
+    public function __construct(array writers = [])
     {
-        var writer;
+        var writerName, writerDescription;
 
-        for writer in writers {
-            let this->writers[] = this->factoryWriter(writer);
+        for writerName, writerDescription in writers {
+            let this->writers[writerName] = this->factoryWriter(writerDescription);
         }
     }
 
