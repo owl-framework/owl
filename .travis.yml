@@ -28,7 +28,6 @@ install:
   - composer --prefer-source install
 
 before_script:
-  - phpenv config-add tests/ci/drivers.ini
   - git submodule --quiet update --init --recursive
   - (cd vendor/phalcon/zephir; ./unit-tests/ci/before_install.sh; ./install)
   - ./vendor/bin/zephir generate
