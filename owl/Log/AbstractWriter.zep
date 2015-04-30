@@ -19,7 +19,9 @@ abstract class AbstractWriter implements WriterInterface
     /**
      * Writer records
      */
-    protected records = [];
+    protected records = [] {
+        get
+    };
 
     /**
      * Writer options
