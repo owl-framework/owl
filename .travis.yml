@@ -5,17 +5,17 @@ language:
 compiler:
   - gcc
   - clang
-  
+
 php:
   - 5.4
   - 5.5
   - 5.6
   - 7.0
-  
+
 matrix:
   allow_failures:
     - php: 7.0
-    
+
 env:
   - CC="gcc"
   - CC="clang"
@@ -37,6 +37,7 @@ script:
   - (cd ext; export CFLAGS="-g3 -O1 -std=gnu90 -Wall"; phpize && ./configure --enable-owl && make --silent -j4 && sudo make --silent install && phpenv config-add ../tests/ci/owl.ini)
   - ulimit -c unlimited || true
   - (cd examples/rest-app; composer install; php public/index.php)
+  - vendor/bin/phpcs --standard=PSR2 --report=emacs --extensions=php --warning-severity=0 unit-tests/ examples/
   - phpunit
 
 after_failure:
