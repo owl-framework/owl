@@ -10,7 +10,7 @@ use Owl\Log\Exception\InvalidWriterException;
  * $Logger = new Logger([
  *     [
  *         'class' => '\Owl\Log\Writer\File',
- *         'levels' => ['error', 'warning'],
+ *         'levels' => [Logger::LEVEL_ERROR, Logger::LEVEL_WARNING],
  *         'formatter' => '\Owl\Log\Formatter\Syslog',
  *         'options' => [
  *             'logFile' => APP_ROOT '/logs/my.log'
@@ -18,7 +18,7 @@ use Owl\Log\Exception\InvalidWriterException;
  *     ],
  *     [
  *         'class' => '\Owl\Log\Writer\Email',
- *         'levels' => ['alert'],
+ *         'levels' => [Logger::LEVEL_ALERT],
  *         'formatter' => '\Owl\Log\Formatter\Line',
  *         'options' => [
  *             'from'  => 'robot@localhost',
