@@ -211,17 +211,23 @@ PHP_METHOD(Owl_Debug_Profiler, setContent) {
 	ZEPHIR_CONCAT_SSVSVS(_18, "HTTP Code ", "<span class=\"label color-", &_6, "\">", _17, "</span>");
 	zephir_concat_self(&html, _18 TSRMLS_CC);
 	zephir_concat_self_str(&html, SL("</div>") TSRMLS_CC);
-	zephir_concat_self_str(&html, SL("<pre><code>") TSRMLS_CC);
-	ZEPHIR_INIT_NVAR(_3);
-	ZEPHIR_INIT_VAR(_19);
-	ZEPHIR_CALL_METHOD(&_20, response, "getcontent", NULL);
-	zephir_check_call_status();
-	zephir_json_decode(_19, &(_19), _20, 0  TSRMLS_CC);
-	ZEPHIR_SINIT_NVAR(_12);
-	ZVAL_LONG(&_12, (128 | 256));
-	zephir_json_encode(_3, &(_3), _19, zephir_get_intval(&_12)  TSRMLS_CC);
-	zephir_concat_self(&html, _3 TSRMLS_CC);
-	zephir_concat_self_str(&html, SL("</code></pre>") TSRMLS_CC);
+	if (zephir_instance_of_ev(response, owl_http_response_json_ce TSRMLS_CC)) {
+		zephir_concat_self_str(&html, SL("<pre><code>") TSRMLS_CC);
+		ZEPHIR_INIT_NVAR(_3);
+		ZEPHIR_INIT_VAR(_19);
+		ZEPHIR_CALL_METHOD(&_20, response, "getcontent", NULL);
+		zephir_check_call_status();
+		zephir_json_decode(_19, &(_19), _20, 0  TSRMLS_CC);
+		ZEPHIR_SINIT_NVAR(_12);
+		ZVAL_LONG(&_12, (128 | 256));
+		zephir_json_encode(_3, &(_3), _19, zephir_get_intval(&_12)  TSRMLS_CC);
+		zephir_concat_self(&html, _3 TSRMLS_CC);
+		zephir_concat_self_str(&html, SL("</code></pre>") TSRMLS_CC);
+	} else {
+		ZEPHIR_CALL_METHOD(&_20, response, "getcontent", NULL);
+		zephir_check_call_status();
+		zephir_concat_self(&html, _20 TSRMLS_CC);
+	}
 	zephir_concat_self_str(&html, SL("</body></html>") TSRMLS_CC);
 	ZEPHIR_CALL_METHOD(NULL, resp, "setcontent", &_21, html);
 	zephir_check_call_status();

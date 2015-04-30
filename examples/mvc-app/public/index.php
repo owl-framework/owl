@@ -58,5 +58,5 @@ $application->setExceptionHandlerParameters(array(
 ));
 $response = $application->handle(Request::createFromGlobals(), new \Owl\Http\Response());
 
-//$response = $profiler->setContent($response);
+$response = $profiler->setContent($response);
 $response->send();

@@ -74,10 +74,14 @@ class Profiler
 			let html .= "HTTP Code " . "<span class=\"label color-" . tmp . "\">" . response->getCode() . "</span>";
   	    let html .= "</div>";
 
+		if (response instanceof \Owl\Http\Response\Json) {
+			let html .= "<pre><code>";
+					let html .= json_encode(json_decode(response->getContent()), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+			let html .= "</code></pre>";
+		} else {
+			let html .= response->getContent();
+		}
 
-		let html .= "<pre><code>";
-				let html .= json_encode(json_decode(response->getContent()), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-		let html .= "</code></pre>";
 
 		let html .= "</body></html>";
 
