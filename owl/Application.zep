@@ -2,12 +2,10 @@
 namespace Owl;
 
 use Owl\Service\Manager;
-
 use Owl\Http\Request;
 use Owl\Http\RequestInterface;
 use Owl\Http\Response;
 use Owl\Http\ResponseInterface;
-
 use Owl\Router\Http\StaticRoute;
 
 class Application implements ApplicationInterface
@@ -33,7 +31,9 @@ class Application implements ApplicationInterface
 	 *
 	 * @var string
 	 */
-	protected env {get};
+	protected env {
+    get
+  };
 
 	/**
 	 * Count for dispatches
