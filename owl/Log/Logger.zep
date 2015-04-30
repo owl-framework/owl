@@ -60,16 +60,10 @@ class Logger extends AbstractLogger implements LoggerInterface
         }
     }
 
-    public function __destruct() {
-
-        var writer;
-
+    public function __destruct()
+    {
         if (count(this->records) > 0 ) {
-            for writer in this->writers {
-                writer->commit(this->records);
-            }
-
-            let this->records = [];
+            this->commit();
         }
     }
 
@@ -80,11 +74,11 @@ class Logger extends AbstractLogger implements LoggerInterface
 
         var writer, writerClass;
 
-        if (!isset(writerDescription["class"])) {
+        if !isset(writerDescription["class"]) {
             throw new InvalidWriterException("Writer options 'class' is not exists");
         }
 
-        if (!class_exists(writerDescription["class"])) {
+        if !class_exists(writerDescription["class"]) {
             throw new InvalidWriterException("Writer class is not exists");
         }
 
@@ -119,20 +113,28 @@ class Logger extends AbstractLogger implements LoggerInterface
     }
 
     /**
+     * Commit records
+     */
+    public function commit()
+    {
+        var writer;
+
+        for writer in this->writers {
+            writer->commit(this->records);
+        }
+
+        let this->records = [];
+    }
+
+    /**
      * @inheritdoc
      */
     public function log(var level, string message, array context = [])
     {
-        var writer;
-
         let this->records[] = new Record(level, microtime(true), message, context);
 
         if (count(this->records) >= this->recordsInterval) {
-            for writer in this->writers {
-                writer->commit(this->records);
-            }
-
-            let this->records = [];
+            this->commit();
         }
     }
 }
