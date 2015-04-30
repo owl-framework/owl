@@ -50,4 +50,56 @@ class LoggerTest extends \PHPUnit_Framework_TestCase {
 
     }
 
+    public function testLoggerFilterAllLevels() {
+
+        $logger = new Logger( [
+            [
+                'class'  => '\Owl\Log\Writer\DevNull'
+            ]
+        ] );
+
+        $logger->alert('test');
+        $logger->error('test');
+        $logger->error('test');
+        $logger->error('test');
+        $logger->error('test');
+        $logger->error('test');
+        $logger->warning('test');
+
+        $this->assertTrue( count($logger->getRecords()) == 7 );
+
+        $logger->commit();
+        $writer = $logger->getWriter(0);
+
+        $this->assertTrue( count($writer->getRecords()) == 7 );
+
+    }
+
+    public function testLoggerFilterSeveralLevels() {
+
+        $logger = new Logger( [
+            [
+                'class'  => '\Owl\Log\Writer\DevNull',
+                'levels' => [ Logger::LEVEL_ALERT]
+            ]
+        ] );
+
+        $logger->alert('test');
+
+        $logger->error('test');
+        $logger->error('test');
+        $logger->error('test');
+        $logger->error('test');
+        $logger->error('test');
+
+        $this->assertTrue( count($logger->getRecords()) == 6 );
+
+        $logger->commit();
+
+        $writer = $logger->getWriter(0);
+
+        $this->assertTrue( count($writer->getRecords()) == 1 );
+
+    }
+
 }

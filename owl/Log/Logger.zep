@@ -10,7 +10,7 @@ use Owl\Log\Exception\InvalidWriterException;
  * $Logger = new Logger([
  *     [
  *         'class' => '\Owl\Log\Writer\File',
- *         'levels' => ['error', 'warning'],
+ *         'levels' => [Logger::LEVEL_ERROR, Logger::LEVEL_WARNING],
  *         'formatter' => '\Owl\Log\Formatter\Syslog',
  *         'options' => [
  *             'logFile' => APP_ROOT '/logs/my.log'
@@ -18,7 +18,7 @@ use Owl\Log\Exception\InvalidWriterException;
  *     ],
  *     [
  *         'class' => '\Owl\Log\Writer\Email',
- *         'levels' => ['alert'],
+ *         'levels' => [Logger::LEVEL_ALERT],
  *         'formatter' => '\Owl\Log\Formatter\Line',
  *         'options' => [
  *             'from'  => 'robot@localhost',
@@ -51,25 +51,19 @@ class Logger extends AbstractLogger implements LoggerInterface
         get
     };
 
-    public function __construct(writers = null)
+    public function __construct(array writers = [])
     {
-        var writer;
+        var writerName, writerDescription;
 
-        for writer in writers {
-            let this->writers[] = this->factoryWriter(writer);
+        for writerName, writerDescription in writers {
+            let this->writers[writerName] = this->factoryWriter(writerDescription);
         }
     }
 
-    public function __destruct() {
-
-        var writer;
-
+    public function __destruct()
+    {
         if (count(this->records) > 0 ) {
-            for writer in this->writers {
-                writer->commit(this->records);
-            }
-
-            let this->records = [];
+            this->commit();
         }
     }
 
@@ -80,11 +74,11 @@ class Logger extends AbstractLogger implements LoggerInterface
 
         var writer, writerClass;
 
-        if (!isset(writerDescription["class"])) {
+        if !isset(writerDescription["class"]) {
             throw new InvalidWriterException("Writer options 'class' is not exists");
         }
 
-        if (!class_exists(writerDescription["class"])) {
+        if !class_exists(writerDescription["class"]) {
             throw new InvalidWriterException("Writer class is not exists");
         }
 
@@ -119,20 +113,28 @@ class Logger extends AbstractLogger implements LoggerInterface
     }
 
     /**
+     * Commit records
+     */
+    public function commit()
+    {
+        var writer;
+
+        for writer in this->writers {
+            writer->commit(this->records);
+        }
+
+        let this->records = [];
+    }
+
+    /**
      * @inheritdoc
      */
     public function log(var level, string message, array context = [])
     {
-        var writer;
-
         let this->records[] = new Record(level, microtime(true), message, context);
 
         if (count(this->records) >= this->recordsInterval) {
-            for writer in this->writers {
-                writer->commit(this->records);
-            }
-
-            let this->records = [];
+            this->commit();
         }
     }
 }
