@@ -3,11 +3,17 @@ namespace Owl\Mvc;
 
 class View
 {
+	/**
+	 * Base path for views
+	 */
 	protected path = "./../resources/views/" {
 		get, set
 	};
 
-	public function render(string! path, array parameters = null)
+	/**
+	 * Render view
+	 */
+	public function render(string! path, array parameters = null) -> string|boolean
 	{
 		if !file_exists(this->path . path) {
 			throw new \Exception("File is not exists");

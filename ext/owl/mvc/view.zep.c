@@ -27,12 +27,18 @@ ZEPHIR_INIT_CLASS(Owl_Mvc_View) {
 
 	ZEPHIR_REGISTER_CLASS(Owl\\Mvc, View, owl, mvc_view, owl_mvc_view_method_entry, 0);
 
+	/**
+	 * Base path for views
+	 */
 	zend_declare_property_string(owl_mvc_view_ce, SL("path"), "./../resources/views/", ZEND_ACC_PROTECTED TSRMLS_CC);
 
 	return SUCCESS;
 
 }
 
+/**
+ * Base path for views
+ */
 PHP_METHOD(Owl_Mvc_View, getPath) {
 
 
@@ -40,6 +46,9 @@ PHP_METHOD(Owl_Mvc_View, getPath) {
 
 }
 
+/**
+ * Base path for views
+ */
 PHP_METHOD(Owl_Mvc_View, setPath) {
 
 	zval *path;
@@ -52,6 +61,9 @@ PHP_METHOD(Owl_Mvc_View, setPath) {
 
 }
 
+/**
+ * Render view
+ */
 PHP_METHOD(Owl_Mvc_View, render) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
@@ -86,7 +98,7 @@ PHP_METHOD(Owl_Mvc_View, render) {
 	ZEPHIR_INIT_VAR(_1);
 	ZEPHIR_CONCAT_VV(_1, _0, path);
 	if (!((zephir_file_exists(_1 TSRMLS_CC) == SUCCESS))) {
-		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(zend_exception_get_default(TSRMLS_C), "File is not exists", "owl/Mvc/View.zep", 13);
+		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(zend_exception_get_default(TSRMLS_C), "File is not exists", "owl/Mvc/View.zep", 19);
 		return;
 	}
 	ZEPHIR_CALL_FUNCTION(NULL, "ob_start", &_2);
