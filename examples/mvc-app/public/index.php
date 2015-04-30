@@ -41,6 +41,9 @@ $serviceManager->setService('connection', $connection);
 $cache = new \Owl\Cache\Driver\Memcached();
 $serviceManager->setService('cache', $cache);
 
+$view = new \Owl\Mvc\View();
+$serviceManager->setService('view', $view);
+
 $application = new Application($serviceManager, $eventManager);
 $application->setErrorHandlerParameters(array(
     'module' => 'Common',

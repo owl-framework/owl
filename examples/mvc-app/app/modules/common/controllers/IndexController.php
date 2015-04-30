@@ -20,6 +20,10 @@ class IndexController extends \Owl\Mvc\Controller
      */
     public function indexAction()
     {
+        /** @var \Owl\Mvc\View $view */
+        $view = $this->di->get('view');
+        $view->render('index/index.phtml');
+
         return "Hello, World!";
     }
 
