@@ -26,7 +26,7 @@ services:
 
 install:
   - composer --prefer-source install
-  - apt-get install valgrind
+  - sudo apt-get install valgrind
 
 before_script:
   - phpenv config-add tests/ci/drivers.ini
