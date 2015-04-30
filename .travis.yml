@@ -1,6 +1,4 @@
---read-var-info=yes --error-exitcode=1 --fullpath-after= --track-origins=yes --leak-check=full language:
-  - php
-  - c
+language: php
 
 compiler:
   - gcc
