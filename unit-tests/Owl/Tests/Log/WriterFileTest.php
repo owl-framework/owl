@@ -14,12 +14,7 @@ class WriterFileTest extends \PHPUnit_Framework_TestCase
 
     public function testWriterFileWrite()
     {
-
         $record = new Record( 1, 2, 3 );
-
-        $records = [
-            $record
-        ];
 
         $logFile = __DIR__ . "/temp.log";
 
@@ -27,7 +22,9 @@ class WriterFileTest extends \PHPUnit_Framework_TestCase
         $writer->setOptions( [
             'logFile' => $logFile
         ] );
-        $writer->commit( $records );
+        $writer->commit( [
+            $record
+        ] );
         $writer->push();
 
         $formatted_record = $writer->getFormatter()->format( $record );

@@ -14,15 +14,12 @@ class WriterBrowserTest extends \PHPUnit_Framework_TestCase
 
     public function testWriterBrowserPush()
     {
-
         $record = new Record( 1, 2, 3 );
 
-        $records = [
-            $record
-        ];
-
         $writer = new EchoBrowser();
-        $writer->commit( $records );
+        $writer->commit( [
+            $record
+        ] );
 
         ob_start();
         $writer->push();
@@ -32,20 +29,16 @@ class WriterBrowserTest extends \PHPUnit_Framework_TestCase
         $formatted_record = $writer->getFormatter()->format( $record );
 
         $this->assertTrue( $buffer == $formatted_record );
-
     }
 
     public function testWriterBrowserDestruct()
     {
-
         $record = new Record( 1, 2, 3 );
 
-        $records = [
-            $record
-        ];
-
         $writer = new EchoBrowser();
-        $writer->commit( $records );
+        $writer->commit( [
+            $record
+        ] );
 
         $formatted_record = $writer->getFormatter()->format( $record );
 
