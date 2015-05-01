@@ -38,9 +38,8 @@ abstract class AbstractWriter implements WriterInterface
     /**
      * Records limit to commit them to writers
      */
-    protected recordsInterval = 1000
-    {
-        get
+    protected recordsInterval = 1000{
+        get, set
     };
 
     public function __destruct()
