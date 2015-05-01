@@ -10,8 +10,6 @@ use Owl\Log\Logger;
  */
 class LoggerTest extends \PHPUnit_Framework_TestCase
 {
-
-
     /**
      * @return array
      */
@@ -63,11 +61,9 @@ class LoggerTest extends \PHPUnit_Framework_TestCase
         ] );
 
         $logger->alert( 'test' );
-        $logger->error( 'test' );
-        $logger->error( 'test' );
-        $logger->error( 'test' );
-        $logger->error( 'test' );
-        $logger->error( 'test' );
+        for ($i = 0; $i < 5; $i ++) {
+            $logger->error( 'test' );
+        }
         $logger->warning( 'test' );
 
         $this->assertTrue( count( $logger->getRecords() ) == 7 );
@@ -76,7 +72,6 @@ class LoggerTest extends \PHPUnit_Framework_TestCase
         $writer = $logger->getWriter( 0 );
 
         $this->assertTrue( count( $writer->getRecords() ) == 7 );
-
     }
 
     public function testLoggerFilterSeveralLevels()
@@ -90,12 +85,9 @@ class LoggerTest extends \PHPUnit_Framework_TestCase
         ] );
 
         $logger->alert( 'test' );
-
-        $logger->error( 'test' );
-        $logger->error( 'test' );
-        $logger->error( 'test' );
-        $logger->error( 'test' );
-        $logger->error( 'test' );
+        for ($i = 0; $i < 5; $i ++) {
+            $logger->error( 'test' );
+        }
 
         $this->assertTrue( count( $logger->getRecords() ) == 6 );
 
@@ -104,7 +96,6 @@ class LoggerTest extends \PHPUnit_Framework_TestCase
         $writer = $logger->getWriter( 0 );
 
         $this->assertTrue( count( $writer->getRecords() ) == 1 );
-
     }
 
 }
