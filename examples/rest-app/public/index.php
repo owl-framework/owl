@@ -16,7 +16,7 @@ include_once __DIR__ . '/../vendor/autoload.php';
 $eventManager = new \Owl\Event\Manager();
 
 $profiler = new Owl\Debug\Profiler();
-$profiler->setAssetsUri('//assets.owl.local/profiler/min.css');
+//$profiler->setAssetsUri('//assets.owl.local/profiler/min.css');
 $profiler->listen($eventManager);
 
 $serviceManager = new Owl\Service\Manager();
