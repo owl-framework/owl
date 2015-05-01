@@ -98,4 +98,31 @@ class LoggerTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue( count( $writer->getRecords() ) == 1 );
     }
 
+    public function testLoggerRecordsInterval()
+    {
+        $intervals          = 5;
+        $recordsPerInterval = 5;
+        $records            = ( $recordsPerInterval + 1 ) * $intervals;
+
+        $logger = new Logger( [
+            [
+                'class' => '\Owl\Log\Writer\DevNull'
+            ]
+        ] );
+
+        $logger->setRecordsInterval( $recordsPerInterval );
+
+        $commits = 0;
+        for ($i = 0; $i < $records; $i ++) {
+            if ($i % ( $recordsPerInterval + 1 ) == 0) {
+                $this->assertTrue( count( $logger->getRecords() ) == 0 );
+                $commits ++;
+            }
+            $logger->warning( 'test' );
+        }
+
+        $this->assertTrue( count( $logger->getRecords() ) == 0 );
+        $this->assertTrue( $intervals == $commits );
+    }
+
 }
