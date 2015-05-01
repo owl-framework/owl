@@ -9,9 +9,11 @@ use Owl\Log\Writer\EchoBrowser;
 /**
  * Class WriterBrowserTest
  */
-class WriterBrowserTest extends \PHPUnit_Framework_TestCase {
+class WriterBrowserTest extends \PHPUnit_Framework_TestCase
+{
 
-    public function testWriterBrowserPush() {
+    public function testWriterBrowserPush()
+    {
 
         $record = new Record( 1, 2, 3 );
 
@@ -27,13 +29,14 @@ class WriterBrowserTest extends \PHPUnit_Framework_TestCase {
         $buffer = ob_get_contents();
         ob_end_clean();
 
-        $formatted_record = $writer->getFormatter()->format($record);
+        $formatted_record = $writer->getFormatter()->format( $record );
 
         $this->assertTrue( $buffer == $formatted_record );
 
     }
 
-    public function testWriterBrowserDestruct() {
+    public function testWriterBrowserDestruct()
+    {
 
         $record = new Record( 1, 2, 3 );
 
@@ -42,12 +45,12 @@ class WriterBrowserTest extends \PHPUnit_Framework_TestCase {
         ];
 
         $writer = new EchoBrowser();
-        $writer->commit($records);
+        $writer->commit( $records );
 
-        $formatted_record = $writer->getFormatter()->format($record);
+        $formatted_record = $writer->getFormatter()->format( $record );
 
         ob_start();
-        unset($writer);
+        unset( $writer );
         $buffer = ob_get_contents();
         ob_end_clean();
 

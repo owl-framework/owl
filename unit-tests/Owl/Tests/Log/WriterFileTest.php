@@ -9,9 +9,11 @@ use Owl\Log\Writer\File;
 /**
  * Class WriterFileTest
  */
-class WriterFileTest extends \PHPUnit_Framework_TestCase {
+class WriterFileTest extends \PHPUnit_Framework_TestCase
+{
 
-    public function testWriterFileWrite() {
+    public function testWriterFileWrite()
+    {
 
         $record = new Record( 1, 2, 3 );
 
@@ -22,16 +24,16 @@ class WriterFileTest extends \PHPUnit_Framework_TestCase {
         $logFile = __DIR__ . "/temp.log";
 
         $writer = new File();
-        $writer->setOptions([
+        $writer->setOptions( [
             'logFile' => $logFile
-        ]);
-        $writer->commit($records);
+        ] );
+        $writer->commit( $records );
         $writer->push();
 
-        $formatted_record = $writer->getFormatter()->format($record);
-        $written_record = trim(file_get_contents($logFile));
+        $formatted_record = $writer->getFormatter()->format( $record );
+        $written_record   = trim( file_get_contents( $logFile ) );
 
-        unlink($logFile);
+        unlink( $logFile );
         $this->assertTrue( $written_record == $formatted_record );
     }
 

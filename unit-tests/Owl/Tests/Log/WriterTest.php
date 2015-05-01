@@ -9,12 +9,14 @@ use Owl\Log\Writer\File;
 /**
  * Class WriterTest
  */
-class WriterTest extends \PHPUnit_Framework_TestCase {
+class WriterTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @return array
      */
-    protected function getLevels(){
+    protected function getLevels()
+    {
         return [
             Logger::LEVEL_ALERT,
             Logger::LEVEL_CRITICAL,
@@ -26,14 +28,15 @@ class WriterTest extends \PHPUnit_Framework_TestCase {
         ];
     }
 
-    public function testTransportLevels() {
+    public function testTransportLevels()
+    {
 
         $levels = $this->getLevels();
 
         $writer = new File();
         $writer->setLevels( $levels );
 
-        $this->assertTrue($levels == $writer->getLevels());
+        $this->assertTrue( $levels == $writer->getLevels() );
     }
 
 }
