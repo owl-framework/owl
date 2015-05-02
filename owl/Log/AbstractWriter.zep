@@ -38,7 +38,7 @@ abstract class AbstractWriter implements WriterInterface
     /**
      * Records limit to commit them to writers
      */
-    protected recordsInterval = 1000{
+    protected recordsInterval = 1000 {
         get, set
     };
 
