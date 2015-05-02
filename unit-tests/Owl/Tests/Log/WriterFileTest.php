@@ -3,6 +3,8 @@
  * @author Ivanov Sergey <xufocoder@gmail.com>
  */
 
+namespace Owl\Tests\Log;
+
 use Owl\Log\Record;
 use Owl\Log\Writer\File;
 
@@ -14,24 +16,23 @@ class WriterFileTest extends \PHPUnit_Framework_TestCase
 
     public function testWriterFileWrite()
     {
-        $record = new Record( 1, 2, 3 );
+        $record = new Record(1, 2, 3);
 
         $logFile = __DIR__ . "/temp.log";
 
         $writer = new File();
-        $writer->setOptions( [
+        $writer->setOptions([
             'logFile' => $logFile
-        ] );
-        $writer->commit( [
+        ]);
+        $writer->commit([
             $record
-        ] );
+        ]);
         $writer->push();
 
-        $formatted_record = $writer->getFormatter()->format( $record );
-        $written_record   = trim( file_get_contents( $logFile ) );
+        $formatted_record = $writer->getFormatter()->format($record);
+        $written_record   = trim(file_get_contents($logFile));
 
-        unlink( $logFile );
-        $this->assertTrue( $written_record == $formatted_record );
+        unlink($logFile);
+        $this->assertTrue($written_record == $formatted_record);
     }
-
 }
