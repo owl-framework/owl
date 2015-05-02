@@ -34,7 +34,6 @@ You can build extension and install it like:
 
 ```bash
 git clone https://github.com/owl-framework/owl.git
-git submodule update --init
 cd ext
 ./install
 ```
