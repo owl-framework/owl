@@ -37,8 +37,13 @@ git clone https://github.com/owl-framework/owl.git
 git submodule update --init
 cd ext
 ./install
-echo extension=owl.so > /etc/php5/fpm/conf.d/owl.ini
-echo extension=owl.so > /etc/php5/cli/conf.d/owl.ini
+```
+
+enable extension for all SAPIs
+
+```sh
+sudo echo extension=owl.so > /etc/php5/mods-available/owl.ini
+sudo php5enmod owl
 ```
 
 Don't forget to restart your php-fpm:
