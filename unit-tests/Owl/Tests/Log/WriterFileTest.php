@@ -11,11 +11,11 @@ use Owl\Log\Writer\File;
 /**
  * Class WriterFileTest
  */
-class WriterFileTest extends \PHPUnit_Framework_TestCase {
-
-    public function testWriterFileWrite() {
-
-        $record = new Record( 1, 2, 3 );
+class WriterFileTest extends \PHPUnit_Framework_TestCase
+{
+    public function testWriterFileWrite()
+    {
+        $record = new Record(1, 2, 3);
 
         $records = [
             $record
@@ -34,7 +34,6 @@ class WriterFileTest extends \PHPUnit_Framework_TestCase {
         $written_record = trim(file_get_contents($logFile));
 
         unlink($logFile);
-        $this->assertTrue( $written_record == $formatted_record );
+        $this->assertTrue($written_record == $formatted_record);
     }
-
 }

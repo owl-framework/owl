@@ -3,6 +3,8 @@
  * @author Patsura Dmitry <zaets28rus@gmail.com>
  */
 
+namespace Owl\Tests\Router;
+
 class RouteTest extends \PHPUnit_Framework_TestCase
 {
     public function testParameterParsing()
