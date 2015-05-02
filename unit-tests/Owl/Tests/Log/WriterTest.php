@@ -88,7 +88,7 @@ class WriterTest extends \PHPUnit_Framework_TestCase
 
         $formatter = $writer->getFormatter();
 
-        $this->assertTrue( get_class($formatter) == "Owl\Log\Formatter\Json" );
+        $this->assertTrue( get_class($formatter) == "Owl\\Log\\Formatter\\Json" );
     }
 
     public function testSetNonExistsFormatter()
