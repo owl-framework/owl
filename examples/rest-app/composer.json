@@ -1,6 +1,6 @@
 {
     "name": "owl-framework/rest-app",
-    "description": "Simple REST application powered by Owl framework",
+    "description": "Simple REST skeleton application for Owl framework",
     "license": "MIT",
     "authors": [
         {

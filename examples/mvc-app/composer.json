@@ -1,6 +1,6 @@
 {
-    "name": "owl-framework/rest-app",
-    "description": "Simple REST application powered by Owl framework",
+    "name": "owl-framework/mvc-app",
+    "description": "Simple MVC skeleton application for Owl framework",
     "license": "MIT",
     "authors": [
         {
