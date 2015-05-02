@@ -63,4 +63,39 @@ class WriterTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue( $intervals == $commits );
     }
 
+    public function testSetFormatter()
+    {
+        $formatter = new \Owl\Log\Formatter\Json();
+
+        $writer = new DevNull();
+        $writer->setFormatter($formatter);
+
+        $this->assertTrue( $writer->getFormatter() === $formatter );
+    }
+
+    public function testSetWrongFormatter()
+    {
+        $this->setExpectedException("Owl\\Log\\Exception\\InvalidFormatterException", "Formatter set error");
+
+        $writer = new DevNull();
+        $writer->setFormatter(1);
+    }
+
+    public function testSetExistsFormatter()
+    {
+        $writer = new DevNull();
+        $writer->setFormatter("\\Owl\\Log\\Formatter\\Json");
+
+        $formatter = $writer->getFormatter();
+
+        $this->assertTrue( get_class($formatter) == "Owl\Log\Formatter\Json" );
+    }
+
+    public function testSetNonExistsFormatter()
+    {
+        $this->setExpectedException("Owl\\Log\\Exception\\InvalidFormatterException", "Formatter class is not exits");
+
+        $writer = new DevNull();
+        $writer->setFormatter("NonExistsFormatter");
+    }
 }
