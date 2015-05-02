@@ -3,6 +3,8 @@
  * @author Patsura Dmitry <zaets28rus@gmail.com>
  */
 
+namespace Owl\Tests\Http;
+
 use Owl\Http\Request;
 
 class RequestTest extends \PHPUnit_Framework_TestCase
@@ -65,4 +67,4 @@ class RequestTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(5, $request->getPost('post1'));
         $this->assertSame("test string", $request->getPost('post2'));
     }
-} 
+}

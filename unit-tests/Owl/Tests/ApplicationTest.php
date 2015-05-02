@@ -3,6 +3,8 @@
  * @author Patsura Dmitry <zaets28rus@gmail.com>
  */
 
+namespace Owl\Tests;
+
 use Owl\Application;
 use Owl\Http\Request;
 use Owl\Router\Router;
@@ -47,23 +49,23 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
         $appAfterHandle = false;
 
         $eventManager = new \Owl\Event\Manager();
-        $eventManager->listen('dispatch:afterInitialize', function($app) use (&$dispatchAfterInitialize) {
+        $eventManager->listen('dispatch:afterInitialize', function ($app) use (&$dispatchAfterInitialize) {
             $dispatchAfterInitialize = true;
         });
 
-        $eventManager->listen('dispatch:afterAction', function($app) use (&$dispatchAfterAction) {
+        $eventManager->listen('dispatch:afterAction', function ($app) use (&$dispatchAfterAction) {
             $dispatchAfterAction = true;
         });
 
-        $eventManager->listen('dispatch:beforeExecuteRoute', function($app) use(&$dispatchBeforeExecuteRoute) {
+        $eventManager->listen('dispatch:beforeExecuteRoute', function ($app) use (&$dispatchBeforeExecuteRoute) {
             $dispatchBeforeExecuteRoute = true;
         });
 
-        $eventManager->listen('dispatch:afterExecuteRoute', function($app) use(&$dispatchAfterExecuteRoute) {
+        $eventManager->listen('dispatch:afterExecuteRoute', function ($app) use (&$dispatchAfterExecuteRoute) {
             $dispatchAfterExecuteRoute = true;
         });
 
-        $eventManager->listen('app:afterHandle', function($app) use (&$appAfterHandle) {
+        $eventManager->listen('app:afterHandle', function ($app) use (&$appAfterHandle) {
             $appAfterHandle = true;
         });
 
@@ -86,5 +88,4 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
         $this->assertNotFalse($dispatchAfterAction);
         $this->assertNotFalse($appAfterHandle);
     }
-
-} 
+}

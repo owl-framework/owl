@@ -1,4 +1,7 @@
 <?php
+
+namespace Owl\Tests;
+
 use Owl\Event\Manager;
 
 /**
@@ -12,7 +15,7 @@ class EventManagerTest extends \PHPUnit_Framework_TestCase
         $runs = 0;
 
         $em = new Manager();
-        $em->listen('test', function() use (&$runs) {
+        $em->listen('test', function () use (&$runs) {
             $runs++;
         });
 
