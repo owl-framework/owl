@@ -3,6 +3,8 @@
  * @author Ivanov Sergey <xufocoder@gmail.com>
  */
 
+namespace Owl\Tests\Log;
+
 use Owl\Log\Logger;
 use Owl\Log\Writer\File;
 
