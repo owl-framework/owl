@@ -1,7 +1,7 @@
-Owl Rest Edition Skeleton
+Owl MVC Edition Skeleton
 =========================
 
-Special edition for easy creation of REST API services.
+Special edition for easy creation of MVC sites.
 
 License
 -------

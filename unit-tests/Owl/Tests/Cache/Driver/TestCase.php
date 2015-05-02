@@ -3,6 +3,8 @@
  * @author: Patsura Dmitry @ovr <talk@dmtry.me>
  */
 
+namespace Owl\Tests\Cache\Driver;
+
 use \Cacher\Driver\Memcache;
 
 /**
