@@ -78,15 +78,17 @@ abstract class AbstractWriter implements WriterInterface
 
     public function setFormatter(var formatter)
     {
-        if typeof formatter == "object" && is_subclass_of(formatter, "Owl\Log\FormatterInterface") {
+        if typeof formatter == "object" && is_subclass_of(formatter, "\\Owl\\Log\\FormatterInterface") {
             let this->formatter = formatter;
         }
-
-        if typeof formatter == "string" {
+        elseif typeof formatter == "string" {
             if !class_exists (formatter) {
                 throw new InvalidFormatterException("Formatter class is not exits");
             }
             let this->formatter = new {formatter}();
+        }
+        else {
+            throw new InvalidFormatterException("Formatter set error");
         }
     }
 
@@ -120,7 +122,7 @@ abstract class AbstractWriter implements WriterInterface
      */
     public function commit(array records) -> void
     {
-        let this->records += $this->filterRecords(records);
+        let this->records = array_merge(this->records, $this->filterRecords(records));
 
         if (count(this->records) >= this->recordsInterval) {
             this->push();
