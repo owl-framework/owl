@@ -38,6 +38,7 @@ script:
   - (cd ext; export CFLAGS="-g3 -O1 -std=gnu90 -Wall"; phpize && ./configure --enable-owl && make --silent -j4 && sudo make --silent install && phpenv config-add ../tests/ci/owl.ini)
   - ulimit -c unlimited || true
   - (cd examples/rest-app; composer install; php public/index.php)
+  - (cd examples/mvc-app; composer install; php public/index.php)
   - vendor/bin/phpcs --standard=PSR2 --report=emacs --extensions=php --warning-severity=0 --ignore=autoload_real.php unit-tests/ examples/
   - valgrind --read-var-info=yes --error-exitcode=1 --fullpath-after= --track-origins=yes --leak-check=full phpunit --debug
 
