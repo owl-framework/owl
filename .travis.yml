@@ -25,6 +25,8 @@ services:
 
 install:
   - composer --prefer-source install
+  - sudo apt-get update
+  - sudo apt-get install -y valgrind
 
 before_script:
   - phpenv config-add tests/ci/drivers.ini
@@ -37,7 +39,7 @@ script:
   - ulimit -c unlimited || true
   - (cd examples/rest-app; composer install; php public/index.php)
   - vendor/bin/phpcs --standard=PSR2 --report=emacs --extensions=php --warning-severity=0 unit-tests/ examples/
-  - phpunit
+  - valgrind --read-var-info=yes --error-exitcode=1 --fullpath-after= --track-origins=yes --leak-check=full phpunit
 
 after_failure:
   - sudo apt-get -qq install gdb
