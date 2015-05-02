@@ -4,6 +4,7 @@
  */
 
 use Owl\Log\Logger;
+use Owl\Log\Record;
 use Owl\Log\Writer\DevNull;
 
 /**
@@ -35,6 +36,31 @@ class WriterTest extends \PHPUnit_Framework_TestCase
         $writer->setLevels( $levels );
 
         $this->assertTrue( $levels == $writer->getLevels() );
+    }
+
+    public function testWritterRecordsInterval()
+    {
+        $commits            = 0;
+        $record             = new Record( 1, 2, 3 );
+        $intervals          = 5;
+        $recordsPerInterval = 5;
+        $records            = ( $recordsPerInterval + 1 ) * $intervals;
+
+        $writer = new DevNull();
+        $writer->setRecordsInterval( $recordsPerInterval );
+
+        for ($i = 0; $i < $records; $i ++) {
+            if ($i % ( $recordsPerInterval + 1 ) == 0) {
+                $this->assertTrue( count( $writer->getRecords() ) == 0 );
+                $commits ++;
+            }
+            $writer->commit( [
+                $record,
+            ] );
+        }
+
+        $this->assertTrue( count( $writer->getRecords() ) == 0 );
+        $this->assertTrue( $intervals == $commits );
     }
 
 }
