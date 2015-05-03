@@ -35,7 +35,7 @@ install:
   - echo Downloading PHP-Devel-Pack
   - ps: (new-object net.webclient).DownloadFile('http://windows.php.net/downloads/releases/php-devel-pack-' + ${env:PHP_VERSION} + '-Win32-VC' + ${env:PHP_VC} + '-' + ${env:BUILD_PLATFORM} + '.zip', ${env:APPVEYOR_BUILD_FOLDER} + '\..\php-dev.zip')
   - 7z.exe x php-dev.zip | FIND /V "ing  "
-  - mv php-%PHP_VERSION%-devel-VC11-%BUILD_PLATFORM% php-devpack-y
+  - mv php-%PHP_VERSION%-devel-VC11-%BUILD_PLATFORM% php-devpack
   - echo Building PHP [%PHP_VERSION%]
   - '"%VS110COMNTOOLS%\VsDevCmd" %BUILD_PLATFORM%'
   - '%PHP_SDK%\bin\phpsdk_setvars'
