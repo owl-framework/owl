@@ -63,7 +63,7 @@ install:
 
 build_script:
   - 'php vendor/phalcon/zephir/compiler.php build'
-  - 'php vendor\phpunit\phpunit\phpunit.php --debug'
+  - 'php vendor\phpunit\phpunit\phpunit.php -v --debug'
 
 artifacts:
   - path: bin\zephir-parser.exe
