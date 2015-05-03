@@ -59,7 +59,7 @@ install:
   - 'echo extension=php_redis.dll >> php.ini'
   - 'set PATH=%cd%;%PATH%'
   - cd %APPVEYOR_BUILD_FOLDER%
-  - if not exist vendor (php -r "readfile('https://getcomposer.org/installer');" | php & php composer.phar --prefer-source install)
+  - if not exist vendor (php -r "readfile('https://getcomposer.org/installer');" | php & php composer.phar --prefer-dist install)
 
 build_script:
   - './vendor/bin/zephir build'
