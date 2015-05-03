@@ -66,4 +66,4 @@ build_script:
   - 'php vendor\phpunit\phpunit\phpunit.php -v --debug'
 
 artifacts:
-  - path: bin\zephir-parser.exe
+  - path: '%APPVEYOR_BUILD_FOLDER%\ext\Release_TS\php_owl.dll'
