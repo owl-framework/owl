@@ -11,6 +11,9 @@ Owl is an extreme fast PHP framework powered by [Zephir](https://github.com/phal
 
 *This is a development branch and We need to focus on the docs, tests, fixes and cleaning code, so we need your help ;)*
 
+* Linux: [![Build Status](https://api.travis-ci.org/owl-framework/owl.svg?branch=master)](http://travis-ci.org/owl-framework/owl)
+* Windows: [![Build status](https://ci.appveyor.com/api/projects/status/42x5t3f564jij2eh/branch/master?svg=true)](https://ci.appveyor.com/project/ovr/owl/branch/master)
+
 ### System Requirements
 
 To build it you need the following requirements:
