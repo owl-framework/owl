@@ -35,21 +35,34 @@ install:
   - echo Downloading PHP-Devel-Pack
   - ps: (new-object net.webclient).DownloadFile('http://windows.php.net/downloads/releases/php-devel-pack-' + ${env:PHP_VERSION} + '-Win32-VC' + ${env:PHP_VC} + '-' + ${env:BUILD_PLATFORM} + '.zip', ${env:APPVEYOR_BUILD_FOLDER} + '\..\php-dev.zip')
   - 7z.exe x php-dev.zip | FIND /V "ing  "
-  - mv php-%PHP_VERSION%-devel-VC11-%BUILD_PLATFORM% php-devpack
+  - mv php-%PHP_VERSION%-devel-VC11-%BUILD_PLATFORM% php-devpack-y
   - echo Building PHP [%PHP_VERSION%]
   - '"%VS110COMNTOOLS%\VsDevCmd" %BUILD_PLATFORM%'
   - '%PHP_SDK%\bin\phpsdk_setvars'
+  - echo Downloading PHP-memcache
+  - 'cd %APPVEYOR_BUILD_FOLDER%\..\php\ext'
+  - ps: (new-object net.webclient).DownloadFile('http://windows.php.net/downloads/pecl/releases/memcache/3.0.8/php_memcache-3.0.8-' + ${env:PHP_DEP_VER} + '-ts-vc' + ${env:PHP_VC} + '-' + ${env:BUILD_PLATFORM} + '.zip', ${env:APPVEYOR_BUILD_FOLDER} + '\..\php\ext\memcache.zip')
+  - 7z.exe -y x memcache.zip
+  - echo Downloading PHP-redis
+  - 'cd %APPVEYOR_BUILD_FOLDER%\..\php\ext'
+  - ps: (new-object net.webclient).DownloadFile('http://windows.php.net/downloads/pecl/releases/redis/2.2.7/php_redis-2.2.7-' + ${env:PHP_DEP_VER} + '-ts-vc' + ${env:PHP_VC} + '-' + ${env:BUILD_PLATFORM} + '.zip', ${env:APPVEYOR_BUILD_FOLDER} + '\..\php\ext\redis.zip')
+  - 7z.exe -y x redis.zip
   - 'cd %APPVEYOR_BUILD_FOLDER%\..\php'
   - 'echo extension_dir=%APPVEYOR_BUILD_FOLDER%\..\php\ext > php.ini'
   - 'echo extension=%APPVEYOR_BUILD_FOLDER%\ext\Release_TS\php_owl.dll >> php.ini'
   - 'echo extension=php_openssl.dll >> php.ini'
   - 'echo extension=php_pdo_sqlite.dll >> php.ini'
   - 'echo extension=php_gmp.dll >> php.ini'
+  - 'echo extension=php_mbstring.dll >> php.ini'
+  - 'echo extension=php_memcached.dll >> php.ini'
+  - 'echo extension=php_memcache.dll >> php.ini'
+  - 'echo extension=php_redis.dll >> php.ini'
   - 'set PATH=%cd%;%PATH%'
+  - cd %APPVEYOR_BUILD_FOLDER%
   - if not exist vendor (php -r "readfile('https://getcomposer.org/installer');" | php & php composer.phar --prefer-source install)
 
 build_script:
-  - 'bin\zephir build'
+  - './vendor/bin/zephir build'
   - 'php vendor\phpunit\phpunit\phpunit.php --debug'
 
 artifacts:
