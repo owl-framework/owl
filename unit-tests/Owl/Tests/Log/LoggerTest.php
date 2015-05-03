@@ -12,8 +12,6 @@ use Owl\Log\Logger;
  */
 class LoggerTest extends \PHPUnit_Framework_TestCase
 {
-
-
     /**
      * @return array
      */
@@ -32,8 +30,9 @@ class LoggerTest extends \PHPUnit_Framework_TestCase
 
     public function testLoggerRecordLevels()
     {
+        $logger = new Logger([
 
-        $logger = new Logger([]);
+        ]);
 
         $logger->alert('message');
         $logger->critical('message');
@@ -52,12 +51,10 @@ class LoggerTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(Logger::getLevelTitle($records[4]->level) == 'info');
         $this->assertTrue(Logger::getLevelTitle($records[5]->level) == 'notice');
         $this->assertTrue(Logger::getLevelTitle($records[6]->level) == 'warning');
-
     }
 
     public function testLoggerFilterAllLevels()
     {
-
         $logger = new Logger([
             [
                 'class' => '\Owl\Log\Writer\DevNull'
@@ -65,11 +62,9 @@ class LoggerTest extends \PHPUnit_Framework_TestCase
         ]);
 
         $logger->alert('test');
-        $logger->error('test');
-        $logger->error('test');
-        $logger->error('test');
-        $logger->error('test');
-        $logger->error('test');
+        for ($i = 0; $i < 5; $i ++) {
+            $logger->error('test');
+        }
         $logger->warning('test');
 
         $this->assertTrue(count($logger->getRecords()) == 7);
@@ -78,26 +73,21 @@ class LoggerTest extends \PHPUnit_Framework_TestCase
         $writer = $logger->getWriter(0);
 
         $this->assertTrue(count($writer->getRecords()) == 7);
-
     }
 
     public function testLoggerFilterSeveralLevels()
     {
-
         $logger = new Logger([
             [
-                'class' => '\Owl\Log\Writer\DevNull',
-                'levels' => [Logger::LEVEL_ALERT]
+                'class'  => '\Owl\Log\Writer\DevNull',
+                'levels' => [ Logger::LEVEL_ALERT ]
             ]
         ]);
 
         $logger->alert('test');
-
-        $logger->error('test');
-        $logger->error('test');
-        $logger->error('test');
-        $logger->error('test');
-        $logger->error('test');
+        for ($i = 0; $i < 5; $i ++) {
+            $logger->error('test');
+        }
 
         $this->assertTrue(count($logger->getRecords()) == 6);
 
@@ -106,5 +96,32 @@ class LoggerTest extends \PHPUnit_Framework_TestCase
         $writer = $logger->getWriter(0);
 
         $this->assertTrue(count($writer->getRecords()) == 1);
+    }
+
+    public function testLoggerRecordsInterval()
+    {
+        $intervals          = 5;
+        $recordsPerInterval = 5;
+        $records            = ( $recordsPerInterval + 1 ) * $intervals;
+
+        $logger = new Logger([
+            [
+                'class' => '\Owl\Log\Writer\DevNull'
+            ]
+        ]);
+
+        $logger->setRecordsInterval($recordsPerInterval);
+
+        $commits = 0;
+        for ($i = 0; $i < $records; $i ++) {
+            if ($i % ( $recordsPerInterval + 1 ) == 0) {
+                $this->assertTrue(count($logger->getRecords()) == 0);
+                $commits ++;
+            }
+            $logger->warning('test');
+        }
+
+        $this->assertTrue(count($logger->getRecords()) == 0);
+        $this->assertTrue($intervals == $commits);
     }
 }

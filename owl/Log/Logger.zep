@@ -41,7 +41,7 @@ class Logger extends AbstractLogger implements LoggerInterface
      * Records limit to commit them to writers
      */
     protected recordsInterval = 1000 {
-        get
+        get, set
     };
 
     /**
