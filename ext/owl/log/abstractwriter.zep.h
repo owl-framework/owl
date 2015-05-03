@@ -9,6 +9,7 @@ PHP_METHOD(Owl_Log_AbstractWriter, getRecords);
 PHP_METHOD(Owl_Log_AbstractWriter, getOptions);
 PHP_METHOD(Owl_Log_AbstractWriter, setOptions);
 PHP_METHOD(Owl_Log_AbstractWriter, getRecordsInterval);
+PHP_METHOD(Owl_Log_AbstractWriter, setRecordsInterval);
 PHP_METHOD(Owl_Log_AbstractWriter, __destruct);
 PHP_METHOD(Owl_Log_AbstractWriter, getOption);
 PHP_METHOD(Owl_Log_AbstractWriter, defaultFormatter);
@@ -27,6 +28,10 @@ ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_log_abstractwriter_setoptions, 0, 0, 1)
 	ZEND_ARG_INFO(0, options)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_log_abstractwriter_setrecordsinterval, 0, 0, 1)
+	ZEND_ARG_INFO(0, recordsInterval)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_log_abstractwriter_getoption, 0, 0, 1)
@@ -60,6 +65,7 @@ ZEPHIR_INIT_FUNCS(owl_log_abstractwriter_method_entry) {
 	PHP_ME(Owl_Log_AbstractWriter, getOptions, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Log_AbstractWriter, setOptions, arginfo_owl_log_abstractwriter_setoptions, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Log_AbstractWriter, getRecordsInterval, NULL, ZEND_ACC_PUBLIC)
+	PHP_ME(Owl_Log_AbstractWriter, setRecordsInterval, arginfo_owl_log_abstractwriter_setrecordsinterval, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Log_AbstractWriter, __destruct, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_DTOR)
 	PHP_ME(Owl_Log_AbstractWriter, getOption, arginfo_owl_log_abstractwriter_getoption, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Log_AbstractWriter, defaultFormatter, NULL, ZEND_ACC_PROTECTED)

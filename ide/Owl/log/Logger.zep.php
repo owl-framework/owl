@@ -31,6 +31,13 @@ class Logger extends \Owl\Log\AbstractLogger implements \Owl\Log\LoggerInterface
     public function getRecordsInterval() {}
 
     /**
+     * Records limit to commit them to writers
+     *
+     * @param mixed $recordsInterval 
+     */
+    public function setRecordsInterval($recordsInterval) {}
+
+    /**
      * Log writers
      */
     public function getWriters() {}

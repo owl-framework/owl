@@ -66,6 +66,21 @@ PHP_METHOD(Owl_Log_Logger, getRecordsInterval) {
 }
 
 /**
+ * Records limit to commit them to writers
+ */
+PHP_METHOD(Owl_Log_Logger, setRecordsInterval) {
+
+	zval *recordsInterval;
+
+	zephir_fetch_params(0, 1, 0, &recordsInterval);
+
+
+
+	zephir_update_property_this(this_ptr, SL("recordsInterval"), recordsInterval TSRMLS_CC);
+
+}
+
+/**
  * Log writers
  */
 PHP_METHOD(Owl_Log_Logger, getWriters) {

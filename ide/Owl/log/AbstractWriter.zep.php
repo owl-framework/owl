@@ -64,6 +64,13 @@ abstract class AbstractWriter implements \Owl\Log\WriterInterface
      */
     public function getRecordsInterval() {}
 
+    /**
+     * Records limit to commit them to writers
+     *
+     * @param mixed $recordsInterval 
+     */
+    public function setRecordsInterval($recordsInterval) {}
+
 
     public function __destruct() {}
 
