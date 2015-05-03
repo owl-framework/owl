@@ -1,5 +1,5 @@
 {
-    "name": "owl-framework/mvc-app",
+    "name": "owl/mvc-app",
     "description": "Simple MVC skeleton application for Owl framework",
     "license": "MIT",
     "authors": [
