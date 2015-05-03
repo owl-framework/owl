@@ -45,6 +45,7 @@ install:
   - 'echo extension=php_openssl.dll >> php.ini'
   - 'echo extension=php_pdo_sqlite.dll >> php.ini'
   - 'echo extension=php_gmp.dll >> php.ini'
+  - 'echo extension=php_mbstring.dll >> php.ini'
   - 'set PATH=%cd%;%PATH%'
   - cd %APPVEYOR_BUILD_FOLDER%
   - if not exist vendor (php -r "readfile('https://getcomposer.org/installer');" | php & php composer.phar --prefer-source install)
