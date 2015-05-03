@@ -50,7 +50,7 @@ install:
   - if not exist vendor (php -r "readfile('https://getcomposer.org/installer');" | php & php composer.phar --prefer-source install)
 
 build_script:
-  - 'bin\zephir build'
+  - './vendor/bin/zephir build'
   - 'php vendor\phpunit\phpunit\phpunit.php --debug'
 
 artifacts:
