@@ -62,7 +62,7 @@ install:
   - if not exist vendor (php -r "readfile('https://getcomposer.org/installer');" | php & php composer.phar --prefer-dist install)
 
 build_script:
-  - './vendor/bin/zephir build'
+  - 'php vendor/phalcon/zephir/compiler.php build'
   - 'php vendor\phpunit\phpunit\phpunit.php --debug'
 
 artifacts:
