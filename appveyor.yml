@@ -39,6 +39,14 @@ install:
   - echo Building PHP [%PHP_VERSION%]
   - '"%VS110COMNTOOLS%\VsDevCmd" %BUILD_PLATFORM%'
   - '%PHP_SDK%\bin\phpsdk_setvars'
+  - echo Downloading PHP-memcache
+  - 'cd %APPVEYOR_BUILD_FOLDER%\..\php\ext'
+  - ps: (new-object net.webclient).DownloadFile('http://windows.php.net/downloads/pecl/releases/memcache/3.0.8/php_memcache-3.0.8-' + ${env:PHP_VERSION} + '-ts-vc' + ${env:PHP_VC} + '-' + ${env:BUILD_PLATFORM} + '.zip', ${env:APPVEYOR_BUILD_FOLDER} + '\..\php\ext\memcache.zip')
+  - 7z.exe x memcache.zip
+  - echo Downloading PHP-redis
+  - 'cd %APPVEYOR_BUILD_FOLDER%\..\php\ext'
+  - ps: (new-object net.webclient).DownloadFile('http://windows.php.net/downloads/pecl/releases/redis/2.2.7/php_redis-2.2.7-' + ${env:PHP_VERSION} + '-ts-vc' + ${env:PHP_VC} + '-' + ${env:BUILD_PLATFORM} + '.zip', ${env:APPVEYOR_BUILD_FOLDER} + '\..\php\ext\redis.zip')
+  - 7z.exe x redis.zip
   - 'cd %APPVEYOR_BUILD_FOLDER%\..\php'
   - 'echo extension_dir=%APPVEYOR_BUILD_FOLDER%\..\php\ext > php.ini'
   - 'echo extension=%APPVEYOR_BUILD_FOLDER%\ext\Release_TS\php_owl.dll >> php.ini'
