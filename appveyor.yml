@@ -2,6 +2,10 @@ environment:
   matrix:
   - PHP_VERSION: 5.6.8
     PHP_DEP_VER: 5.6
+    DB_TYPE: mysql
+  - PHP_VERSION: 5.6.8
+    PHP_DEP_VER: 5.6
+    DB_TYPE: pgsql
   BUILD_PLATFORM: x86
   PHP_VC: 11
   PHP_SDK: c:\projects\php-sdk
@@ -75,4 +79,4 @@ build_script:
   - 'php vendor\phpunit\phpunit\phpunit -v --debug'
 
 artifacts:
-  - path: '%APPVEYOR_BUILD_FOLDER%\ext\Release_TS\php_owl.dll'
+  - path: \..\php\ext\php_owl.dll
