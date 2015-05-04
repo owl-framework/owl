@@ -28,7 +28,11 @@ class ConnectionTest extends TestCase
     public function testPrepare()
     {
         $sql = 'SELECT * FROM `users`';
-        $this->assertInstanceOf('Owl\DBAL\Driver\PDO\Statement', $this->_connection->prepare($sql));
+
+        /**
+         * We dont use own PDOStatement via it's not supported for PERSISTENT connections
+         */
+        $this->assertInstanceOf('PDOStatement', $this->_connection->prepare($sql));
     }
 
     public function testIsConnection()
