@@ -64,6 +64,7 @@ install:
 
 build_script:
   - 'php vendor\phalcon\zephir\compiler.php build'
+  - 'dir %APPVEYOR_BUILD_FOLDER%\ext\Release_TS'
   - 'php vendor\phpunit\phpunit\phpunit.php -v --debug'
 
 artifacts:
