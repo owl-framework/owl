@@ -66,6 +66,8 @@ build_script:
   - 'php vendor\phalcon\zephir\compiler.php build'
   - 'copy %APPVEYOR_BUILD_FOLDER%\ext\Release_TS\php_owl.dll %APPVEYOR_BUILD_FOLDER%\..\php\ext\php_owl.dll'
   - 'dir %APPVEYOR_BUILD_FOLDER%\ext\Release_TS'
+  - 'type %APPVEYOR_BUILD_FOLDER%\compile-errors.log'
+  - 'type %APPVEYOR_BUILD_FOLDER%\compile.log'
   - 'php vendor\phpunit\phpunit\phpunit.php -v --debug'
 
 artifacts:
