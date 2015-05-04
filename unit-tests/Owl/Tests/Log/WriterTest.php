@@ -42,29 +42,29 @@ class WriterTest extends \PHPUnit_Framework_TestCase
 
     public function testWritterRecordsInterval()
     {
-        $commits            = 0;
         $record             = new Record(1, 2, 3);
+
+        $commits            = 0;
         $intervals          = 5;
         $recordsPerInterval = 5;
-        $records            = ( $recordsPerInterval + 1 ) * $intervals;
+        $records            = $recordsPerInterval * $intervals;
 
-        $this->markTestSkipped('@ufocoder fix it please');
-        
         $writer = new DevNull();
         $writer->setRecordsInterval($recordsPerInterval);
 
-        for ($i = 0; $i < $records; $i ++) {
-            if ($i % ( $recordsPerInterval + 1 ) == 0) {
-                $this->assertTrue(count($writer->getRecords()) == 0);
-                $commits ++;
-            }
+        for ($i = 1; $i <= $records; $i ++) {
             $writer->commit([
                 $record,
             ]);
+
+            if ($i % $recordsPerInterval == 0) {
+                $this->assertCount(0, $writer->getRecords());
+                $commits ++;
+            }
         }
 
-        $this->assertTrue(count($writer->getRecords()) == 0);
-        $this->assertTrue($intervals == $commits);
+        $this->assertCount(0, $writer->getRecords());
+        $this->assertSame($intervals, $commits);
     }
 
     public function testSetFormatter()

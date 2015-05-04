@@ -77,8 +77,6 @@ class LoggerTest extends \PHPUnit_Framework_TestCase
 
     public function testLoggerFilterSeveralLevels()
     {
-        $this->markTestSkipped('@ufocoder fix it please');
-
         $logger = new Logger([
             [
                 'class'  => '\Owl\Log\Writer\DevNull',
@@ -87,6 +85,7 @@ class LoggerTest extends \PHPUnit_Framework_TestCase
         ]);
 
         $logger->alert('test');
+
         for ($i = 0; $i < 5; $i ++) {
             $logger->error('test');
         }
@@ -102,11 +101,9 @@ class LoggerTest extends \PHPUnit_Framework_TestCase
 
     public function testLoggerRecordsInterval()
     {
-        $this->markTestSkipped('@ufocoder fix it please');
-
         $intervals          = 5;
         $recordsPerInterval = 5;
-        $records            = ( $recordsPerInterval + 1 ) * $intervals;
+        $records            = $recordsPerInterval * $intervals;
 
         $logger = new Logger([
             [
@@ -117,12 +114,14 @@ class LoggerTest extends \PHPUnit_Framework_TestCase
         $logger->setRecordsInterval($recordsPerInterval);
 
         $commits = 0;
-        for ($i = 0; $i < $records; $i ++) {
-            if ($i % ( $recordsPerInterval + 1 ) == 0) {
+
+        for ($i = 1; $i <= $records; $i ++) {
+            $logger->warning('test');
+
+            if ($i % $recordsPerInterval == 0) {
                 $this->assertCount(0, $logger->getRecords());
                 $commits ++;
             }
-            $logger->warning('test');
         }
 
         $this->assertCount(0, $logger->getRecords());
