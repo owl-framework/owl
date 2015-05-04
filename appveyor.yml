@@ -49,7 +49,6 @@ install:
   - 7z.exe -y x redis.zip
   - 'cd %APPVEYOR_BUILD_FOLDER%\..\php'
   - 'echo extension_dir=%APPVEYOR_BUILD_FOLDER%\..\php\ext > php.ini'
-  - 'echo extension=php_owl.dll >> php.ini'
   - 'echo extension=php_openssl.dll >> php.ini'
   - 'echo extension=php_pdo_sqlite.dll >> php.ini'
   - 'echo extension=php_gmp.dll >> php.ini'
@@ -65,9 +64,12 @@ install:
 build_script:
   - 'php vendor\phalcon\zephir\compiler.php build'
   - 'copy %APPVEYOR_BUILD_FOLDER%\ext\Release_TS\php_owl.dll %APPVEYOR_BUILD_FOLDER%\..\php\ext\php_owl.dll'
+  - 'cd %APPVEYOR_BUILD_FOLDER%\..\php'
+  - 'echo extension=php_owl.dll >> php.ini'
   - 'dir %APPVEYOR_BUILD_FOLDER%\ext\Release_TS'
   - 'type %APPVEYOR_BUILD_FOLDER%\compile-errors.log'
   - 'type %APPVEYOR_BUILD_FOLDER%\compile.log'
+  - cd %APPVEYOR_BUILD_FOLDER%
   - 'php vendor\phpunit\phpunit\phpunit.php -v --debug'
 
 artifacts:
