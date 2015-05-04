@@ -67,10 +67,10 @@ build_script:
   - 'cd %APPVEYOR_BUILD_FOLDER%\..\php'
   - 'echo extension=php_owl.dll >> php.ini'
   - 'dir %APPVEYOR_BUILD_FOLDER%\ext\Release_TS'
-  - 'type %APPVEYOR_BUILD_FOLDER%\compile-errors.log'
-  - 'type %APPVEYOR_BUILD_FOLDER%\compile.log'
   - cd %APPVEYOR_BUILD_FOLDER%
-  - 'php vendor\phpunit\phpunit\phpunit.php -v --debug'
+  - 'type compile-errors.log'
+  - 'type compile.log'
+  - 'php vendor\phpunit\phpunit\phpunit -v --debug'
 
 artifacts:
   - path: '%APPVEYOR_BUILD_FOLDER%\ext\Release_TS\php_owl.dll'
