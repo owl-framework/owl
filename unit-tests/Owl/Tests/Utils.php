@@ -11,8 +11,8 @@ use Owl\Event\Manager;
 
 class Utils
 {
-	public static function getConnection()
-	{
+    public static function getConnection()
+    {
         $eventsManager = new Manager();
 
         switch ($GLOBALS['db_type']) {
@@ -29,8 +29,7 @@ class Utils
                 break;
         }
 
-		$connection = new DBAL\Connection(['driver' => $driver], $eventsManager);
-
-		return $connection;
-	}
+        $connection = new DBAL\Connection(['driver' => $driver], $eventsManager);
+        return $connection;
+    }
 }

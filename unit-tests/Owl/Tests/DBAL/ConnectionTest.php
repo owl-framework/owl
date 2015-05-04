@@ -8,10 +8,9 @@ namespace Owl\Tests\DBAL;
 use Owl\DBAL;
 use Owl\Tests\Utils;
 
-class ConnectionTest
-	extends TestCase
+class ConnectionTest extends TestCase
 {
-	protected $_connection;
+    protected $_connection;
 
     /**
      * Set connection
@@ -32,8 +31,8 @@ class ConnectionTest
         $this->assertInstanceOf('Owl\DBAL\Driver\PDO\Statement', $this->_connection->prepare($sql));
     }
 
-	public function testIsConnection()
-	{
-		$this->assertTrue($this->_connection instanceof DBAL\Connection);
-	}
+    public function testIsConnection()
+    {
+        $this->assertTrue($this->_connection instanceof DBAL\Connection);
+    }
 }
