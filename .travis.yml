@@ -32,7 +32,7 @@ install:
   - composer --prefer-source install
   - sudo apt-get update
   - sudo apt-get install -y valgrind
-  - sh tests/ci/$DB.sh;
+  - sh tests/ci/$DB.sh
 
 before_script:
   - phpenv config-add tests/ci/drivers.ini
