@@ -18,7 +18,7 @@ class Utils
         switch ($GLOBALS['db_type']) {
             case 'mysql':
             case 'pdo_mysql':
-                $driver = new DBAL\Driver\MySQL('mysql:host=localhost;dbname='.$GLOBALS['db_name'].';charset=UTF8', $GLOBALS['db_username'], $GLOBALS['db_password'], array());
+                $driver = new DBAL\Driver\MySQL('mysql:host='.$GLOBALS['db_host'].';charset=utf8;dbname='.$GLOBALS['db_name'].';port=' . $GLOBALS['db_port'], $GLOBALS['db_username'], $GLOBALS['db_password'], array());
                 break;
 //            case 'pgsql':
 //            case 'pdo_pgsql':
