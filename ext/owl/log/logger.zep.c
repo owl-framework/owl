@@ -292,7 +292,7 @@ PHP_METHOD(Owl_Log_Logger, log) {
 	zephir_update_property_array_append(this_ptr, SL("records"), _0 TSRMLS_CC);
 	_3 = zephir_fetch_nproperty_this(this_ptr, SL("records"), PH_NOISY_CC);
 	_4 = zephir_fetch_nproperty_this(this_ptr, SL("recordsInterval"), PH_NOISY_CC);
-	if (ZEPHIR_LT_LONG(_4, zephir_fast_count_int(_3 TSRMLS_CC))) {
+	if (ZEPHIR_LE_LONG(_4, zephir_fast_count_int(_3 TSRMLS_CC))) {
 		ZEPHIR_CALL_METHOD(NULL, this_ptr, "commit", NULL);
 		zephir_check_call_status();
 	}
