@@ -3,9 +3,11 @@ environment:
   - PHP_VERSION: 5.6.8
     PHP_DEP_VER: 5.6
     DB_TYPE: mysql
+    DB_DEP: mysql
   - PHP_VERSION: 5.6.8
     PHP_DEP_VER: 5.6
-    DB_TYPE: pgsql
+    DB_TYPE: postgresql
+    DB_DEP: pgsql
   BUILD_PLATFORM: x86
   PHP_VC: 11
   PHP_SDK: c:\projects\php-sdk
@@ -66,6 +68,7 @@ install:
   - if not exist vendor (php -r "readfile('https://getcomposer.org/installer');" | php & php composer.phar --prefer-dist install)
   - choco install memcached
   - choco install redis
+  - 'choco install %DB_TYPE%'
 
 build_script:
   - 'php vendor\phalcon\zephir\compiler.php build'
@@ -76,7 +79,7 @@ build_script:
   - cd %APPVEYOR_BUILD_FOLDER%
   - 'type compile-errors.log'
   - 'type compile.log'
-  - 'php vendor\phpunit\phpunit\phpunit -v --debug'
+  - 'php vendor\phpunit\phpunit\phpunit -v --debug --configuration tests/travis/%DB_DEP%.travis.xml'
 
 artifacts:
   - path: \..\php\ext\php_owl.dll
