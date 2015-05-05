@@ -69,6 +69,7 @@ install:
   - choco install memcached
   - choco install redis
   - 'choco install %DB_TYPE%'
+  - 'tests/ci/%DB_DEP%.bat'
 
 build_script:
   - 'php vendor\phalcon\zephir\compiler.php build'
