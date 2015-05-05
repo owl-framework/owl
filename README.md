@@ -2,6 +2,8 @@
 
 # [Website](http://owl.dmtry.me/) :: [Documentation](http://docs.owl.dmtry.me/) :: [Vagrant](https://github.com/owl-framework/vagrant)
 
+[![Join the chat at https://gitter.im/owl-framework/owl](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/owl-framework/owl?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Latest Stable Version](http://img.shields.io/packagist/v/owl/owl.svg?style=flat)](https://packagist.org/packages/owl/owl)
 [![Author](http://img.shields.io/badge/author-@ovr-blue.svg?style=flat-square)](https://twitter.com/ovrweb)
 [![Build Status](https://img.shields.io/travis/owl-framework/owl/master.svg?style=flat-square)](https://travis-ci.org/owl-framework/owl)
