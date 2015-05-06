@@ -14,6 +14,9 @@ matrix:
   allow_failures:
     - php: 7.0
 
+cache:
+    - apt
+
 env:
   # gcc x
   - CC="gcc" DB="mysql"
