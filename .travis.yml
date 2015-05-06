@@ -39,8 +39,7 @@ before_script:
 
 script:
   - (cd vendor/phalcon/zephir; ./unit-tests/ci/before_install.sh; ./install)
-  # Disabled via bug
-  #- ./vendor/bin/zephir generate
+  - ./vendor/bin/zephir generate
   - (cd ext; export CFLAGS="-g3 -O1 -std=gnu90 -Wall"; phpize && ./configure --enable-owl && make --silent -j4 && sudo make --silent install && phpenv config-add ../tests/ci/owl.ini)
   - ulimit -c unlimited || true
   - (cd examples/rest-app; composer install; php public/index.php)
