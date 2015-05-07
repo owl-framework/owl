@@ -88,3 +88,7 @@ License
 -------
 
 This project is open-sourced software licensed under the MIT License. See the LICENSE file for more information.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/owl-framework/owl/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
