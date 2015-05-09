@@ -9,6 +9,7 @@
 *.o
 *.so
 *.lai
+*.gch
 ext/Makefile.global
 ext/acinclude.m4
 ext/aclocal.m4
