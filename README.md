@@ -43,7 +43,7 @@ cd ext
 ./install
 ```
 
-enable extension for all SAPIs
+Enable extension for all SAPIs:
 
 ```sh
 sudo echo extension=owl.so > /etc/php5/mods-available/owl.ini
