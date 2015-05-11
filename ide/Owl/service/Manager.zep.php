@@ -24,6 +24,7 @@ class Manager
 
     /**
      * @param string $name 
+     * @return bool 
      */
     public function has($name) {}
 

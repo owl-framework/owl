@@ -23,7 +23,7 @@ class Manager
 		return this->getInstance(name);
 	}
 
-	public fn has(string! name)
+	public fn has(string! name) -> boolean
 	{
 		return isset(this->instances[name]) || isset(this->services[name]);
 	}
