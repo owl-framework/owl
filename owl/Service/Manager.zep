@@ -30,8 +30,10 @@ class Manager
 
 	public fn getInstance(string! name) -> var
 	{
-		if (isset(this->instances[name])) {
-			return this->instances[name];
+		var instance;
+
+		if fetch instance, this->instances[name] {
+			return instance;
 		}
 
 		throw new Exception("No instance was founded by name : " . name);
@@ -39,8 +41,10 @@ class Manager
 
 	public fn getService(string! name) -> var
 	{
-		if (isset(this->services[name])) {
-			return this->services[name];
+		var service;
+
+		if fetch service, this->services[name] {
+			return service;
 		}
 
 		throw new Exception("No service was founded by name : " . name);
