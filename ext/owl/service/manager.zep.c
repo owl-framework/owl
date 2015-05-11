@@ -154,7 +154,7 @@ PHP_METHOD(Owl_Service_Manager, getInstance) {
 	ZEPHIR_INIT_VAR(_1);
 	object_init_ex(_1, owl_exception_ce);
 	ZEPHIR_INIT_VAR(_2);
-	ZEPHIR_CONCAT_SV(_2, "No instance was founded by name : ", name);
+	ZEPHIR_CONCAT_SV(_2, "Instance wasn't found by name: ", name);
 	ZEPHIR_CALL_METHOD(NULL, _1, "__construct", &_3, _2);
 	zephir_check_call_status();
 	zephir_throw_exception_debug(_1, "owl/Service/Manager.zep", 39 TSRMLS_CC);
@@ -194,7 +194,7 @@ PHP_METHOD(Owl_Service_Manager, getService) {
 	ZEPHIR_INIT_VAR(_1);
 	object_init_ex(_1, owl_exception_ce);
 	ZEPHIR_INIT_VAR(_2);
-	ZEPHIR_CONCAT_SV(_2, "No service was founded by name : ", name);
+	ZEPHIR_CONCAT_SV(_2, "Service wasn't found by name: ", name);
 	ZEPHIR_CALL_METHOD(NULL, _1, "__construct", &_3, _2);
 	zephir_check_call_status();
 	zephir_throw_exception_debug(_1, "owl/Service/Manager.zep", 50 TSRMLS_CC);

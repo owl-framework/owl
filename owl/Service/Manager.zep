@@ -36,7 +36,7 @@ class Manager
 			return instance;
 		}
 
-		throw new Exception("No instance was founded by name : " . name);
+		throw new Exception("Instance wasn't found by name: " . name);
 	}
 
 	public fn getService(string! name) -> var
@@ -47,6 +47,6 @@ class Manager
 			return service;
 		}
 
-		throw new Exception("No service was founded by name : " . name);
+		throw new Exception("Service wasn't found by name: " . name);
 	}
 }
