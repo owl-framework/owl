@@ -24,6 +24,11 @@ class Manager
 
     /**
      * @param string $name 
+     */
+    public function has($name) {}
+
+    /**
+     * @param string $name 
      * @return variable 
      */
     public function getInstance($name) {}
