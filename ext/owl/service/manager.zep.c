@@ -115,7 +115,7 @@ PHP_METHOD(Owl_Service_Manager, has) {
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("instances"), PH_NOISY_CC);
 	_1 = zephir_array_isset(_0, name);
-	if (_1) {
+	if (!(_1)) {
 		_2 = zephir_fetch_nproperty_this(this_ptr, SL("services"), PH_NOISY_CC);
 		_1 = zephir_array_isset(_2, name);
 	}

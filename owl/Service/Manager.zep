@@ -25,7 +25,7 @@ class Manager
 
 	public fn has(string! name)
 	{
-		return isset(this->instances[name]) && isset(this->services[name]);
+		return isset(this->instances[name]) || isset(this->services[name]);
 	}
 
 	public fn getInstance(string! name) -> var
