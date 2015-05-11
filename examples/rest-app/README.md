@@ -16,7 +16,7 @@ php -S 0.0.0.0:8080 -t public/ public/index.php
 
 This will start the cli-server on port 8080, and bind it to all network interfaces.
 
-**Note: ** The built-in CLI server is *for development only*.
+**Note:** The built-in CLI server is *for development only*.
 
 License
 -------
