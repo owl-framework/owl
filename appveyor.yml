@@ -66,9 +66,9 @@ install:
   - 'set PATH=%APPVEYOR_BUILD_FOLDER%\vendor\zephir\bin;%PATH%'
   - cd %APPVEYOR_BUILD_FOLDER%
   - if not exist vendor (php -r "readfile('https://getcomposer.org/installer');" | php & php composer.phar --prefer-dist install)
-  - choco install memcached
-  - choco install redis
-  - 'choco install %DB_TYPE%'
+  - choco install -y memcached
+  - choco install -y redis
+  - 'choco install -y %DB_TYPE%'
   - 'tests/ci/%DB_DEP%.bat'
 
 build_script:
