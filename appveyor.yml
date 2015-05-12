@@ -69,6 +69,8 @@ install:
   - choco install -y memcached
   - choco install -y redis
   - 'choco install -y %DB_TYPE%'
+  - 'set PATH=C:\tools\mysql\current\bin;%PATH%'
+  - dir C:\tools\mysql\current\bin
   - 'tests/ci/%DB_DEP%.bat'
 
 build_script:
