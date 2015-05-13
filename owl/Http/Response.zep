@@ -5,25 +5,36 @@ use Owl\Std\ArrayBag;
 
 class Response implements ResponseInterface
 {
-    const STATUS_CODE_OK = 200;
+	const STATUS_CODE_OK = 200;
 
-    protected code = Response::STATUS_CODE_OK {get, set};
+	/**
+	 * @var int
+	 */
+	protected code = Response::STATUS_CODE_OK {get, set};
 
-    protected content {get, set};
+	/**
+	 * @var string
+	 */
+	protected content = "" {
+		get, set
+	};
 
-    protected headers {get};
+	/**
+	 * @var \Owl\Std\ArrayBag
+	 */
+	protected headers {get};
 
-    public function __construct()
-    {
-        let this->headers = new ArrayBag([]);
-    }
+	public function __construct()
+	{
+		let this->headers = new ArrayBag([]);
+	}
 
-    public function send() -> boolean
-    {
-        http_response_code(this->code);
+	public function send() -> boolean
+	{
+		http_response_code(this->code);
 
-        echo this->content;
+		echo this->content;
 
-        return true;
-    }
+		return true;
+	}
 }

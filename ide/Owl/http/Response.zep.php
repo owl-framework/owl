@@ -7,33 +7,45 @@ class Response implements \Owl\Http\ResponseInterface
 
     const STATUS_CODE_OK = 200;
 
-
+    /**
+     * @var int
+     */
     protected $code = Response::STATUS_CODE_OK;
 
+    /**
+     * @var string
+     */
+    protected $content = "";
 
-    protected $content;
-
-
+    /**
+     * @var \Owl\Std\ArrayBag
+     */
     protected $headers;
 
 
-
+    /**
+     * @return int 
+     */
     public function getCode() {}
 
     /**
-     * @param mixed $code 
+     * @param int $code 
      */
     public function setCode($code) {}
 
-
+    /**
+     * @return string 
+     */
     public function getContent() {}
 
     /**
-     * @param mixed $content 
+     * @param string $content 
      */
     public function setContent($content) {}
 
-
+    /**
+     * @return \Owl\Std\ArrayBag 
+     */
     public function getHeaders() {}
 
 

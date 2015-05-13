@@ -21,10 +21,19 @@ ZEPHIR_INIT_CLASS(Owl_Http_Response) {
 
 	ZEPHIR_REGISTER_CLASS(Owl\\Http, Response, owl, http_response, owl_http_response_method_entry, 0);
 
+	/**
+	 * @var int
+	 */
 	zend_declare_property_long(owl_http_response_ce, SL("code"), 200, ZEND_ACC_PROTECTED TSRMLS_CC);
 
-	zend_declare_property_null(owl_http_response_ce, SL("content"), ZEND_ACC_PROTECTED TSRMLS_CC);
+	/**
+	 * @var string
+	 */
+	zend_declare_property_string(owl_http_response_ce, SL("content"), "", ZEND_ACC_PROTECTED TSRMLS_CC);
 
+	/**
+	 * @var \Owl\Std\ArrayBag
+	 */
 	zend_declare_property_null(owl_http_response_ce, SL("headers"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
 	zend_declare_class_constant_long(owl_http_response_ce, SL("STATUS_CODE_OK"), 200 TSRMLS_CC);
@@ -34,6 +43,9 @@ ZEPHIR_INIT_CLASS(Owl_Http_Response) {
 
 }
 
+/**
+ * @var int
+ */
 PHP_METHOD(Owl_Http_Response, getCode) {
 
 
@@ -41,6 +53,9 @@ PHP_METHOD(Owl_Http_Response, getCode) {
 
 }
 
+/**
+ * @var int
+ */
 PHP_METHOD(Owl_Http_Response, setCode) {
 
 	zval *code;
@@ -53,6 +68,9 @@ PHP_METHOD(Owl_Http_Response, setCode) {
 
 }
 
+/**
+ * @var string
+ */
 PHP_METHOD(Owl_Http_Response, getContent) {
 
 
@@ -60,6 +78,9 @@ PHP_METHOD(Owl_Http_Response, getContent) {
 
 }
 
+/**
+ * @var string
+ */
 PHP_METHOD(Owl_Http_Response, setContent) {
 
 	zval *content;
@@ -72,6 +93,9 @@ PHP_METHOD(Owl_Http_Response, setContent) {
 
 }
 
+/**
+ * @var \Owl\Std\ArrayBag
+ */
 PHP_METHOD(Owl_Http_Response, getHeaders) {
 
 
