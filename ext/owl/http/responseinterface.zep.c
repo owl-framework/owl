@@ -22,3 +22,9 @@ ZEPHIR_INIT_CLASS(Owl_Http_ResponseInterface) {
 
 ZEPHIR_DOC_METHOD(Owl_Http_ResponseInterface, send);
 
+ZEPHIR_DOC_METHOD(Owl_Http_ResponseInterface, getContent);
+
+ZEPHIR_DOC_METHOD(Owl_Http_ResponseInterface, setCode);
+
+ZEPHIR_DOC_METHOD(Owl_Http_ResponseInterface, getCode);
+
