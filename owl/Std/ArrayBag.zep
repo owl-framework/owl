@@ -10,12 +10,22 @@ class ArrayBag implements \Countable
 		let this->elements = input;
 	}
 
-	public function count()
+	public function count() -> int
 	{
 		return count(this->elements);
 	}
 
-	public function get(string! key, var defaultValue = null)
+	public function set(string! key, var value) -> void
+	{
+		let this->elements[key] = value;
+	}
+
+	public function has(string! key) -> boolean
+	{
+		return isset this->elements[key];
+	}
+
+	public function get(string! key, var defaultValue = null) -> var
 	{
 		var value;
 
