@@ -2,7 +2,7 @@
 
 namespace Owl\Std;
 
-class ArrayBag
+class ArrayBag implements \Countable
 {
 
     protected $elements;
@@ -12,6 +12,9 @@ class ArrayBag
      * @param array $input 
      */
     public function __construct($input) {}
+
+
+    public function count() {}
 
     /**
      * @param string $key 

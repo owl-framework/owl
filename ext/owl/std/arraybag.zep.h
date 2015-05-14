@@ -4,6 +4,7 @@ extern zend_class_entry *owl_std_arraybag_ce;
 ZEPHIR_INIT_CLASS(Owl_Std_ArrayBag);
 
 PHP_METHOD(Owl_Std_ArrayBag, __construct);
+PHP_METHOD(Owl_Std_ArrayBag, count);
 PHP_METHOD(Owl_Std_ArrayBag, get);
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_std_arraybag___construct, 0, 0, 1)
@@ -17,6 +18,7 @@ ZEND_END_ARG_INFO()
 
 ZEPHIR_INIT_FUNCS(owl_std_arraybag_method_entry) {
 	PHP_ME(Owl_Std_ArrayBag, __construct, arginfo_owl_std_arraybag___construct, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
+	PHP_ME(Owl_Std_ArrayBag, count, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Std_ArrayBag, get, arginfo_owl_std_arraybag_get, ZEND_ACC_PUBLIC)
   PHP_FE_END
 };

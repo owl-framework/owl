@@ -12,6 +12,7 @@
 #include <Zend/zend_interfaces.h>
 
 #include "kernel/main.h"
+#include "ext/spl/spl_iterators.h"
 #include "kernel/object.h"
 #include "ext/spl/spl_exceptions.h"
 #include "kernel/exception.h"
@@ -26,6 +27,7 @@ ZEPHIR_INIT_CLASS(Owl_Std_ArrayBag) {
 
 	zend_declare_property_null(owl_std_arraybag_ce, SL("elements"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
+	zend_class_implements(owl_std_arraybag_ce TSRMLS_CC, 1, spl_ce_Countable);
 	return SUCCESS;
 
 }
@@ -42,6 +44,16 @@ PHP_METHOD(Owl_Std_ArrayBag, __construct) {
 
 
 	zephir_update_property_this(this_ptr, SL("elements"), input TSRMLS_CC);
+
+}
+
+PHP_METHOD(Owl_Std_ArrayBag, count) {
+
+	zval *_0;
+
+
+	_0 = zephir_fetch_nproperty_this(this_ptr, SL("elements"), PH_NOISY_CC);
+	RETURN_LONG(zephir_fast_count_int(_0 TSRMLS_CC));
 
 }
 

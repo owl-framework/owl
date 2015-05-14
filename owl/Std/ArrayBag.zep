@@ -1,23 +1,28 @@
 
 namespace Owl\Std;
 
-class ArrayBag
+class ArrayBag implements \Countable
 {
-    protected elements;
+	protected elements;
 
-    public function __construct(array! input)
-    {
-        let this->elements = input;
-    }
+	public function __construct(array! input)
+	{
+		let this->elements = input;
+	}
 
-    public function get(string! key, var defaultValue = null)
-    {
-        var value;
+	public function count()
+	{
+		return count(this->elements);
+	}
 
-        if fetch value, this->elements[key] {
-            return value;
-        }
+	public function get(string! key, var defaultValue = null)
+	{
+		var value;
 
-        return defaultValue;
-    }
+		if fetch value, this->elements[key] {
+			return value;
+		}
+
+		return defaultValue;
+	}
 }
