@@ -1,3 +1,5 @@
+![Logo](http://owl.dmtry.me/img/repository-2.png "Owl Framework")
+
 Owl MVC Edition Skeleton
 =========================
 
