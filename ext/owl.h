@@ -25,6 +25,7 @@
 #include "owl/dbal/driver/pgsql.zep.h"
 #include "owl/dbal/platform/mysql.zep.h"
 #include "owl/dbal/platform/pgsql.zep.h"
+#include "owl/debug/memoryprofiler.zep.h"
 #include "owl/debug/profiler.zep.h"
 #include "owl/dispatcherinterface.zep.h"
 #include "owl/event/event.zep.h"

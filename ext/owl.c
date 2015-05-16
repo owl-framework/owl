@@ -61,6 +61,7 @@ zend_class_entry *owl_dbal_driver_pdo_ce;
 zend_class_entry *owl_dbal_driver_pgsql_ce;
 zend_class_entry *owl_dbal_platform_mysql_ce;
 zend_class_entry *owl_dbal_platform_pgsql_ce;
+zend_class_entry *owl_debug_memoryprofiler_ce;
 zend_class_entry *owl_debug_profiler_ce;
 zend_class_entry *owl_event_event_ce;
 zend_class_entry *owl_event_manager_ce;
@@ -139,6 +140,7 @@ static PHP_MINIT_FUNCTION(owl)
 	ZEPHIR_INIT(Owl_DBAL_Driver_PgSQL);
 	ZEPHIR_INIT(Owl_DBAL_Platform_MySQL);
 	ZEPHIR_INIT(Owl_DBAL_Platform_PgSQL);
+	ZEPHIR_INIT(Owl_Debug_MemoryProfiler);
 	ZEPHIR_INIT(Owl_Debug_Profiler);
 	ZEPHIR_INIT(Owl_Event_Event);
 	ZEPHIR_INIT(Owl_Event_Manager);

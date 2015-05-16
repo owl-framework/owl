@@ -30,6 +30,7 @@ if test "$PHP_OWL" = "yes"; then
 	owl/dbal/driver/pgsql.zep.c
 	owl/dbal/platform/mysql.zep.c
 	owl/dbal/platform/pgsql.zep.c
+	owl/debug/memoryprofiler.zep.c
 	owl/debug/profiler.zep.c
 	owl/dispatcherinterface.zep.c
 	owl/event/event.zep.c
