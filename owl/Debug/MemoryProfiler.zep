@@ -9,7 +9,7 @@ namespace Owl\Debug;
  *
  * @return char * class name
  */
-const char *get_classname(zend_uint handle)
+const char *get_classname(zend_uint handle TSRMLS_DC)
 {
     zend_objects_store *objects = &EG(objects_store);
     zend_object *object;
@@ -86,8 +86,7 @@ class MemoryProfiler
 				if (objects->object_buckets[i].valid) {
 					//struct _store_object *obj = &objects->object_buckets[i].bucket.obj;
 
-					Z_STRLEN_P(className) = get_classname(i);
-					Z_TYPE_P(className) = IS_STRING;
+					Z_STRLEN_P(className) = get_classname(i TSRMLS_CC);
 
 					//php_stream_printf(stream, "  - Class %s, handle %d, refCount %d\n", get_classname(i), i, obj->refcount);
 

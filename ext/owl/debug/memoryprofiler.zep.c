@@ -22,7 +22,7 @@
  *
  * @return char * class name
  */
-const char *get_classname(zend_uint handle)
+const char *get_classname(zend_uint handle TSRMLS_DC)
 {
     zend_objects_store *objects = &EG(objects_store);
     zend_object *object;
@@ -110,8 +110,6 @@ PHP_METHOD(Owl_Debug_MemoryProfiler, objectsList) {
 	
 			zend_objects_store *objects = &EG(objects_store);
 			zend_uint i;
-			zend_object * object;
-			zend_class_entry * class_entry;
 
 			total_objects_buckets = objects->top - 1;
 		
@@ -119,12 +117,11 @@ PHP_METHOD(Owl_Debug_MemoryProfiler, objectsList) {
 	ZVAL_LONG(_0, total_objects_buckets);
 	zephir_array_update_string(&info, SL("total"), &_0, PH_COPY | PH_SEPARATE);
 	
-		   for (i = 0; i < objects->top; i++) {
+		   for (i = 1; i < objects->top; i++) {
 				if (objects->object_buckets[i].valid) {
-					struct _store_object *obj = &objects->object_buckets[i].bucket.obj;
+					//struct _store_object *obj = &objects->object_buckets[i].bucket.obj;
 
-					Z_STRLEN_P(className) = get_classname(i);
-					Z_TYPE_P(className) = IS_STRING;
+					Z_STRLEN_P(className) = get_classname(i TSRMLS_CC);
 
 					//php_stream_printf(stream, "  - Class %s, handle %d, refCount %d\n", get_classname(i), i, obj->refcount);
 
@@ -132,7 +129,7 @@ PHP_METHOD(Owl_Debug_MemoryProfiler, objectsList) {
 	ZEPHIR_INIT_VAR(_1);
 	ZVAL_STRING(_1, "Test", 1);
 	zephir_array_update_string(&tmp, SL("name"), &_1, PH_COPY | PH_SEPARATE);
-	zephir_array_append(&objectsTmp, tmp, PH_SEPARATE, "owl/Debug/MemoryProfiler.zep", 99);
+	zephir_array_append(&objectsTmp, tmp, PH_SEPARATE, "owl/Debug/MemoryProfiler.zep", 96);
 	
 					current_objects++;
 				}
