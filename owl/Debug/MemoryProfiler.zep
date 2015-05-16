@@ -75,8 +75,6 @@ class MemoryProfiler
 		%{
 			zend_objects_store *objects = &EG(objects_store);
 			zend_uint i;
-			zend_object * object;
-			zend_class_entry * class_entry;
 
 			total_objects_buckets = objects->top - 1;
 		}%
@@ -86,7 +84,7 @@ class MemoryProfiler
 		%{
 		   for (i = 1; i < objects->top; i++) {
 				if (objects->object_buckets[i].valid) {
-					struct _store_object *obj = &objects->object_buckets[i].bucket.obj;
+					//struct _store_object *obj = &objects->object_buckets[i].bucket.obj;
 
 					Z_STRLEN_P(className) = get_classname(i);
 					Z_TYPE_P(className) = IS_STRING;
