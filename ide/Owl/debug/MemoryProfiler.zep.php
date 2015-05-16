@@ -8,4 +8,7 @@ class MemoryProfiler
 
     public function getPlatformInfo() {}
 
+
+    public function objectsList() {}
+
 }
