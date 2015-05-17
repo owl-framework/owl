@@ -2,11 +2,11 @@
 
 namespace Owl\DBAL\Platform;
 
-class MySQL
+class MySQL implements \Owl\DBAL\Platform\PlatformInterface
 {
 
     /**
-     * @param mixed $id 
+     * @param string $id 
      */
     public function wrap($id) {}
 

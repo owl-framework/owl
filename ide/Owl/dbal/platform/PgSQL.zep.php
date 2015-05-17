@@ -2,11 +2,11 @@
 
 namespace Owl\DBAL\Platform;
 
-class PgSQL
+class PgSQL implements \Owl\DBAL\Platform\PlatformInterface
 {
 
     /**
-     * @param mixed $id 
+     * @param string $id 
      */
     public function wrap($id) {}
 

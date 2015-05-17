@@ -1,9 +1,9 @@
 
 namespace Owl\DBAL\Platform;
 
-class MySQL
+class MySQL implements PlatformInterface
 {
-    inline public function wrap(id)
+    inline public function wrap(string id)
     {
         return "`" . id . "`";
     }
