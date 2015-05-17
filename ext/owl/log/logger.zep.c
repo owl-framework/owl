@@ -123,7 +123,7 @@ PHP_METHOD(Owl_Log_Logger, __construct) {
 	) {
 		ZEPHIR_GET_HMKEY(writerName, _3, _2);
 		ZEPHIR_GET_HVALUE(writerDescription, _4);
-		ZEPHIR_CALL_METHOD(&_5, this_ptr, "factorywriter", &_6, writerDescription);
+		ZEPHIR_CALL_METHOD(&_5, this_ptr, "factorywriter", &_6, 0, writerDescription);
 		zephir_check_call_status();
 		zephir_update_property_array(this_ptr, SL("writers"), writerName, _5 TSRMLS_CC);
 	}
@@ -140,7 +140,7 @@ PHP_METHOD(Owl_Log_Logger, __destruct) {
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("records"), PH_NOISY_CC);
 	if (zephir_fast_count_int(_0 TSRMLS_CC) > 0) {
-		ZEPHIR_CALL_METHOD(NULL, this_ptr, "commit", NULL);
+		ZEPHIR_CALL_METHOD(NULL, this_ptr, "commit", NULL, 0);
 		zephir_check_call_status();
 	}
 	ZEPHIR_MM_RESTORE();
@@ -184,22 +184,22 @@ PHP_METHOD(Owl_Log_Logger, factoryWriter) {
 	_2 = zend_fetch_class(Z_STRVAL_P(_1), Z_STRLEN_P(_1), ZEND_FETCH_CLASS_AUTO TSRMLS_CC);
 	object_init_ex(writer, _2);
 	if (zephir_has_constructor(writer TSRMLS_CC)) {
-		ZEPHIR_CALL_METHOD(NULL, writer, "__construct", NULL);
+		ZEPHIR_CALL_METHOD(NULL, writer, "__construct", NULL, 0);
 		zephir_check_call_status();
 	}
 	if (zephir_array_isset_string(writerDescription, SS("levels"))) {
 		zephir_array_fetch_string(&_3, writerDescription, SL("levels"), PH_NOISY | PH_READONLY, "owl/Log/Logger.zep", 89 TSRMLS_CC);
-		ZEPHIR_CALL_METHOD(NULL, writer, "setlevels", NULL, _3);
+		ZEPHIR_CALL_METHOD(NULL, writer, "setlevels", NULL, 0, _3);
 		zephir_check_call_status();
 	}
 	if (zephir_array_isset_string(writerDescription, SS("options"))) {
 		zephir_array_fetch_string(&_3, writerDescription, SL("options"), PH_NOISY | PH_READONLY, "owl/Log/Logger.zep", 93 TSRMLS_CC);
-		ZEPHIR_CALL_METHOD(NULL, writer, "setoptions", NULL, _3);
+		ZEPHIR_CALL_METHOD(NULL, writer, "setoptions", NULL, 0, _3);
 		zephir_check_call_status();
 	}
 	if (zephir_array_isset_string(writerDescription, SS("formatter"))) {
 		zephir_array_fetch_string(&_3, writerDescription, SL("formatter"), PH_NOISY | PH_READONLY, "owl/Log/Logger.zep", 97 TSRMLS_CC);
-		ZEPHIR_CALL_METHOD(NULL, writer, "setformatter", NULL, _3);
+		ZEPHIR_CALL_METHOD(NULL, writer, "setformatter", NULL, 0, _3);
 		zephir_check_call_status();
 	}
 	RETURN_CCTOR(writer);
@@ -250,7 +250,7 @@ PHP_METHOD(Owl_Log_Logger, commit) {
 	) {
 		ZEPHIR_GET_HVALUE(writer, _3);
 		_4 = zephir_fetch_nproperty_this(this_ptr, SL("records"), PH_NOISY_CC);
-		ZEPHIR_CALL_METHOD(NULL, writer, "commit", NULL, _4);
+		ZEPHIR_CALL_METHOD(NULL, writer, "commit", NULL, 0, _4);
 		zephir_check_call_status();
 	}
 	ZEPHIR_INIT_VAR(_5);
@@ -265,7 +265,7 @@ PHP_METHOD(Owl_Log_Logger, commit) {
  */
 PHP_METHOD(Owl_Log_Logger, log) {
 
-	zephir_nts_static zephir_fcall_cache_entry *_2 = NULL;
+	zephir_fcall_cache_entry *_2 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
 	zval *context = NULL;
 	zval *message = NULL;
@@ -287,13 +287,13 @@ PHP_METHOD(Owl_Log_Logger, log) {
 	object_init_ex(_0, owl_log_record_ce);
 	ZEPHIR_INIT_VAR(_1);
 	zephir_microtime(_1, ZEPHIR_GLOBAL(global_true) TSRMLS_CC);
-	ZEPHIR_CALL_METHOD(NULL, _0, "__construct", &_2, level, _1, message, context);
+	ZEPHIR_CALL_METHOD(NULL, _0, "__construct", &_2, 18, level, _1, message, context);
 	zephir_check_call_status();
 	zephir_update_property_array_append(this_ptr, SL("records"), _0 TSRMLS_CC);
 	_3 = zephir_fetch_nproperty_this(this_ptr, SL("records"), PH_NOISY_CC);
 	_4 = zephir_fetch_nproperty_this(this_ptr, SL("recordsInterval"), PH_NOISY_CC);
 	if (ZEPHIR_LE_LONG(_4, zephir_fast_count_int(_3 TSRMLS_CC))) {
-		ZEPHIR_CALL_METHOD(NULL, this_ptr, "commit", NULL);
+		ZEPHIR_CALL_METHOD(NULL, this_ptr, "commit", NULL, 0);
 		zephir_check_call_status();
 	}
 	ZEPHIR_MM_RESTORE();

@@ -172,7 +172,7 @@ PHP_METHOD(Owl_Router_Http_DynamicRoute, match) {
 
 
 	ZEPHIR_INIT_VAR(_0);
-	ZEPHIR_CALL_METHOD(&_1, this_ptr, "getpattern", NULL);
+	ZEPHIR_CALL_METHOD(&_1, this_ptr, "getpattern", NULL, 0);
 	zephir_check_call_status();
 	zephir_preg_match(_0, _1, uri, parameters, 0, 0 , 0  TSRMLS_CC);
 	if (!zephir_is_true(_0)) {

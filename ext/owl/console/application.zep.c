@@ -71,7 +71,7 @@ PHP_METHOD(Owl_Console_Application, addCommands) {
 	  ; zephir_hash_move_forward_ex(_1, &_0)
 	) {
 		ZEPHIR_GET_HVALUE(command, _2);
-		ZEPHIR_CALL_METHOD(NULL, this_ptr, "addcommand", &_3, command);
+		ZEPHIR_CALL_METHOD(NULL, this_ptr, "addcommand", &_3, 0, command);
 		zephir_check_call_status();
 	}
 	ZEPHIR_MM_RESTORE();

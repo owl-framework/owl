@@ -136,10 +136,10 @@ PHP_METHOD(Owl_DBAL_Driver_MySQL, execute) {
 	}
 
 
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "connect", NULL);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "connect", NULL, 0);
 	zephir_check_call_status();
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("connection"), PH_NOISY_CC);
-	ZEPHIR_RETURN_CALL_METHOD(_0, "exec", NULL, query);
+	ZEPHIR_RETURN_CALL_METHOD(_0, "exec", NULL, 0, query);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -147,13 +147,13 @@ PHP_METHOD(Owl_DBAL_Driver_MySQL, execute) {
 
 PHP_METHOD(Owl_DBAL_Driver_MySQL, connect) {
 
-	zephir_nts_static zephir_fcall_cache_entry *_6 = NULL;
+	zephir_fcall_cache_entry *_6 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
 	zval *_0 = NULL, *_1, *_2, *_3, *_4, *_5;
 
 	ZEPHIR_MM_GROW();
 
-	ZEPHIR_CALL_METHOD(&_0, this_ptr, "isconnected", NULL);
+	ZEPHIR_CALL_METHOD(&_0, this_ptr, "isconnected", NULL, 0);
 	zephir_check_call_status();
 	if (zephir_is_true(_0)) {
 		RETURN_MM_BOOL(0);
@@ -164,7 +164,7 @@ PHP_METHOD(Owl_DBAL_Driver_MySQL, connect) {
 	_3 = zephir_fetch_nproperty_this(this_ptr, SL("username"), PH_NOISY_CC);
 	_4 = zephir_fetch_nproperty_this(this_ptr, SL("password"), PH_NOISY_CC);
 	_5 = zephir_fetch_nproperty_this(this_ptr, SL("driverOptions"), PH_NOISY_CC);
-	ZEPHIR_CALL_METHOD(NULL, _1, "__construct", &_6, _2, _3, _4, _5);
+	ZEPHIR_CALL_METHOD(NULL, _1, "__construct", &_6, 7, _2, _3, _4, _5);
 	zephir_check_call_status();
 	zephir_update_property_this(this_ptr, SL("connection"), _1 TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();
@@ -179,7 +179,7 @@ PHP_METHOD(Owl_DBAL_Driver_MySQL, getNewPlatform) {
 
 	object_init_ex(return_value, owl_dbal_platform_mysql_ce);
 	if (zephir_has_constructor(return_value TSRMLS_CC)) {
-		ZEPHIR_CALL_METHOD(NULL, return_value, "__construct", NULL);
+		ZEPHIR_CALL_METHOD(NULL, return_value, "__construct", NULL, 0);
 		zephir_check_call_status();
 	}
 	RETURN_MM();
@@ -193,10 +193,10 @@ PHP_METHOD(Owl_DBAL_Driver_MySQL, lastInsertId) {
 
 	ZEPHIR_MM_GROW();
 
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "connect", NULL);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "connect", NULL, 0);
 	zephir_check_call_status();
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("connection"), PH_NOISY_CC);
-	ZEPHIR_RETURN_CALL_METHOD(_0, "lastinsertid", NULL);
+	ZEPHIR_RETURN_CALL_METHOD(_0, "lastinsertid", NULL, 0);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -212,10 +212,10 @@ PHP_METHOD(Owl_DBAL_Driver_MySQL, prepare) {
 
 
 
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "connect", NULL);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "connect", NULL, 0);
 	zephir_check_call_status();
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("connection"), PH_NOISY_CC);
-	ZEPHIR_RETURN_CALL_METHOD(_0, "prepare", NULL, statement);
+	ZEPHIR_RETURN_CALL_METHOD(_0, "prepare", NULL, 0, statement);
 	zephir_check_call_status();
 	RETURN_MM();
 

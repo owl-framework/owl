@@ -65,19 +65,19 @@ PHP_METHOD(Owl_DBAL_Driver_Pdo, __construct) {
 	}
 
 
-	ZEPHIR_CALL_PARENT(NULL, owl_dbal_driver_pdo_ce, this_ptr, "__construct", NULL, dsn, username, password, options);
+	ZEPHIR_CALL_PARENT(NULL, owl_dbal_driver_pdo_ce, this_ptr, "__construct", NULL, 0, dsn, username, password, options);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(_0);
 	ZVAL_LONG(_0, 3);
 	ZEPHIR_INIT_VAR(_1);
 	ZVAL_LONG(_1, 2);
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "setattribute", NULL, _0, _1);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "setattribute", NULL, 0, _0, _1);
 	zephir_check_call_status();
 	ZEPHIR_INIT_NVAR(_0);
 	ZVAL_LONG(_0, 19);
 	ZEPHIR_INIT_NVAR(_1);
 	ZVAL_LONG(_1, 2);
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "setattribute", NULL, _0, _1);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "setattribute", NULL, 0, _0, _1);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 

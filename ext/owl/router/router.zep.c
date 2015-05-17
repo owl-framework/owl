@@ -55,7 +55,7 @@ PHP_METHOD(Owl_Router_Router, setBasePath) {
 
 PHP_METHOD(Owl_Router_Router, add) {
 
-	zephir_nts_static zephir_fcall_cache_entry *_5 = NULL;
+	zephir_fcall_cache_entry *_5 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
 	zend_bool _2;
 	zval *parameters = NULL;
@@ -96,11 +96,11 @@ PHP_METHOD(Owl_Router_Router, add) {
 	ZEPHIR_INIT_VAR(route);
 	if (_2) {
 		object_init_ex(route, owl_router_http_staticroute_ce);
-		ZEPHIR_CALL_METHOD(NULL, route, "__construct", &_5, uri);
+		ZEPHIR_CALL_METHOD(NULL, route, "__construct", &_5, 24, uri);
 		zephir_check_call_status();
 	} else {
 		object_init_ex(route, owl_router_http_dynamicroute_ce);
-		ZEPHIR_CALL_METHOD(NULL, route, "__construct", &_5, uri);
+		ZEPHIR_CALL_METHOD(NULL, route, "__construct", &_5, 24, uri);
 		zephir_check_call_status();
 	}
 	zephir_update_property_zval(route, SL("method"), method TSRMLS_CC);
@@ -132,11 +132,11 @@ PHP_METHOD(Owl_Router_Router, matchRequest) {
 
 
 
-	ZEPHIR_CALL_METHOD(&_0, request, "geturi", NULL);
+	ZEPHIR_CALL_METHOD(&_0, request, "geturi", NULL, 0);
 	zephir_check_call_status();
-	ZEPHIR_CALL_METHOD(&_1, request, "getmethod", NULL);
+	ZEPHIR_CALL_METHOD(&_1, request, "getmethod", NULL, 0);
 	zephir_check_call_status();
-	ZEPHIR_RETURN_CALL_METHOD(this_ptr, "match", NULL, _0, _1);
+	ZEPHIR_RETURN_CALL_METHOD(this_ptr, "match", NULL, 0, _0, _1);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -170,7 +170,7 @@ PHP_METHOD(Owl_Router_Router, match) {
 	  ; zephir_hash_move_forward_ex(_2, &_1)
 	) {
 		ZEPHIR_GET_HVALUE(router, _3);
-		ZEPHIR_CALL_METHOD(&_4, router, "match", NULL, uri);
+		ZEPHIR_CALL_METHOD(&_4, router, "match", NULL, 0, uri);
 		zephir_check_call_status();
 		_5 = zephir_is_true(_4);
 		if (_5) {

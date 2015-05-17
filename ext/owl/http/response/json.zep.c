@@ -29,7 +29,7 @@ ZEPHIR_INIT_CLASS(Owl_Http_Response_Json) {
 
 PHP_METHOD(Owl_Http_Response_Json, __construct) {
 
-	zephir_nts_static zephir_fcall_cache_entry *_2 = NULL;
+	zephir_fcall_cache_entry *_2 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
 	zval *_1;
 	zval *_0;
@@ -41,7 +41,7 @@ PHP_METHOD(Owl_Http_Response_Json, __construct) {
 	ZEPHIR_INIT_VAR(_1);
 	zephir_create_array(_1, 1, 0 TSRMLS_CC);
 	add_assoc_stringl_ex(_1, SS("Content-Type"), SL("application/json"), 1);
-	ZEPHIR_CALL_METHOD(NULL, _0, "__construct", &_2, _1);
+	ZEPHIR_CALL_METHOD(NULL, _0, "__construct", &_2, 12, _1);
 	zephir_check_call_status();
 	zephir_update_property_this(this_ptr, SL("headers"), _0 TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();

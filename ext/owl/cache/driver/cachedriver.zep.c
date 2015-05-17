@@ -50,7 +50,7 @@ PHP_METHOD(Owl_Cache_Driver_CacheDriver, exists) {
 	}
 
 
-	ZEPHIR_CALL_METHOD(&_0, this_ptr, "get", NULL, id);
+	ZEPHIR_CALL_METHOD(&_0, this_ptr, "get", NULL, 0, id);
 	zephir_check_call_status();
 	RETURN_MM_BOOL(!ZEPHIR_IS_FALSE_IDENTICAL(_0));
 

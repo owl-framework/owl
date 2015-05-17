@@ -81,7 +81,7 @@ PHP_METHOD(Owl_Cache_Driver_Memcached, getInstance) {
 	if (Z_TYPE_P(_0) == IS_NULL) {
 		ZEPHIR_INIT_VAR(_1);
 		object_init_ex(_1, zephir_get_internal_ce(SS("memcached") TSRMLS_CC));
-		ZEPHIR_CALL_METHOD(NULL, _1, "__construct", NULL);
+		ZEPHIR_CALL_METHOD(NULL, _1, "__construct", NULL, 0);
 		zephir_check_call_status();
 		zephir_update_property_this(this_ptr, SL("instance"), _1 TSRMLS_CC);
 		_2 = zephir_fetch_nproperty_this(this_ptr, SL("instance"), PH_NOISY_CC);
@@ -89,7 +89,7 @@ PHP_METHOD(Owl_Cache_Driver_Memcached, getInstance) {
 		ZVAL_STRING(_3, "localhost", ZEPHIR_TEMP_PARAM_COPY);
 		ZEPHIR_INIT_VAR(_4);
 		ZVAL_LONG(_4, 11211);
-		ZEPHIR_CALL_METHOD(NULL, _2, "addserver", NULL, _3, _4);
+		ZEPHIR_CALL_METHOD(NULL, _2, "addserver", NULL, 0, _3, _4);
 		zephir_check_temp_parameter(_3);
 		zephir_check_call_status();
 		RETURN_MM_MEMBER(this_ptr, "instance");
@@ -108,7 +108,7 @@ PHP_METHOD(Owl_Cache_Driver_Memcached, __destruct) {
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("instance"), PH_NOISY_CC);
 	if (zephir_is_true(_0)) {
 		_1 = zephir_fetch_nproperty_this(this_ptr, SL("instance"), PH_NOISY_CC);
-		ZEPHIR_CALL_METHOD(NULL, _1, "resetserverlist", NULL);
+		ZEPHIR_CALL_METHOD(NULL, _1, "resetserverlist", NULL, 0);
 		zephir_check_call_status();
 		zephir_unset_property(this_ptr, "instance" TSRMLS_CC);
 	}
@@ -133,9 +133,9 @@ PHP_METHOD(Owl_Cache_Driver_Memcached, save) {
 	}
 
 
-	ZEPHIR_CALL_METHOD(&_0, this_ptr, "getinstance", NULL);
+	ZEPHIR_CALL_METHOD(&_0, this_ptr, "getinstance", NULL, 0);
 	zephir_check_call_status();
-	ZEPHIR_RETURN_CALL_METHOD(_0, "set", NULL, id, data, lifeTime);
+	ZEPHIR_RETURN_CALL_METHOD(_0, "set", NULL, 0, id, data, lifeTime);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -154,9 +154,9 @@ PHP_METHOD(Owl_Cache_Driver_Memcached, delete) {
 
 
 
-	ZEPHIR_CALL_METHOD(&_0, this_ptr, "getinstance", NULL);
+	ZEPHIR_CALL_METHOD(&_0, this_ptr, "getinstance", NULL, 0);
 	zephir_check_call_status();
-	ZEPHIR_RETURN_CALL_METHOD(_0, "delete", NULL, id);
+	ZEPHIR_RETURN_CALL_METHOD(_0, "delete", NULL, 0, id);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -175,9 +175,9 @@ PHP_METHOD(Owl_Cache_Driver_Memcached, get) {
 
 
 
-	ZEPHIR_CALL_METHOD(&_0, this_ptr, "getinstance", NULL);
+	ZEPHIR_CALL_METHOD(&_0, this_ptr, "getinstance", NULL, 0);
 	zephir_check_call_status();
-	ZEPHIR_RETURN_CALL_METHOD(_0, "get", NULL, id);
+	ZEPHIR_RETURN_CALL_METHOD(_0, "get", NULL, 0, id);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -193,9 +193,9 @@ PHP_METHOD(Owl_Cache_Driver_Memcached, flush) {
 
 	ZEPHIR_MM_GROW();
 
-	ZEPHIR_CALL_METHOD(&_0, this_ptr, "getinstance", NULL);
+	ZEPHIR_CALL_METHOD(&_0, this_ptr, "getinstance", NULL, 0);
 	zephir_check_call_status();
-	ZEPHIR_RETURN_CALL_METHOD(_0, "flush", NULL);
+	ZEPHIR_RETURN_CALL_METHOD(_0, "flush", NULL, 0);
 	zephir_check_call_status();
 	RETURN_MM();
 

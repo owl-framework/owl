@@ -84,7 +84,7 @@ PHP_METHOD(Owl_DBAL_Connection, __construct) {
 		ZEPHIR_INIT_NVAR(eventsManager);
 		object_init_ex(eventsManager, owl_event_manager_ce);
 		if (zephir_has_constructor(eventsManager TSRMLS_CC)) {
-			ZEPHIR_CALL_METHOD(NULL, eventsManager, "__construct", NULL);
+			ZEPHIR_CALL_METHOD(NULL, eventsManager, "__construct", NULL, 0);
 			zephir_check_call_status();
 		}
 	}
@@ -92,7 +92,7 @@ PHP_METHOD(Owl_DBAL_Connection, __construct) {
 		zephir_array_fetch_string(&_0, parameters, SL("driver"), PH_NOISY | PH_READONLY, "owl/DBAL/Connection.zep", 31 TSRMLS_CC);
 		zephir_update_property_this(this_ptr, SL("driver"), _0 TSRMLS_CC);
 		_1 = zephir_fetch_nproperty_this(this_ptr, SL("driver"), PH_NOISY_CC);
-		ZEPHIR_CALL_METHOD(&_2, _1, "getnewplatform", NULL);
+		ZEPHIR_CALL_METHOD(&_2, _1, "getnewplatform", NULL, 0);
 		zephir_check_call_status();
 		zephir_update_property_this(this_ptr, SL("platform"), _2 TSRMLS_CC);
 	} else {
@@ -100,7 +100,7 @@ PHP_METHOD(Owl_DBAL_Connection, __construct) {
 		return;
 	}
 	_1 = zephir_fetch_nproperty_this(this_ptr, SL("driver"), PH_NOISY_CC);
-	ZEPHIR_CALL_METHOD(NULL, _1, "seteventsmanager", NULL, eventsManager);
+	ZEPHIR_CALL_METHOD(NULL, _1, "seteventsmanager", NULL, 0, eventsManager);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 
@@ -172,7 +172,7 @@ PHP_METHOD(Owl_DBAL_Connection, insert) {
 		}
 	}
 	_5 = zephir_fetch_nproperty_this(this_ptr, SL("platform"), PH_NOISY_CC);
-	ZEPHIR_CALL_METHOD(&_6, _5, "wrap", NULL, table);
+	ZEPHIR_CALL_METHOD(&_6, _5, "wrap", NULL, 0, table);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(_7);
 	zephir_fast_join_str(_7, SL(","), fields TSRMLS_CC);
@@ -181,9 +181,9 @@ PHP_METHOD(Owl_DBAL_Connection, insert) {
 	ZEPHIR_INIT_VAR(query);
 	ZEPHIR_CONCAT_SVSVSVS(query, "INSERT INTO ", _6, " (", _7, ")  VALUES (", _8, ")");
 	_9 = zephir_fetch_nproperty_this(this_ptr, SL("driver"), PH_NOISY_CC);
-	ZEPHIR_CALL_METHOD(&stmt, _9, "prepare", NULL, query);
+	ZEPHIR_CALL_METHOD(&stmt, _9, "prepare", NULL, 0, query);
 	zephir_check_call_status();
-	ZEPHIR_RETURN_CALL_METHOD(stmt, "execute", NULL, data);
+	ZEPHIR_RETURN_CALL_METHOD(stmt, "execute", NULL, 0, data);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -194,7 +194,7 @@ PHP_METHOD(Owl_DBAL_Connection, insert) {
  */
 PHP_METHOD(Owl_DBAL_Connection, update) {
 
-	zephir_nts_static zephir_fcall_cache_entry *_12 = NULL, *_15 = NULL;
+	zephir_fcall_cache_entry *_12 = NULL, *_15 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
 	HashTable *_3;
 	HashPosition _2;
@@ -240,14 +240,14 @@ PHP_METHOD(Owl_DBAL_Connection, update) {
 	) {
 		ZEPHIR_GET_HVALUE(columnName, _4);
 		_5 = zephir_fetch_nproperty_this(this_ptr, SL("platform"), PH_NOISY_CC);
-		ZEPHIR_CALL_METHOD(&_6, _5, "wrap", NULL, columnName);
+		ZEPHIR_CALL_METHOD(&_6, _5, "wrap", NULL, 0, columnName);
 		zephir_check_call_status();
 		ZEPHIR_INIT_LNVAR(_7);
 		ZEPHIR_CONCAT_VS(_7, _6, " = ?");
 		zephir_array_append(&set, _7, PH_SEPARATE, "owl/DBAL/Connection.zep", 82);
 	}
 	_5 = zephir_fetch_nproperty_this(this_ptr, SL("platform"), PH_NOISY_CC);
-	ZEPHIR_CALL_METHOD(&_6, _5, "wrap", NULL, table);
+	ZEPHIR_CALL_METHOD(&_6, _5, "wrap", NULL, 0, table);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(_8);
 	zephir_fast_join_str(_8, SL(", "), set TSRMLS_CC);
@@ -261,10 +261,10 @@ PHP_METHOD(Owl_DBAL_Connection, update) {
 		if (ZEPHIR_IS_LONG(cnt, 1)) {
 			_9 = zephir_fetch_nproperty_this(this_ptr, SL("platform"), PH_NOISY_CC);
 			Z_SET_ISREF_P(identifiers);
-			ZEPHIR_CALL_FUNCTION(&_11, "key", &_12, identifiers);
+			ZEPHIR_CALL_FUNCTION(&_11, "key", &_12, 5, identifiers);
 			Z_UNSET_ISREF_P(identifiers);
 			zephir_check_call_status();
-			ZEPHIR_CALL_METHOD(&_10, _9, "wrap", NULL, _11);
+			ZEPHIR_CALL_METHOD(&_10, _9, "wrap", NULL, 0, _11);
 			zephir_check_call_status();
 			ZEPHIR_INIT_VAR(_13);
 			ZEPHIR_CONCAT_VS(_13, _10, " = ?");
@@ -275,15 +275,15 @@ PHP_METHOD(Owl_DBAL_Connection, update) {
 		}
 	}
 	_5 = zephir_fetch_nproperty_this(this_ptr, SL("driver"), PH_NOISY_CC);
-	ZEPHIR_CALL_METHOD(&stmt, _5, "prepare", NULL, query);
+	ZEPHIR_CALL_METHOD(&stmt, _5, "prepare", NULL, 0, query);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(_14);
-	ZEPHIR_CALL_FUNCTION(&_6, "array_values", &_15, data);
+	ZEPHIR_CALL_FUNCTION(&_6, "array_values", &_15, 6, data);
 	zephir_check_call_status();
-	ZEPHIR_CALL_FUNCTION(&_10, "array_values", &_15, identifiers);
+	ZEPHIR_CALL_FUNCTION(&_10, "array_values", &_15, 6, identifiers);
 	zephir_check_call_status();
 	zephir_fast_array_merge(_14, &(_6), &(_10) TSRMLS_CC);
-	ZEPHIR_RETURN_CALL_METHOD(stmt, "execute", NULL, _14);
+	ZEPHIR_RETURN_CALL_METHOD(stmt, "execute", NULL, 0, _14);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -344,11 +344,11 @@ PHP_METHOD(Owl_DBAL_Connection, deleteByColumn) {
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("driver"), PH_NOISY_CC);
 	_1 = zephir_fetch_nproperty_this(this_ptr, SL("platform"), PH_NOISY_CC);
-	ZEPHIR_CALL_METHOD(&_2, _1, "wrap", NULL, table);
+	ZEPHIR_CALL_METHOD(&_2, _1, "wrap", NULL, 0, table);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(_3);
 	ZEPHIR_CONCAT_SVSVSV(_3, "DELETE FROM ", _2, " WHERE ", column, " = ", value);
-	ZEPHIR_RETURN_CALL_METHOD(_0, "execute", NULL, _3);
+	ZEPHIR_RETURN_CALL_METHOD(_0, "execute", NULL, 0, _3);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -394,7 +394,7 @@ PHP_METHOD(Owl_DBAL_Connection, delete) {
 
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("platform"), PH_NOISY_CC);
-	ZEPHIR_CALL_METHOD(&_1, _0, "wrap", NULL, table);
+	ZEPHIR_CALL_METHOD(&_1, _0, "wrap", NULL, 0, table);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(query);
 	ZEPHIR_CONCAT_SVS(query, "DELETE FROM ", _1, " WHERE ");
@@ -414,7 +414,7 @@ PHP_METHOD(Owl_DBAL_Connection, delete) {
 		ZEPHIR_CONCAT_SVSV(query, " ", key, " = ", value);
 	}
 	_5 = zephir_fetch_nproperty_this(this_ptr, SL("driver"), PH_NOISY_CC);
-	ZEPHIR_RETURN_CALL_METHOD(_5, "execute", NULL, query);
+	ZEPHIR_RETURN_CALL_METHOD(_5, "execute", NULL, 0, query);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -434,7 +434,7 @@ PHP_METHOD(Owl_DBAL_Connection, prepare) {
 
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("driver"), PH_NOISY_CC);
-	ZEPHIR_CALL_METHOD(&smt, _0, "prepare", NULL, statement);
+	ZEPHIR_CALL_METHOD(&smt, _0, "prepare", NULL, 0, statement);
 	zephir_check_call_status();
 	RETURN_CCTOR(smt);
 

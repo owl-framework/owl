@@ -33,7 +33,7 @@ ZEPHIR_INIT_CLASS(Owl_Log_Formatter_Line) {
 PHP_METHOD(Owl_Log_Formatter_Line, format) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
-	zephir_nts_static zephir_fcall_cache_entry *_1 = NULL;
+	zephir_fcall_cache_entry *_1 = NULL;
 	zval *record, *_0 = NULL, *_2, *_3, _4, *_5 = NULL, *_6;
 
 	ZEPHIR_MM_GROW();
@@ -43,13 +43,13 @@ PHP_METHOD(Owl_Log_Formatter_Line, format) {
 
 	ZEPHIR_OBS_VAR(_2);
 	zephir_read_property(&_2, record, SL("level"), PH_NOISY_CC);
-	ZEPHIR_CALL_CE_STATIC(&_0, owl_log_logger_ce, "getleveltitle", &_1, _2);
+	ZEPHIR_CALL_CE_STATIC(&_0, owl_log_logger_ce, "getleveltitle", &_1, 17, _2);
 	zephir_check_call_status();
 	ZEPHIR_OBS_VAR(_3);
 	zephir_read_property(&_3, record, SL("timestamp"), PH_NOISY_CC);
 	ZEPHIR_SINIT_VAR(_4);
 	ZVAL_STRING(&_4, "D, d M Y H:i:s O", 0);
-	ZEPHIR_CALL_FUNCTION(&_5, "date", NULL, &_4, _3);
+	ZEPHIR_CALL_FUNCTION(&_5, "date", NULL, 0, &_4, _3);
 	zephir_check_call_status();
 	ZEPHIR_OBS_VAR(_6);
 	zephir_read_property(&_6, record, SL("message"), PH_NOISY_CC);

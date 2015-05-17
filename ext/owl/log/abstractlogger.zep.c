@@ -111,7 +111,7 @@ PHP_METHOD(Owl_Log_AbstractLogger, emergency) {
 
 	ZEPHIR_INIT_VAR(_0);
 	ZVAL_LONG(_0, 0x03);
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "log", NULL, _0, message, context);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "log", NULL, 0, _0, message, context);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 
@@ -141,7 +141,7 @@ PHP_METHOD(Owl_Log_AbstractLogger, alert) {
 
 	ZEPHIR_INIT_VAR(_0);
 	ZVAL_LONG(_0, 0x01);
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "log", NULL, _0, message, context);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "log", NULL, 0, _0, message, context);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 
@@ -171,7 +171,7 @@ PHP_METHOD(Owl_Log_AbstractLogger, critical) {
 
 	ZEPHIR_INIT_VAR(_0);
 	ZVAL_LONG(_0, 0x02);
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "log", NULL, _0, message, context);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "log", NULL, 0, _0, message, context);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 
@@ -201,7 +201,7 @@ PHP_METHOD(Owl_Log_AbstractLogger, error) {
 
 	ZEPHIR_INIT_VAR(_0);
 	ZVAL_LONG(_0, 0x04);
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "log", NULL, _0, message, context);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "log", NULL, 0, _0, message, context);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 
@@ -231,7 +231,7 @@ PHP_METHOD(Owl_Log_AbstractLogger, warning) {
 
 	ZEPHIR_INIT_VAR(_0);
 	ZVAL_LONG(_0, 0x08);
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "log", NULL, _0, message, context);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "log", NULL, 0, _0, message, context);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 
@@ -261,7 +261,7 @@ PHP_METHOD(Owl_Log_AbstractLogger, notice) {
 
 	ZEPHIR_INIT_VAR(_0);
 	ZVAL_LONG(_0, 0x07);
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "log", NULL, _0, message, context);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "log", NULL, 0, _0, message, context);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 
@@ -291,7 +291,7 @@ PHP_METHOD(Owl_Log_AbstractLogger, info) {
 
 	ZEPHIR_INIT_VAR(_0);
 	ZVAL_LONG(_0, 0x05);
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "log", NULL, _0, message, context);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "log", NULL, 0, _0, message, context);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 
@@ -321,7 +321,7 @@ PHP_METHOD(Owl_Log_AbstractLogger, debug) {
 
 	ZEPHIR_INIT_VAR(_0);
 	ZVAL_LONG(_0, 0x06);
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "log", NULL, _0, message, context);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "log", NULL, 0, _0, message, context);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 
