@@ -11,6 +11,8 @@ class Connection
 
     /**
      * Current used db platform (MySQL|PgSQL)
+     *
+     * @var \Owl\DBAL\Platform\PlatformInterface
      */
     protected $platform;
 
@@ -22,6 +24,8 @@ class Connection
 
     /**
      * Current used db platform (MySQL|PgSQL)
+     *
+     * @return \Owl\DBAL\Platform\PlatformInterface 
      */
     public function getPlatform() {}
 

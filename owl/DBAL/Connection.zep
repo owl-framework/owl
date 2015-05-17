@@ -7,13 +7,15 @@ use Exception;
 class Connection
 {
 	/**
-	* Current used driver
-	*/
+	 * Current used driver
+	 */
 	protected driver {get};
 
 	/**
-	* Current used db platform (MySQL|PgSQL)
-	*/
+	 * Current used db platform (MySQL|PgSQL)
+	 *
+	 * @var \Owl\DBAL\Platform\PlatformInterface
+	 */
 	protected platform {get};
 
 	/**

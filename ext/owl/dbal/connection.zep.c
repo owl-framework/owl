@@ -35,6 +35,8 @@ ZEPHIR_INIT_CLASS(Owl_DBAL_Connection) {
 
 	/**
 	 * Current used db platform (MySQL|PgSQL)
+	 *
+	 * @var \Owl\DBAL\Platform\PlatformInterface
 	 */
 	zend_declare_property_null(owl_dbal_connection_ce, SL("platform"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
@@ -54,6 +56,8 @@ PHP_METHOD(Owl_DBAL_Connection, getDriver) {
 
 /**
  * Current used db platform (MySQL|PgSQL)
+ *
+ * @var \Owl\DBAL\Platform\PlatformInterface
  */
 PHP_METHOD(Owl_DBAL_Connection, getPlatform) {
 
@@ -89,14 +93,14 @@ PHP_METHOD(Owl_DBAL_Connection, __construct) {
 		}
 	}
 	if (zephir_array_isset_string(parameters, SS("driver"))) {
-		zephir_array_fetch_string(&_0, parameters, SL("driver"), PH_NOISY | PH_READONLY, "owl/DBAL/Connection.zep", 32 TSRMLS_CC);
+		zephir_array_fetch_string(&_0, parameters, SL("driver"), PH_NOISY | PH_READONLY, "owl/DBAL/Connection.zep", 34 TSRMLS_CC);
 		zephir_update_property_this(this_ptr, SL("driver"), _0 TSRMLS_CC);
 		_1 = zephir_fetch_nproperty_this(this_ptr, SL("driver"), PH_NOISY_CC);
 		ZEPHIR_CALL_METHOD(&_2, _1, "getnewplatform", NULL, 0);
 		zephir_check_call_status();
 		zephir_update_property_this(this_ptr, SL("platform"), _2 TSRMLS_CC);
 	} else {
-		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(zend_exception_get_default(TSRMLS_C), "Driver not found in $parameters", "owl/DBAL/Connection.zep", 39);
+		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(zend_exception_get_default(TSRMLS_C), "Driver not found in $parameters", "owl/DBAL/Connection.zep", 41);
 		return;
 	}
 	_1 = zephir_fetch_nproperty_this(this_ptr, SL("driver"), PH_NOISY_CC);
@@ -148,7 +152,7 @@ PHP_METHOD(Owl_DBAL_Connection, insert) {
 
 	ZEPHIR_INIT_VAR(fields);
 	zephir_array_keys(fields, data TSRMLS_CC);
-	zephir_is_iterable(data, &_1, &_0, 1, 0, "owl/DBAL/Connection.zep", 68);
+	zephir_is_iterable(data, &_1, &_0, 1, 0, "owl/DBAL/Connection.zep", 70);
 	for (
 	  ; zephir_hash_get_current_data_ex(_1, (void**) &_2, &_0) == SUCCESS
 	  ; zephir_hash_move_forward_ex(_1, &_0)
@@ -156,19 +160,19 @@ PHP_METHOD(Owl_DBAL_Connection, insert) {
 		ZEPHIR_GET_HMKEY(columnName, _1, _0);
 		ZEPHIR_GET_HVALUE(value, _2);
 		if (zephir_array_isset(types, columnName)) {
-			zephir_array_fetch(&_3, types, columnName, PH_NOISY | PH_READONLY, "owl/DBAL/Connection.zep", 57 TSRMLS_CC);
+			zephir_array_fetch(&_3, types, columnName, PH_NOISY | PH_READONLY, "owl/DBAL/Connection.zep", 59 TSRMLS_CC);
 			if (ZEPHIR_IS_LONG(_3, 10)) {
-				zephir_array_append(&set, value, PH_SEPARATE, "owl/DBAL/Connection.zep", 58);
+				zephir_array_append(&set, value, PH_SEPARATE, "owl/DBAL/Connection.zep", 60);
 				zephir_array_unset(&data, columnName, PH_SEPARATE);
 			} else {
 				ZEPHIR_INIT_LNVAR(_4);
 				ZEPHIR_CONCAT_SVS(_4, ":", columnName, "");
-				zephir_array_append(&set, _4, PH_SEPARATE, "owl/DBAL/Connection.zep", 61);
+				zephir_array_append(&set, _4, PH_SEPARATE, "owl/DBAL/Connection.zep", 63);
 			}
 		} else {
 			ZEPHIR_INIT_LNVAR(_4);
 			ZEPHIR_CONCAT_SVS(_4, ":", columnName, "");
-			zephir_array_append(&set, _4, PH_SEPARATE, "owl/DBAL/Connection.zep", 64);
+			zephir_array_append(&set, _4, PH_SEPARATE, "owl/DBAL/Connection.zep", 66);
 		}
 	}
 	_5 = zephir_fetch_nproperty_this(this_ptr, SL("platform"), PH_NOISY_CC);
@@ -233,7 +237,7 @@ PHP_METHOD(Owl_DBAL_Connection, update) {
 
 	ZEPHIR_INIT_VAR(_1);
 	zephir_array_keys(_1, data TSRMLS_CC);
-	zephir_is_iterable(_1, &_3, &_2, 0, 0, "owl/DBAL/Connection.zep", 86);
+	zephir_is_iterable(_1, &_3, &_2, 0, 0, "owl/DBAL/Connection.zep", 88);
 	for (
 	  ; zephir_hash_get_current_data_ex(_3, (void**) &_4, &_2) == SUCCESS
 	  ; zephir_hash_move_forward_ex(_3, &_2)
@@ -244,7 +248,7 @@ PHP_METHOD(Owl_DBAL_Connection, update) {
 		zephir_check_call_status();
 		ZEPHIR_INIT_LNVAR(_7);
 		ZEPHIR_CONCAT_VS(_7, _6, " = ?");
-		zephir_array_append(&set, _7, PH_SEPARATE, "owl/DBAL/Connection.zep", 83);
+		zephir_array_append(&set, _7, PH_SEPARATE, "owl/DBAL/Connection.zep", 85);
 	}
 	_5 = zephir_fetch_nproperty_this(this_ptr, SL("platform"), PH_NOISY_CC);
 	ZEPHIR_CALL_METHOD(&_6, _5, "wrap", NULL, 0, table);
@@ -270,7 +274,7 @@ PHP_METHOD(Owl_DBAL_Connection, update) {
 			ZEPHIR_CONCAT_VS(_13, _10, " = ?");
 			zephir_concat_self(&query, _13 TSRMLS_CC);
 		} else {
-			ZEPHIR_THROW_EXCEPTION_DEBUG_STR(zend_exception_get_default(TSRMLS_C), "It's not implemented", "owl/DBAL/Connection.zep", 97);
+			ZEPHIR_THROW_EXCEPTION_DEBUG_STR(zend_exception_get_default(TSRMLS_C), "It's not implemented", "owl/DBAL/Connection.zep", 99);
 			return;
 		}
 	}
@@ -398,7 +402,7 @@ PHP_METHOD(Owl_DBAL_Connection, delete) {
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(query);
 	ZEPHIR_CONCAT_SVS(query, "DELETE FROM ", _1, " WHERE ");
-	zephir_is_iterable(identifiers, &_3, &_2, 0, 0, "owl/DBAL/Connection.zep", 142);
+	zephir_is_iterable(identifiers, &_3, &_2, 0, 0, "owl/DBAL/Connection.zep", 144);
 	for (
 	  ; zephir_hash_get_current_data_ex(_3, (void**) &_4, &_2) == SUCCESS
 	  ; zephir_hash_move_forward_ex(_3, &_2)
