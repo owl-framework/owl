@@ -2,6 +2,7 @@
 namespace Owl\DBAL;
 
 use Owl\Event\Manager as EventsManager;
+use Exception;
 
 class Connection
 {
@@ -35,7 +36,7 @@ class Connection
 			 */
 			let this->platform = this->driver->getNewPlatform();
 		} else {
-			throw new \Exception("Driver not found in $parameters");
+			throw new Exception("Driver not found in $parameters");
 		}
 
 		this->driver->setEventsManager(eventsManager);
@@ -93,7 +94,7 @@ class Connection
             if (cnt == 1) {
                 let query .= this->platform->wrap(key(identifiers)) . " = ?";
             } else {
-                throw new \Exception("It's not implemented");
+                throw new Exception("It's not implemented");
             }
         }
 
@@ -151,4 +152,3 @@ class Connection
         return smt;
     }
 }
-
