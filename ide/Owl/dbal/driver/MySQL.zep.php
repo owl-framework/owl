@@ -2,7 +2,7 @@
 
 namespace Owl\DBAL\Driver;
 
-class MySQL
+class MySQL implements \Owl\DBAL\Driver\DriverInterface
 {
 
     protected $eventsManager;

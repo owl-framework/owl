@@ -2,7 +2,7 @@
 
 namespace Owl\DBAL\Driver;
 
-class PgSQL
+class PgSQL implements \Owl\DBAL\Driver\DriverInterface
 {
 
     protected $eventsManager;

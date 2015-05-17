@@ -6,26 +6,30 @@ class Connection
 {
     /**
      * Current used driver
+     *
+     * @var Driver\DriverInterface
      */
     protected $driver;
 
     /**
      * Current used db platform (MySQL|PgSQL)
      *
-     * @var \Owl\DBAL\Platform\PlatformInterface
+     * @var Platform\PlatformInterface
      */
     protected $platform;
 
 
     /**
      * Current used driver
+     *
+     * @return Driver\DriverInterface 
      */
     public function getDriver() {}
 
     /**
      * Current used db platform (MySQL|PgSQL)
      *
-     * @return \Owl\DBAL\Platform\PlatformInterface 
+     * @return Platform\PlatformInterface 
      */
     public function getPlatform() {}
 

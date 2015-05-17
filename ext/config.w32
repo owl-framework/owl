@@ -18,7 +18,7 @@ if (PHP_OWL != "no") {
 	ADD_SOURCES(configure_module_dirname + "/owl/cache/driver", "cachedriver.zep.c memcache.zep.c memcached.zep.c nativearray.zep.c redis.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/console", "application.zep.c commandinterface.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/dbal", "connection.zep.c", "owl");
-	ADD_SOURCES(configure_module_dirname + "/owl/dbal/driver", "mysql.zep.c pdo.zep.c pgsql.zep.c", "owl");
+	ADD_SOURCES(configure_module_dirname + "/owl/dbal/driver", "driverinterface.zep.c mysql.zep.c pdo.zep.c pgsql.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/dbal/platform", "mysql.zep.c pgsql.zep.c platforminterface.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/debug", "memoryprofiler.zep.c profiler.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/event", "event.zep.c manager.zep.c", "owl");

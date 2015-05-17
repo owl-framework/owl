@@ -36,6 +36,7 @@ ZEPHIR_INIT_CLASS(Owl_DBAL_Driver_PgSQL) {
 
 	zend_declare_property_null(owl_dbal_driver_pgsql_ce, SL("connection"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
+	zend_class_implements(owl_dbal_driver_pgsql_ce TSRMLS_CC, 1, owl_dbal_driver_driverinterface_ce);
 	return SUCCESS;
 
 }

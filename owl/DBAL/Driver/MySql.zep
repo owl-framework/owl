@@ -4,7 +4,7 @@ namespace Owl\DBAL\Driver;
 use PdoStatement;
 use Owl\DBAL\Platform\PlatformInterface;
 
-class MySQL
+class MySQL implements DriverInterface
 {
 	protected eventsManager {set, get};
 

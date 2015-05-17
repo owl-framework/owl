@@ -4,7 +4,7 @@ namespace Owl\DBAL\Driver;
 use PdoStatement;
 use Owl\DBAL\Platform\PlatformInterface;
 
-class PgSQL
+class PgSQL implements DriverInterface
 {
 	protected eventsManager {set, get};
 

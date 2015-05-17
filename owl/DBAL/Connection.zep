@@ -8,15 +8,21 @@ class Connection
 {
 	/**
 	 * Current used driver
+	 *
+	 * @var Driver\DriverInterface
 	 */
-	protected driver {get};
+	protected driver {
+		get
+	};
 
 	/**
 	 * Current used db platform (MySQL|PgSQL)
 	 *
-	 * @var \Owl\DBAL\Platform\PlatformInterface
+	 * @var Platform\PlatformInterface
 	 */
-	protected platform {get};
+	protected platform {
+		get
+	};
 
 	/**
 	 * Construct connection

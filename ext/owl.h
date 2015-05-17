@@ -20,6 +20,7 @@
 #include "owl/console/application.zep.h"
 #include "owl/console/commandinterface.zep.h"
 #include "owl/dbal/connection.zep.h"
+#include "owl/dbal/driver/driverinterface.zep.h"
 #include "owl/dbal/driver/mysql.zep.h"
 #include "owl/dbal/driver/pdo.zep.h"
 #include "owl/dbal/driver/pgsql.zep.h"
