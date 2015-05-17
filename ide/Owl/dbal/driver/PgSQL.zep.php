@@ -55,7 +55,9 @@ class PgSQL
 
     public function connect() {}
 
-
+    /**
+     * @return \Owl\DBAL\Platform\PlatformInterface 
+     */
     public function getNewPlatform() {}
 
 
