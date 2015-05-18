@@ -49,7 +49,7 @@ PHP_METHOD(Owl_Log_Formatter_Line, format) {
 	zephir_read_property(&_3, record, SL("timestamp"), PH_NOISY_CC);
 	ZEPHIR_SINIT_VAR(_4);
 	ZVAL_STRING(&_4, "D, d M Y H:i:s O", 0);
-	ZEPHIR_CALL_FUNCTION(&_5, "date", NULL, 0, &_4, _3);
+	ZEPHIR_CALL_FUNCTION(&_5, "date", NULL, 18, &_4, _3);
 	zephir_check_call_status();
 	ZEPHIR_OBS_VAR(_6);
 	zephir_read_property(&_6, record, SL("message"), PH_NOISY_CC);

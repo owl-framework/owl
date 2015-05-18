@@ -202,12 +202,12 @@ PHP_METHOD(Owl_DBAL_Connection, insert) {
  */
 PHP_METHOD(Owl_DBAL_Connection, update) {
 
-	zephir_fcall_cache_entry *_12 = NULL, *_15 = NULL;
+	zephir_fcall_cache_entry *_14 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
 	HashTable *_3;
 	HashPosition _2;
 	zval *data = NULL, *identifiers = NULL, *types = NULL;
-	zval *table_param = NULL, *data_param = NULL, *identifiers_param = NULL, *types_param = NULL, *set, *stmt = NULL, *columnName = NULL, *_0 = NULL, *_1, **_4, *_5, *_6 = NULL, *_7 = NULL, *_8, *cnt, *_9, *_10 = NULL, *_11 = NULL, *_13, *_14;
+	zval *table_param = NULL, *data_param = NULL, *identifiers_param = NULL, *types_param = NULL, *set, *stmt = NULL, *columnName = NULL, *_0 = NULL, *_1, **_4, *_5, *_6 = NULL, *_7 = NULL, *_8, *cnt, *_9, *_10 = NULL, *_11 = NULL, *_12, *_13;
 	zval *table = NULL, *query = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -269,14 +269,14 @@ PHP_METHOD(Owl_DBAL_Connection, update) {
 		if (ZEPHIR_IS_LONG(cnt, 1)) {
 			_9 = zephir_fetch_nproperty_this(this_ptr, SL("platform"), PH_NOISY_CC);
 			Z_SET_ISREF_P(identifiers);
-			ZEPHIR_CALL_FUNCTION(&_11, "key", &_12, 5, identifiers);
+			ZEPHIR_CALL_FUNCTION(&_11, "key", NULL, 5, identifiers);
 			Z_UNSET_ISREF_P(identifiers);
 			zephir_check_call_status();
 			ZEPHIR_CALL_METHOD(&_10, _9, "wrap", NULL, 0, _11);
 			zephir_check_call_status();
-			ZEPHIR_INIT_VAR(_13);
-			ZEPHIR_CONCAT_VS(_13, _10, " = ?");
-			zephir_concat_self(&query, _13 TSRMLS_CC);
+			ZEPHIR_INIT_VAR(_12);
+			ZEPHIR_CONCAT_VS(_12, _10, " = ?");
+			zephir_concat_self(&query, _12 TSRMLS_CC);
 		} else {
 			ZEPHIR_THROW_EXCEPTION_DEBUG_STR(zend_exception_get_default(TSRMLS_C), "It's not implemented", "owl/DBAL/Connection.zep", 105);
 			return;
@@ -285,13 +285,13 @@ PHP_METHOD(Owl_DBAL_Connection, update) {
 	_5 = zephir_fetch_nproperty_this(this_ptr, SL("driver"), PH_NOISY_CC);
 	ZEPHIR_CALL_METHOD(&stmt, _5, "prepare", NULL, 0, query);
 	zephir_check_call_status();
-	ZEPHIR_INIT_VAR(_14);
-	ZEPHIR_CALL_FUNCTION(&_6, "array_values", &_15, 6, data);
+	ZEPHIR_INIT_VAR(_13);
+	ZEPHIR_CALL_FUNCTION(&_6, "array_values", &_14, 6, data);
 	zephir_check_call_status();
-	ZEPHIR_CALL_FUNCTION(&_10, "array_values", &_15, 6, identifiers);
+	ZEPHIR_CALL_FUNCTION(&_10, "array_values", &_14, 6, identifiers);
 	zephir_check_call_status();
-	zephir_fast_array_merge(_14, &(_6), &(_10) TSRMLS_CC);
-	ZEPHIR_RETURN_CALL_METHOD(stmt, "execute", NULL, 0, _14);
+	zephir_fast_array_merge(_13, &(_6), &(_10) TSRMLS_CC);
+	ZEPHIR_RETURN_CALL_METHOD(stmt, "execute", NULL, 0, _13);
 	zephir_check_call_status();
 	RETURN_MM();
 

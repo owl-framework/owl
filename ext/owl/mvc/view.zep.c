@@ -67,9 +67,8 @@ PHP_METHOD(Owl_Mvc_View, setPath) {
 PHP_METHOD(Owl_Mvc_View, render) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
-	zephir_fcall_cache_entry *_2 = NULL, *_5 = NULL, *_6 = NULL;
 	zval *parameters = NULL;
-	zval *path_param = NULL, *parameters_param = NULL, *_0, *_1, *_3, *_4, *tmp = NULL;
+	zval *path_param = NULL, *parameters_param = NULL, *_0, *_1, *_2, *_3, *tmp = NULL;
 	zval *path = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -101,17 +100,17 @@ PHP_METHOD(Owl_Mvc_View, render) {
 		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(zend_exception_get_default(TSRMLS_C), "File is not exists", "owl/Mvc/View.zep", 19);
 		return;
 	}
-	ZEPHIR_CALL_FUNCTION(NULL, "ob_start", &_2, 21);
+	ZEPHIR_CALL_FUNCTION(NULL, "ob_start", NULL, 22);
 	zephir_check_call_status();
-	_3 = zephir_fetch_nproperty_this(this_ptr, SL("path"), PH_NOISY_CC);
-	ZEPHIR_INIT_VAR(_4);
-	ZEPHIR_CONCAT_VV(_4, _3, path);
-	if (zephir_require_zval(_4 TSRMLS_CC) == FAILURE) {
+	_2 = zephir_fetch_nproperty_this(this_ptr, SL("path"), PH_NOISY_CC);
+	ZEPHIR_INIT_VAR(_3);
+	ZEPHIR_CONCAT_VV(_3, _2, path);
+	if (zephir_require_zval(_3 TSRMLS_CC) == FAILURE) {
 		RETURN_MM_NULL();
 	}
-	ZEPHIR_CALL_FUNCTION(&tmp, "ob_get_contents", &_5, 22);
+	ZEPHIR_CALL_FUNCTION(&tmp, "ob_get_contents", NULL, 23);
 	zephir_check_call_status();
-	ZEPHIR_CALL_FUNCTION(NULL, "ob_end_clean", &_6, 23);
+	ZEPHIR_CALL_FUNCTION(NULL, "ob_end_clean", NULL, 24);
 	zephir_check_call_status();
 	RETURN_CCTOR(tmp);
 

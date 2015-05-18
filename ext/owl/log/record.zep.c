@@ -52,7 +52,6 @@ ZEPHIR_INIT_CLASS(Owl_Log_Record) {
 PHP_METHOD(Owl_Log_Record, interpolate) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
-	zephir_fcall_cache_entry *_4 = NULL;
 	HashTable *_1;
 	HashPosition _0;
 	zval *context = NULL;
@@ -85,7 +84,7 @@ PHP_METHOD(Owl_Log_Record, interpolate) {
 			ZEPHIR_CONCAT_SVS(_3, "{", key, "}");
 			zephir_array_update_zval(&replace, _3, &value, PH_COPY | PH_SEPARATE);
 		}
-		ZEPHIR_RETURN_CALL_FUNCTION("strtr", &_4, 19, message, replace);
+		ZEPHIR_RETURN_CALL_FUNCTION("strtr", NULL, 20, message, replace);
 		zephir_check_call_status();
 		RETURN_MM();
 	}

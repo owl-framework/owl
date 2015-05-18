@@ -31,7 +31,6 @@ ZEPHIR_INIT_CLASS(Owl_Log_Writer_File) {
  */
 PHP_METHOD(Owl_Log_Writer_File, write) {
 
-	zephir_fcall_cache_entry *_4 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
 	zval *record_param = NULL, *_0 = NULL, *_1 = NULL, *_2, _3;
 	zval *record = NULL;
@@ -53,7 +52,7 @@ PHP_METHOD(Owl_Log_Writer_File, write) {
 	ZEPHIR_CONCAT_VV(_2, record, _1);
 	ZEPHIR_SINIT_VAR(_3);
 	ZVAL_LONG(&_3, 8);
-	ZEPHIR_CALL_FUNCTION(NULL, "file_put_contents", &_4, 20, _0, _2, &_3);
+	ZEPHIR_CALL_FUNCTION(NULL, "file_put_contents", NULL, 21, _0, _2, &_3);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 
