@@ -24,6 +24,11 @@ interface WriterInterface {
     public function getOptions() -> array;
 
     /**
+     * Set option for writer
+     */
+    public function setOption(string option, var value);
+
+    /**
      * Get option for writer
      */
     public function getOption(string option);

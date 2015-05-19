@@ -52,6 +52,14 @@ abstract class AbstractWriter implements WriterInterface
     /**
      * @inheritdoc
      */
+    public function setOption(string option, var value)
+    {
+        let this->options[option] = value;
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function getOption(string option)
     {
         if !isset(this->options[option]) {
