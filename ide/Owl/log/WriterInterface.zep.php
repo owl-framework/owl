@@ -34,6 +34,14 @@ interface WriterInterface
     public function getOptions();
 
     /**
+     * Set option for writer
+     *
+     * @param string $option 
+     * @param mixed $value 
+     */
+    public function setOption($option, $value);
+
+    /**
      * Get option for writer
      *
      * @param string $option 

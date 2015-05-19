@@ -77,6 +77,13 @@ abstract class AbstractWriter implements \Owl\Log\WriterInterface
     /**
      * @inheritdoc
      * @param string $option 
+     * @param mixed $value 
+     */
+    public function setOption($option, $value) {}
+
+    /**
+     * @inheritdoc
+     * @param string $option 
      */
     public function getOption($option) {}
 
