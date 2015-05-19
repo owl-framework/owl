@@ -41,6 +41,11 @@ ZEPHIR_DOC_METHOD(Owl_Log_WriterInterface, setOptions);
 ZEPHIR_DOC_METHOD(Owl_Log_WriterInterface, getOptions);
 
 /**
+ * Set option for writer
+ */
+ZEPHIR_DOC_METHOD(Owl_Log_WriterInterface, setOption);
+
+/**
  * Get option for writer
  */
 ZEPHIR_DOC_METHOD(Owl_Log_WriterInterface, getOption);
