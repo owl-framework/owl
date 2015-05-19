@@ -127,4 +127,25 @@ class LoggerTest extends \PHPUnit_Framework_TestCase
         $this->assertCount(0, $logger->getRecords());
         $this->assertSame($intervals, $commits);
     }
+
+    public function testLoggerCreationWithoutWriterClass()
+    {
+        $this->setExpectedException("Owl\\Log\\Exception\\InvalidWriterException", "Writer options 'class' is not exists");
+
+        new Logger([
+            []
+        ]);
+    }
+
+    public function testSetNonExistsWriterClass()
+    {
+        $this->setExpectedException("Owl\\Log\\Exception\\InvalidWriterException", "Writer class is not exists");
+
+        new Logger([
+            [
+                'class' => 'NonExistsClass'
+            ]
+        ]);
+    }
+
 }
