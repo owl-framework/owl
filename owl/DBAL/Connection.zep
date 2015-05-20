@@ -2,7 +2,6 @@
 namespace Owl\DBAL;
 
 use Owl\Event\Manager as EventsManager;
-use Exception;
 
 class Connection
 {
