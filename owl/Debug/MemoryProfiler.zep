@@ -66,6 +66,7 @@ class MemoryProfiler
 
 	public function objectsList()
 	{
+		/**
 		int total_objects_buckets = 0, current_objects = 0;
 		string className;
 		array info = [], tmp = [], objectsTmp = [];
@@ -106,5 +107,6 @@ class MemoryProfiler
 		let info["current_objects"] = current_objects;
 
 		return info;
+		**/
 	}
 }
