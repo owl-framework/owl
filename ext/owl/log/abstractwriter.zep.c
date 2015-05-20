@@ -15,10 +15,10 @@
 #include "kernel/object.h"
 #include "kernel/memory.h"
 #include "kernel/fcall.h"
+#include "kernel/operators.h"
 #include "kernel/array.h"
 #include "kernel/exception.h"
 #include "kernel/concat.h"
-#include "kernel/operators.h"
 #include "kernel/hash.h"
 
 ZEPHIR_INIT_CLASS(Owl_Log_AbstractWriter) {
@@ -159,6 +159,25 @@ PHP_METHOD(Owl_Log_AbstractWriter, __destruct) {
 /**
  * @inheritdoc
  */
+PHP_METHOD(Owl_Log_AbstractWriter, setOption) {
+
+	zval *option_param = NULL, *value;
+	zval *option = NULL;
+
+	ZEPHIR_MM_GROW();
+	zephir_fetch_params(1, 2, 0, &option_param, &value);
+
+	zephir_get_strval(option, option_param);
+
+
+	zephir_update_property_array(this_ptr, SL("options"), option, value TSRMLS_CC);
+	ZEPHIR_MM_RESTORE();
+
+}
+
+/**
+ * @inheritdoc
+ */
 PHP_METHOD(Owl_Log_AbstractWriter, getOption) {
 
 	zephir_fcall_cache_entry *_3 = NULL;
@@ -180,12 +199,12 @@ PHP_METHOD(Owl_Log_AbstractWriter, getOption) {
 		ZEPHIR_CONCAT_SVS(_2, "Option ", option, " is not exists");
 		ZEPHIR_CALL_METHOD(NULL, _1, "__construct", &_3, 15, _2);
 		zephir_check_call_status();
-		zephir_throw_exception_debug(_1, "owl/Log/AbstractWriter.zep", 58 TSRMLS_CC);
+		zephir_throw_exception_debug(_1, "owl/Log/AbstractWriter.zep", 66 TSRMLS_CC);
 		ZEPHIR_MM_RESTORE();
 		return;
 	}
 	_4 = zephir_fetch_nproperty_this(this_ptr, SL("options"), PH_NOISY_CC);
-	zephir_array_fetch(&_5, _4, option, PH_NOISY | PH_READONLY, "owl/Log/AbstractWriter.zep", 60 TSRMLS_CC);
+	zephir_array_fetch(&_5, _4, option, PH_NOISY | PH_READONLY, "owl/Log/AbstractWriter.zep", 68 TSRMLS_CC);
 	RETURN_CTOR(_5);
 
 }
@@ -249,7 +268,7 @@ PHP_METHOD(Owl_Log_AbstractWriter, setFormatter) {
 		zephir_update_property_this(this_ptr, SL("formatter"), formatter TSRMLS_CC);
 	} else if (Z_TYPE_P(formatter) == IS_STRING) {
 		if (!(zephir_class_exists(formatter, 1 TSRMLS_CC))) {
-			ZEPHIR_THROW_EXCEPTION_DEBUG_STR(owl_log_exception_invalidformatterexception_ce, "Formatter class is not exits", "owl/Log/AbstractWriter.zep", 86);
+			ZEPHIR_THROW_EXCEPTION_DEBUG_STR(owl_log_exception_invalidformatterexception_ce, "Formatter class is not exits", "owl/Log/AbstractWriter.zep", 94);
 			return;
 		}
 		ZEPHIR_INIT_VAR(_3);
@@ -262,7 +281,7 @@ PHP_METHOD(Owl_Log_AbstractWriter, setFormatter) {
 		}
 		zephir_update_property_this(this_ptr, SL("formatter"), _3 TSRMLS_CC);
 	} else {
-		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(owl_log_exception_invalidformatterexception_ce, "Formatter set error", "owl/Log/AbstractWriter.zep", 91);
+		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(owl_log_exception_invalidformatterexception_ce, "Formatter set error", "owl/Log/AbstractWriter.zep", 99);
 		return;
 	}
 	ZEPHIR_MM_RESTORE();
@@ -308,7 +327,7 @@ PHP_METHOD(Owl_Log_AbstractWriter, filterRecords) {
 	if (ZEPHIR_IS_EMPTY(_0)) {
 		RETURN_CTOR(records);
 	}
-	zephir_is_iterable(records, &_2, &_1, 1, 0, "owl/Log/AbstractWriter.zep", 117);
+	zephir_is_iterable(records, &_2, &_1, 1, 0, "owl/Log/AbstractWriter.zep", 125);
 	for (
 	  ; zephir_hash_get_current_data_ex(_2, (void**) &_3, &_1) == SUCCESS
 	  ; zephir_hash_move_forward_ex(_2, &_1)
@@ -371,7 +390,7 @@ PHP_METHOD(Owl_Log_AbstractWriter, push) {
 	ZEPHIR_MM_GROW();
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("records"), PH_NOISY_CC);
-	zephir_is_iterable(_0, &_2, &_1, 0, 0, "owl/Log/AbstractWriter.zep", 144);
+	zephir_is_iterable(_0, &_2, &_1, 0, 0, "owl/Log/AbstractWriter.zep", 152);
 	for (
 	  ; zephir_hash_get_current_data_ex(_2, (void**) &_3, &_1) == SUCCESS
 	  ; zephir_hash_move_forward_ex(_2, &_1)
