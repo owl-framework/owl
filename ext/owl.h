@@ -24,6 +24,7 @@
 #include "owl/dbal/driver/mysql.zep.h"
 #include "owl/dbal/driver/pdo.zep.h"
 #include "owl/dbal/driver/pgsql.zep.h"
+#include "owl/dbal/exception.zep.h"
 #include "owl/dbal/platform/mysql.zep.h"
 #include "owl/dbal/platform/pgsql.zep.h"
 #include "owl/dbal/platform/platforminterface.zep.h"

@@ -29,6 +29,7 @@ if test "$PHP_OWL" = "yes"; then
 	owl/dbal/driver/mysql.zep.c
 	owl/dbal/driver/pdo.zep.c
 	owl/dbal/driver/pgsql.zep.c
+	owl/dbal/exception.zep.c
 	owl/dbal/platform/mysql.zep.c
 	owl/dbal/platform/pgsql.zep.c
 	owl/dbal/platform/platforminterface.zep.c
