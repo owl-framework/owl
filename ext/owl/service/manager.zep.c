@@ -33,7 +33,7 @@ ZEPHIR_INIT_CLASS(Owl_Service_Manager) {
 
 }
 
-PHP_METHOD(Owl_Service_Manager, setService) {
+PHP_METHOD(Owl_Service_Manager, set) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
 	zend_bool _0;
@@ -67,8 +67,35 @@ PHP_METHOD(Owl_Service_Manager, setService) {
 	if (_0) {
 		zephir_update_property_array(this_ptr, SL("instances"), name, definition TSRMLS_CC);
 	} else {
-		zephir_update_property_array(this_ptr, SL("services"), name, definition TSRMLS_CC);
+		ZEPHIR_CALL_METHOD(NULL, this_ptr, "setservice", NULL, 0, name, definition);
+		zephir_check_call_status();
 	}
+	ZEPHIR_MM_RESTORE();
+
+}
+
+PHP_METHOD(Owl_Service_Manager, setService) {
+
+	zval *name_param = NULL, *definition;
+	zval *name = NULL;
+
+	ZEPHIR_MM_GROW();
+	zephir_fetch_params(1, 2, 0, &name_param, &definition);
+
+	if (unlikely(Z_TYPE_P(name_param) != IS_STRING && Z_TYPE_P(name_param) != IS_NULL)) {
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'name' must be a string") TSRMLS_CC);
+		RETURN_MM_NULL();
+	}
+
+	if (likely(Z_TYPE_P(name_param) == IS_STRING)) {
+		zephir_get_strval(name, name_param);
+	} else {
+		ZEPHIR_INIT_VAR(name);
+		ZVAL_EMPTY_STRING(name);
+	}
+
+
+	zephir_update_property_array(this_ptr, SL("services"), name, definition TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();
 
 }
@@ -166,7 +193,7 @@ PHP_METHOD(Owl_Service_Manager, getInstance) {
 	ZEPHIR_CONCAT_SV(_2, "Instance wasn't found by name: ", name);
 	ZEPHIR_CALL_METHOD(NULL, _1, "__construct", NULL, 1, _2);
 	zephir_check_call_status();
-	zephir_throw_exception_debug(_1, "owl/Service/Manager.zep", 39 TSRMLS_CC);
+	zephir_throw_exception_debug(_1, "owl/Service/Manager.zep", 44 TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();
 	return;
 
@@ -205,7 +232,7 @@ PHP_METHOD(Owl_Service_Manager, getService) {
 	ZEPHIR_CONCAT_SV(_2, "Service wasn't found by name: ", name);
 	ZEPHIR_CALL_METHOD(NULL, _1, "__construct", NULL, 1, _2);
 	zephir_check_call_status();
-	zephir_throw_exception_debug(_1, "owl/Service/Manager.zep", 50 TSRMLS_CC);
+	zephir_throw_exception_debug(_1, "owl/Service/Manager.zep", 55 TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();
 	return;
 

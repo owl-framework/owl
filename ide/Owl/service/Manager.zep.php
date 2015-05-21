@@ -15,6 +15,12 @@ class Manager
      * @param string $name 
      * @param mixed $definition 
      */
+    public function set($name, $definition) {}
+
+    /**
+     * @param string $name 
+     * @param mixed $definition 
+     */
     public function setService($name, $definition) {}
 
     /**

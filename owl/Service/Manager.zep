@@ -9,13 +9,18 @@ class Manager
 
 	protected services = [];
 
-	public fn setService(string! name, var definition)
+	public fn set(string! name, var definition)
 	{
 		if (is_object(definition) || is_callable(definition, true)) {
 			let this->instances[name] = definition;
 		} else {
-			let this->services[name] = definition;
+			this->setService(name, definition);
 		}
+	}
+
+	public fn setService(string! name, var definition)
+	{
+		let this->services[name] = definition;
 	}
 
 	public fn get(string! name)
