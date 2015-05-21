@@ -24,7 +24,7 @@ $serviceManager = new Owl\Service\Manager();
 $router = new Router();
 $router->add('/', ['module' => 'Common', 'controller' => 'Index', 'action' => 'index']);
 
-$serviceManager->setService('router', $router);
+$serviceManager->set('router', $router);
 
 $driver = new \Owl\DBAl\Driver\Mysql(
     'mysql:host=127.0.0.1;dbname=phalcon-module-skeleton;port=49153',
@@ -36,14 +36,14 @@ $driver = new \Owl\DBAl\Driver\Mysql(
     )
 );
 $connection = new \Owl\DBAL\Connection(['driver' => $driver], $eventManager);
-$serviceManager->setService('connection', $connection);
+$serviceManager->set('connection', $connection);
 
 $cache = new \Owl\Cache\Driver\Memcached();
-$serviceManager->setService('cache', $cache);
+$serviceManager->set('cache', $cache);
 
 $view = new \Owl\Mvc\View();
 $view->setPath(__DIR__ . '/../app/modules/common/resources/views/');
-$serviceManager->setService('view', $view);
+$serviceManager->set('view', $view);
 
 $application = new Application($serviceManager, $eventManager);
 $application->setErrorHandlerParameters(array(

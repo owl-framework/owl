@@ -28,7 +28,7 @@ $router->add('/api/users/:id', ['module' => 'Api', 'controller' => 'User', 'acti
 $router->add('/api/users/:id', ['module' => 'Api', 'controller' => 'User', 'action' => 'create'], Route::POST);
 $router->add('/api/users/:id', ['module' => 'Api', 'controller' => 'User', 'action' => 'delete'], Route::DELETE);
 
-$serviceManager->setService('router', $router);
+$serviceManager->set('router', $router);
 
 $application = new Application($serviceManager);
 $response = $application->handle(Request::createFromGlobals());

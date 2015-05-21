@@ -32,7 +32,7 @@ class Application extends \Owl\Application
         $router->add('/users/:id', ['module' => 'Api', 'controller' => 'User', 'action' => 'create'], Route::POST);
         $router->add('/users/:id', ['module' => 'Api', 'controller' => 'User', 'action' => 'delete'], Route::DELETE);
 
-        $serviceManager->setService('router', $router);
+        $serviceManager->set('router', $router);
 
         $driver = new \Owl\DBAl\Driver\Mysql(
             'mysql:host=127.0.0.1;dbname=phalcon-module-skeleton;port=49153',
@@ -44,10 +44,10 @@ class Application extends \Owl\Application
             )
         );
         $connection = new \Owl\DBAL\Connection(['driver' => $driver], $this->eventManager);
-        $serviceManager->setService('connection', $connection);
+        $serviceManager->set('connection', $connection);
 
         $cache = new \Owl\Cache\Driver\Memcached();
-        $serviceManager->setService('cache', $cache);
+        $serviceManager->set('cache', $cache);
 
         return $this;
     }

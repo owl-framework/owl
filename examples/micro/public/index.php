@@ -9,7 +9,7 @@ $router->add('/', ['action' => '/']);
 $router->add('/user/{id:int}/', ['action' => 'view']);
 $router->add('/users', ['action' => 'users']);
 
-$serviceManager->setService('router', $router);
+$serviceManager->set('router', $router);
 
 $application = new \Owl\Application($serviceManager);
 $application->handle(\Owl\Http\Request::createFromGlobals(), new \Owl\Http\Response());
