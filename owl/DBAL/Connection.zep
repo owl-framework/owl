@@ -61,7 +61,7 @@ class Connection
 
 		for columnName, value in data {
 			if (isset(types[columnName])) {
-				if (types[columnName] == \Owl\DBAL\Driver\Pdo::PARAM_EXPRESSION) {
+				if (types[columnName] == Driver\Pdo::PARAM_EXPRESSION) {
 					let set[] = value;
 					unset data[columnName];
 				} else {
