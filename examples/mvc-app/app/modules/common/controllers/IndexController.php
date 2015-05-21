@@ -52,7 +52,7 @@ class IndexController extends \Owl\Mvc\Controller
     {
         return array(
             'message' => 'Not found',
-            'requestUri' => $this->request->getUri()
+            'uri' => $this->request->getUri()
         );
     }
 
