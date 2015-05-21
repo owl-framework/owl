@@ -12,12 +12,12 @@
 #include <Zend/zend_interfaces.h>
 
 #include "kernel/main.h"
+#include "kernel/memory.h"
+#include "kernel/fcall.h"
 #include "kernel/object.h"
 #include "ext/spl/spl_exceptions.h"
 #include "kernel/exception.h"
 #include "kernel/operators.h"
-#include "kernel/memory.h"
-#include "kernel/fcall.h"
 #include "kernel/array.h"
 #include "kernel/concat.h"
 
@@ -35,11 +35,13 @@ ZEPHIR_INIT_CLASS(Owl_Service_Manager) {
 
 PHP_METHOD(Owl_Service_Manager, setService) {
 
-	zval *name_param = NULL, *service;
+	int ZEPHIR_LAST_CALL_STATUS;
+	zend_bool _0;
+	zval *name_param = NULL, *definition, *_1, *_2 = NULL;
 	zval *name = NULL;
 
 	ZEPHIR_MM_GROW();
-	zephir_fetch_params(1, 2, 0, &name_param, &service);
+	zephir_fetch_params(1, 2, 0, &name_param, &definition);
 
 	if (unlikely(Z_TYPE_P(name_param) != IS_STRING && Z_TYPE_P(name_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'name' must be a string") TSRMLS_CC);
@@ -54,10 +56,18 @@ PHP_METHOD(Owl_Service_Manager, setService) {
 	}
 
 
-	if (Z_TYPE_P(service) == IS_OBJECT) {
-		zephir_update_property_array(this_ptr, SL("instances"), name, service TSRMLS_CC);
+	_0 = Z_TYPE_P(definition) == IS_OBJECT;
+	if (!(_0)) {
+		ZEPHIR_INIT_VAR(_1);
+		ZVAL_BOOL(_1, 1);
+		ZEPHIR_CALL_FUNCTION(&_2, "is_callable", NULL, 27, definition, _1);
+		zephir_check_call_status();
+		_0 = zephir_is_true(_2);
+	}
+	if (_0) {
+		zephir_update_property_array(this_ptr, SL("instances"), name, definition TSRMLS_CC);
 	} else {
-		zephir_update_property_array(this_ptr, SL("services"), name, service TSRMLS_CC);
+		zephir_update_property_array(this_ptr, SL("services"), name, definition TSRMLS_CC);
 	}
 	ZEPHIR_MM_RESTORE();
 

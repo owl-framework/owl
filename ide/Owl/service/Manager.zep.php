@@ -13,9 +13,9 @@ class Manager
 
     /**
      * @param string $name 
-     * @param mixed $service 
+     * @param mixed $definition 
      */
-    public function setService($name, $service) {}
+    public function setService($name, $definition) {}
 
     /**
      * @param string $name 

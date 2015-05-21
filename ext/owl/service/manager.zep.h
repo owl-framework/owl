@@ -12,7 +12,7 @@ PHP_METHOD(Owl_Service_Manager, __construct);
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_service_manager_setservice, 0, 0, 2)
 	ZEND_ARG_INFO(0, name)
-	ZEND_ARG_INFO(0, service)
+	ZEND_ARG_INFO(0, definition)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_service_manager_get, 0, 0, 1)
