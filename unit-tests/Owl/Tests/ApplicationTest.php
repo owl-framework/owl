@@ -18,7 +18,7 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
         $router = new Router();
         $router->add('/', ['controller' => 'Index', 'action' => 'index']);
 
-        $serviceManager->setService('router', $router);
+        $serviceManager->set('router', $router);
 
         return new Application($serviceManager, $eventManager);
     }
