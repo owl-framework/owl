@@ -165,7 +165,7 @@ PHP_METHOD(Owl_DBAL_Driver_PgSQL, connect) {
 	_3 = zephir_fetch_nproperty_this(this_ptr, SL("username"), PH_NOISY_CC);
 	_4 = zephir_fetch_nproperty_this(this_ptr, SL("password"), PH_NOISY_CC);
 	_5 = zephir_fetch_nproperty_this(this_ptr, SL("driverOptions"), PH_NOISY_CC);
-	ZEPHIR_CALL_METHOD(NULL, _1, "__construct", &_6, 7, _2, _3, _4, _5);
+	ZEPHIR_CALL_METHOD(NULL, _1, "__construct", &_6, 6, _2, _3, _4, _5);
 	zephir_check_call_status();
 	zephir_update_property_this(this_ptr, SL("connection"), _1 TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();

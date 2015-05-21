@@ -180,9 +180,8 @@ PHP_METHOD(Owl_Log_AbstractWriter, setOption) {
  */
 PHP_METHOD(Owl_Log_AbstractWriter, getOption) {
 
-	zephir_fcall_cache_entry *_3 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *option_param = NULL, *_0, *_1, *_4, *_5;
+	zval *option_param = NULL, *_0, *_1, *_3, *_4;
 	zval *option = NULL, *_2;
 
 	ZEPHIR_MM_GROW();
@@ -197,15 +196,15 @@ PHP_METHOD(Owl_Log_AbstractWriter, getOption) {
 		object_init_ex(_1, owl_log_exception_invalidwriterexception_ce);
 		ZEPHIR_INIT_VAR(_2);
 		ZEPHIR_CONCAT_SVS(_2, "Option ", option, " is not exists");
-		ZEPHIR_CALL_METHOD(NULL, _1, "__construct", &_3, 15, _2);
+		ZEPHIR_CALL_METHOD(NULL, _1, "__construct", NULL, 15, _2);
 		zephir_check_call_status();
 		zephir_throw_exception_debug(_1, "owl/Log/AbstractWriter.zep", 66 TSRMLS_CC);
 		ZEPHIR_MM_RESTORE();
 		return;
 	}
-	_4 = zephir_fetch_nproperty_this(this_ptr, SL("options"), PH_NOISY_CC);
-	zephir_array_fetch(&_5, _4, option, PH_NOISY | PH_READONLY, "owl/Log/AbstractWriter.zep", 68 TSRMLS_CC);
-	RETURN_CTOR(_5);
+	_3 = zephir_fetch_nproperty_this(this_ptr, SL("options"), PH_NOISY_CC);
+	zephir_array_fetch(&_4, _3, option, PH_NOISY | PH_READONLY, "owl/Log/AbstractWriter.zep", 68 TSRMLS_CC);
+	RETURN_CTOR(_4);
 
 }
 

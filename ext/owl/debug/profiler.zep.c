@@ -146,7 +146,7 @@ PHP_METHOD(Owl_Debug_Profiler, listen) {
 
 PHP_METHOD(Owl_Debug_Profiler, setContent) {
 
-	zephir_fcall_cache_entry *_0 = NULL, *_8 = NULL, *_20 = NULL;
+	zephir_fcall_cache_entry *_0 = NULL, *_8 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
 	long tmp;
 	zval *response, *html, *resp, *_1, *_2, *_3 = NULL, *_4, _5, _6 = zval_used_for_init, *_7 = NULL, *_9, *_10 = NULL, _11 = zval_used_for_init, *_12 = NULL, *_13, *_14 = NULL, *_15 = NULL, *_16 = NULL, *_17, *_18, *_19 = NULL;
@@ -158,7 +158,7 @@ PHP_METHOD(Owl_Debug_Profiler, setContent) {
 
 	ZEPHIR_INIT_VAR(resp);
 	object_init_ex(resp, owl_http_response_ce);
-	ZEPHIR_CALL_METHOD(NULL, resp, "__construct", &_0, 3);
+	ZEPHIR_CALL_METHOD(NULL, resp, "__construct", &_0, 2);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(html);
 	ZVAL_STRING(html, "<html><head>", 1);
@@ -175,18 +175,18 @@ PHP_METHOD(Owl_Debug_Profiler, setContent) {
 	sub_function(&_5, _3, _4 TSRMLS_CC);
 	ZEPHIR_SINIT_VAR(_6);
 	ZVAL_STRING(&_6, "%.4Fms", 0);
-	ZEPHIR_CALL_FUNCTION(&_7, "sprintf", &_8, 8, &_6, &_5);
+	ZEPHIR_CALL_FUNCTION(&_7, "sprintf", &_8, 7, &_6, &_5);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(_9);
 	ZEPHIR_CONCAT_SVS(_9, "<span class=\"label color-2\">", _7, "</span>");
 	zephir_concat_self(&html, _9 TSRMLS_CC);
-	ZEPHIR_CALL_FUNCTION(&_10, "memory_get_peak_usage", NULL, 9);
+	ZEPHIR_CALL_FUNCTION(&_10, "memory_get_peak_usage", NULL, 8);
 	zephir_check_call_status();
 	ZEPHIR_SINIT_NVAR(_6);
 	ZVAL_STRING(&_6, "%.3fMB", 0);
 	ZEPHIR_SINIT_VAR(_11);
 	ZVAL_DOUBLE(&_11, zephir_safe_div_double_long(zephir_safe_div_zval_long(_10, 1024 TSRMLS_CC), (double) (1024) TSRMLS_CC));
-	ZEPHIR_CALL_FUNCTION(&_12, "sprintf", &_8, 8, &_6, &_11);
+	ZEPHIR_CALL_FUNCTION(&_12, "sprintf", &_8, 7, &_6, &_11);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(_13);
 	ZEPHIR_CONCAT_SVS(_13, "<span class=\"label color-3\">", _12, "</span>");
@@ -228,7 +228,7 @@ PHP_METHOD(Owl_Debug_Profiler, setContent) {
 		zephir_concat_self(&html, _19 TSRMLS_CC);
 	}
 	zephir_concat_self_str(&html, SL("</body></html>") TSRMLS_CC);
-	ZEPHIR_CALL_METHOD(NULL, resp, "setcontent", &_20, 10, html);
+	ZEPHIR_CALL_METHOD(NULL, resp, "setcontent", NULL, 9, html);
 	zephir_check_call_status();
 	RETURN_CCTOR(resp);
 
