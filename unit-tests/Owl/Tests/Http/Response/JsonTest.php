@@ -7,21 +7,9 @@ namespace Owl\Tests\Http\Response;
 
 use Owl\Http\Response\Json;
 
-class JsonTest extends \PHPUnit_Framework_TestCase
+class JsonTest extends \Owl\Tests\Http\ResponseTest
 {
-    public function testSimple()
-    {
-        $response = new Json();
-        $this->assertSame(200, $response->getCode());
-
-        $response->setCode(404);
-        $this->assertSame(404, $response->getCode());
-
-        $response->setCode(500);
-        $this->assertSame(500, $response->getCode());
-    }
-
-    public function testContentJson()
+    public function testGetSetContent()
     {
         $response = new Json();
         $response->setContent(true);

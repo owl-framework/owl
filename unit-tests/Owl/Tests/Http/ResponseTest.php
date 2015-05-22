@@ -9,7 +9,7 @@ use Owl\Http\Response;
 
 class ResponseTest extends \PHPUnit_Framework_TestCase
 {
-    public function testSimple()
+    public function testGetSetCode()
     {
         $response = new Response();
         $this->assertSame(200, $response->getCode());
@@ -19,5 +19,17 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
 
         $response->setCode(500);
         $this->assertSame(500, $response->getCode());
+    }
+
+    public function testGetSetContent()
+    {
+        $response = new Response();
+        $this->assertSame("", $response->getContent());
+
+        $response->setContent("test");
+        $this->assertSame("test", $response->getContent());
+
+        $response->setContent("Hello World!");
+        $this->assertSame("Hello World!", $response->getContent());
     }
 }
