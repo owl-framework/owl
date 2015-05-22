@@ -33,7 +33,7 @@ class Response implements ResponseInterface
 	{
 		http_response_code(this->code);
 
-		echo this->content;
+		echo (string) this->content;
 
 		return true;
 	}

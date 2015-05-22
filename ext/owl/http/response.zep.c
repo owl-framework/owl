@@ -15,6 +15,7 @@
 #include "kernel/object.h"
 #include "kernel/memory.h"
 #include "kernel/fcall.h"
+#include "kernel/operators.h"
 
 
 ZEPHIR_INIT_CLASS(Owl_Http_Response) {
@@ -124,6 +125,7 @@ PHP_METHOD(Owl_Http_Response, __construct) {
 
 PHP_METHOD(Owl_Http_Response, send) {
 
+	zval *_2 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
 	zval *_0, *_1;
 
@@ -132,8 +134,10 @@ PHP_METHOD(Owl_Http_Response, send) {
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("code"), PH_NOISY_CC);
 	ZEPHIR_CALL_FUNCTION(NULL, "http_response_code", NULL, 14, _0);
 	zephir_check_call_status();
-	_1 = zephir_fetch_nproperty_this(this_ptr, SL("content"), PH_NOISY_CC);
-	zend_print_zval(_1, 0);
+	ZEPHIR_OBS_VAR(_1);
+	zephir_read_property_this(&_1, this_ptr, SL("content"), PH_NOISY_CC);
+	zephir_get_strval(_2, _1);
+	zend_print_zval(_2, 0);
 	RETURN_MM_BOOL(1);
 
 }
