@@ -6,14 +6,12 @@
 namespace RestApp\Api\Controller;
 
 use Exception;
-use Flame\Connection;
-use Flame\Grammar\MysqlGrammar;
 
 /**
- * Class UserController
+ * Class ProductController
  * @Path("/api/products")
  */
-class UserController extends \Owl\Mvc\Controller
+class ProductController extends \Owl\Mvc\Controller
 {
     /**
      * @Get
@@ -21,14 +19,7 @@ class UserController extends \Owl\Mvc\Controller
      */
     public function indexAction($id)
     {
-        $flame = new Connection('mysql:dbname=hello_world', 'user', 'password', [], new MysqlGrammar());
-        $stmt = $flame->prepare('SELECT * FROM users WHERE id = i:id)');
-        $users = $stmt->execute(['id' => $_POST['id']]);
-
-
-        return array(
-            'data' => $this->users[$id]
-        );
+        throw new Exception('Not implemented', 500);
     }
 
     /**
@@ -37,9 +28,6 @@ class UserController extends \Owl\Mvc\Controller
      */
     public function listAction()
     {
-        return array(
-            'data' => $this->users,
-            'total' => count($this->users)
-        );
+        throw new Exception('Not implemented', 500);
     }
 }
