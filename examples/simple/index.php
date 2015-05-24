@@ -3,11 +3,12 @@
  * @author Patsura Dmitry http://github.com/ovr <talk@dmtry.me>
  */
 
+
 use Owl\Application;
 use Owl\Http\Request;
 
 $serviceManager = new Owl\Service\Manager();
-$serviceManager->setService('router', new \Owl\Router\Router());
+$serviceManager->set('router', new \Owl\Router\Router());
 var_dump($serviceManager->getInstance('router'));
 
 $application = new Application($serviceManager);
