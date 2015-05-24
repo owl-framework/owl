@@ -67,8 +67,8 @@ class WriterTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($intervals, $commits);
     }
 
-    public function testSetOptions(){
-
+    public function testSetOptions()
+    {
         $options = [
             'option-1' => 'value-1',
             'option-2' => 'value-2',
@@ -80,8 +80,8 @@ class WriterTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($options, $writer->getOptions());
     }
 
-    public function testSetOption(){
-
+    public function testSetOption()
+    {
         $writer = new DevNull();
         $writer->setOption('option', 'value');
 
@@ -124,8 +124,8 @@ class WriterTest extends \PHPUnit_Framework_TestCase
         $writer->setFormatter("NonExistsFormatter");
     }
 
-    public function testGetNonExistsOption(){
-
+    public function testGetNonExistsOption()
+    {
         $option = "NonExistsOptions";
 
         $this->setExpectedException("Owl\\Log\\Exception\\InvalidWriterException", "Option " . $option . " is not exists");
@@ -133,5 +133,4 @@ class WriterTest extends \PHPUnit_Framework_TestCase
         $writer = new DevNull();
         $writer->getOption($option);
     }
-
 }
