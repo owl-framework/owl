@@ -133,7 +133,13 @@ class Application implements ApplicationInterface
 				let result = call_user_func_array([controller, action], callParameters);
 			}
 
-			response->setContent(result);
+			if (result instanceof ResponseInterface) {
+				let response = result;
+			} else {
+				response->setContent(result);
+			}
+
+			return response;
 		} catch \Exception, e {
 			response->setCode(500);
 
@@ -145,6 +151,8 @@ class Application implements ApplicationInterface
 				response
 			);
 		}
+
+		return response;
 	}
 
 	/**
@@ -172,10 +180,10 @@ class Application implements ApplicationInterface
 
 		if (matchedRoute) {
 			if (matchedRoute instanceof StaticRoute) {
-				this->dispatch(matchedRoute->parameters, null, response);
+				let response = this->dispatch(matchedRoute->parameters, null, response);
 
 			} else {
-				this->dispatch(matchedRoute->parameters, matchedRoute->uriParameters, response);
+				let response = this->dispatch(matchedRoute->parameters, matchedRoute->uriParameters, response);
 			}
 		} else {
 			response->setCode(404);

@@ -70,7 +70,7 @@ PHP_METHOD(Owl_Event_Manager, emit) {
 	ZEPHIR_OBS_VAR(events);
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("listeners"), PH_NOISY_CC);
 	if (zephir_array_isset_fetch(&events, _0, eventName, 0 TSRMLS_CC)) {
-		zephir_is_iterable(events, &_2, &_1, 0, 0, "owl/Event/Manager.zep", 25);
+		zephir_is_iterable(events, &_2, &_1, 0, 0, "owl/Event/Manager.zep", 28);
 		for (
 		  ; zephir_hash_get_current_data_ex(_2, (void**) &_3, &_1) == SUCCESS
 		  ; zephir_hash_move_forward_ex(_2, &_1)
