@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: ovr
- * Date: 09.05.15
- * Time: 20:55
+ * @author Patsura Dmitry http://github.com/ovr <talk@dmtry.me>
  */
 
 namespace RestApp;
