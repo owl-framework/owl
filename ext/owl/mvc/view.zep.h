@@ -20,5 +20,5 @@ ZEPHIR_INIT_FUNCS(owl_mvc_view_method_entry) {
 	PHP_ME(Owl_Mvc_View, getPath, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Mvc_View, setPath, arginfo_owl_mvc_view_setpath, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Mvc_View, render, arginfo_owl_mvc_view_render, ZEND_ACC_PUBLIC)
-  PHP_FE_END
+	PHP_FE_END
 };

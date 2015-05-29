@@ -11,5 +11,5 @@ ZEND_END_ARG_INFO()
 
 ZEPHIR_INIT_FUNCS(owl_dbal_platform_mysql_method_entry) {
 	PHP_ME(Owl_DBAL_Platform_MySQL, wrap, arginfo_owl_dbal_platform_mysql_wrap, ZEND_ACC_PUBLIC)
-  PHP_FE_END
+	PHP_FE_END
 };

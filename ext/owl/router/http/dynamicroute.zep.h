@@ -19,5 +19,5 @@ ZEPHIR_INIT_FUNCS(owl_router_http_dynamicroute_method_entry) {
 	PHP_ME(Owl_Router_Http_DynamicRoute, __construct, arginfo_owl_router_http_dynamicroute___construct, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
 	PHP_ME(Owl_Router_Http_DynamicRoute, getPattern, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Router_Http_DynamicRoute, match, arginfo_owl_router_http_dynamicroute_match, ZEND_ACC_PUBLIC)
-  PHP_FE_END
+	PHP_FE_END
 };

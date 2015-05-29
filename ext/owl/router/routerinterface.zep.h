@@ -15,5 +15,5 @@ ZEND_END_ARG_INFO()
 ZEPHIR_INIT_FUNCS(owl_router_routerinterface_method_entry) {
 	PHP_ABSTRACT_ME(Owl_Router_RouterInterface, matchRequest, arginfo_owl_router_routerinterface_matchrequest)
 	PHP_ABSTRACT_ME(Owl_Router_RouterInterface, match, arginfo_owl_router_routerinterface_match)
-  PHP_FE_END
+	PHP_FE_END
 };

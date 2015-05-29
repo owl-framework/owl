@@ -45,5 +45,5 @@ ZEPHIR_INIT_FUNCS(owl_service_manager_method_entry) {
 	PHP_ME(Owl_Service_Manager, getInstance, arginfo_owl_service_manager_getinstance, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Service_Manager, getService, arginfo_owl_service_manager_getservice, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Service_Manager, __construct, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
-  PHP_FE_END
+	PHP_FE_END
 };

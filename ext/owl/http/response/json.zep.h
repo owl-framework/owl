@@ -13,5 +13,5 @@ ZEND_END_ARG_INFO()
 ZEPHIR_INIT_FUNCS(owl_http_response_json_method_entry) {
 	PHP_ME(Owl_Http_Response_Json, __construct, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
 	PHP_ME(Owl_Http_Response_Json, setContent, arginfo_owl_http_response_json_setcontent, ZEND_ACC_PUBLIC)
-  PHP_FE_END
+	PHP_FE_END
 };

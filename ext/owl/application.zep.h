@@ -50,5 +50,5 @@ ZEPHIR_INIT_FUNCS(owl_application_method_entry) {
 	PHP_ME(Owl_Application, __construct, arginfo_owl_application___construct, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
 	PHP_ME(Owl_Application, dispatch, arginfo_owl_application_dispatch, ZEND_ACC_PROTECTED)
 	PHP_ME(Owl_Application, handle, arginfo_owl_application_handle, ZEND_ACC_PUBLIC)
-  PHP_FE_END
+	PHP_FE_END
 };

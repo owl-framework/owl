@@ -19,5 +19,5 @@ ZEPHIR_INIT_FUNCS(owl_console_application_method_entry) {
 	PHP_ME(Owl_Console_Application, getCommands, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Console_Application, addCommand, arginfo_owl_console_application_addcommand, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Console_Application, addCommands, arginfo_owl_console_application_addcommands, ZEND_ACC_PUBLIC)
-  PHP_FE_END
+	PHP_FE_END
 };

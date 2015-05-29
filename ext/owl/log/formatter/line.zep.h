@@ -11,5 +11,5 @@ ZEND_END_ARG_INFO()
 
 ZEPHIR_INIT_FUNCS(owl_log_formatter_line_method_entry) {
 	PHP_ME(Owl_Log_Formatter_Line, format, arginfo_owl_log_formatter_line_format, ZEND_ACC_PUBLIC)
-  PHP_FE_END
+	PHP_FE_END
 };

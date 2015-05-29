@@ -84,5 +84,5 @@ ZEPHIR_INIT_FUNCS(owl_log_abstractwriter_method_entry) {
 	PHP_ME(Owl_Log_AbstractWriter, push, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Log_AbstractWriter, write, arginfo_owl_log_abstractwriter_write, ZEND_ACC_PROTECTED)
 	PHP_ME(Owl_Log_AbstractWriter, __construct, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
-  PHP_FE_END
+	PHP_FE_END
 };

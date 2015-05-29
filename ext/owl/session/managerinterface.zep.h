@@ -12,5 +12,5 @@ ZEPHIR_INIT_FUNCS(owl_session_managerinterface_method_entry) {
 	PHP_ABSTRACT_ME(Owl_Session_ManagerInterface, getId, NULL)
 	PHP_ABSTRACT_ME(Owl_Session_ManagerInterface, rememberMe, arginfo_owl_session_managerinterface_rememberme)
 	PHP_ABSTRACT_ME(Owl_Session_ManagerInterface, forgetMe, NULL)
-  PHP_FE_END
+	PHP_FE_END
 };

@@ -82,7 +82,7 @@ PHP_METHOD(Owl_Event_Manager, emit) {
 				zephir_create_array(_5, 1, 0 TSRMLS_CC);
 				ZEPHIR_INIT_NVAR(_6);
 				object_init_ex(_6, owl_event_event_ce);
-				ZEPHIR_CALL_METHOD(NULL, _6, "__construct", &_7, 10, eventName, data);
+				ZEPHIR_CALL_METHOD(NULL, _6, "__construct", &_7, 11, eventName, data);
 				zephir_check_call_status();
 				zephir_array_fast_append(_5, _6);
 				ZEPHIR_CALL_USER_FUNC_ARRAY(_4, callback, _5);
@@ -90,7 +90,7 @@ PHP_METHOD(Owl_Event_Manager, emit) {
 			} else {
 				ZEPHIR_INIT_NVAR(_4);
 				object_init_ex(_4, owl_event_event_ce);
-				ZEPHIR_CALL_METHOD(NULL, _4, "__construct", &_7, 10, eventName, data);
+				ZEPHIR_CALL_METHOD(NULL, _4, "__construct", &_7, 11, eventName, data);
 				zephir_check_call_status();
 				ZEPHIR_CALL_ZVAL_FUNCTION(NULL, callback, NULL, 0, _4);
 				zephir_check_call_status();

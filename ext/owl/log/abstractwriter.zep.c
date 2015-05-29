@@ -196,7 +196,7 @@ PHP_METHOD(Owl_Log_AbstractWriter, getOption) {
 		object_init_ex(_1, owl_log_exception_invalidwriterexception_ce);
 		ZEPHIR_INIT_VAR(_2);
 		ZEPHIR_CONCAT_SVS(_2, "Option ", option, " is not exists");
-		ZEPHIR_CALL_METHOD(NULL, _1, "__construct", NULL, 15, _2);
+		ZEPHIR_CALL_METHOD(NULL, _1, "__construct", NULL, 16, _2);
 		zephir_check_call_status();
 		zephir_throw_exception_debug(_1, "owl/Log/AbstractWriter.zep", 66 TSRMLS_CC);
 		ZEPHIR_MM_RESTORE();
@@ -259,7 +259,7 @@ PHP_METHOD(Owl_Log_AbstractWriter, setFormatter) {
 	if (_0) {
 		ZEPHIR_SINIT_VAR(_1);
 		ZVAL_STRING(&_1, "\\Owl\\Log\\FormatterInterface", 0);
-		ZEPHIR_CALL_FUNCTION(&_2, "is_subclass_of", NULL, 16, formatter, &_1);
+		ZEPHIR_CALL_FUNCTION(&_2, "is_subclass_of", NULL, 17, formatter, &_1);
 		zephir_check_call_status();
 		_0 = zephir_is_true(_2);
 	}

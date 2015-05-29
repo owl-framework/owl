@@ -21,5 +21,5 @@ ZEPHIR_INIT_FUNCS(owl_event_manager_method_entry) {
 	PHP_ME(Owl_Event_Manager, listen, arginfo_owl_event_manager_listen, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Event_Manager, emit, arginfo_owl_event_manager_emit, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Event_Manager, __construct, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
-  PHP_FE_END
+	PHP_FE_END
 };

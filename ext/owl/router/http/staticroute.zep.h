@@ -17,5 +17,5 @@ ZEND_END_ARG_INFO()
 ZEPHIR_INIT_FUNCS(owl_router_http_staticroute_method_entry) {
 	PHP_ME(Owl_Router_Http_StaticRoute, __construct, arginfo_owl_router_http_staticroute___construct, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
 	PHP_ME(Owl_Router_Http_StaticRoute, match, arginfo_owl_router_http_staticroute_match, ZEND_ACC_PUBLIC)
-  PHP_FE_END
+	PHP_FE_END
 };

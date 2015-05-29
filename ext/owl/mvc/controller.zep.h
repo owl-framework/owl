@@ -19,5 +19,5 @@ ZEPHIR_INIT_FUNCS(owl_mvc_controller_method_entry) {
 	PHP_ME(Owl_Mvc_Controller, getResponse, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Mvc_Controller, getDi, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Mvc_Controller, __construct, arginfo_owl_mvc_controller___construct, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
-  PHP_FE_END
+	PHP_FE_END
 };

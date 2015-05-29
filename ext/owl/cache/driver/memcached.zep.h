@@ -43,5 +43,5 @@ ZEPHIR_INIT_FUNCS(owl_cache_driver_memcached_method_entry) {
 	PHP_ME(Owl_Cache_Driver_Memcached, delete, arginfo_owl_cache_driver_memcached_delete, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Cache_Driver_Memcached, get, arginfo_owl_cache_driver_memcached_get, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Cache_Driver_Memcached, flush, NULL, ZEND_ACC_PUBLIC)
-  PHP_FE_END
+	PHP_FE_END
 };

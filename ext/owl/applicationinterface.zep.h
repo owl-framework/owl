@@ -17,5 +17,5 @@ ZEND_END_ARG_INFO()
 ZEPHIR_INIT_FUNCS(owl_applicationinterface_method_entry) {
 	PHP_ABSTRACT_ME(Owl_ApplicationInterface, __construct, arginfo_owl_applicationinterface___construct)
 	PHP_ABSTRACT_ME(Owl_ApplicationInterface, handle, arginfo_owl_applicationinterface_handle)
-  PHP_FE_END
+	PHP_FE_END
 };

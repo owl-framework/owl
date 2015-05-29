@@ -33,5 +33,5 @@ ZEPHIR_INIT_FUNCS(owl_debug_profiler_method_entry) {
 	PHP_ME(Owl_Debug_Profiler, logEvent, arginfo_owl_debug_profiler_logevent, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Debug_Profiler, listen, arginfo_owl_debug_profiler_listen, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Debug_Profiler, setContent, arginfo_owl_debug_profiler_setcontent, ZEND_ACC_PUBLIC)
-  PHP_FE_END
+	PHP_FE_END
 };

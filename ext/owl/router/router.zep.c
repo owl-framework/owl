@@ -55,7 +55,6 @@ PHP_METHOD(Owl_Router_Router, setBasePath) {
 
 PHP_METHOD(Owl_Router_Router, add) {
 
-	zephir_fcall_cache_entry *_5 = NULL, *_6 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
 	zend_bool _2;
 	zval *parameters = NULL;
@@ -96,11 +95,11 @@ PHP_METHOD(Owl_Router_Router, add) {
 	ZEPHIR_INIT_VAR(route);
 	if (_2) {
 		object_init_ex(route, owl_router_http_staticroute_ce);
-		ZEPHIR_CALL_METHOD(NULL, route, "__construct", &_5, 25, uri);
+		ZEPHIR_CALL_METHOD(NULL, route, "__construct", NULL, 26, uri);
 		zephir_check_call_status();
 	} else {
 		object_init_ex(route, owl_router_http_dynamicroute_ce);
-		ZEPHIR_CALL_METHOD(NULL, route, "__construct", &_6, 26, uri);
+		ZEPHIR_CALL_METHOD(NULL, route, "__construct", NULL, 27, uri);
 		zephir_check_call_status();
 	}
 	zephir_update_property_zval(route, SL("method"), method TSRMLS_CC);

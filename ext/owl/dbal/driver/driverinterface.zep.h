@@ -12,5 +12,5 @@ ZEPHIR_INIT_FUNCS(owl_dbal_driver_driverinterface_method_entry) {
 	PHP_ABSTRACT_ME(Owl_DBAL_Driver_DriverInterface, getNewPlatform, NULL)
 	PHP_ABSTRACT_ME(Owl_DBAL_Driver_DriverInterface, lastInsertId, NULL)
 	PHP_ABSTRACT_ME(Owl_DBAL_Driver_DriverInterface, prepare, arginfo_owl_dbal_driver_driverinterface_prepare)
-  PHP_FE_END
+	PHP_FE_END
 };

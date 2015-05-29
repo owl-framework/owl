@@ -265,11 +265,10 @@ PHP_METHOD(Owl_Log_Logger, commit) {
  */
 PHP_METHOD(Owl_Log_Logger, log) {
 
-	zephir_fcall_cache_entry *_2 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
 	zval *context = NULL;
 	zval *message = NULL;
-	zval *level, *message_param = NULL, *context_param = NULL, *_0, *_1, *_3, *_4;
+	zval *level, *message_param = NULL, *context_param = NULL, *_0, *_1, *_2, *_3;
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 2, 1, &level, &message_param, &context_param);
@@ -287,12 +286,12 @@ PHP_METHOD(Owl_Log_Logger, log) {
 	object_init_ex(_0, owl_log_record_ce);
 	ZEPHIR_INIT_VAR(_1);
 	zephir_microtime(_1, ZEPHIR_GLOBAL(global_true) TSRMLS_CC);
-	ZEPHIR_CALL_METHOD(NULL, _0, "__construct", &_2, 19, level, _1, message, context);
+	ZEPHIR_CALL_METHOD(NULL, _0, "__construct", NULL, 20, level, _1, message, context);
 	zephir_check_call_status();
 	zephir_update_property_array_append(this_ptr, SL("records"), _0 TSRMLS_CC);
-	_3 = zephir_fetch_nproperty_this(this_ptr, SL("records"), PH_NOISY_CC);
-	_4 = zephir_fetch_nproperty_this(this_ptr, SL("recordsInterval"), PH_NOISY_CC);
-	if (ZEPHIR_LE_LONG(_4, zephir_fast_count_int(_3 TSRMLS_CC))) {
+	_2 = zephir_fetch_nproperty_this(this_ptr, SL("records"), PH_NOISY_CC);
+	_3 = zephir_fetch_nproperty_this(this_ptr, SL("recordsInterval"), PH_NOISY_CC);
+	if (ZEPHIR_LE_LONG(_3, zephir_fast_count_int(_2 TSRMLS_CC))) {
 		ZEPHIR_CALL_METHOD(NULL, this_ptr, "commit", NULL, 0);
 		zephir_check_call_status();
 	}

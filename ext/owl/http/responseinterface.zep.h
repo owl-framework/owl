@@ -12,5 +12,5 @@ ZEPHIR_INIT_FUNCS(owl_http_responseinterface_method_entry) {
 	PHP_ABSTRACT_ME(Owl_Http_ResponseInterface, getContent, NULL)
 	PHP_ABSTRACT_ME(Owl_Http_ResponseInterface, setCode, arginfo_owl_http_responseinterface_setcode)
 	PHP_ABSTRACT_ME(Owl_Http_ResponseInterface, getCode, NULL)
-  PHP_FE_END
+	PHP_FE_END
 };

@@ -33,5 +33,5 @@ ZEPHIR_INIT_FUNCS(owl_std_arraybag_method_entry) {
 	PHP_ME(Owl_Std_ArrayBag, set, arginfo_owl_std_arraybag_set, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Std_ArrayBag, has, arginfo_owl_std_arraybag_has, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Std_ArrayBag, get, arginfo_owl_std_arraybag_get, ZEND_ACC_PUBLIC)
-  PHP_FE_END
+	PHP_FE_END
 };

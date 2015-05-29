@@ -28,5 +28,5 @@ ZEPHIR_INIT_FUNCS(owl_cache_driver_method_entry) {
 	PHP_ABSTRACT_ME(Owl_Cache_Driver, get, arginfo_owl_cache_driver_get)
 	PHP_ABSTRACT_ME(Owl_Cache_Driver, exists, arginfo_owl_cache_driver_exists)
 	PHP_ABSTRACT_ME(Owl_Cache_Driver, flush, NULL)
-  PHP_FE_END
+	PHP_FE_END
 };

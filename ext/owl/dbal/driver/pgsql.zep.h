@@ -42,5 +42,5 @@ ZEPHIR_INIT_FUNCS(owl_dbal_driver_pgsql_method_entry) {
 	PHP_ME(Owl_DBAL_Driver_PgSQL, getNewPlatform, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_DBAL_Driver_PgSQL, lastInsertId, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_DBAL_Driver_PgSQL, prepare, arginfo_owl_dbal_driver_pgsql_prepare, ZEND_ACC_PUBLIC)
-  PHP_FE_END
+	PHP_FE_END
 };

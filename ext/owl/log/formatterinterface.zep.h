@@ -9,5 +9,5 @@ ZEND_END_ARG_INFO()
 
 ZEPHIR_INIT_FUNCS(owl_log_formatterinterface_method_entry) {
 	PHP_ABSTRACT_ME(Owl_Log_FormatterInterface, format, arginfo_owl_log_formatterinterface_format)
-  PHP_FE_END
+	PHP_FE_END
 };

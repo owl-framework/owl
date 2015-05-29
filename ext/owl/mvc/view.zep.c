@@ -100,7 +100,7 @@ PHP_METHOD(Owl_Mvc_View, render) {
 		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(zend_exception_get_default(TSRMLS_C), "File is not exists", "owl/Mvc/View.zep", 19);
 		return;
 	}
-	ZEPHIR_CALL_FUNCTION(NULL, "ob_start", NULL, 22);
+	ZEPHIR_CALL_FUNCTION(NULL, "ob_start", NULL, 23);
 	zephir_check_call_status();
 	_2 = zephir_fetch_nproperty_this(this_ptr, SL("path"), PH_NOISY_CC);
 	ZEPHIR_INIT_VAR(_3);
@@ -108,9 +108,9 @@ PHP_METHOD(Owl_Mvc_View, render) {
 	if (zephir_require_zval(_3 TSRMLS_CC) == FAILURE) {
 		RETURN_MM_NULL();
 	}
-	ZEPHIR_CALL_FUNCTION(&tmp, "ob_get_contents", NULL, 23);
+	ZEPHIR_CALL_FUNCTION(&tmp, "ob_get_contents", NULL, 24);
 	zephir_check_call_status();
-	ZEPHIR_CALL_FUNCTION(NULL, "ob_end_clean", NULL, 24);
+	ZEPHIR_CALL_FUNCTION(NULL, "ob_end_clean", NULL, 25);
 	zephir_check_call_status();
 	RETURN_CCTOR(tmp);
 

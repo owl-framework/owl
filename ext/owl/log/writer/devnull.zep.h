@@ -11,5 +11,5 @@ ZEND_END_ARG_INFO()
 
 ZEPHIR_INIT_FUNCS(owl_log_writer_devnull_method_entry) {
 	PHP_ME(Owl_Log_Writer_DevNull, write, arginfo_owl_log_writer_devnull_write, ZEND_ACC_PUBLIC)
-  PHP_FE_END
+	PHP_FE_END
 };

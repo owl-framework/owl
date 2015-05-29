@@ -47,5 +47,5 @@ ZEPHIR_INIT_FUNCS(owl_log_logger_method_entry) {
 	PHP_ME(Owl_Log_Logger, getWriter, arginfo_owl_log_logger_getwriter, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Log_Logger, commit, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Log_Logger, log, arginfo_owl_log_logger_log, ZEND_ACC_PUBLIC)
-  PHP_FE_END
+	PHP_FE_END
 };

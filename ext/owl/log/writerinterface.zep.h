@@ -39,5 +39,5 @@ ZEPHIR_INIT_FUNCS(owl_log_writerinterface_method_entry) {
 	PHP_ABSTRACT_ME(Owl_Log_WriterInterface, getLevels, NULL)
 	PHP_ABSTRACT_ME(Owl_Log_WriterInterface, commit, arginfo_owl_log_writerinterface_commit)
 	PHP_ABSTRACT_ME(Owl_Log_WriterInterface, push, NULL)
-  PHP_FE_END
+	PHP_FE_END
 };

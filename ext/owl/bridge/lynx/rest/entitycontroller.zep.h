@@ -11,5 +11,5 @@ ZEPHIR_INIT_FUNCS(owl_bridge_lynx_rest_entitycontroller_method_entry) {
 	PHP_ME(Owl_Bridge_Lynx_Rest_EntityController, getAction, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Bridge_Lynx_Rest_EntityController, deleteAction, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Bridge_Lynx_Rest_EntityController, createAction, NULL, ZEND_ACC_PUBLIC)
-  PHP_FE_END
+	PHP_FE_END
 };

@@ -56,5 +56,5 @@ ZEPHIR_INIT_FUNCS(owl_dbal_connection_method_entry) {
 	PHP_ME(Owl_DBAL_Connection, deleteByColumn, arginfo_owl_dbal_connection_deletebycolumn, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_DBAL_Connection, delete, arginfo_owl_dbal_connection_delete, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_DBAL_Connection, prepare, arginfo_owl_dbal_connection_prepare, ZEND_ACC_PUBLIC)
-  PHP_FE_END
+	PHP_FE_END
 };
