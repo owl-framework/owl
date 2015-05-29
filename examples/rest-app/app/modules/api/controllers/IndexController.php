@@ -20,47 +20,14 @@ class IndexController extends \Owl\Mvc\Controller
      */
     public function indexAction()
     {
-//        /** @var \Owl\Cache\Driver $cache */
-//        $cache = $this->di->get('cache');
-//
-//        return $cache->get('users');
-//
-        /** @var \Owl\DBAL\Connection $connection */
-        $connection = $this->di->get('connection');
-
-//        var_dump($_SERVER);
-        var_dump($this->request->getServer('HTTP_USER_AGENT'));
-        var_dump($this->request->getServer('HTTP_ACCEPT_LANGUAGE'));
-        var_dump($this->request->getServer('REQUEST_TIME'));
-        var_dump($this->request->getServer('SERVER_PROTOCOL'));
-        var_dump($this->request->getServer('REMOTE_ADDR'));
-
-//        $connection->insert('views', [
-//            'HTTP_USER_AGENT' =
-//        ]);
-
-
-//        $statement = $connection->prepare("SELECT * FROM `phalcon-module-skeleton`.User__Users;");
-//        $statement->execute();
-//
-//
-//        $cache->save('users', $statement->fetchAll(), 3600);
-//
-//        return $statement->fetchAll();
-
-
-        $response = new \Owl\Http\Response();
-        $response->setContent('html encode');
-
-        return $response;
-//        return array(
-//            'info' => array(
-//                'php' => array(
-//                    'version' => PHP_VERSION
-//                ),
-//                'time' => time()
-//            )
-//        );
+        return array(
+            'info' => array(
+                'php' => array(
+                    'version' => PHP_VERSION
+                ),
+                'time' => time()
+            )
+        );
     }
 
     /**
