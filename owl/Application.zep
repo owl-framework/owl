@@ -133,7 +133,7 @@ class Application implements ApplicationInterface
 				let result = call_user_func_array([controller, action], callParameters);
 			}
 
-			if (result instanceof ResponseInterface) {
+			if (typeof result == "object" && result instanceof ResponseInterface) {
 				let response = result;
 			} else {
 				response->setContent(result);

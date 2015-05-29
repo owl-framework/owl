@@ -222,6 +222,7 @@ PHP_METHOD(Owl_Application, __construct) {
  */
 PHP_METHOD(Owl_Application, dispatch) {
 
+	zend_bool _13;
 	zval *_12 = NULL;
 	zend_class_entry *_5;
 	int ZEPHIR_LAST_CALL_STATUS;
@@ -324,7 +325,11 @@ PHP_METHOD(Owl_Application, dispatch) {
 			ZEPHIR_CALL_USER_FUNC_ARRAY(result, _12, callParameters);
 			zephir_check_call_status_or_jump(try_end_1);
 		}
-		if (zephir_instance_of_ev(result, owl_http_responseinterface_ce TSRMLS_CC)) {
+		_13 = Z_TYPE_P(result) == IS_OBJECT;
+		if (_13) {
+			_13 = zephir_instance_of_ev(result, owl_http_responseinterface_ce TSRMLS_CC);
+		}
+		if (_13) {
 			ZEPHIR_CPY_WRT(response, result);
 		} else {
 			ZEPHIR_CALL_METHOD(NULL, response, "setcontent", NULL, 0, result);
