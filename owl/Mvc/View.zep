@@ -1,6 +1,8 @@
 
 namespace Owl\Mvc;
 
+use Owl\Exception;
+
 class View
 {
 	/**
@@ -16,7 +18,7 @@ class View
 	public function render(string! path, array parameters = null) -> string|boolean
 	{
 		if !file_exists(this->path . path) {
-			throw new \Exception("File is not exists");
+			throw new Exception("File is not exists");
 		}
 
 		ob_start();

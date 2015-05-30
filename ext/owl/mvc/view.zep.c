@@ -97,7 +97,7 @@ PHP_METHOD(Owl_Mvc_View, render) {
 	ZEPHIR_INIT_VAR(_1);
 	ZEPHIR_CONCAT_VV(_1, _0, path);
 	if (!((zephir_file_exists(_1 TSRMLS_CC) == SUCCESS))) {
-		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(zend_exception_get_default(TSRMLS_C), "File is not exists", "owl/Mvc/View.zep", 19);
+		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(owl_exception_ce, "File is not exists", "owl/Mvc/View.zep", 21);
 		return;
 	}
 	ZEPHIR_CALL_FUNCTION(NULL, "ob_start", NULL, 23);
