@@ -32,8 +32,8 @@ class Application implements ApplicationInterface
 	 * @var string
 	 */
 	protected env {
-    get
-  };
+		get
+	};
 
 	/**
 	 * Count for dispatches
