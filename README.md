@@ -80,9 +80,9 @@ To build the zep Source to C extension:
 - Event
 - Log
 - Session
-- Mvc
+- MVC
     * Controller
-- Http
+- HTTP
     * Request
     * Response
 - Application
