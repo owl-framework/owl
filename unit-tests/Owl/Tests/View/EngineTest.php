@@ -19,4 +19,12 @@ class EngineTest extends TestCase
 
         $this->assertSame("Hello, World!\n", $view->render('static.phtml'));
     }
+
+    public function testDynamic()
+    {
+        $view = new \Owl\Mvc\View();
+        $view->setPath(__DIR__ . '/../../app/resources/views/');
+
+        $this->assertSame("Hello, Dmitry @ovr!\n", $view->render('dynamic.phtml', ['username' => 'Dmitry @ovr']));
+    }
 }
