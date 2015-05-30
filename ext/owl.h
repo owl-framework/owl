@@ -65,5 +65,7 @@
 #include "owl/service/manager.zep.h"
 #include "owl/session/managerinterface.zep.h"
 #include "owl/std/arraybag.zep.h"
+#include "owl/std/collection/abstractcollection.zep.h"
+#include "owl/std/collection/arraycollection.zep.h"
 
 #endif

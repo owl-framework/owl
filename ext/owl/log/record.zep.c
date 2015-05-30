@@ -73,7 +73,7 @@ PHP_METHOD(Owl_Log_Record, interpolate) {
 	if (zephir_fast_count_int(context TSRMLS_CC) > 0) {
 		ZEPHIR_INIT_VAR(replace);
 		array_init(replace);
-		zephir_is_iterable(context, &_1, &_0, 0, 0, "owl/Log/Record.zep", 34);
+		zephir_is_iterable(context, &_1, &_0, 0, 0, "owl/Log/Record.zep", 35);
 		for (
 		  ; zephir_hash_get_current_data_ex(_1, (void**) &_2, &_0) == SUCCESS
 		  ; zephir_hash_move_forward_ex(_1, &_0)
