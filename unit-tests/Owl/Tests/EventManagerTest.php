@@ -41,9 +41,12 @@ class EventManagerTest extends \PHPUnit_Framework_TestCase
         $em->listen('test', [$this, 'simpleListen']);
 
         $em->emit('test');
+        $this->assertSame(1, $this->runs);
+        
         $em->emit('test');
+        $this->assertSame(1, $this->runs);
+        
         $em->emit('test');
-
         $this->assertSame(3, $this->runs);
     }
 }
