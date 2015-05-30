@@ -68,7 +68,7 @@ PHP_METHOD(Owl_Mvc_View, render) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
 	zval *parameters = NULL;
-	zval *path_param = NULL, *parameters_param = NULL, *_0, *_1, *_2, *_3, *tmp = NULL;
+	zval *path_param = NULL, *parameters_param = NULL, *_0, *_1, *_2, *_3, *_4, *tmp = NULL;
 	zval *path = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -102,15 +102,23 @@ PHP_METHOD(Owl_Mvc_View, render) {
 	}
 	ZEPHIR_CALL_FUNCTION(NULL, "ob_start", NULL, 23);
 	zephir_check_call_status();
-	_2 = zephir_fetch_nproperty_this(this_ptr, SL("path"), PH_NOISY_CC);
-	ZEPHIR_INIT_VAR(_3);
-	ZEPHIR_CONCAT_VV(_3, _2, path);
-	if (zephir_require_zval(_3 TSRMLS_CC) == FAILURE) {
+	if (!(Z_TYPE_P(parameters) == IS_NULL)) {
+		ZEPHIR_INIT_VAR(_2);
+		ZVAL_LONG(_2, 0);
+		Z_SET_ISREF_P(parameters);
+		ZEPHIR_CALL_FUNCTION(NULL, "extract", NULL, 24, parameters, _2);
+		Z_UNSET_ISREF_P(parameters);
+		zephir_check_call_status();
+	}
+	_3 = zephir_fetch_nproperty_this(this_ptr, SL("path"), PH_NOISY_CC);
+	ZEPHIR_INIT_VAR(_4);
+	ZEPHIR_CONCAT_VV(_4, _3, path);
+	if (zephir_require_zval(_4 TSRMLS_CC) == FAILURE) {
 		RETURN_MM_NULL();
 	}
-	ZEPHIR_CALL_FUNCTION(&tmp, "ob_get_contents", NULL, 24);
+	ZEPHIR_CALL_FUNCTION(&tmp, "ob_get_contents", NULL, 25);
 	zephir_check_call_status();
-	ZEPHIR_CALL_FUNCTION(NULL, "ob_end_clean", NULL, 25);
+	ZEPHIR_CALL_FUNCTION(NULL, "ob_end_clean", NULL, 26);
 	zephir_check_call_status();
 	RETURN_CCTOR(tmp);
 

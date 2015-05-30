@@ -21,6 +21,10 @@ class View
 
 		ob_start();
 
+		if !is_null(parameters) {
+			extract(parameters, EXTR_OVERWRITE);
+		}
+
 		require this->path . path;
 
 		var tmp;
