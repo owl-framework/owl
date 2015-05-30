@@ -8,7 +8,7 @@ use Owl\Http\Response;
 use Owl\Http\ResponseInterface;
 use Owl\Router\Http\StaticRoute;
 
-class Application implements ApplicationInterface
+class Application implements ApplicationInterface, DispatcherInterface
 {
 	/**
 	 * Latest Request
@@ -87,7 +87,7 @@ class Application implements ApplicationInterface
 	/**
 	 * Dispatch the action
 	 */
-	inline protected fn dispatch(var parameters, var callParameters = null, var response)
+	inline public fn dispatch(var parameters, var callParameters = null, var response)
 	{
 		var handlerClass, controller, result, action, e, module;
 

@@ -17,4 +17,11 @@ interface DispatcherInterface
     const EVENT_AFTER_INIT = "dispatch:afterInitialize";
 
 
+    /**
+     * @param mixed $parameters 
+     * @param mixed $callParameters 
+     * @param mixed $response 
+     */
+    public function dispatch($parameters, $callParameters = null, $response);
+
 }

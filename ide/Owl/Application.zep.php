@@ -2,7 +2,7 @@
 
 namespace Owl;
 
-class Application implements \Owl\ApplicationInterface
+class Application implements \Owl\ApplicationInterface, \Owl\DispatcherInterface
 {
     /**
      * Latest Request
@@ -109,7 +109,7 @@ class Application implements \Owl\ApplicationInterface
      * @param mixed $callParameters 
      * @param mixed $response 
      */
-    protected function dispatch($parameters, $callParameters = null, $response) {}
+    public function dispatch($parameters, $callParameters = null, $response) {}
 
     /**
      * Handle Http Request

@@ -14,7 +14,7 @@
 
 ZEPHIR_INIT_CLASS(Owl_DispatcherInterface) {
 
-	ZEPHIR_REGISTER_INTERFACE(Owl, DispatcherInterface, owl, dispatcherinterface, NULL);
+	ZEPHIR_REGISTER_INTERFACE(Owl, DispatcherInterface, owl, dispatcherinterface, owl_dispatcherinterface_method_entry);
 
 	zend_declare_class_constant_string(owl_dispatcherinterface_ce, SL("EVENT_ROUTER_BEFORE_EXECUTE"), "dispatch:beforeExecuteRoute" TSRMLS_CC);
 
@@ -27,4 +27,6 @@ ZEPHIR_INIT_CLASS(Owl_DispatcherInterface) {
 	return SUCCESS;
 
 }
+
+ZEPHIR_DOC_METHOD(Owl_DispatcherInterface, dispatch);
 

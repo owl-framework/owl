@@ -68,6 +68,7 @@ ZEPHIR_INIT_CLASS(Owl_Application) {
 	zend_declare_property_null(owl_application_ce, SL("errorHandlerParameters"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
 	zend_class_implements(owl_application_ce TSRMLS_CC, 1, owl_applicationinterface_ce);
+	zend_class_implements(owl_application_ce TSRMLS_CC, 1, owl_dispatcherinterface_ce);
 	return SUCCESS;
 
 }
