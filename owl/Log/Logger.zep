@@ -30,111 +30,111 @@ use Owl\Log\Exception\InvalidWriterException;
  */
 class Logger extends AbstractLogger implements LoggerInterface
 {
-    /**
-     * Array of <Record> elements
-     */
-    protected records = [] {
-        get
-    };
+	/**
+	 * Array of <Record> elements
+	 */
+	protected records = [] {
+		get
+	};
 
-    /**
-     * Records limit to commit them to writers
-     */
-    protected recordsInterval = 1000 {
-        get, set
-    };
+	/**
+	 * Records limit to commit them to writers
+	 */
+	protected recordsInterval = 1000 {
+		get, set
+	};
 
-    /**
-     * Log writers
-     */
-    protected writers = [] {
-        get
-    };
+	/**
+	 * Log writers
+	 */
+	protected writers = [] {
+		get
+	};
 
-    public function __construct(array writers = [])
-    {
-        var writerName, writerDescription;
+	public function __construct(array writers = [])
+	{
+		var writerName, writerDescription;
 
-        for writerName, writerDescription in writers {
-            let this->writers[writerName] = this->factoryWriter(writerDescription);
-        }
-    }
+		for writerName, writerDescription in writers {
+			let this->writers[writerName] = this->factoryWriter(writerDescription);
+		}
+	}
 
-    public function __destruct()
-    {
-        if (count(this->records) > 0 ) {
-            this->commit();
-        }
-    }
+	public function __destruct()
+	{
+		if (count(this->records) > 0 ) {
+			this->commit();
+		}
+	}
 
-    /**
-     * Create writer
-     */
-    protected function factoryWriter(array writerDescription = []) -> <WriterInterface> {
+	/**
+	 * Create writer
+	 */
+	protected function factoryWriter(array writerDescription = []) -> <WriterInterface> {
 
-        var writer, writerClass;
+		var writer, writerClass;
 
-        if !isset(writerDescription["class"]) {
-            throw new InvalidWriterException("Writer options 'class' is not exists");
-        }
+		if !isset(writerDescription["class"]) {
+			throw new InvalidWriterException("Writer options 'class' is not exists");
+		}
 
-        if !class_exists(writerDescription["class"]) {
-            throw new InvalidWriterException("Writer class is not exists");
-        }
+		if !class_exists(writerDescription["class"]) {
+			throw new InvalidWriterException("Writer class is not exists");
+		}
 
-        let writerClass = writerDescription["class"];
-        let writer = new {writerClass}();
+		let writerClass = writerDescription["class"];
+		let writer = new {writerClass}();
 
-        if isset( writerDescription["levels"] ) {
-            writer->setLevels( writerDescription["levels"] );
-        }
+		if isset( writerDescription["levels"] ) {
+			writer->setLevels( writerDescription["levels"] );
+		}
 
-        if isset( writerDescription["options"] ) {
-            writer->setOptions( writerDescription["options"] );
-        }
+		if isset( writerDescription["options"] ) {
+			writer->setOptions( writerDescription["options"] );
+		}
 
-        if isset( writerDescription["formatter"] ) {
-            writer->setFormatter( writerDescription["formatter"] );
-        }
+		if isset( writerDescription["formatter"] ) {
+			writer->setFormatter( writerDescription["formatter"] );
+		}
 
-        return writer;
-    }
+		return writer;
+	}
 
-    /**
-     * Get writer
-     */
-    public function getWriter(string name) -> <WriterInterface> | boolean
-    {
-        if isset(this->writers[name]) {
-            return this->writers[name];
-        }
+	/**
+	 * Get writer
+	 */
+	public function getWriter(string name) -> <WriterInterface> | boolean
+	{
+		if isset(this->writers[name]) {
+			return this->writers[name];
+		}
 
-        return false;
-    }
+		return false;
+	}
 
-    /**
-     * Commit records
-     */
-    public function commit()
-    {
-        var writer;
+	/**
+	 * Commit records
+	 */
+	public function commit()
+	{
+		var writer;
 
-        for writer in this->writers {
-            writer->commit(this->records);
-        }
+		for writer in this->writers {
+			writer->commit(this->records);
+		}
 
-        let this->records = [];
-    }
+		let this->records = [];
+	}
 
-    /**
-     * @inheritdoc
-     */
-    public function log(var level, string message, array context = [])
-    {
-        let this->records[] = new Record(level, microtime(true), message, context);
+	/**
+	 * @inheritdoc
+	 */
+	public function log(var level, string message, array context = [])
+	{
+		let this->records[] = new Record(level, microtime(true), message, context);
 
-        if (count(this->records) >= this->recordsInterval) {
-            this->commit();
-        }
-    }
+		if (count(this->records) >= this->recordsInterval) {
+			this->commit();
+		}
+	}
 }
