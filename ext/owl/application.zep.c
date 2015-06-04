@@ -318,11 +318,11 @@ PHP_METHOD(Owl_Application, dispatch) {
 			ZEPHIR_CALL_METHOD_ZVAL(&result, controller, action,  NULL, 0);
 			zephir_check_call_status_or_jump(try_end_1);
 		} else {
-			ZEPHIR_INIT_NVAR(result);
 			ZEPHIR_INIT_VAR(_12);
 			zephir_create_array(_12, 2, 0 TSRMLS_CC);
 			zephir_array_fast_append(_12, controller);
 			zephir_array_fast_append(_12, action);
+			ZEPHIR_INIT_NVAR(result);
 			ZEPHIR_CALL_USER_FUNC_ARRAY(result, _12, callParameters);
 			zephir_check_call_status_or_jump(try_end_1);
 		}
