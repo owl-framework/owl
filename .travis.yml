@@ -49,6 +49,7 @@ script:
   - (cd examples/mvc-app; composer install; php public/index.php)
   - vendor/bin/phpcs --standard=PSR2 --report=emacs --extensions=php --warning-severity=0 --ignore=autoload_real.php unit-tests/ examples/
   - valgrind --read-var-info=yes --error-exitcode=1 --fullpath-after= --track-origins=yes --leak-check=full phpunit -v --debug --configuration tests/travis/$DB.travis.xml
+  - vendor/bin/codecept run
 
 after_failure:
   - sudo apt-get -qq install gdb
