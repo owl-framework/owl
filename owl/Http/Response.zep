@@ -41,4 +41,20 @@ class Response implements ResponseInterface
 
 		return true;
 	}
+
+	/**
+	 * Check whether status is OK
+	 */
+	public function isOk() -> boolean
+	{
+		return this->code == 200;
+	}
+
+	/**
+	 * Check whether status is Server Error
+	 */
+	public function isServerError() -> boolean
+	{
+		return this->code >= 500 && this->code < 600;
+	}
 }

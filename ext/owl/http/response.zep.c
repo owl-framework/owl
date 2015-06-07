@@ -151,3 +151,35 @@ PHP_METHOD(Owl_Http_Response, send) {
 
 }
 
+/**
+ * Check whether status is OK
+ */
+PHP_METHOD(Owl_Http_Response, isOk) {
+
+	zval *_0;
+
+
+	_0 = zephir_fetch_nproperty_this(this_ptr, SL("code"), PH_NOISY_CC);
+	RETURN_BOOL(ZEPHIR_IS_LONG(_0, 200));
+
+}
+
+/**
+ * Check whether status is Server Error
+ */
+PHP_METHOD(Owl_Http_Response, isServerError) {
+
+	zend_bool _1;
+	zval *_0, *_2;
+
+
+	_0 = zephir_fetch_nproperty_this(this_ptr, SL("code"), PH_NOISY_CC);
+	_1 = ZEPHIR_GE_LONG(_0, 500);
+	if (_1) {
+		_2 = zephir_fetch_nproperty_this(this_ptr, SL("code"), PH_NOISY_CC);
+		_1 = ZEPHIR_LT_LONG(_2, 600);
+	}
+	RETURN_BOOL(_1);
+
+}
+

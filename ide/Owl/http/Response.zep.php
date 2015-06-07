@@ -59,4 +59,18 @@ class Response implements \Owl\Http\ResponseInterface
      */
     public function send() {}
 
+    /**
+     * Check whether status is OK
+     *
+     * @return bool 
+     */
+    public function isOk() {}
+
+    /**
+     * Check whether status is Server Error
+     *
+     * @return bool 
+     */
+    public function isServerError() {}
+
 }
