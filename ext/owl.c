@@ -250,6 +250,7 @@ static PHP_MINFO_FUNCTION(owl)
 	php_info_print_table_header(2, PHP_OWL_NAME, "enabled");
 	php_info_print_table_row(2, "Author", PHP_OWL_AUTHOR);
 	php_info_print_table_row(2, "Version", PHP_OWL_VERSION);
+	php_info_print_table_row(2, "Build Date", __DATE__ " " __TIME__ );
 	php_info_print_table_row(2, "Powered by Zephir", "Version " PHP_OWL_ZEPVERSION);
 	php_info_print_table_end();
 
