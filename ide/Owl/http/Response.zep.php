@@ -43,6 +43,9 @@ class Response implements \Owl\Http\ResponseInterface
      */
     public function setContent($content) {}
 
+
+    public function __toString() {}
+
     /**
      * @return \Owl\Std\ArrayBag 
      */

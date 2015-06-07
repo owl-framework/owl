@@ -95,6 +95,16 @@ PHP_METHOD(Owl_Http_Response, setContent) {
 }
 
 /**
+ * @var string
+ */
+PHP_METHOD(Owl_Http_Response, __toString) {
+
+
+	RETURN_MEMBER(this_ptr, "content");
+
+}
+
+/**
  * @var \Owl\Std\ArrayBag
  */
 PHP_METHOD(Owl_Http_Response, getHeaders) {

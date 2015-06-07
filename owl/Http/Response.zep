@@ -10,13 +10,15 @@ class Response implements ResponseInterface
 	/**
 	 * @var int
 	 */
-	protected code = Response::STATUS_CODE_OK {get, set};
+	protected code = Response::STATUS_CODE_OK {
+		get, set
+	};
 
 	/**
 	 * @var string
 	 */
 	protected content = "" {
-		get, set
+		get, set, toString
 	};
 
 	/**
