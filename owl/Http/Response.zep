@@ -22,7 +22,9 @@ class Response implements ResponseInterface
 	/**
 	 * @var \Owl\Std\ArrayBag
 	 */
-	protected headers {get};
+	protected headers {
+		get
+	};
 
 	public function __construct()
 	{
