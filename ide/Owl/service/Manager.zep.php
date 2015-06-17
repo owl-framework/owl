@@ -2,6 +2,7 @@
 
 namespace Owl\Service;
 
+
 class Manager
 {
 
@@ -48,5 +49,8 @@ class Manager
 
 
     public function __construct() {}
+
+
+     function zephir_init_properties() {}
 
 }

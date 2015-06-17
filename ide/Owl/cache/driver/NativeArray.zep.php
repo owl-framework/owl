@@ -2,6 +2,7 @@
 
 namespace Owl\Cache\Driver;
 
+
 class NativeArray extends \Owl\Cache\Driver\CacheDriver
 {
 

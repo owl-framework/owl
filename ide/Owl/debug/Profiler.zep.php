@@ -2,6 +2,7 @@
 
 namespace Owl\Debug;
 
+
 class Profiler
 {
 

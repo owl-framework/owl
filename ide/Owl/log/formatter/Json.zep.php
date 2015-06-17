@@ -2,6 +2,7 @@
 
 namespace Owl\Log\Formatter;
 
+
 class Json implements \Owl\Log\FormatterInterface
 {
 

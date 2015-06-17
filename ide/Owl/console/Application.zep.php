@@ -2,6 +2,7 @@
 
 namespace Owl\Console;
 
+
 class Application
 {
 

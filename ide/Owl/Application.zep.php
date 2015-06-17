@@ -2,6 +2,7 @@
 
 namespace Owl;
 
+
 class Application implements \Owl\ApplicationInterface, \Owl\DispatcherInterface
 {
     /**
@@ -119,5 +120,8 @@ class Application implements \Owl\ApplicationInterface, \Owl\DispatcherInterface
      * @return \Owl\Http\ResponseInterface 
      */
     public function handle(\Owl\Http\RequestInterface $request, \Owl\Http\ResponseInterface $response = null) {}
+
+
+     function zephir_init_properties() {}
 
 }

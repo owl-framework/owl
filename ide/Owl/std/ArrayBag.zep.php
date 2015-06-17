@@ -2,6 +2,7 @@
 
 namespace Owl\Std;
 
+
 class ArrayBag implements \Countable
 {
 

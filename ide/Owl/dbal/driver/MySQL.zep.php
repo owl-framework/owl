@@ -2,6 +2,7 @@
 
 namespace Owl\DBAL\Driver;
 
+
 class MySQL implements \Owl\DBAL\Driver\DriverInterface
 {
 

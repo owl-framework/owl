@@ -2,6 +2,7 @@
 
 namespace Owl\Mvc;
 
+
 class View
 {
     /**

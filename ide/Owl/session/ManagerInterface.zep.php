@@ -2,6 +2,7 @@
 
 namespace Owl\Session;
 
+
 interface ManagerInterface
 {
 

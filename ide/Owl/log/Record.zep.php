@@ -2,6 +2,7 @@
 
 namespace Owl\Log;
 
+
 class Record
 {
     /**

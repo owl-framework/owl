@@ -2,6 +2,9 @@
 
 namespace Owl\Cache\Driver;
 
+/**
+ * @author Patsura Dmitry http://github.com/ovr <talk@dmtry.me>
+ */
 class Redis extends \Owl\Cache\Driver\CacheDriver
 {
 

@@ -2,6 +2,7 @@
 
 namespace Owl\Log;
 
+
 abstract class AbstractWriter implements \Owl\Log\WriterInterface
 {
     /**
@@ -137,5 +138,8 @@ abstract class AbstractWriter implements \Owl\Log\WriterInterface
 
 
     public function __construct() {}
+
+
+     function zephir_init_properties() {}
 
 }

@@ -2,6 +2,7 @@
 
 namespace Owl\Log\Formatter;
 
+
 class Line implements \Owl\Log\FormatterInterface
 {
 

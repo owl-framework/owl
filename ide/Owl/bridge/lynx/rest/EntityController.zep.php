@@ -2,6 +2,7 @@
 
 namespace Owl\Bridge\Lynx\Rest;
 
+
 class EntityController extends \Owl\Mvc\Controller
 {
 

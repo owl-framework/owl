@@ -2,6 +2,7 @@
 
 namespace Owl\Log\Writer;
 
+
 class File extends \Owl\Log\AbstractWriter
 {
 

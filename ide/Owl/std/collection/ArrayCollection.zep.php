@@ -2,6 +2,7 @@
 
 namespace Owl\Std\Collection;
 
+
 class ArrayCollection extends \Owl\Std\Collection\AbstractCollection
 {
 

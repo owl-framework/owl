@@ -2,6 +2,7 @@
 
 namespace Owl\DBAL\Driver;
 
+
 class PgSQL implements \Owl\DBAL\Driver\DriverInterface
 {
 

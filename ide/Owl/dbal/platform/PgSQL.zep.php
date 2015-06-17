@@ -2,6 +2,7 @@
 
 namespace Owl\DBAL\Platform;
 
+
 class PgSQL implements \Owl\DBAL\Platform\PlatformInterface
 {
 

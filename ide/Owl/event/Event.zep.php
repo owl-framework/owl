@@ -2,6 +2,7 @@
 
 namespace Owl\Event;
 
+
 class Event
 {
 

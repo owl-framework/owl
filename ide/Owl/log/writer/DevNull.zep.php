@@ -2,6 +2,9 @@
 
 namespace Owl\Log\Writer;
 
+/**
+ * Special writer for testing
+ */
 class DevNull extends \Owl\Log\AbstractWriter
 {
 

@@ -2,6 +2,7 @@
 
 namespace Owl\Std\Collection;
 
+
 abstract class AbstractCollection implements \Countable, \IteratorAggregate
 {
 

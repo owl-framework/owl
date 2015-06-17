@@ -2,6 +2,7 @@
 
 namespace Owl\Log\Writer;
 
+
 class EchoBrowser extends \Owl\Log\AbstractWriter
 {
 

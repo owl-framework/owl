@@ -2,6 +2,7 @@
 
 namespace Owl\Log;
 
+
 class AbstractLogger implements \Owl\Log\LoggerInterface
 {
     /**

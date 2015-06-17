@@ -2,6 +2,29 @@
 
 namespace Owl\Log;
 
+/**
+ * Logger usage:
+ * $Logger = new Logger([
+ * [
+ * 'class' => '\Owl\Log\Writer\File',
+ * 'levels' => [Logger::LEVEL_ERROR, Logger::LEVEL_WARNING],
+ * 'formatter' => '\Owl\Log\Formatter\Syslog',
+ * 'options' => [
+ * 'logFile' => APP_ROOT '/logs/my.log'
+ * ]
+ * ],
+ * [
+ * 'class' => '\Owl\Log\Writer\Email',
+ * 'levels' => [Logger::LEVEL_ALERT],
+ * 'formatter' => '\Owl\Log\Formatter\Line',
+ * 'options' => [
+ * 'from'  => 'robot@localhost',
+ * 'to' => 'support@localhost',
+ * 'subject' => 'System Alert log'
+ * ]
+ * ],
+ * ]);
+ */
 class Logger extends \Owl\Log\AbstractLogger implements \Owl\Log\LoggerInterface
 {
     /**
@@ -78,5 +101,8 @@ class Logger extends \Owl\Log\AbstractLogger implements \Owl\Log\LoggerInterface
      * @param array $context 
      */
     public function log($level, $message, $context = array()) {}
+
+
+     function zephir_init_properties() {}
 
 }

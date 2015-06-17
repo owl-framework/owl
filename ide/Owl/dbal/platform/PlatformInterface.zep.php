@@ -2,6 +2,7 @@
 
 namespace Owl\DBAL\Platform;
 
+
 interface PlatformInterface
 {
 

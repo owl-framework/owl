@@ -2,6 +2,7 @@
 
 namespace Owl\Http\Response;
 
+
 class Json extends \Owl\Http\Response
 {
 

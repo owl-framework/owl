@@ -2,6 +2,7 @@
 
 namespace Owl\Router;
 
+
 class Router implements \Owl\Router\RouterInterface
 {
 
@@ -45,5 +46,8 @@ class Router implements \Owl\Router\RouterInterface
 
 
     public function __construct() {}
+
+
+     function zephir_init_properties() {}
 
 }
