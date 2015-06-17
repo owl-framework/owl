@@ -427,6 +427,15 @@ PHP_METHOD(Owl_Log_AbstractWriter, write) {
 
 PHP_METHOD(Owl_Log_AbstractWriter, __construct) {
 
+
+	if (EG(called_scope) == owl_log_abstractwriter_ce) {
+		zephir_init_properties(this_ptr TSRMLS_CC);
+	}
+
+}
+
+static void zephir_init_properties(zval *this_ptr TSRMLS_DC) {
+
 	zval *_0, *_1, *_2;
 
 	ZEPHIR_MM_GROW();

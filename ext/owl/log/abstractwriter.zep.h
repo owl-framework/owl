@@ -22,6 +22,7 @@ PHP_METHOD(Owl_Log_AbstractWriter, commit);
 PHP_METHOD(Owl_Log_AbstractWriter, push);
 PHP_METHOD(Owl_Log_AbstractWriter, write);
 PHP_METHOD(Owl_Log_AbstractWriter, __construct);
+static void zephir_init_properties(zval *this_ptr TSRMLS_DC);
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_log_abstractwriter_setlevels, 0, 0, 1)
 	ZEND_ARG_INFO(0, levels)

@@ -92,11 +92,11 @@ PHP_METHOD(Owl_Log_Logger, getWriters) {
 
 PHP_METHOD(Owl_Log_Logger, __construct) {
 
-	zephir_fcall_cache_entry *_6 = NULL;
+	zephir_fcall_cache_entry *_4 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
-	HashTable *_3;
-	HashPosition _2;
-	zval *writers_param = NULL, *_0, *_1, *writerName = NULL, *writerDescription = NULL, **_4, *_5 = NULL;
+	HashTable *_1;
+	HashPosition _0;
+	zval *writers_param = NULL, *writerName = NULL, *writerDescription = NULL, **_2, *_3 = NULL;
 	zval *writers = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -110,22 +110,19 @@ PHP_METHOD(Owl_Log_Logger, __construct) {
 	}
 
 
-	ZEPHIR_INIT_VAR(_0);
-	array_init(_0);
-	zephir_update_property_this(this_ptr, SL("writers"), _0 TSRMLS_CC);
-	ZEPHIR_INIT_VAR(_1);
-	array_init(_1);
-	zephir_update_property_this(this_ptr, SL("records"), _1 TSRMLS_CC);
-	zephir_is_iterable(writers, &_3, &_2, 0, 0, "owl/Log/Logger.zep", 61);
+	if (EG(called_scope) == owl_log_logger_ce) {
+		zephir_init_properties(this_ptr TSRMLS_CC);
+	}
+	zephir_is_iterable(writers, &_1, &_0, 0, 0, "owl/Log/Logger.zep", 61);
 	for (
-	  ; zephir_hash_get_current_data_ex(_3, (void**) &_4, &_2) == SUCCESS
-	  ; zephir_hash_move_forward_ex(_3, &_2)
+	  ; zephir_hash_get_current_data_ex(_1, (void**) &_2, &_0) == SUCCESS
+	  ; zephir_hash_move_forward_ex(_1, &_0)
 	) {
-		ZEPHIR_GET_HMKEY(writerName, _3, _2);
-		ZEPHIR_GET_HVALUE(writerDescription, _4);
-		ZEPHIR_CALL_METHOD(&_5, this_ptr, "factorywriter", &_6, 0, writerDescription);
+		ZEPHIR_GET_HMKEY(writerName, _1, _0);
+		ZEPHIR_GET_HVALUE(writerDescription, _2);
+		ZEPHIR_CALL_METHOD(&_3, this_ptr, "factorywriter", &_4, 0, writerDescription);
 		zephir_check_call_status();
-		zephir_update_property_array(this_ptr, SL("writers"), writerName, _5 TSRMLS_CC);
+		zephir_update_property_array(this_ptr, SL("writers"), writerName, _3 TSRMLS_CC);
 	}
 	ZEPHIR_MM_RESTORE();
 
@@ -295,6 +292,22 @@ PHP_METHOD(Owl_Log_Logger, log) {
 		ZEPHIR_CALL_METHOD(NULL, this_ptr, "commit", NULL, 0);
 		zephir_check_call_status();
 	}
+	ZEPHIR_MM_RESTORE();
+
+}
+
+static void zephir_init_properties(zval *this_ptr TSRMLS_DC) {
+
+	zval *_0, *_1;
+
+	ZEPHIR_MM_GROW();
+
+	ZEPHIR_INIT_VAR(_0);
+	array_init(_0);
+	zephir_update_property_this(this_ptr, SL("writers"), _0 TSRMLS_CC);
+	ZEPHIR_INIT_VAR(_1);
+	array_init(_1);
+	zephir_update_property_this(this_ptr, SL("records"), _1 TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();
 
 }

@@ -14,9 +14,9 @@
 #include "kernel/main.h"
 #include "kernel/object.h"
 #include "kernel/memory.h"
-#include "kernel/array.h"
 #include "kernel/fcall.h"
 #include "kernel/operators.h"
+#include "kernel/array.h"
 #include "kernel/concat.h"
 #include "kernel/exception.h"
 
@@ -168,9 +168,8 @@ PHP_METHOD(Owl_Application, getErrorHandlerParameters) {
 PHP_METHOD(Owl_Application, __construct) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *_0, *_1;
 	zval *env = NULL;
-	zval *di = NULL, *eventManager = NULL, *env_param = NULL, *_2;
+	zval *di = NULL, *eventManager = NULL, *env_param = NULL, *_0;
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 0, 3, &di, &eventManager, &env_param);
@@ -189,28 +188,19 @@ PHP_METHOD(Owl_Application, __construct) {
 	}
 
 
-	ZEPHIR_INIT_VAR(_0);
-	zephir_create_array(_0, 3, 0 TSRMLS_CC);
-	add_assoc_stringl_ex(_0, SS("module"), SL("Api"), 1);
-	add_assoc_stringl_ex(_0, SS("controller"), SL("Index"), 1);
-	add_assoc_stringl_ex(_0, SS("action"), SL("error"), 1);
-	zephir_update_property_this(this_ptr, SL("errorHandlerParameters"), _0 TSRMLS_CC);
-	ZEPHIR_INIT_VAR(_1);
-	zephir_create_array(_1, 3, 0 TSRMLS_CC);
-	add_assoc_stringl_ex(_1, SS("module"), SL("Api"), 1);
-	add_assoc_stringl_ex(_1, SS("controller"), SL("Index"), 1);
-	add_assoc_stringl_ex(_1, SS("action"), SL("exception"), 1);
-	zephir_update_property_this(this_ptr, SL("exceptionHandlerParameters"), _1 TSRMLS_CC);
+	if (EG(called_scope) == owl_application_ce) {
+		zephir_init_properties(this_ptr TSRMLS_CC);
+	}
 	zephir_update_property_this(this_ptr, SL("di"), di TSRMLS_CC);
 	zephir_update_property_this(this_ptr, SL("env"), env TSRMLS_CC);
 	if (Z_TYPE_P(eventManager) == IS_NULL) {
-		ZEPHIR_INIT_VAR(_2);
-		object_init_ex(_2, owl_event_manager_ce);
-		if (zephir_has_constructor(_2 TSRMLS_CC)) {
-			ZEPHIR_CALL_METHOD(NULL, _2, "__construct", NULL, 0);
+		ZEPHIR_INIT_VAR(_0);
+		object_init_ex(_0, owl_event_manager_ce);
+		if (zephir_has_constructor(_0 TSRMLS_CC)) {
+			ZEPHIR_CALL_METHOD(NULL, _0, "__construct", NULL, 0);
 			zephir_check_call_status();
 		}
-		zephir_update_property_this(this_ptr, SL("eventManager"), _2 TSRMLS_CC);
+		zephir_update_property_this(this_ptr, SL("eventManager"), _0 TSRMLS_CC);
 	} else {
 		zephir_update_property_this(this_ptr, SL("eventManager"), eventManager TSRMLS_CC);
 	}
@@ -454,6 +444,28 @@ PHP_METHOD(Owl_Application, handle) {
 	zephir_check_call_status();
 	RETVAL_ZVAL(response, 1, 0);
 	RETURN_MM();
+
+}
+
+static void zephir_init_properties(zval *this_ptr TSRMLS_DC) {
+
+	zval *_0, *_1;
+
+	ZEPHIR_MM_GROW();
+
+	ZEPHIR_INIT_VAR(_0);
+	zephir_create_array(_0, 3, 0 TSRMLS_CC);
+	add_assoc_stringl_ex(_0, SS("module"), SL("Api"), 1);
+	add_assoc_stringl_ex(_0, SS("controller"), SL("Index"), 1);
+	add_assoc_stringl_ex(_0, SS("action"), SL("error"), 1);
+	zephir_update_property_this(this_ptr, SL("errorHandlerParameters"), _0 TSRMLS_CC);
+	ZEPHIR_INIT_VAR(_1);
+	zephir_create_array(_1, 3, 0 TSRMLS_CC);
+	add_assoc_stringl_ex(_1, SS("module"), SL("Api"), 1);
+	add_assoc_stringl_ex(_1, SS("controller"), SL("Index"), 1);
+	add_assoc_stringl_ex(_1, SS("action"), SL("exception"), 1);
+	zephir_update_property_this(this_ptr, SL("exceptionHandlerParameters"), _1 TSRMLS_CC);
+	ZEPHIR_MM_RESTORE();
 
 }
 

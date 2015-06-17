@@ -103,6 +103,15 @@ PHP_METHOD(Owl_Event_Manager, emit) {
 
 PHP_METHOD(Owl_Event_Manager, __construct) {
 
+
+	if (EG(called_scope) == owl_event_manager_ce) {
+		zephir_init_properties(this_ptr TSRMLS_CC);
+	}
+
+}
+
+static void zephir_init_properties(zval *this_ptr TSRMLS_DC) {
+
 	zval *_0;
 
 	ZEPHIR_MM_GROW();

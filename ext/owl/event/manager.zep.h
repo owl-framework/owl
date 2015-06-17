@@ -6,6 +6,7 @@ ZEPHIR_INIT_CLASS(Owl_Event_Manager);
 PHP_METHOD(Owl_Event_Manager, listen);
 PHP_METHOD(Owl_Event_Manager, emit);
 PHP_METHOD(Owl_Event_Manager, __construct);
+static void zephir_init_properties(zval *this_ptr TSRMLS_DC);
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_event_manager_listen, 0, 0, 2)
 	ZEND_ARG_INFO(0, eventName)

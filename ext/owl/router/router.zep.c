@@ -193,6 +193,15 @@ PHP_METHOD(Owl_Router_Router, match) {
 
 PHP_METHOD(Owl_Router_Router, __construct) {
 
+
+	if (EG(called_scope) == owl_router_router_ce) {
+		zephir_init_properties(this_ptr TSRMLS_CC);
+	}
+
+}
+
+static void zephir_init_properties(zval *this_ptr TSRMLS_DC) {
+
 	zval *_0;
 
 	ZEPHIR_MM_GROW();

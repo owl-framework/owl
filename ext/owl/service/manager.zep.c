@@ -240,6 +240,15 @@ PHP_METHOD(Owl_Service_Manager, getService) {
 
 PHP_METHOD(Owl_Service_Manager, __construct) {
 
+
+	if (EG(called_scope) == owl_service_manager_ce) {
+		zephir_init_properties(this_ptr TSRMLS_CC);
+	}
+
+}
+
+static void zephir_init_properties(zval *this_ptr TSRMLS_DC) {
+
 	zval *_0, *_1;
 
 	ZEPHIR_MM_GROW();

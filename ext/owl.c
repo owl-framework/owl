@@ -93,6 +93,10 @@ zend_class_entry *owl_std_collection_arraycollection_ce;
 
 ZEND_DECLARE_MODULE_GLOBALS(owl)
 
+PHP_INI_BEGIN()
+	
+PHP_INI_END()
+
 static PHP_MINIT_FUNCTION(owl)
 {
 #if PHP_VERSION_ID < 50500
@@ -110,7 +114,7 @@ static PHP_MINIT_FUNCTION(owl)
 
 	setlocale(LC_ALL, "C");
 #endif
-
+	REGISTER_INI_ENTRIES();
 	ZEPHIR_INIT(Owl_Cache_Driver);
 	ZEPHIR_INIT(Owl_Log_WriterInterface);
 	ZEPHIR_INIT(Owl_Log_LoggerInterface);
@@ -187,7 +191,7 @@ static PHP_MSHUTDOWN_FUNCTION(owl)
 {
 
 	zephir_deinitialize_memory(TSRMLS_C);
-
+	UNREGISTER_INI_ENTRIES();
 	return SUCCESS;
 }
 #endif
@@ -195,24 +199,24 @@ static PHP_MSHUTDOWN_FUNCTION(owl)
 /**
  * Initialize globals on each request or each thread started
  */
-static void php_zephir_init_globals(zend_owl_globals *zephir_globals TSRMLS_DC)
+static void php_zephir_init_globals(zend_owl_globals *owl_globals TSRMLS_DC)
 {
-	zephir_globals->initialized = 0;
+	owl_globals->initialized = 0;
 
 	/* Memory options */
-	zephir_globals->active_memory = NULL;
+	owl_globals->active_memory = NULL;
 
 	/* Virtual Symbol Tables */
-	zephir_globals->active_symbol_table = NULL;
+	owl_globals->active_symbol_table = NULL;
 
 	/* Cache Enabled */
-	zephir_globals->cache_enabled = 1;
+	owl_globals->cache_enabled = 1;
 
 	/* Recursive Lock */
-	zephir_globals->recursive_lock = 0;
+	owl_globals->recursive_lock = 0;
 
 	/* Static cache */
-	memset(zephir_globals->scache, '\0', sizeof(zephir_fcall_cache_entry*) * ZEPHIR_MAX_CACHE_SLOTS);
+	memset(owl_globals->scache, '\0', sizeof(zephir_fcall_cache_entry*) * ZEPHIR_MAX_CACHE_SLOTS);
 
 
 }
@@ -220,12 +224,12 @@ static void php_zephir_init_globals(zend_owl_globals *zephir_globals TSRMLS_DC)
 static PHP_RINIT_FUNCTION(owl)
 {
 
-	zend_owl_globals *zephir_globals_ptr = ZEPHIR_VGLOBAL;
+	zend_owl_globals *owl_globals_ptr = ZEPHIR_VGLOBAL;
 
-	php_zephir_init_globals(zephir_globals_ptr TSRMLS_CC);
+	php_zephir_init_globals(owl_globals_ptr TSRMLS_CC);
 	//zephir_init_interned_strings(TSRMLS_C);
 
-	zephir_initialize_memory(zephir_globals_ptr TSRMLS_CC);
+	zephir_initialize_memory(owl_globals_ptr TSRMLS_CC);
 
 
 	return SUCCESS;
@@ -254,7 +258,7 @@ static PHP_MINFO_FUNCTION(owl)
 	php_info_print_table_row(2, "Powered by Zephir", "Version " PHP_OWL_ZEPVERSION);
 	php_info_print_table_end();
 
-
+	DISPLAY_INI_ENTRIES();
 }
 
 static PHP_GINIT_FUNCTION(owl)

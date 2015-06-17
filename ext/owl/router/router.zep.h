@@ -10,6 +10,7 @@ PHP_METHOD(Owl_Router_Router, addRoute);
 PHP_METHOD(Owl_Router_Router, matchRequest);
 PHP_METHOD(Owl_Router_Router, match);
 PHP_METHOD(Owl_Router_Router, __construct);
+static void zephir_init_properties(zval *this_ptr TSRMLS_DC);
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_router_router_setbasepath, 0, 0, 1)
 	ZEND_ARG_INFO(0, basePath)
