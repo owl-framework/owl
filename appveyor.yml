@@ -1,10 +1,10 @@
 environment:
   matrix:
-  - PHP_VERSION: 5.6.8
+  - PHP_VERSION: 5.6.10
     PHP_DEP_VER: 5.6
     DB_TYPE: mysql
     DB_DEP: mysql
-  - PHP_VERSION: 5.6.8
+  - PHP_VERSION: 5.6.10
     PHP_DEP_VER: 5.6
     DB_TYPE: postgresql
     DB_DEP: pgsql
