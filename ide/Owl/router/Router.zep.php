@@ -45,9 +45,6 @@ class Router implements \Owl\Router\RouterInterface
     public function match($uri, $method = Request::GET) {}
 
 
-    public function __construct() {}
-
-
      function zephir_init_properties() {}
 
 }

@@ -22,9 +22,6 @@ class Manager
     public function emit($eventName, $data = null) {}
 
 
-    public function __construct() {}
-
-
      function zephir_init_properties() {}
 
 }

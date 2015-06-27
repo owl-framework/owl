@@ -48,9 +48,6 @@ class Manager
     public function getService($name) {}
 
 
-    public function __construct() {}
-
-
      function zephir_init_properties() {}
 
 }

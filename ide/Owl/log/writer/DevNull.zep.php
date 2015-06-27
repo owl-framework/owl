@@ -14,4 +14,7 @@ class DevNull extends \Owl\Log\AbstractWriter
      */
     public function write($record) {}
 
+
+     function zephir_init_properties() {}
+
 }
