@@ -9,8 +9,7 @@ PHP_METHOD(Owl_Service_Manager, get);
 PHP_METHOD(Owl_Service_Manager, has);
 PHP_METHOD(Owl_Service_Manager, getInstance);
 PHP_METHOD(Owl_Service_Manager, getService);
-PHP_METHOD(Owl_Service_Manager, __construct);
-static void zephir_init_properties(zval *this_ptr TSRMLS_DC);
+static zend_object_value zephir_init_properties(zend_class_entry *class_type TSRMLS_DC);
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_service_manager_set, 0, 0, 2)
 	ZEND_ARG_INFO(0, name)
@@ -45,6 +44,5 @@ ZEPHIR_INIT_FUNCS(owl_service_manager_method_entry) {
 	PHP_ME(Owl_Service_Manager, has, arginfo_owl_service_manager_has, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Service_Manager, getInstance, arginfo_owl_service_manager_getinstance, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Service_Manager, getService, arginfo_owl_service_manager_getservice, ZEND_ACC_PUBLIC)
-	PHP_ME(Owl_Service_Manager, __construct, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
 	PHP_FE_END
 };

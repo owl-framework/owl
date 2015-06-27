@@ -125,7 +125,7 @@ PHP_METHOD(Owl_Http_Request, getPath) {
 	zephir_check_call_status();
 	ZEPHIR_SINIT_VAR(_1);
 	ZVAL_LONG(&_1, 5);
-	ZEPHIR_RETURN_CALL_FUNCTION("parse_url", NULL, 12, _0, &_1);
+	ZEPHIR_RETURN_CALL_FUNCTION("parse_url", NULL, 16, _0, &_1);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -247,32 +247,32 @@ PHP_METHOD(Owl_Http_Request, __construct) {
 
 	ZEPHIR_INIT_VAR(_0);
 	object_init_ex(_0, owl_std_arraybag_ce);
-	ZEPHIR_CALL_METHOD(NULL, _0, "__construct", &_1, 13, get);
+	ZEPHIR_CALL_METHOD(NULL, _0, "__construct", &_1, 3, get);
 	zephir_check_call_status();
 	zephir_update_property_this(this_ptr, SL("get"), _0 TSRMLS_CC);
 	ZEPHIR_INIT_VAR(_2);
 	object_init_ex(_2, owl_std_arraybag_ce);
-	ZEPHIR_CALL_METHOD(NULL, _2, "__construct", &_1, 13, post);
+	ZEPHIR_CALL_METHOD(NULL, _2, "__construct", &_1, 3, post);
 	zephir_check_call_status();
 	zephir_update_property_this(this_ptr, SL("post"), _2 TSRMLS_CC);
 	ZEPHIR_INIT_VAR(_3);
 	object_init_ex(_3, owl_std_arraybag_ce);
-	ZEPHIR_CALL_METHOD(NULL, _3, "__construct", &_1, 13, server);
+	ZEPHIR_CALL_METHOD(NULL, _3, "__construct", &_1, 3, server);
 	zephir_check_call_status();
 	zephir_update_property_this(this_ptr, SL("server"), _3 TSRMLS_CC);
 	ZEPHIR_INIT_VAR(_4);
 	object_init_ex(_4, owl_std_arraybag_ce);
-	ZEPHIR_CALL_METHOD(NULL, _4, "__construct", &_1, 13, headers);
+	ZEPHIR_CALL_METHOD(NULL, _4, "__construct", &_1, 3, headers);
 	zephir_check_call_status();
 	zephir_update_property_this(this_ptr, SL("headers"), _4 TSRMLS_CC);
 	ZEPHIR_INIT_VAR(_5);
 	object_init_ex(_5, owl_std_arraybag_ce);
-	ZEPHIR_CALL_METHOD(NULL, _5, "__construct", &_1, 13, files);
+	ZEPHIR_CALL_METHOD(NULL, _5, "__construct", &_1, 3, files);
 	zephir_check_call_status();
 	zephir_update_property_this(this_ptr, SL("files"), _5 TSRMLS_CC);
 	ZEPHIR_INIT_VAR(_6);
 	object_init_ex(_6, owl_std_arraybag_ce);
-	ZEPHIR_CALL_METHOD(NULL, _6, "__construct", &_1, 13, cookies);
+	ZEPHIR_CALL_METHOD(NULL, _6, "__construct", &_1, 3, cookies);
 	zephir_check_call_status();
 	zephir_update_property_this(this_ptr, SL("cookies"), _6 TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();
@@ -294,7 +294,7 @@ PHP_METHOD(Owl_Http_Request, createFromGlobals) {
 	object_init_ex(return_value, owl_http_request_ce);
 	ZEPHIR_INIT_VAR(_0);
 	array_init(_0);
-	ZEPHIR_CALL_METHOD(NULL, return_value, "__construct", NULL, 14, _GET, _POST, _SERVER, _0, _FILES, _COOKIE);
+	ZEPHIR_CALL_METHOD(NULL, return_value, "__construct", NULL, 17, _GET, _POST, _SERVER, _0, _FILES, _COOKIE);
 	zephir_check_call_status();
 	RETURN_MM();
 

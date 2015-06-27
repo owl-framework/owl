@@ -158,7 +158,7 @@ PHP_METHOD(Owl_Debug_Profiler, setContent) {
 
 	ZEPHIR_INIT_VAR(resp);
 	object_init_ex(resp, owl_http_response_ce);
-	ZEPHIR_CALL_METHOD(NULL, resp, "__construct", NULL, 3);
+	ZEPHIR_CALL_METHOD(NULL, resp, "__construct", NULL, 7);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(html);
 	ZVAL_STRING(html, "<html><head>", 1);
@@ -175,18 +175,18 @@ PHP_METHOD(Owl_Debug_Profiler, setContent) {
 	sub_function(&_4, _2, _3 TSRMLS_CC);
 	ZEPHIR_SINIT_VAR(_5);
 	ZVAL_STRING(&_5, "%.4Fms", 0);
-	ZEPHIR_CALL_FUNCTION(&_6, "sprintf", &_7, 8, &_5, &_4);
+	ZEPHIR_CALL_FUNCTION(&_6, "sprintf", &_7, 12, &_5, &_4);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(_8);
 	ZEPHIR_CONCAT_SVS(_8, "<span class=\"label color-2\">", _6, "</span>");
 	zephir_concat_self(&html, _8 TSRMLS_CC);
-	ZEPHIR_CALL_FUNCTION(&_9, "memory_get_peak_usage", NULL, 9);
+	ZEPHIR_CALL_FUNCTION(&_9, "memory_get_peak_usage", NULL, 13);
 	zephir_check_call_status();
 	ZEPHIR_SINIT_NVAR(_5);
 	ZVAL_STRING(&_5, "%.3fMB", 0);
 	ZEPHIR_SINIT_VAR(_10);
 	ZVAL_DOUBLE(&_10, zephir_safe_div_double_long(zephir_safe_div_zval_long(_9, 1024 TSRMLS_CC), (double) (1024) TSRMLS_CC));
-	ZEPHIR_CALL_FUNCTION(&_11, "sprintf", &_7, 8, &_5, &_10);
+	ZEPHIR_CALL_FUNCTION(&_11, "sprintf", &_7, 12, &_5, &_10);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(_12);
 	ZEPHIR_CONCAT_SVS(_12, "<span class=\"label color-3\">", _11, "</span>");
@@ -228,7 +228,7 @@ PHP_METHOD(Owl_Debug_Profiler, setContent) {
 		zephir_concat_self(&html, _18 TSRMLS_CC);
 	}
 	zephir_concat_self_str(&html, SL("</body></html>") TSRMLS_CC);
-	ZEPHIR_CALL_METHOD(NULL, resp, "setcontent", NULL, 10, html);
+	ZEPHIR_CALL_METHOD(NULL, resp, "setcontent", NULL, 14, html);
 	zephir_check_call_status();
 	RETURN_CCTOR(resp);
 

@@ -50,6 +50,8 @@ ZEPHIR_INIT_CLASS(Owl_Log_AbstractWriter) {
 	 */
 	zend_declare_property_long(owl_log_abstractwriter_ce, SL("recordsInterval"), 1000, ZEND_ACC_PROTECTED TSRMLS_CC);
 
+	owl_log_abstractwriter_ce->create_object = zephir_init_properties;
+
 	zend_class_implements(owl_log_abstractwriter_ce TSRMLS_CC, 1, owl_log_writerinterface_ce);
 	return SUCCESS;
 
@@ -196,7 +198,7 @@ PHP_METHOD(Owl_Log_AbstractWriter, getOption) {
 		object_init_ex(_1, owl_log_exception_invalidwriterexception_ce);
 		ZEPHIR_INIT_VAR(_2);
 		ZEPHIR_CONCAT_SVS(_2, "Option ", option, " is not exists");
-		ZEPHIR_CALL_METHOD(NULL, _1, "__construct", NULL, 16, _2);
+		ZEPHIR_CALL_METHOD(NULL, _1, "__construct", NULL, 1, _2);
 		zephir_check_call_status();
 		zephir_throw_exception_debug(_1, "owl/Log/AbstractWriter.zep", 66 TSRMLS_CC);
 		ZEPHIR_MM_RESTORE();
@@ -259,7 +261,7 @@ PHP_METHOD(Owl_Log_AbstractWriter, setFormatter) {
 	if (_0) {
 		ZEPHIR_SINIT_VAR(_1);
 		ZVAL_STRING(&_1, "\\Owl\\Log\\FormatterInterface", 0);
-		ZEPHIR_CALL_FUNCTION(&_2, "is_subclass_of", NULL, 17, formatter, &_1);
+		ZEPHIR_CALL_FUNCTION(&_2, "is_subclass_of", NULL, 2, formatter, &_1);
 		zephir_check_call_status();
 		_0 = zephir_is_true(_2);
 	}
@@ -425,31 +427,36 @@ PHP_METHOD(Owl_Log_AbstractWriter, write) {
 
 }
 
-PHP_METHOD(Owl_Log_AbstractWriter, __construct) {
+static zend_object_value zephir_init_properties(zend_class_entry *class_type TSRMLS_DC) {
 
+		zval *_0, *_1 = NULL, *_2, *_3;
 
-	if (EG(called_scope) == owl_log_abstractwriter_ce) {
-		zephir_init_properties(this_ptr TSRMLS_CC);
+		ZEPHIR_MM_GROW();
+	
+	{
+		zval *this_ptr = NULL;
+		ZEPHIR_CREATE_OBJECT(this_ptr, class_type);
+		_0 = zephir_fetch_nproperty_this(this_ptr, SL("options"), PH_NOISY_CC);
+		if (Z_TYPE_P(_0) == IS_NULL) {
+			ZEPHIR_INIT_VAR(_1);
+			array_init(_1);
+			zephir_update_property_this(this_ptr, SL("options"), _1 TSRMLS_CC);
+		}
+		_2 = zephir_fetch_nproperty_this(this_ptr, SL("records"), PH_NOISY_CC);
+		if (Z_TYPE_P(_2) == IS_NULL) {
+			ZEPHIR_INIT_NVAR(_1);
+			array_init(_1);
+			zephir_update_property_this(this_ptr, SL("records"), _1 TSRMLS_CC);
+		}
+		_3 = zephir_fetch_nproperty_this(this_ptr, SL("levels"), PH_NOISY_CC);
+		if (Z_TYPE_P(_3) == IS_NULL) {
+			ZEPHIR_INIT_NVAR(_1);
+			array_init(_1);
+			zephir_update_property_this(this_ptr, SL("levels"), _1 TSRMLS_CC);
+		}
+		ZEPHIR_MM_RESTORE();
+		return Z_OBJVAL_P(this_ptr);
 	}
-
-}
-
-static void zephir_init_properties(zval *this_ptr TSRMLS_DC) {
-
-	zval *_0, *_1, *_2;
-
-	ZEPHIR_MM_GROW();
-
-	ZEPHIR_INIT_VAR(_0);
-	array_init(_0);
-	zephir_update_property_this(this_ptr, SL("options"), _0 TSRMLS_CC);
-	ZEPHIR_INIT_VAR(_1);
-	array_init(_1);
-	zephir_update_property_this(this_ptr, SL("records"), _1 TSRMLS_CC);
-	ZEPHIR_INIT_VAR(_2);
-	array_init(_2);
-	zephir_update_property_this(this_ptr, SL("levels"), _2 TSRMLS_CC);
-	ZEPHIR_MM_RESTORE();
 
 }
 

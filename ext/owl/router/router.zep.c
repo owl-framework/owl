@@ -29,6 +29,8 @@ ZEPHIR_INIT_CLASS(Owl_Router_Router) {
 
 	zend_declare_property_null(owl_router_router_ce, SL("routers"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
+	owl_router_router_ce->create_object = zephir_init_properties;
+
 	zend_class_implements(owl_router_router_ce TSRMLS_CC, 1, owl_router_routerinterface_ce);
 	return SUCCESS;
 
@@ -191,25 +193,24 @@ PHP_METHOD(Owl_Router_Router, match) {
 
 }
 
-PHP_METHOD(Owl_Router_Router, __construct) {
+static zend_object_value zephir_init_properties(zend_class_entry *class_type TSRMLS_DC) {
 
+		zval *_0, *_1;
 
-	if (EG(called_scope) == owl_router_router_ce) {
-		zephir_init_properties(this_ptr TSRMLS_CC);
+		ZEPHIR_MM_GROW();
+	
+	{
+		zval *this_ptr = NULL;
+		ZEPHIR_CREATE_OBJECT(this_ptr, class_type);
+		_0 = zephir_fetch_nproperty_this(this_ptr, SL("routers"), PH_NOISY_CC);
+		if (Z_TYPE_P(_0) == IS_NULL) {
+			ZEPHIR_INIT_VAR(_1);
+			array_init(_1);
+			zephir_update_property_this(this_ptr, SL("routers"), _1 TSRMLS_CC);
+		}
+		ZEPHIR_MM_RESTORE();
+		return Z_OBJVAL_P(this_ptr);
 	}
-
-}
-
-static void zephir_init_properties(zval *this_ptr TSRMLS_DC) {
-
-	zval *_0;
-
-	ZEPHIR_MM_GROW();
-
-	ZEPHIR_INIT_VAR(_0);
-	array_init(_0);
-	zephir_update_property_this(this_ptr, SL("routers"), _0 TSRMLS_CC);
-	ZEPHIR_MM_RESTORE();
 
 }
 

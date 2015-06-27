@@ -40,6 +40,8 @@ ZEPHIR_INIT_CLASS(Owl_Log_Logger) {
 	 */
 	zend_declare_property_null(owl_log_logger_ce, SL("writers"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
+	owl_log_logger_ce->create_object = zephir_init_properties;
+
 	zend_class_implements(owl_log_logger_ce TSRMLS_CC, 1, owl_log_loggerinterface_ce);
 	return SUCCESS;
 
@@ -110,9 +112,6 @@ PHP_METHOD(Owl_Log_Logger, __construct) {
 	}
 
 
-	if (EG(called_scope) == owl_log_logger_ce) {
-		zephir_init_properties(this_ptr TSRMLS_CC);
-	}
 	zephir_is_iterable(writers, &_1, &_0, 0, 0, "owl/Log/Logger.zep", 61);
 	for (
 	  ; zephir_hash_get_current_data_ex(_1, (void**) &_2, &_0) == SUCCESS
@@ -296,19 +295,30 @@ PHP_METHOD(Owl_Log_Logger, log) {
 
 }
 
-static void zephir_init_properties(zval *this_ptr TSRMLS_DC) {
+static zend_object_value zephir_init_properties(zend_class_entry *class_type TSRMLS_DC) {
 
-	zval *_0, *_1;
+		zval *_0, *_1 = NULL, *_2;
 
-	ZEPHIR_MM_GROW();
-
-	ZEPHIR_INIT_VAR(_0);
-	array_init(_0);
-	zephir_update_property_this(this_ptr, SL("writers"), _0 TSRMLS_CC);
-	ZEPHIR_INIT_VAR(_1);
-	array_init(_1);
-	zephir_update_property_this(this_ptr, SL("records"), _1 TSRMLS_CC);
-	ZEPHIR_MM_RESTORE();
+		ZEPHIR_MM_GROW();
+	
+	{
+		zval *this_ptr = NULL;
+		ZEPHIR_CREATE_OBJECT(this_ptr, class_type);
+		_0 = zephir_fetch_nproperty_this(this_ptr, SL("writers"), PH_NOISY_CC);
+		if (Z_TYPE_P(_0) == IS_NULL) {
+			ZEPHIR_INIT_VAR(_1);
+			array_init(_1);
+			zephir_update_property_this(this_ptr, SL("writers"), _1 TSRMLS_CC);
+		}
+		_2 = zephir_fetch_nproperty_this(this_ptr, SL("records"), PH_NOISY_CC);
+		if (Z_TYPE_P(_2) == IS_NULL) {
+			ZEPHIR_INIT_NVAR(_1);
+			array_init(_1);
+			zephir_update_property_this(this_ptr, SL("records"), _1 TSRMLS_CC);
+		}
+		ZEPHIR_MM_RESTORE();
+		return Z_OBJVAL_P(this_ptr);
+	}
 
 }
 
