@@ -1,7 +1,7 @@
 
 namespace Owl\Log;
 
-class AbstractLogger implements LoggerInterface
+abstract class AbstractLogger implements LoggerInterface
 {
 	/**
 	 * Log levers constants
@@ -116,5 +116,5 @@ class AbstractLogger implements LoggerInterface
 	/**
 	 * @inheritdoc
 	 */
-	public function log(var level, string message, array context = []);
+	abstract public function log(var level, string message, array context = []);
 }
