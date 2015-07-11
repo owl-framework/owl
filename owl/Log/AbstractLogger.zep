@@ -116,5 +116,5 @@ class AbstractLogger implements LoggerInterface
 	/**
 	 * @inheritdoc
 	 */
-	public function log(var level, string message, array context = []);
+	abstract public function log(var level, string message, array context = []);
 }
