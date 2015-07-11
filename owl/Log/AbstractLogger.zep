@@ -1,7 +1,7 @@
 
 namespace Owl\Log;
 
-class AbstractLogger implements LoggerInterface
+abstract class AbstractLogger implements LoggerInterface
 {
 	/**
 	 * Log levers constants
