@@ -155,5 +155,5 @@ abstract class AbstractWriter implements WriterInterface
 	/**
 	 * Write record
 	 */
-	protected function write(string record) -> void;
+	abstract protected function write(string record) -> void;
 }
