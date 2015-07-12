@@ -3,7 +3,7 @@
 namespace Owl\Log;
 
 
-class AbstractLogger implements \Owl\Log\LoggerInterface
+abstract class AbstractLogger implements \Owl\Log\LoggerInterface
 {
     /**
      * Log levers constants
@@ -102,6 +102,6 @@ class AbstractLogger implements \Owl\Log\LoggerInterface
      * @param string $message 
      * @param array $context 
      */
-    public function log($level, $message, $context = array()) {}
+    abstract public function log($level, $message, $context = array());
 
 }

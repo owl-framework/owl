@@ -103,6 +103,6 @@ class Logger extends \Owl\Log\AbstractLogger implements \Owl\Log\LoggerInterface
     public function log($level, $message, $context = array()) {}
 
 
-     function zephir_init_properties() {}
+     function zephir_init_properties_Owl_Log_Logger() {}
 
 }

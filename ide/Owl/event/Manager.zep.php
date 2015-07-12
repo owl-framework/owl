@@ -22,6 +22,6 @@ class Manager
     public function emit($eventName, $data = null) {}
 
 
-     function zephir_init_properties() {}
+     function zephir_init_properties_Owl_Event_Manager() {}
 
 }

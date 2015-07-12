@@ -48,6 +48,6 @@ class Manager
     public function getService($name) {}
 
 
-     function zephir_init_properties() {}
+     function zephir_init_properties_Owl_Service_Manager() {}
 
 }

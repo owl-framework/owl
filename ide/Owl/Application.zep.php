@@ -122,6 +122,6 @@ class Application implements \Owl\ApplicationInterface, \Owl\DispatcherInterface
     public function handle(\Owl\Http\RequestInterface $request, \Owl\Http\ResponseInterface $response = null) {}
 
 
-     function zephir_init_properties() {}
+     function zephir_init_properties_Owl_Application() {}
 
 }
