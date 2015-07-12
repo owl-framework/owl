@@ -45,7 +45,7 @@ class WriterBrowserTest extends \PHPUnit_Framework_TestCase
         $formatted_record = $writer->getFormatter()->format($record);
 
         ob_start();
-        unset( $writer );
+        unset($writer);
         $buffer = ob_get_contents();
         ob_end_clean();
 
