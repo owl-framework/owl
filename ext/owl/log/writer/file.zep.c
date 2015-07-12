@@ -23,7 +23,7 @@ ZEPHIR_INIT_CLASS(Owl_Log_Writer_File) {
 
 	ZEPHIR_REGISTER_CLASS_EX(Owl\\Log\\Writer, File, owl, log_writer_file, owl_log_abstractwriter_ce, owl_log_writer_file_method_entry, 0);
 
-	owl_log_writer_file_ce->create_object = zephir_init_properties;
+	owl_log_writer_file_ce->create_object = zephir_init_properties_Owl_Log_Writer_File;
 	return SUCCESS;
 
 }
@@ -60,7 +60,7 @@ PHP_METHOD(Owl_Log_Writer_File, write) {
 
 }
 
-static zend_object_value zephir_init_properties(zend_class_entry *class_type TSRMLS_DC) {
+static zend_object_value zephir_init_properties_Owl_Log_Writer_File(zend_class_entry *class_type TSRMLS_DC) {
 
 		zval *_0, *_1 = NULL, *_2, *_3;
 

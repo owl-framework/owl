@@ -21,6 +21,7 @@
 #include "kernel/array.h"
 #include "kernel/concat.h"
 
+
 ZEPHIR_INIT_CLASS(Owl_Service_Manager) {
 
 	ZEPHIR_REGISTER_CLASS(Owl\\Service, Manager, owl, service_manager, owl_service_manager_method_entry, 0);
@@ -29,7 +30,7 @@ ZEPHIR_INIT_CLASS(Owl_Service_Manager) {
 
 	zend_declare_property_null(owl_service_manager_ce, SL("services"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
-	owl_service_manager_ce->create_object = zephir_init_properties;
+	owl_service_manager_ce->create_object = zephir_init_properties_Owl_Service_Manager;
 	return SUCCESS;
 
 }
@@ -239,7 +240,7 @@ PHP_METHOD(Owl_Service_Manager, getService) {
 
 }
 
-static zend_object_value zephir_init_properties(zend_class_entry *class_type TSRMLS_DC) {
+static zend_object_value zephir_init_properties_Owl_Service_Manager(zend_class_entry *class_type TSRMLS_DC) {
 
 		zval *_0, *_1 = NULL, *_2;
 

@@ -21,6 +21,7 @@
 #include "kernel/concat.h"
 #include "kernel/hash.h"
 
+
 ZEPHIR_INIT_CLASS(Owl_Log_AbstractWriter) {
 
 	ZEPHIR_REGISTER_CLASS(Owl\\Log, AbstractWriter, owl, log_abstractwriter, owl_log_abstractwriter_method_entry, ZEND_ACC_EXPLICIT_ABSTRACT_CLASS);
@@ -50,7 +51,7 @@ ZEPHIR_INIT_CLASS(Owl_Log_AbstractWriter) {
 	 */
 	zend_declare_property_long(owl_log_abstractwriter_ce, SL("recordsInterval"), 1000, ZEND_ACC_PROTECTED TSRMLS_CC);
 
-	owl_log_abstractwriter_ce->create_object = zephir_init_properties;
+	owl_log_abstractwriter_ce->create_object = zephir_init_properties_Owl_Log_AbstractWriter;
 
 	zend_class_implements(owl_log_abstractwriter_ce TSRMLS_CC, 1, owl_log_writerinterface_ce);
 	return SUCCESS;
@@ -415,19 +416,9 @@ PHP_METHOD(Owl_Log_AbstractWriter, push) {
  */
 PHP_METHOD(Owl_Log_AbstractWriter, write) {
 
-	zval *record_param = NULL;
-	zval *record = NULL;
-
-	ZEPHIR_MM_GROW();
-	zephir_fetch_params(1, 1, 0, &record_param);
-
-	zephir_get_strval(record, record_param);
-
-
-
 }
 
-static zend_object_value zephir_init_properties(zend_class_entry *class_type TSRMLS_DC) {
+static zend_object_value zephir_init_properties_Owl_Log_AbstractWriter(zend_class_entry *class_type TSRMLS_DC) {
 
 		zval *_0, *_1 = NULL, *_2, *_3;
 

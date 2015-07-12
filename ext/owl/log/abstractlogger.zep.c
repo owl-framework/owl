@@ -19,7 +19,7 @@
 
 ZEPHIR_INIT_CLASS(Owl_Log_AbstractLogger) {
 
-	ZEPHIR_REGISTER_CLASS(Owl\\Log, AbstractLogger, owl, log_abstractlogger, owl_log_abstractlogger_method_entry, 0);
+	ZEPHIR_REGISTER_CLASS(Owl\\Log, AbstractLogger, owl, log_abstractlogger, owl_log_abstractlogger_method_entry, ZEND_ACC_EXPLICIT_ABSTRACT_CLASS);
 
 	/**
 	 * Log levers constants
@@ -331,23 +331,6 @@ PHP_METHOD(Owl_Log_AbstractLogger, debug) {
  * @inheritdoc
  */
 PHP_METHOD(Owl_Log_AbstractLogger, log) {
-
-	zval *context = NULL;
-	zval *message = NULL;
-	zval *level, *message_param = NULL, *context_param = NULL;
-
-	ZEPHIR_MM_GROW();
-	zephir_fetch_params(1, 2, 1, &level, &message_param, &context_param);
-
-	zephir_get_strval(message, message_param);
-	if (!context_param) {
-		ZEPHIR_INIT_VAR(context);
-		array_init(context);
-	} else {
-		zephir_get_arrval(context, context_param);
-	}
-
-
 
 }
 

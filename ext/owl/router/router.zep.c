@@ -21,6 +21,7 @@
 #include "kernel/exception.h"
 #include "kernel/hash.h"
 
+
 ZEPHIR_INIT_CLASS(Owl_Router_Router) {
 
 	ZEPHIR_REGISTER_CLASS(Owl\\Router, Router, owl, router_router, owl_router_router_method_entry, 0);
@@ -29,7 +30,7 @@ ZEPHIR_INIT_CLASS(Owl_Router_Router) {
 
 	zend_declare_property_null(owl_router_router_ce, SL("routers"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
-	owl_router_router_ce->create_object = zephir_init_properties;
+	owl_router_router_ce->create_object = zephir_init_properties_Owl_Router_Router;
 
 	zend_class_implements(owl_router_router_ce TSRMLS_CC, 1, owl_router_routerinterface_ce);
 	return SUCCESS;
@@ -193,7 +194,7 @@ PHP_METHOD(Owl_Router_Router, match) {
 
 }
 
-static zend_object_value zephir_init_properties(zend_class_entry *class_type TSRMLS_DC) {
+static zend_object_value zephir_init_properties_Owl_Router_Router(zend_class_entry *class_type TSRMLS_DC) {
 
 		zval *_0, *_1;
 

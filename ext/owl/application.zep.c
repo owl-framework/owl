@@ -20,6 +20,7 @@
 #include "kernel/concat.h"
 #include "kernel/exception.h"
 
+
 ZEPHIR_INIT_CLASS(Owl_Application) {
 
 	ZEPHIR_REGISTER_CLASS(Owl, Application, owl, application, owl_application_method_entry, 0);
@@ -67,7 +68,7 @@ ZEPHIR_INIT_CLASS(Owl_Application) {
 	 */
 	zend_declare_property_null(owl_application_ce, SL("errorHandlerParameters"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
-	owl_application_ce->create_object = zephir_init_properties;
+	owl_application_ce->create_object = zephir_init_properties_Owl_Application;
 
 	zend_class_implements(owl_application_ce TSRMLS_CC, 1, owl_applicationinterface_ce);
 	zend_class_implements(owl_application_ce TSRMLS_CC, 1, owl_dispatcherinterface_ce);
@@ -446,7 +447,7 @@ PHP_METHOD(Owl_Application, handle) {
 
 }
 
-static zend_object_value zephir_init_properties(zend_class_entry *class_type TSRMLS_DC) {
+static zend_object_value zephir_init_properties_Owl_Application(zend_class_entry *class_type TSRMLS_DC) {
 
 		zval *_1 = NULL;
 		zval *_0, *_2;

@@ -21,7 +21,7 @@ PHP_METHOD(Owl_Log_AbstractWriter, filterRecords);
 PHP_METHOD(Owl_Log_AbstractWriter, commit);
 PHP_METHOD(Owl_Log_AbstractWriter, push);
 PHP_METHOD(Owl_Log_AbstractWriter, write);
-static zend_object_value zephir_init_properties(zend_class_entry *class_type TSRMLS_DC);
+static zend_object_value zephir_init_properties_Owl_Log_AbstractWriter(zend_class_entry *class_type TSRMLS_DC);
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_log_abstractwriter_setlevels, 0, 0, 1)
 	ZEND_ARG_INFO(0, levels)
@@ -82,6 +82,6 @@ ZEPHIR_INIT_FUNCS(owl_log_abstractwriter_method_entry) {
 	PHP_ME(Owl_Log_AbstractWriter, filterRecords, arginfo_owl_log_abstractwriter_filterrecords, ZEND_ACC_PROTECTED)
 	PHP_ME(Owl_Log_AbstractWriter, commit, arginfo_owl_log_abstractwriter_commit, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Log_AbstractWriter, push, NULL, ZEND_ACC_PUBLIC)
-	PHP_ME(Owl_Log_AbstractWriter, write, arginfo_owl_log_abstractwriter_write, ZEND_ACC_PROTECTED)
+	PHP_ME(Owl_Log_AbstractWriter, write, arginfo_owl_log_abstractwriter_write, ZEND_ACC_ABSTRACT|ZEND_ACC_PROTECTED)
 	PHP_FE_END
 };

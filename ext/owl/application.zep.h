@@ -13,7 +13,7 @@ PHP_METHOD(Owl_Application, getErrorHandlerParameters);
 PHP_METHOD(Owl_Application, __construct);
 PHP_METHOD(Owl_Application, dispatch);
 PHP_METHOD(Owl_Application, handle);
-static zend_object_value zephir_init_properties(zend_class_entry *class_type TSRMLS_DC);
+static zend_object_value zephir_init_properties_Owl_Application(zend_class_entry *class_type TSRMLS_DC);
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_application_setexceptionhandlerparameters, 0, 0, 1)
 	ZEND_ARG_INFO(0, exceptionHandlerParameters)

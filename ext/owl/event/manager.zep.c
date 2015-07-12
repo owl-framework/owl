@@ -21,13 +21,14 @@
 #include "kernel/fcall.h"
 #include "kernel/operators.h"
 
+
 ZEPHIR_INIT_CLASS(Owl_Event_Manager) {
 
 	ZEPHIR_REGISTER_CLASS(Owl\\Event, Manager, owl, event_manager, owl_event_manager_method_entry, 0);
 
 	zend_declare_property_null(owl_event_manager_ce, SL("listeners"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
-	owl_event_manager_ce->create_object = zephir_init_properties;
+	owl_event_manager_ce->create_object = zephir_init_properties_Owl_Event_Manager;
 	return SUCCESS;
 
 }
@@ -102,7 +103,7 @@ PHP_METHOD(Owl_Event_Manager, emit) {
 
 }
 
-static zend_object_value zephir_init_properties(zend_class_entry *class_type TSRMLS_DC) {
+static zend_object_value zephir_init_properties_Owl_Event_Manager(zend_class_entry *class_type TSRMLS_DC) {
 
 		zval *_0, *_1;
 

@@ -21,6 +21,31 @@
 #include "kernel/exception.h"
 #include "kernel/time.h"
 
+
+/**
+ * Logger usage:
+ *
+ * $Logger = new Logger([
+ *     [
+ *         'class' => '\Owl\Log\Writer\File',
+ *         'levels' => [Logger::LEVEL_ERROR, Logger::LEVEL_WARNING],
+ *         'formatter' => '\Owl\Log\Formatter\Syslog',
+ *         'options' => [
+ *             'logFile' => APP_ROOT '/logs/my.log'
+ *         ]
+ *     ],
+ *     [
+ *         'class' => '\Owl\Log\Writer\Email',
+ *         'levels' => [Logger::LEVEL_ALERT],
+ *         'formatter' => '\Owl\Log\Formatter\Line',
+ *         'options' => [
+ *             'from'  => 'robot@localhost',
+ *             'to' => 'support@localhost',
+ *             'subject' => 'System Alert log'
+ *         ]
+ *     ],
+ * ]);
+ */
 ZEPHIR_INIT_CLASS(Owl_Log_Logger) {
 
 	ZEPHIR_REGISTER_CLASS_EX(Owl\\Log, Logger, owl, log_logger, owl_log_abstractlogger_ce, owl_log_logger_method_entry, 0);
@@ -40,7 +65,7 @@ ZEPHIR_INIT_CLASS(Owl_Log_Logger) {
 	 */
 	zend_declare_property_null(owl_log_logger_ce, SL("writers"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
-	owl_log_logger_ce->create_object = zephir_init_properties;
+	owl_log_logger_ce->create_object = zephir_init_properties_Owl_Log_Logger;
 
 	zend_class_implements(owl_log_logger_ce TSRMLS_CC, 1, owl_log_loggerinterface_ce);
 	return SUCCESS;
@@ -295,7 +320,7 @@ PHP_METHOD(Owl_Log_Logger, log) {
 
 }
 
-static zend_object_value zephir_init_properties(zend_class_entry *class_type TSRMLS_DC) {
+static zend_object_value zephir_init_properties_Owl_Log_Logger(zend_class_entry *class_type TSRMLS_DC) {
 
 		zval *_0, *_1 = NULL, *_2;
 

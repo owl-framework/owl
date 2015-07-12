@@ -13,7 +13,7 @@ PHP_METHOD(Owl_Log_Logger, factoryWriter);
 PHP_METHOD(Owl_Log_Logger, getWriter);
 PHP_METHOD(Owl_Log_Logger, commit);
 PHP_METHOD(Owl_Log_Logger, log);
-static zend_object_value zephir_init_properties(zend_class_entry *class_type TSRMLS_DC);
+static zend_object_value zephir_init_properties_Owl_Log_Logger(zend_class_entry *class_type TSRMLS_DC);
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_log_logger_setrecordsinterval, 0, 0, 1)
 	ZEND_ARG_INFO(0, recordsInterval)
