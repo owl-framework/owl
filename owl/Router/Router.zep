@@ -33,7 +33,14 @@ class Router implements RouterInterface
 
     public function matchRequest(<RequestInterface> request)
     {
-        return this->match(request->getUri(), request->getMethod());
+    	var result, path;
+    	let result = parse_url(request->getUri());
+
+		if fetch path, result["path"] {
+        	return this->match(path, request->getMethod());
+		}
+
+		throw new \Owl\Exception("Cannot fetch path from request");
     }
 
     inline public function match(string uri, string method = Request::GET) -> object|boolean

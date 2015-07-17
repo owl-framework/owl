@@ -19,6 +19,7 @@
 #include "kernel/fcall.h"
 #include "ext/spl/spl_exceptions.h"
 #include "kernel/exception.h"
+#include "kernel/array.h"
 #include "kernel/hash.h"
 
 
@@ -127,7 +128,7 @@ PHP_METHOD(Owl_Router_Router, addRoute) {
 PHP_METHOD(Owl_Router_Router, matchRequest) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *request, *_0 = NULL, *_1 = NULL;
+	zval *request, *result = NULL, *path, *_0 = NULL, *_1 = NULL;
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &request);
@@ -136,11 +137,18 @@ PHP_METHOD(Owl_Router_Router, matchRequest) {
 
 	ZEPHIR_CALL_METHOD(&_0, request, "geturi", NULL, 0);
 	zephir_check_call_status();
-	ZEPHIR_CALL_METHOD(&_1, request, "getmethod", NULL, 0);
+	ZEPHIR_CALL_FUNCTION(&result, "parse_url", NULL, 16, _0);
 	zephir_check_call_status();
-	ZEPHIR_RETURN_CALL_METHOD(this_ptr, "match", NULL, 0, _0, _1);
-	zephir_check_call_status();
-	RETURN_MM();
+	ZEPHIR_OBS_VAR(path);
+	if (zephir_array_isset_string_fetch(&path, result, SS("path"), 0 TSRMLS_CC)) {
+		ZEPHIR_CALL_METHOD(&_1, request, "getmethod", NULL, 0);
+		zephir_check_call_status();
+		ZEPHIR_RETURN_CALL_METHOD(this_ptr, "match", NULL, 0, path, _1);
+		zephir_check_call_status();
+		RETURN_MM();
+	}
+	ZEPHIR_THROW_EXCEPTION_DEBUG_STR(owl_exception_ce, "Cannot fetch path from request", "owl/Router/Router.zep", 43);
+	return;
 
 }
 
@@ -166,7 +174,7 @@ PHP_METHOD(Owl_Router_Router, match) {
 
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("routers"), PH_NOISY_CC);
-	zephir_is_iterable(_0, &_2, &_1, 0, 0, "owl/Router/Router.zep", 49);
+	zephir_is_iterable(_0, &_2, &_1, 0, 0, "owl/Router/Router.zep", 56);
 	for (
 	  ; zephir_hash_get_current_data_ex(_2, (void**) &_3, &_1) == SUCCESS
 	  ; zephir_hash_move_forward_ex(_2, &_1)
