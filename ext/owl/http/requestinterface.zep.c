@@ -22,6 +22,13 @@ ZEPHIR_INIT_CLASS(Owl_Http_RequestInterface) {
 
 ZEPHIR_DOC_METHOD(Owl_Http_RequestInterface, getUri);
 
+/**
+ * Get request path (URI without GET parameters)
+ */
+ZEPHIR_DOC_METHOD(Owl_Http_RequestInterface, getPath);
+
+ZEPHIR_DOC_METHOD(Owl_Http_RequestInterface, getParam);
+
 ZEPHIR_DOC_METHOD(Owl_Http_RequestInterface, getPost);
 
 ZEPHIR_DOC_METHOD(Owl_Http_RequestInterface, getServer);

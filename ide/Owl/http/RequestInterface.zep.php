@@ -12,16 +12,27 @@ interface RequestInterface
     public function getUri();
 
     /**
+     * Get request path (URI without GET parameters)
+     *
+     * @return string 
+     */
+    public function getPath();
+
+    /**
      * @param string $key 
      * @param mixed $defaultValue 
-     * @return string 
+     */
+    public function getParam($key, $defaultValue = null);
+
+    /**
+     * @param string $key 
+     * @param mixed $defaultValue 
      */
     public function getPost($key, $defaultValue = null);
 
     /**
      * @param string $key 
      * @param mixed $defaultValue 
-     * @return string 
      */
     public function getServer($key, $defaultValue = null);
 
