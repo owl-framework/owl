@@ -40,21 +40,27 @@ class DynamicRoute extends \Owl\Router\Route
         for _, part in parts {
             let params = explode(":", part);
 
-            switch (count(params)) {
-                case 2:
-                    if (empty(params[0])) {
-                        let str = str_replace(part, "(?P<" . params[1] . ">[0-9]++)", str);
-                    } elseif (params[1] == "int") {
-                        let str = str_replace(part, "(?P<" . params[0] . ">[0-9]++)", str);
-                    } elseif (substr(params[1], 0, 1) == '{' && $params[1][strlen($params[1]) - 1] == '}') {
-                        let str = substr(params[1], 1, -1);
+			if (part == ":params") {
+				let str = str_replace(part, "(/.*)", str);
+			} else {
+				switch (count(params)) {
+					case 2:
+						if (empty(params[0])) {
+							let str = str_replace(part, "(?P<" . params[1] . ">[0-9]++)", str);
+						} elseif (params[1] == "int") {
+							let str = str_replace(part, "(?P<" . params[0] . ">[0-9]++)", str);
+						} elseif (params[1] == "params") {
+							let str = str_replace(part, params[0] . "(/.*)", str);
+						} elseif (substr(params[1], 0, 1) == '{' && $params[1][strlen($params[1]) - 1] == '}') {
+							let str = substr(params[1], 1, -1);
 
-                        let str = str_replace(part, str, str);
-                    }
-                    break;
-                case 1:
-                    break;
-            }
+							let str = str_replace(part, str, str);
+						}
+						break;
+					case 1:
+						break;
+				}
+			}
         }
 
         let this->pattern = ("`^" . str . "$`u");

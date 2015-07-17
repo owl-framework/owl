@@ -52,11 +52,11 @@ PHP_METHOD(Owl_Router_Http_DynamicRoute, __construct) {
 
 PHP_METHOD(Owl_Router_Http_DynamicRoute, getPattern) {
 
-	zend_bool _12;
-	int _7;
+	zend_bool _14;
+	int _8;
 	HashTable *_5;
 	HashPosition _4;
-	zval *_0, *pattern, *str = NULL, *len, *parts = NULL, *part = NULL, *params = NULL, _1 = zval_used_for_init, _2 = zval_used_for_init, *_3 = NULL, **_6, *_8 = NULL, *_9, *_10, *_11 = NULL, *_13, *_14, *_15, *_16 = NULL, *_17, *_18 = NULL, _19 = zval_used_for_init, _20 = zval_used_for_init;
+	zval *_0, *pattern, *str = NULL, *len, *parts = NULL, *part = NULL, *params = NULL, _1 = zval_used_for_init, _2 = zval_used_for_init, *_3 = NULL, **_6, *_7 = NULL, *_9 = NULL, *_10, *_11, *_12, _13 = zval_used_for_init, *_15, *_16, *_17, *_18 = NULL, *_19, *_20 = NULL, _21 = zval_used_for_init, _22 = zval_used_for_init;
 
 	ZEPHIR_MM_GROW();
 	ZEPHIR_INIT_VAR(parts);
@@ -86,7 +86,7 @@ PHP_METHOD(Owl_Router_Http_DynamicRoute, getPattern) {
 		}
 	}
 	ZEPHIR_INIT_NVAR(_3);
-	zephir_is_iterable(parts, &_5, &_4, 0, 0, "owl/Router/Http/DynamicRoute.zep", 60);
+	zephir_is_iterable(parts, &_5, &_4, 0, 0, "owl/Router/Http/DynamicRoute.zep", 66);
 	for (
 	  ; zephir_hash_get_current_data_ex(_5, (void**) &_6, &_4) == SUCCESS
 	  ; zephir_hash_move_forward_ex(_5, &_4)
@@ -95,63 +95,79 @@ PHP_METHOD(Owl_Router_Http_DynamicRoute, getPattern) {
 		ZEPHIR_GET_HVALUE(part, _6);
 		ZEPHIR_INIT_NVAR(params);
 		zephir_fast_explode_str(params, SL(":"), part, LONG_MAX TSRMLS_CC);
-		do {
-			_7 = (zephir_fast_count_int(params TSRMLS_CC));
-			if (_7 == 2) {
-				ZEPHIR_OBS_NVAR(_8);
-				zephir_array_fetch_long(&_8, params, 0, PH_NOISY, "owl/Router/Http/DynamicRoute.zep", 45 TSRMLS_CC);
-				zephir_array_fetch_long(&_9, params, 1, PH_NOISY | PH_READONLY, "owl/Router/Http/DynamicRoute.zep", 47 TSRMLS_CC);
-				zephir_array_fetch_long(&_10, params, 1, PH_NOISY | PH_READONLY, "owl/Router/Http/DynamicRoute.zep", 49 TSRMLS_CC);
-				ZEPHIR_SINIT_NVAR(_1);
-				ZVAL_LONG(&_1, 0);
-				ZEPHIR_SINIT_NVAR(_2);
-				ZVAL_LONG(&_2, 1);
-				ZEPHIR_INIT_NVAR(_11);
-				zephir_substr(_11, _10, 0 , 1 , 0);
-				_12 = ZEPHIR_IS_LONG(_11, '{');
-				if (_12) {
-					zephir_array_fetch_long(&_13, params, 1, PH_NOISY | PH_READONLY, "owl/Router/Http/DynamicRoute.zep", 49 TSRMLS_CC);
-					zephir_array_fetch_long(&_15, params, 1, PH_NOISY | PH_READONLY, "owl/Router/Http/DynamicRoute.zep", 49 TSRMLS_CC);
-					zephir_array_fetch_long(&_14, _13, (zephir_fast_strlen_ev(_15) - 1), PH_NOISY | PH_READONLY, "owl/Router/Http/DynamicRoute.zep", 49 TSRMLS_CC);
-					_12 = ZEPHIR_IS_LONG(_14, '}');
+		if (ZEPHIR_IS_STRING(part, ":params")) {
+			ZEPHIR_INIT_NVAR(_7);
+			ZEPHIR_SINIT_NVAR(_1);
+			ZVAL_STRING(&_1, "(/.*)", 0);
+			zephir_fast_str_replace(&_7, part, &_1, str TSRMLS_CC);
+			ZEPHIR_CPY_WRT(str, _7);
+		} else {
+			do {
+				_8 = (zephir_fast_count_int(params TSRMLS_CC));
+				if (_8 == 2) {
+					ZEPHIR_OBS_NVAR(_9);
+					zephir_array_fetch_long(&_9, params, 0, PH_NOISY, "owl/Router/Http/DynamicRoute.zep", 48 TSRMLS_CC);
+					zephir_array_fetch_long(&_10, params, 1, PH_NOISY | PH_READONLY, "owl/Router/Http/DynamicRoute.zep", 50 TSRMLS_CC);
+					zephir_array_fetch_long(&_11, params, 1, PH_NOISY | PH_READONLY, "owl/Router/Http/DynamicRoute.zep", 52 TSRMLS_CC);
+					zephir_array_fetch_long(&_12, params, 1, PH_NOISY | PH_READONLY, "owl/Router/Http/DynamicRoute.zep", 54 TSRMLS_CC);
+					ZEPHIR_SINIT_NVAR(_2);
+					ZVAL_LONG(&_2, 0);
+					ZEPHIR_SINIT_NVAR(_13);
+					ZVAL_LONG(&_13, 1);
+					ZEPHIR_INIT_NVAR(_7);
+					zephir_substr(_7, _12, 0 , 1 , 0);
+					_14 = ZEPHIR_IS_LONG(_7, '{');
+					if (_14) {
+						zephir_array_fetch_long(&_15, params, 1, PH_NOISY | PH_READONLY, "owl/Router/Http/DynamicRoute.zep", 54 TSRMLS_CC);
+						zephir_array_fetch_long(&_17, params, 1, PH_NOISY | PH_READONLY, "owl/Router/Http/DynamicRoute.zep", 54 TSRMLS_CC);
+						zephir_array_fetch_long(&_16, _15, (zephir_fast_strlen_ev(_17) - 1), PH_NOISY | PH_READONLY, "owl/Router/Http/DynamicRoute.zep", 54 TSRMLS_CC);
+						_14 = ZEPHIR_IS_LONG(_16, '}');
+					}
+					if (ZEPHIR_IS_EMPTY(_9)) {
+						ZEPHIR_INIT_NVAR(_18);
+						zephir_array_fetch_long(&_19, params, 1, PH_NOISY | PH_READONLY, "owl/Router/Http/DynamicRoute.zep", 49 TSRMLS_CC);
+						ZEPHIR_INIT_LNVAR(_20);
+						ZEPHIR_CONCAT_SVS(_20, "(?P<", _19, ">[0-9]++)");
+						zephir_fast_str_replace(&_18, part, _20, str TSRMLS_CC);
+						ZEPHIR_CPY_WRT(str, _18);
+					} else if (ZEPHIR_IS_STRING(_10, "int")) {
+						ZEPHIR_INIT_NVAR(_18);
+						zephir_array_fetch_long(&_19, params, 0, PH_NOISY | PH_READONLY, "owl/Router/Http/DynamicRoute.zep", 51 TSRMLS_CC);
+						ZEPHIR_INIT_LNVAR(_20);
+						ZEPHIR_CONCAT_SVS(_20, "(?P<", _19, ">[0-9]++)");
+						zephir_fast_str_replace(&_18, part, _20, str TSRMLS_CC);
+						ZEPHIR_CPY_WRT(str, _18);
+					} else if (ZEPHIR_IS_STRING(_11, "params")) {
+						ZEPHIR_INIT_NVAR(_18);
+						zephir_array_fetch_long(&_19, params, 0, PH_NOISY | PH_READONLY, "owl/Router/Http/DynamicRoute.zep", 53 TSRMLS_CC);
+						ZEPHIR_INIT_LNVAR(_20);
+						ZEPHIR_CONCAT_VS(_20, _19, "(/.*)");
+						zephir_fast_str_replace(&_18, part, _20, str TSRMLS_CC);
+						ZEPHIR_CPY_WRT(str, _18);
+					} else if (_14) {
+						zephir_array_fetch_long(&_19, params, 1, PH_NOISY | PH_READONLY, "owl/Router/Http/DynamicRoute.zep", 55 TSRMLS_CC);
+						ZEPHIR_SINIT_NVAR(_21);
+						ZVAL_LONG(&_21, 1);
+						ZEPHIR_SINIT_NVAR(_22);
+						ZVAL_LONG(&_22, -1);
+						ZEPHIR_INIT_NVAR(str);
+						zephir_substr(str, _19, 1 , -1 , 0);
+						ZEPHIR_INIT_NVAR(_18);
+						zephir_fast_str_replace(&_18, part, str, str TSRMLS_CC);
+						ZEPHIR_CPY_WRT(str, _18);
+					}
+					break;
 				}
-				if (ZEPHIR_IS_EMPTY(_8)) {
-					ZEPHIR_INIT_NVAR(_16);
-					zephir_array_fetch_long(&_17, params, 1, PH_NOISY | PH_READONLY, "owl/Router/Http/DynamicRoute.zep", 46 TSRMLS_CC);
-					ZEPHIR_INIT_LNVAR(_18);
-					ZEPHIR_CONCAT_SVS(_18, "(?P<", _17, ">[0-9]++)");
-					zephir_fast_str_replace(&_16, part, _18, str TSRMLS_CC);
-					ZEPHIR_CPY_WRT(str, _16);
-				} else if (ZEPHIR_IS_STRING(_9, "int")) {
-					ZEPHIR_INIT_NVAR(_16);
-					zephir_array_fetch_long(&_17, params, 0, PH_NOISY | PH_READONLY, "owl/Router/Http/DynamicRoute.zep", 48 TSRMLS_CC);
-					ZEPHIR_INIT_LNVAR(_18);
-					ZEPHIR_CONCAT_SVS(_18, "(?P<", _17, ">[0-9]++)");
-					zephir_fast_str_replace(&_16, part, _18, str TSRMLS_CC);
-					ZEPHIR_CPY_WRT(str, _16);
-				} else if (_12) {
-					zephir_array_fetch_long(&_17, params, 1, PH_NOISY | PH_READONLY, "owl/Router/Http/DynamicRoute.zep", 50 TSRMLS_CC);
-					ZEPHIR_SINIT_NVAR(_19);
-					ZVAL_LONG(&_19, 1);
-					ZEPHIR_SINIT_NVAR(_20);
-					ZVAL_LONG(&_20, -1);
-					ZEPHIR_INIT_NVAR(str);
-					zephir_substr(str, _17, 1 , -1 , 0);
-					ZEPHIR_INIT_NVAR(_16);
-					zephir_fast_str_replace(&_16, part, str, str TSRMLS_CC);
-					ZEPHIR_CPY_WRT(str, _16);
+				if (_8 == 1) {
+					break;
 				}
-				break;
-			}
-			if (_7 == 1) {
-				break;
-			}
-		} while(0);
+			} while(0);
 
+		}
 	}
-	ZEPHIR_INIT_LNVAR(_18);
-	ZEPHIR_CONCAT_SVS(_18, "`^", str, "$`u");
-	zephir_update_property_this(this_ptr, SL("pattern"), _18 TSRMLS_CC);
+	ZEPHIR_INIT_LNVAR(_20);
+	ZEPHIR_CONCAT_SVS(_20, "`^", str, "$`u");
+	zephir_update_property_this(this_ptr, SL("pattern"), _20 TSRMLS_CC);
 	RETURN_MM_MEMBER(this_ptr, "pattern");
 
 }
