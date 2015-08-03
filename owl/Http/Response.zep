@@ -35,6 +35,7 @@ class Response implements ResponseInterface
 	{
 		http_response_code(this->statusCode);
 
+		this->headers->send();
 		echo (string) this->content;
 
 		return true;

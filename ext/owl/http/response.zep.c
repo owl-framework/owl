@@ -134,19 +134,22 @@ PHP_METHOD(Owl_Http_Response, __construct) {
 
 PHP_METHOD(Owl_Http_Response, send) {
 
-	zval *_2 = NULL;
+	zval *_3 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *_0, *_1;
+	zval *_0, *_1, *_2;
 
 	ZEPHIR_MM_GROW();
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("statusCode"), PH_NOISY_CC);
 	ZEPHIR_CALL_FUNCTION(NULL, "http_response_code", NULL, 4, _0);
 	zephir_check_call_status();
-	ZEPHIR_OBS_VAR(_1);
-	zephir_read_property_this(&_1, this_ptr, SL("content"), PH_NOISY_CC);
-	zephir_get_strval(_2, _1);
-	zend_print_zval(_2, 0);
+	_1 = zephir_fetch_nproperty_this(this_ptr, SL("headers"), PH_NOISY_CC);
+	ZEPHIR_CALL_METHOD(NULL, _1, "send", NULL, 0);
+	zephir_check_call_status();
+	ZEPHIR_OBS_VAR(_2);
+	zephir_read_property_this(&_2, this_ptr, SL("content"), PH_NOISY_CC);
+	zephir_get_strval(_3, _2);
+	zend_print_zval(_3, 0);
 	RETURN_MM_BOOL(1);
 
 }
