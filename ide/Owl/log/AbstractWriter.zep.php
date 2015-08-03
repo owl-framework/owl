@@ -136,7 +136,4 @@ abstract class AbstractWriter implements \Owl\Log\WriterInterface
      */
     abstract protected function write($record);
 
-
-     function zephir_init_properties_Owl_Log_AbstractWriter() {}
-
 }

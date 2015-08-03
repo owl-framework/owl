@@ -12,7 +12,4 @@ class File extends \Owl\Log\AbstractWriter
      */
     public function write($record) {}
 
-
-     function zephir_init_properties_Owl_Log_Writer_File() {}
-
 }
