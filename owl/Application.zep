@@ -103,7 +103,7 @@ class Application implements ApplicationInterface, DispatcherInterface
 
 		if (this->currentLoop > 3) {
 			response->setContent("World was crashed");
-			response->setCode(500);
+			response->setStatusCode(500);
 
 			return false;
 		}
@@ -141,7 +141,7 @@ class Application implements ApplicationInterface, DispatcherInterface
 
 			return response;
 		} catch \Exception, e {
-			response->setCode(500);
+			response->setStatusCode(500);
 
 			this->dispatch(
 				this->exceptionHandlerParameters,
@@ -186,7 +186,7 @@ class Application implements ApplicationInterface, DispatcherInterface
 				let response = this->dispatch(matchedRoute->parameters, matchedRoute->uriParameters, response);
 			}
 		} else {
-			response->setCode(404);
+			response->setStatusCode(404);
 			this->dispatch(this->errorHandlerParameters, null, response);
 		}
 

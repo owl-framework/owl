@@ -250,7 +250,7 @@ PHP_METHOD(Owl_Application, dispatch) {
 		zephir_check_call_status();
 		ZEPHIR_INIT_NVAR(_3);
 		ZVAL_LONG(_3, 500);
-		ZEPHIR_CALL_METHOD(NULL, response, "setcode", NULL, 0, _3);
+		ZEPHIR_CALL_METHOD(NULL, response, "setstatuscode", NULL, 0, _3);
 		zephir_check_call_status();
 		RETURN_MM_BOOL(0);
 	}
@@ -337,7 +337,7 @@ PHP_METHOD(Owl_Application, dispatch) {
 			zend_clear_exception(TSRMLS_C);
 			ZEPHIR_INIT_NVAR(_3);
 			ZVAL_LONG(_3, 500);
-			ZEPHIR_CALL_METHOD(NULL, response, "setcode", NULL, 0, _3);
+			ZEPHIR_CALL_METHOD(NULL, response, "setstatuscode", NULL, 0, _3);
 			zephir_check_call_status();
 			_6 = zephir_fetch_nproperty_this(this_ptr, SL("exceptionHandlerParameters"), PH_NOISY_CC);
 			ZEPHIR_INIT_NVAR(_12);
@@ -428,7 +428,7 @@ PHP_METHOD(Owl_Application, handle) {
 	} else {
 		ZEPHIR_INIT_NVAR(_1);
 		ZVAL_LONG(_1, 404);
-		ZEPHIR_CALL_METHOD(NULL, response, "setcode", NULL, 8, _1);
+		ZEPHIR_CALL_METHOD(NULL, response, "setstatuscode", NULL, 8, _1);
 		zephir_check_call_status();
 		_9 = zephir_fetch_nproperty_this(this_ptr, SL("errorHandlerParameters"), PH_NOISY_CC);
 		ZEPHIR_INIT_NVAR(_1);

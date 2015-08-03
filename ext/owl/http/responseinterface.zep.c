@@ -24,7 +24,7 @@ ZEPHIR_DOC_METHOD(Owl_Http_ResponseInterface, send);
 
 ZEPHIR_DOC_METHOD(Owl_Http_ResponseInterface, getContent);
 
-ZEPHIR_DOC_METHOD(Owl_Http_ResponseInterface, setCode);
+ZEPHIR_DOC_METHOD(Owl_Http_ResponseInterface, setStatusCode);
 
-ZEPHIR_DOC_METHOD(Owl_Http_ResponseInterface, getCode);
+ZEPHIR_DOC_METHOD(Owl_Http_ResponseInterface, getStatusCode);
 

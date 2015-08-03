@@ -7,7 +7,7 @@ interface ResponseInterface
 
 	public function getContent() -> string;
 
-	public function setCode(int code);
+	public function setStatusCode(int code);
 
-	public function getCode() -> int;
+	public function getStatusCode() -> int;
 }

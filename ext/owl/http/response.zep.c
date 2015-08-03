@@ -25,7 +25,7 @@ ZEPHIR_INIT_CLASS(Owl_Http_Response) {
 	/**
 	 * @var int
 	 */
-	zend_declare_property_long(owl_http_response_ce, SL("code"), 200, ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_long(owl_http_response_ce, SL("statusCode"), 200, ZEND_ACC_PROTECTED TSRMLS_CC);
 
 	/**
 	 * @var string
@@ -47,25 +47,25 @@ ZEPHIR_INIT_CLASS(Owl_Http_Response) {
 /**
  * @var int
  */
-PHP_METHOD(Owl_Http_Response, getCode) {
+PHP_METHOD(Owl_Http_Response, getStatusCode) {
 
 
-	RETURN_MEMBER(this_ptr, "code");
+	RETURN_MEMBER(this_ptr, "statusCode");
 
 }
 
 /**
  * @var int
  */
-PHP_METHOD(Owl_Http_Response, setCode) {
+PHP_METHOD(Owl_Http_Response, setStatusCode) {
 
-	zval *code;
+	zval *statusCode;
 
-	zephir_fetch_params(0, 1, 0, &code);
+	zephir_fetch_params(0, 1, 0, &statusCode);
 
 
 
-	zephir_update_property_this(this_ptr, SL("code"), code TSRMLS_CC);
+	zephir_update_property_this(this_ptr, SL("statusCode"), statusCode TSRMLS_CC);
 
 }
 
@@ -140,7 +140,7 @@ PHP_METHOD(Owl_Http_Response, send) {
 
 	ZEPHIR_MM_GROW();
 
-	_0 = zephir_fetch_nproperty_this(this_ptr, SL("code"), PH_NOISY_CC);
+	_0 = zephir_fetch_nproperty_this(this_ptr, SL("statusCode"), PH_NOISY_CC);
 	ZEPHIR_CALL_FUNCTION(NULL, "http_response_code", NULL, 4, _0);
 	zephir_check_call_status();
 	ZEPHIR_OBS_VAR(_1);
@@ -159,7 +159,7 @@ PHP_METHOD(Owl_Http_Response, isOk) {
 	zval *_0;
 
 
-	_0 = zephir_fetch_nproperty_this(this_ptr, SL("code"), PH_NOISY_CC);
+	_0 = zephir_fetch_nproperty_this(this_ptr, SL("statusCode"), PH_NOISY_CC);
 	RETURN_BOOL(ZEPHIR_IS_LONG(_0, 200));
 
 }
@@ -173,10 +173,10 @@ PHP_METHOD(Owl_Http_Response, isServerError) {
 	zval *_0, *_2;
 
 
-	_0 = zephir_fetch_nproperty_this(this_ptr, SL("code"), PH_NOISY_CC);
+	_0 = zephir_fetch_nproperty_this(this_ptr, SL("statusCode"), PH_NOISY_CC);
 	_1 = ZEPHIR_GE_LONG(_0, 500);
 	if (_1) {
-		_2 = zephir_fetch_nproperty_this(this_ptr, SL("code"), PH_NOISY_CC);
+		_2 = zephir_fetch_nproperty_this(this_ptr, SL("statusCode"), PH_NOISY_CC);
 		_1 = ZEPHIR_LT_LONG(_2, 600);
 	}
 	RETURN_BOOL(_1);

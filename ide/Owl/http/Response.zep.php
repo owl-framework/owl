@@ -11,7 +11,7 @@ class Response implements \Owl\Http\ResponseInterface
     /**
      * @var int
      */
-    protected $code = Response::STATUS_CODE_OK;
+    protected $statusCode = Response::STATUS_CODE_OK;
 
     /**
      * @var string
@@ -27,12 +27,12 @@ class Response implements \Owl\Http\ResponseInterface
     /**
      * @return int 
      */
-    public function getCode() {}
+    public function getStatusCode() {}
 
     /**
-     * @param int $code 
+     * @param int $statusCode 
      */
-    public function setCode($code) {}
+    public function setStatusCode($statusCode) {}
 
     /**
      * @return string 

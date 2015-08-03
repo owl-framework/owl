@@ -19,11 +19,11 @@ interface ResponseInterface
     /**
      * @param int $code 
      */
-    public function setCode($code);
+    public function setStatusCode($code);
 
     /**
      * @return int 
      */
-    public function getCode();
+    public function getStatusCode();
 
 }

@@ -8,7 +8,7 @@ class Response implements ResponseInterface
 	/**
 	 * @var int
 	 */
-	protected code = Response::STATUS_CODE_OK {
+	protected statusCode = Response::STATUS_CODE_OK {
 		get, set
 	};
 
@@ -33,7 +33,7 @@ class Response implements ResponseInterface
 
 	public function send() -> boolean
 	{
-		http_response_code(this->code);
+		http_response_code(this->statusCode);
 
 		echo (string) this->content;
 
@@ -45,7 +45,7 @@ class Response implements ResponseInterface
 	 */
 	public function isOk() -> boolean
 	{
-		return this->code == 200;
+		return this->statusCode == 200;
 	}
 
 	/**
@@ -53,6 +53,6 @@ class Response implements ResponseInterface
 	 */
 	public function isServerError() -> boolean
 	{
-		return this->code >= 500 && this->code < 600;
+		return this->statusCode >= 500 && this->statusCode < 600;
 	}
 }
