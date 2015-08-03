@@ -27,7 +27,7 @@ class Redis extends CacheDriver
 
     public fn getInstance() -> <Redis>
     {
-        if (is_null($this->instance)) {
+        if (is_null(this->instance)) {
             let this->instance = new Redis();
             this->instance->connect("localhost");
 
@@ -36,7 +36,7 @@ class Redis extends CacheDriver
             return this->instance;
         }
 
-        return $this->instance;
+        return this->instance;
     }
 
     public fn __destruct()
@@ -60,7 +60,7 @@ class Redis extends CacheDriver
      */
     public fn delete(var id)
     {
-        return this->getInstance()->delete($id);
+        return this->getInstance()->delete(id);
     }
 
     /**

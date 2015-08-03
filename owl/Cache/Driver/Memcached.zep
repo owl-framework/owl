@@ -22,19 +22,19 @@ class Memcached extends CacheDriver
 
     public fn setInstance(<Memcached> instance)
     {
-        let this->instance = $instance;
+        let this->instance = instance;
     }
 
     public fn getInstance() -> <Memcached>
     {
-        if (is_null($this->instance)) {
+        if (is_null(this->instance)) {
             let this->instance = new \Memcached;
             this->instance->addServer("localhost", 11211);
 
             return this->instance;
         }
 
-        return $this->instance;
+        return this->instance;
     }
 
     public fn __destruct()
@@ -58,7 +58,7 @@ class Memcached extends CacheDriver
      */
     public fn delete(var id)
     {
-        return this->getInstance()->delete($id);
+        return this->getInstance()->delete(id);
     }
 
     /**

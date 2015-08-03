@@ -25,7 +25,7 @@ class NativeArray extends CacheDriver
      */
     public fn getInstance()
     {
-        if (is_null($this->instance)) {
+        if (is_null(this->instance)) {
             let this->instance = [];
             return this->instance;
         }
