@@ -1,8 +1,6 @@
 
 namespace Owl\Http;
 
-use Owl\Std\ArrayBag;
-
 class Response implements ResponseInterface
 {
 	const STATUS_CODE_OK = 200;
@@ -22,7 +20,7 @@ class Response implements ResponseInterface
 	};
 
 	/**
-	 * @var \Owl\Std\ArrayBag
+	 * @var \Owl\Http\HeadersBag
 	 */
 	protected headers {
 		get

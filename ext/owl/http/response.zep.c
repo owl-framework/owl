@@ -33,7 +33,7 @@ ZEPHIR_INIT_CLASS(Owl_Http_Response) {
 	zend_declare_property_string(owl_http_response_ce, SL("content"), "", ZEND_ACC_PROTECTED TSRMLS_CC);
 
 	/**
-	 * @var \Owl\Std\ArrayBag
+	 * @var \Owl\Http\HeadersBag
 	 */
 	zend_declare_property_null(owl_http_response_ce, SL("headers"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
@@ -105,7 +105,7 @@ PHP_METHOD(Owl_Http_Response, __toString) {
 }
 
 /**
- * @var \Owl\Std\ArrayBag
+ * @var \Owl\Http\HeadersBag
  */
 PHP_METHOD(Owl_Http_Response, getHeaders) {
 

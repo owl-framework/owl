@@ -19,7 +19,7 @@ class Response implements \Owl\Http\ResponseInterface
     protected $content = "";
 
     /**
-     * @var \Owl\Std\ArrayBag
+     * @var \Owl\Http\HeadersBag
      */
     protected $headers;
 
@@ -48,7 +48,7 @@ class Response implements \Owl\Http\ResponseInterface
     public function __toString() {}
 
     /**
-     * @return \Owl\Std\ArrayBag 
+     * @return \Owl\Http\HeadersBag 
      */
     public function getHeaders() {}
 
