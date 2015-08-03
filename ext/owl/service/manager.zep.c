@@ -62,7 +62,7 @@ PHP_METHOD(Owl_Service_Manager, set) {
 	if (!(_0)) {
 		ZEPHIR_INIT_VAR(_1);
 		ZVAL_BOOL(_1, 1);
-		ZEPHIR_CALL_FUNCTION(&_2, "is_callable", NULL, 29, definition, _1);
+		ZEPHIR_CALL_FUNCTION(&_2, "is_callable", NULL, 30, definition, _1);
 		zephir_check_call_status();
 		_0 = zephir_is_true(_2);
 	}

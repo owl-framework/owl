@@ -100,13 +100,13 @@ PHP_METHOD(Owl_Mvc_View, render) {
 		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(owl_exception_ce, "File is not exists", "owl/Mvc/View.zep", 21);
 		return;
 	}
-	ZEPHIR_CALL_FUNCTION(NULL, "ob_start", NULL, 23);
+	ZEPHIR_CALL_FUNCTION(NULL, "ob_start", NULL, 24);
 	zephir_check_call_status();
 	if (!(Z_TYPE_P(parameters) == IS_NULL)) {
 		ZEPHIR_INIT_VAR(_2);
 		ZVAL_LONG(_2, 0);
 		Z_SET_ISREF_P(parameters);
-		ZEPHIR_CALL_FUNCTION(NULL, "extract", NULL, 24, parameters, _2);
+		ZEPHIR_CALL_FUNCTION(NULL, "extract", NULL, 25, parameters, _2);
 		Z_UNSET_ISREF_P(parameters);
 		zephir_check_call_status();
 	}
@@ -116,9 +116,9 @@ PHP_METHOD(Owl_Mvc_View, render) {
 	if (zephir_require_zval(_4 TSRMLS_CC) == FAILURE) {
 		RETURN_MM_NULL();
 	}
-	ZEPHIR_CALL_FUNCTION(&tmp, "ob_get_contents", NULL, 25);
+	ZEPHIR_CALL_FUNCTION(&tmp, "ob_get_contents", NULL, 26);
 	zephir_check_call_status();
-	ZEPHIR_CALL_FUNCTION(NULL, "ob_end_clean", NULL, 26);
+	ZEPHIR_CALL_FUNCTION(NULL, "ob_end_clean", NULL, 27);
 	zephir_check_call_status();
 	RETURN_CCTOR(tmp);
 
