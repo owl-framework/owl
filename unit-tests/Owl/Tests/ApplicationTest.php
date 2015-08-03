@@ -80,7 +80,7 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
         $response = $application->handle(Request::createFromGlobals(), new \Owl\Http\Response\Json());
 
         $this->assertInstanceOf('Owl\Http\ResponseInterface', $response);
-        $this->assertSame(200, $response->getCode());
+        $this->assertSame(200, $response->getStatusCode());
 
         $this->assertNotFalse($dispatchBeforeExecuteRoute);
         $this->assertNotFalse($dispatchAfterExecuteRoute);

@@ -12,13 +12,13 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     public function testGetSetCode()
     {
         $response = new Response();
-        $this->assertSame(200, $response->getCode());
+        $this->assertSame(200, $response->getStatusCode());
 
-        $response->setCode(404);
-        $this->assertSame(404, $response->getCode());
+        $response->setStatusCode(404);
+        $this->assertSame(404, $response->getStatusCode());
 
-        $response->setCode(500);
-        $this->assertSame(500, $response->getCode());
+        $response->setStatusCode(500);
+        $this->assertSame(500, $response->getStatusCode());
     }
 
     public function testGetSetContent()
