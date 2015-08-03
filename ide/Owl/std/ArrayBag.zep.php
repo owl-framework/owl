@@ -38,4 +38,9 @@ class ArrayBag implements \Countable
      */
     public function get($key, $defaultValue = null) {}
 
+    /**
+     * @return array 
+     */
+    public function toArray() {}
+
 }

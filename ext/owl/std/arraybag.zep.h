@@ -8,6 +8,7 @@ PHP_METHOD(Owl_Std_ArrayBag, count);
 PHP_METHOD(Owl_Std_ArrayBag, set);
 PHP_METHOD(Owl_Std_ArrayBag, has);
 PHP_METHOD(Owl_Std_ArrayBag, get);
+PHP_METHOD(Owl_Std_ArrayBag, toArray);
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_std_arraybag___construct, 0, 0, 1)
 	ZEND_ARG_ARRAY_INFO(0, input, 0)
@@ -33,5 +34,6 @@ ZEPHIR_INIT_FUNCS(owl_std_arraybag_method_entry) {
 	PHP_ME(Owl_Std_ArrayBag, set, arginfo_owl_std_arraybag_set, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Std_ArrayBag, has, arginfo_owl_std_arraybag_has, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Std_ArrayBag, get, arginfo_owl_std_arraybag_get, ZEND_ACC_PUBLIC)
+	PHP_ME(Owl_Std_ArrayBag, toArray, NULL, ZEND_ACC_PUBLIC)
 	PHP_FE_END
 };

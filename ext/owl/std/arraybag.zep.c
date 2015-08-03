@@ -142,3 +142,10 @@ PHP_METHOD(Owl_Std_ArrayBag, get) {
 
 }
 
+PHP_METHOD(Owl_Std_ArrayBag, toArray) {
+
+
+	RETURN_MEMBER(this_ptr, "elements");
+
+}
+

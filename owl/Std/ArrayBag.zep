@@ -35,4 +35,9 @@ class ArrayBag implements \Countable
 
 		return defaultValue;
 	}
+
+	public function toArray() -> array
+	{
+		return this->elements;
+	}
 }
