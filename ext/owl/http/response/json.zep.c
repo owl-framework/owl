@@ -36,7 +36,7 @@ PHP_METHOD(Owl_Http_Response_Json, __construct) {
 	ZEPHIR_MM_GROW();
 
 	ZEPHIR_INIT_VAR(_0);
-	object_init_ex(_0, owl_std_arraybag_ce);
+	object_init_ex(_0, owl_http_headersbag_ce);
 	ZEPHIR_INIT_VAR(_1);
 	zephir_create_array(_1, 1, 0 TSRMLS_CC);
 	add_assoc_stringl_ex(_1, SS("Content-Type"), SL("application/json"), 1);

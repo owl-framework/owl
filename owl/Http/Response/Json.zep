@@ -2,13 +2,13 @@
 namespace Owl\Http\Response;
 
 use Owl\Http\Response;
-use Owl\Std\ArrayBag;
+use Owl\Http\HeadersBag;
 
 class Json extends Response
 {
     public function __construct()
     {
-        let this->headers = new ArrayBag([
+        let this->headers = new HeadersBag([
             "Content-Type": "application/json"
         ]);
     }
