@@ -33,7 +33,6 @@ install:
   - composer self-update
   - composer --prefer-source install
   - sudo apt-get update
-  - sudo apt-get install -y valgrind
   - sh tests/ci/$DB.sh
 
 before_script:
@@ -53,3 +52,10 @@ script:
 after_failure:
   - sudo apt-get -qq install gdb
   - ./tests/ci/after_failure.sh
+
+addons:
+  apt:
+    packages:
+      - gdb
+      - valgrind
+      - re2c
