@@ -30,7 +30,7 @@ class Response implements ResponseInterface
 
 	public function __construct()
 	{
-		let this->headers = new ArrayBag([]);
+		let this->headers = new HeadersBag([]);
 	}
 
 	public function send() -> boolean

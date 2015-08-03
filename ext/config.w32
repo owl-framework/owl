@@ -17,9 +17,10 @@ if (PHP_OWL != "no") {
 	ADD_SOURCES(configure_module_dirname + "/owl/dbal/driver", "driverinterface.zep.c mysql.zep.c pdo.zep.c pgsql.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/dbal/platform", "platforminterface.zep.c mysql.zep.c pgsql.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl", "exception.zep.c applicationinterface.zep.c dispatcherinterface.zep.c application.zep.c", "owl");
-	ADD_SOURCES(configure_module_dirname + "/owl/http", "responseinterface.zep.c requestinterface.zep.c response.zep.c request.zep.c", "owl");
+	ADD_SOURCES(configure_module_dirname + "/owl/http", "responseinterface.zep.c requestinterface.zep.c response.zep.c headersbag.zep.c request.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/router", "route.zep.c routerinterface.zep.c router.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/mvc", "controller.zep.c view.zep.c", "owl");
+	ADD_SOURCES(configure_module_dirname + "/owl/std", "arraybag.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/std/collection", "abstractcollection.zep.c arraycollection.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/annotations", "annotation.zep.c classannotationsresult.zep.c exception.zep.c reader.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/bridge/lynx/rest", "entitycontroller.zep.c", "owl");
@@ -36,6 +37,5 @@ if (PHP_OWL != "no") {
 	ADD_SOURCES(configure_module_dirname + "/owl/router/http", "dynamicroute.zep.c staticroute.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/service", "manager.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/session", "managerinterface.zep.c", "owl");
-	ADD_SOURCES(configure_module_dirname + "/owl/std", "arraybag.zep.c", "owl");
   ADD_FLAG("CFLAGS_OWL", "/D ZEPHIR_RELEASE");
 }

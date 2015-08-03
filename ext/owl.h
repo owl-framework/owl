@@ -22,6 +22,7 @@
 #include "owl/log/abstractlogger.zep.h"
 #include "owl/mvc/controller.zep.h"
 #include "owl/router/routerinterface.zep.h"
+#include "owl/std/arraybag.zep.h"
 #include "owl/std/collection/abstractcollection.zep.h"
 #include "owl/annotations/annotation.zep.h"
 #include "owl/annotations/classannotationsresult.zep.h"
@@ -46,6 +47,7 @@
 #include "owl/debug/profiler.zep.h"
 #include "owl/event/event.zep.h"
 #include "owl/event/manager.zep.h"
+#include "owl/http/headersbag.zep.h"
 #include "owl/http/request.zep.h"
 #include "owl/http/response/json.zep.h"
 #include "owl/log/exception/invalidformatterexception.zep.h"
@@ -65,7 +67,6 @@
 #include "owl/router/router.zep.h"
 #include "owl/service/manager.zep.h"
 #include "owl/session/managerinterface.zep.h"
-#include "owl/std/arraybag.zep.h"
 #include "owl/std/collection/arraycollection.zep.h"
 
 #endif

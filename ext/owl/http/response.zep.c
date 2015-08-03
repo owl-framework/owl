@@ -122,7 +122,7 @@ PHP_METHOD(Owl_Http_Response, __construct) {
 	ZEPHIR_MM_GROW();
 
 	ZEPHIR_INIT_VAR(_0);
-	object_init_ex(_0, owl_std_arraybag_ce);
+	object_init_ex(_0, owl_http_headersbag_ce);
 	ZEPHIR_INIT_VAR(_1);
 	array_init(_1);
 	ZEPHIR_CALL_METHOD(NULL, _0, "__construct", NULL, 3, _1);

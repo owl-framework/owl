@@ -27,6 +27,7 @@ if test "$PHP_OWL" = "yes"; then
 	owl/log/abstractlogger.zep.c
 	owl/mvc/controller.zep.c
 	owl/router/routerinterface.zep.c
+	owl/std/arraybag.zep.c
 	owl/std/collection/abstractcollection.zep.c
 	owl/annotations/annotation.zep.c
 	owl/annotations/classannotationsresult.zep.c
@@ -51,6 +52,7 @@ if test "$PHP_OWL" = "yes"; then
 	owl/debug/profiler.zep.c
 	owl/event/event.zep.c
 	owl/event/manager.zep.c
+	owl/http/headersbag.zep.c
 	owl/http/request.zep.c
 	owl/http/response/json.zep.c
 	owl/log/exception/invalidformatterexception.zep.c
@@ -70,7 +72,6 @@ if test "$PHP_OWL" = "yes"; then
 	owl/router/router.zep.c
 	owl/service/manager.zep.c
 	owl/session/managerinterface.zep.c
-	owl/std/arraybag.zep.c
 	owl/std/collection/arraycollection.zep.c owl/annotations/scanner.c
 	owl/annotations/parser.c"
 	PHP_NEW_EXTENSION(owl, $owl_sources, $ext_shared,, )
