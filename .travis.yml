@@ -53,7 +53,6 @@ script:
   - valgrind --read-var-info=yes --error-exitcode=1 --fullpath-after= --track-origins=yes --leak-check=full phpunit -v --debug --configuration tests/travis/$DB.travis.xml
 
 after_failure:
-  - sudo apt-get -qq install gdb
   - ./tests/ci/after_failure.sh
 
 addons:
