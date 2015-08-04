@@ -191,9 +191,9 @@ PHP_METHOD(Owl_Debug_Profiler, setContent) {
 	ZEPHIR_INIT_VAR(_12);
 	ZEPHIR_CONCAT_SVS(_12, "<span class=\"label color-3\">", _11, "</span>");
 	zephir_concat_self(&html, _12 TSRMLS_CC);
-	ZEPHIR_CALL_METHOD(&_13, response, "getcode", NULL, 0);
+	ZEPHIR_CALL_METHOD(&_13, response, "getstatuscode", NULL, 0);
 	zephir_check_call_status();
-	ZEPHIR_CALL_METHOD(&_14, response, "getcode", NULL, 0);
+	ZEPHIR_CALL_METHOD(&_14, response, "getstatuscode", NULL, 0);
 	zephir_check_call_status();
 	if (ZEPHIR_IS_LONG(_13, 200)) {
 		tmp = 2;
@@ -204,7 +204,7 @@ PHP_METHOD(Owl_Debug_Profiler, setContent) {
 	}
 	ZEPHIR_SINIT_NVAR(_5);
 	ZVAL_LONG(&_5, tmp);
-	ZEPHIR_CALL_METHOD(&_15, response, "getcode", NULL, 0);
+	ZEPHIR_CALL_METHOD(&_15, response, "getstatuscode", NULL, 0);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(_16);
 	ZEPHIR_CONCAT_SVSVS(_16, "<span class=\"label color-", &_5, "\">", _15, "</span>");

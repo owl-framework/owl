@@ -62,15 +62,15 @@ class Profiler
 		let html .= "<span class=\"label color-2\">" . sprintf("%.4Fms", microtime(true) - this->startTime) . "</span>";
 		let html .= "<span class=\"label color-3\">" . sprintf("%.3fMB", memory_get_peak_usage() / 1024 / 1024)  . "</span>";
 
-		if (response->getCode() == 200) {
+		if (response->getStatusCode() == 200) {
 			let tmp = "2";
-		} elseif (response->getCode() == 500) {
+		} elseif (response->getStatusCode() == 500) {
 			let tmp = "1";
 		} else {
 			let tmp = "3";
 		}
 
-		let html .= "<span class=\"label color-" . tmp . "\">" . response->getCode() . "</span>";
+		let html .= "<span class=\"label color-" . tmp . "\">" . response->getStatusCode() . "</span>";
 		let html .= "</div>";
 
 		if (response instanceof \Owl\Http\Response\Json) {
