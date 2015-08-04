@@ -34,7 +34,6 @@ services:
 install:
   - composer self-update
   - composer --prefer-source install
-  - apt-get update
   - sh tests/ci/$DB.sh
 
 before_script:
