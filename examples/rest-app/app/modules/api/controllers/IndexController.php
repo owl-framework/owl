@@ -64,7 +64,7 @@ class IndexController extends \Owl\Mvc\Controller
     public function exceptionAction(Exception $e)
     {
         if ($e->getCode() >= 400) {
-            $this->response->setCode($e->getCode());
+            $this->response->getStatusCode($e->getCode());
         }
 
         return array(
