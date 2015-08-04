@@ -33,13 +33,13 @@ gcc -Wl,-rpath $TRAVIS_BUILD_DIR/build/lib \
 
 cd ..
 
-ZEPHIRDIR="$( cd "$( dirname . )" && pwd )"
-sed "s#%ZEPHIRDIR%#$ZEPHIRDIR#g" bin/zephir > bin/zephir-cmd
-chmod 755 bin/zephir-cmd
-
-if [ ! -d ~/bin ]; then
-	mkdir ~/bin
-fi
-
-cp bin/zephir-cmd ~/bin/zephir
-rm bin/zephir-cmd
+#ZEPHIRDIR="$( cd "$( dirname . )" && pwd )"
+#sed "s#%ZEPHIRDIR%#$ZEPHIRDIR#g" bin/zephir > bin/zephir-cmd
+#chmod 755 bin/zephir-cmd
+#
+#if [ ! -d ~/bin ]; then
+#	mkdir ~/bin
+#fi
+#
+#cp bin/zephir-cmd ~/bin/zephir
+#rm bin/zephir-cmd
