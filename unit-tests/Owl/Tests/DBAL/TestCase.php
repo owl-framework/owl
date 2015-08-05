@@ -16,7 +16,7 @@ class TestCase extends \Owl\Tests\TestCase
     */
     public function getDriverName()
     {
-        switch ($GLOBALS['db_type']) {
+        switch (getenv('db_type')) {
             case 'mysql':
             case 'pdo_mysql':
                 return 'MySQL';
@@ -28,7 +28,7 @@ class TestCase extends \Owl\Tests\TestCase
             break;
 
             default:
-                throw new \Exception('Unknown driver: ' . $GLOBALS['db_type']);
+                throw new \Exception('Unknown driver: ' . getenv('db_type'));
             break;
         }
     }
