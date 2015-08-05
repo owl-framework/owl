@@ -86,7 +86,7 @@ build_script:
   - cd %APPVEYOR_BUILD_FOLDER%
   - 'type compile-errors.log'
   - 'type compile.log'
-  - 'php vendor\phpunit\phpunit\phpunit -v --debug --configuration tests/travis/%DB_DEP%.travis.xml'
+  - 'php vendor\phpunit\phpunit\phpunit -v --debug --configuration tests/travis/%DB_DEP%.appveyor.xml'
 
 artifacts:
   - path: \..\php\ext\php_owl.dll

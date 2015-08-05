@@ -13,7 +13,7 @@
     <php>
         <env name="db_type" value="pdo_mysql"/>
         <env name="db_host" value="localhost" />
-        <env name="db_username" value="travis" />
+        <env name="db_username" value="root" />
         <env name="db_password" value="" />
         <env name="db_name" value="owl_test" />
         <env name="db_port" value="3306"/>
