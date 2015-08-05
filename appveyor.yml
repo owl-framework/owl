@@ -4,10 +4,12 @@ environment:
     PHP_DEP_VER: 5.6
     DB_TYPE: mysql
     DB_DEP: mysql
+    DB_BIN_PATH: C:\tools\mysql\current\
   - PHP_VERSION: 5.6.11
     PHP_DEP_VER: 5.6
     DB_TYPE: postgresql
     DB_DEP: pgsql
+    DB_BIN_PATH: C:\tools\pgsql\current\
   BUILD_PLATFORM: x86
   PHP_VC: 11
   PHP_SDK: c:\projects\php-sdk
@@ -68,6 +70,8 @@ install:
   - if not exist vendor (php -r "readfile('https://getcomposer.org/installer');" | php & php composer.phar --prefer-dist install)
   - choco install -y memcached
   - choco install -y redis
+  - 'choco install -y %DB_TYPE%'
+  - SET PATH=%DB_BIN_PATH%\bin;%PATH%
   - 'choco install -y %DB_TYPE%'
   - 'tests/ci/%DB_DEP%.bat'
 
