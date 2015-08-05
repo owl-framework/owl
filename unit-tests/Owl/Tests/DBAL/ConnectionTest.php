@@ -10,19 +10,19 @@ use Owl\Tests\Utils;
 
 class ConnectionTest extends TestCase
 {
-    protected $_connection;
+    protected $connection;
 
     /**
      * Set connection
      */
     public function setUp()
     {
-        $this->_connection = Utils::getConnection();
+        $this->connection = Utils::getConnection();
     }
 
     public function testGetDriver()
     {
-        $this->assertInstanceOf('Owl\DBAL\Driver\\' . $this->getDriverName(), $this->_connection->getDriver());
+        $this->assertInstanceOf('Owl\DBAL\Driver\\' . $this->getDriverName(), $this->connection->getDriver());
     }
 
     public function testPrepare()
@@ -32,11 +32,11 @@ class ConnectionTest extends TestCase
         /**
          * We dont use own PDOStatement via it's not supported for PERSISTENT connections
          */
-        $this->assertInstanceOf('PDOStatement', $this->_connection->prepare($sql));
+        $this->assertInstanceOf('PDOStatement', $this->connection->prepare($sql));
     }
 
     public function testIsConnection()
     {
-        $this->assertTrue($this->_connection instanceof DBAL\Connection);
+        $this->assertTrue($this->connection instanceof DBAL\Connection);
     }
 }
