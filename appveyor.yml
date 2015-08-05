@@ -89,4 +89,4 @@ build_script:
   - 'php vendor\phpunit\phpunit\phpunit -v --debug --configuration tests/travis/%DB_DEP%.appveyor.xml'
 
 artifacts:
-  - path: \..\php\ext\php_owl.dll
+  - path: %APPVEYOR_BUILD_FOLDER%\..\php\ext\php_owl.dll
