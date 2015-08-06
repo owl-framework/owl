@@ -15,7 +15,7 @@ environment:
     DB_BIN_PATH: C:\tools\mysql\current\
     BUILD_PLATFORM: x86
     PHP_VC: 11
-  - PHP_VERSION: 5.4.43
+  - PHP_VERSION: 5.4.44
     PHP_DEP_VER: 5.4
     DB_TYPE: mysql
     DB_DEP: mysql
@@ -37,7 +37,7 @@ environment:
     DB_BIN_PATH: C:\tools\mysql\current\
     BUILD_PLATFORM: x64
     PHP_VC: 11
-  - PHP_VERSION: 5.4.43
+  - PHP_VERSION: 5.4.44
     PHP_DEP_VER: 5.4
     DB_TYPE: mysql
     DB_DEP: mysql
