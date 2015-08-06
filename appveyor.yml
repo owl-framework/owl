@@ -120,7 +120,7 @@ install:
   - choco install -y redis
   - SET PATH=C:\Program Files\PostgreSQL\9.4\bin;%PATH%
   - SET PATH=C:\Program Files\MySql\MySQL Server 5.6\bin;%PATH%
-  - 'tests/ci/appveyor.bat'
+#  - 'tests/ci/appveyor.bat'
 
 build_script:
   - 'php vendor\phalcon\zephir\compiler.php build'
