@@ -58,9 +58,13 @@ environment:
 
 configuration: Release
 
+build:
+  parallel: true
+  verbosity: detailed
+
 matrix:
   fast_finish: false
-  
+
 cache:
   - C:\ProgramData\chocolatey\lib -> appveyor.yml
   - vendor -> composer.json
@@ -72,9 +76,6 @@ services:
 version: '{build}-$(PHP_VERSION)'
 os: Windows Server 2012
 clone_folder: c:\projects\owl
-
-matrix:
-  fast_finish: true
 
 install:
   - echo Initializing Build...
