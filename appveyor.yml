@@ -124,13 +124,13 @@ install:
 
 build_script:
   - 'php vendor\phalcon\zephir\compiler.php build'
+  - 'type compile-errors.log'
+  - 'type compile.log'
+  - 'dir %APPVEYOR_BUILD_FOLDER%\ext\Release_TS'
   - 'copy %APPVEYOR_BUILD_FOLDER%\ext\Release_TS\php_owl.dll %APPVEYOR_BUILD_FOLDER%\..\php\ext\php_owl.dll'
   - 'cd %APPVEYOR_BUILD_FOLDER%\..\php'
   - 'echo extension=php_owl.dll >> php.ini'
-  - 'dir %APPVEYOR_BUILD_FOLDER%\ext\Release_TS'
   - cd %APPVEYOR_BUILD_FOLDER%
-  - 'type compile-errors.log'
-  - 'type compile.log'
   - 'php vendor\phpunit\phpunit\phpunit -v --debug --configuration tests/travis/appveyor.xml --testsuite Owl'
 
 test: off
