@@ -1,5 +1,6 @@
 environment:
   matrix:
+  #vc11
   #x86
   - PHP_VERSION: 5.6.11
     PHP_DEP_VER: 5.6
@@ -44,6 +45,51 @@ environment:
     DB_BIN_PATH: C:\tools\mysql\current\
     BUILD_PLATFORM: x64
     PHP_VC: 11
+  #vc9
+  #x86
+  - PHP_VERSION: 5.6.11
+    PHP_DEP_VER: 5.6
+    DB_TYPE: mysql
+    DB_DEP: mysql
+    DB_BIN_PATH: C:\tools\mysql\current\
+    BUILD_PLATFORM: x86
+    PHP_VC: 9
+  - PHP_VERSION: 5.5.27
+    PHP_DEP_VER: 5.5
+    DB_TYPE: mysql
+    DB_DEP: mysql
+    DB_BIN_PATH: C:\tools\mysql\current\
+    BUILD_PLATFORM: x86
+    PHP_VC: 9
+  - PHP_VERSION: 5.4.44
+    PHP_DEP_VER: 5.4
+    DB_TYPE: mysql
+    DB_DEP: mysql
+    DB_BIN_PATH: C:\tools\mysql\current\
+    BUILD_PLATFORM: x86
+    PHP_VC: 9
+  #x64
+  - PHP_VERSION: 5.6.11
+    PHP_DEP_VER: 5.6
+    DB_TYPE: mysql
+    DB_DEP: mysql
+    DB_BIN_PATH: C:\tools\mysql\current\
+    BUILD_PLATFORM: x64
+    PHP_VC: 9
+  - PHP_VERSION: 5.5.27
+    PHP_DEP_VER: 5.5
+    DB_TYPE: mysql
+    DB_DEP: mysql
+    DB_BIN_PATH: C:\tools\mysql\current\
+    BUILD_PLATFORM: x64
+    PHP_VC: 9
+  - PHP_VERSION: 5.4.44
+    PHP_DEP_VER: 5.4
+    DB_TYPE: mysql
+    DB_DEP: mysql
+    DB_BIN_PATH: C:\tools\mysql\current\
+    BUILD_PLATFORM: x64
+    PHP_VC: 9
   PHP_SDK: c:\projects\php-sdk
   PHP_DEVPACK: c:\projects\php-devpack
 
