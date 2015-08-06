@@ -25,31 +25,10 @@ environment:
     PHP_VC: 11
   #vc9
   #x86
-  - PHP_VERSION: 5.6.11
-    PHP_DEP_VER: 5.6
-    THREAD_TYPE: ts
-    BUILD_PLATFORM: x86
-    PHP_VC: 9
-  - PHP_VERSION: 5.5.28
-    PHP_DEP_VER: 5.5
-    THREAD_TYPE: ts
-    BUILD_PLATFORM: x86
-    PHP_VC: 9
   - PHP_VERSION: 5.4.44
     PHP_DEP_VER: 5.4
     THREAD_TYPE: ts
     BUILD_PLATFORM: x86
-    PHP_VC: 9
-  #x64
-  - PHP_VERSION: 5.6.11
-    PHP_DEP_VER: 5.6
-    THREAD_TYPE: ts
-    BUILD_PLATFORM: x64
-    PHP_VC: 9
-  - PHP_VERSION: 5.5.28
-    PHP_DEP_VER: 5.5
-    THREAD_TYPE: ts
-    BUILD_PLATFORM: x64
     PHP_VC: 9
   PHP_SDK: c:\projects\php-sdk
   PHP_DEVPACK: c:\projects\php-devpack
@@ -57,6 +36,10 @@ environment:
     secure: 6maLq/HZKCJwbF6i3AjGQ/7njbyorSFZVF1PrdTk1nzFnLEfAjQphxATom8XVod/
 
 configuration: Release
+
+platform:
+  - x86
+  - x64
 
 build:
   parallel: true
