@@ -56,6 +56,11 @@ environment:
   composeroauthtoken:
     secure: 6maLq/HZKCJwbF6i3AjGQ/7njbyorSFZVF1PrdTk1nzFnLEfAjQphxATom8XVod/
 
+configuration: Release
+
+matrix:
+  fast_finish: false
+  
 cache:
   - C:\ProgramData\chocolatey\lib -> appveyor.yml
   - vendor -> composer.json
