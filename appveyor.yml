@@ -5,30 +5,30 @@ environment:
   - PHP_VERSION: 5.6.11
     PHP_DEP_VER: 5.6
     THREAD_TYPE: ts
-    BUILD_PLATFORM: x86
+    platform: x86
     PHP_VC: 11
   - PHP_VERSION: 5.5.28
     PHP_DEP_VER: 5.5
     THREAD_TYPE: ts
-    BUILD_PLATFORM: x86
+    platform: x86
     PHP_VC: 11
   #x64
   - PHP_VERSION: 5.6.11
     PHP_DEP_VER: 5.6
     THREAD_TYPE: ts
-    BUILD_PLATFORM: x64
+    platform: x64
     PHP_VC: 11
   - PHP_VERSION: 5.5.28
     PHP_DEP_VER: 5.5
     THREAD_TYPE: ts
-    BUILD_PLATFORM: x64
+    platform: x64
     PHP_VC: 11
   #vc9
   #x86
   - PHP_VERSION: 5.4.44
     PHP_DEP_VER: 5.4
     THREAD_TYPE: ts
-    BUILD_PLATFORM: x86
+    platform: x86
     PHP_VC: 9
   PHP_SDK: c:\projects\php-sdk
   PHP_DEVPACK: c:\projects\php-devpack
@@ -36,10 +36,6 @@ environment:
     secure: 6maLq/HZKCJwbF6i3AjGQ/7njbyorSFZVF1PrdTk1nzFnLEfAjQphxATom8XVod/
 
 configuration: Release
-
-platform:
-  - x86
-  - x64
 
 build:
   parallel: true
@@ -65,7 +61,7 @@ install:
   - cd %APPVEYOR_BUILD_FOLDER%
   - echo Preparing win32 build...
   - echo Downloading PHP source code [%PHP_VERSION%]
-  - ps: (new-object net.webclient).DownloadFile('http://windows.php.net/downloads/releases/php-' + ${env:PHP_VERSION} + '-Win32-VC' + ${env:PHP_VC} + '-' + ${env:BUILD_PLATFORM} + '.zip', ${env:APPVEYOR_BUILD_FOLDER} + '\..\php.zip')
+  - ps: (new-object net.webclient).DownloadFile('http://windows.php.net/downloads/releases/php-' + ${env:PHP_VERSION} + '-Win32-VC' + ${env:PHP_VC} + '-' + ${env:platform} + '.zip', ${env:APPVEYOR_BUILD_FOLDER} + '\..\php.zip')
   - cd ..
   - 'mkdir php && mv php.zip php\php.zip && cd php'
   - 7z.exe x php.zip | FIND /V "ing  "
@@ -76,11 +72,11 @@ install:
   - '7z.exe x ..\php-sdk.zip | FIND /V "ing  "'
   - cd ..
   - echo Downloading PHP-Devel-Pack
-  - ps: (new-object net.webclient).DownloadFile('http://windows.php.net/downloads/releases/php-devel-pack-' + ${env:PHP_VERSION} + '-Win32-VC' + ${env:PHP_VC} + '-' + ${env:BUILD_PLATFORM} + '.zip', ${env:APPVEYOR_BUILD_FOLDER} + '\..\php-dev.zip')
+  - ps: (new-object net.webclient).DownloadFile('http://windows.php.net/downloads/releases/php-devel-pack-' + ${env:PHP_VERSION} + '-Win32-VC' + ${env:PHP_VC} + '-' + ${env:platform} + '.zip', ${env:APPVEYOR_BUILD_FOLDER} + '\..\php-dev.zip')
   - 7z.exe x php-dev.zip | FIND /V "ing  "
-  - mv php-%PHP_VERSION%-devel-VC11-%BUILD_PLATFORM% php-devpack
+  - mv php-%PHP_VERSION%-devel-VC11-%platform% php-devpack
   - echo Building PHP [%PHP_VERSION%]
-  - '"%VS110COMNTOOLS%\VsDevCmd" %BUILD_PLATFORM%'
+  - '"%VS110COMNTOOLS%\VsDevCmd" %platform%'
   - '%PHP_SDK%\bin\phpsdk_setvars'
   - echo Downloading PHP-memcache
   - 'cd %APPVEYOR_BUILD_FOLDER%\..\php\ext'
