@@ -9,7 +9,7 @@ environment:
     DB_BIN_PATH: C:\tools\mysql\current\
     BUILD_PLATFORM: x86
     PHP_VC: 11
-  - PHP_VERSION: 5.5.27
+  - PHP_VERSION: 5.5.28
     PHP_DEP_VER: 5.5
     DB_TYPE: mysql
     DB_DEP: mysql
@@ -31,7 +31,7 @@ environment:
     DB_BIN_PATH: C:\tools\mysql\current\
     BUILD_PLATFORM: x64
     PHP_VC: 11
-  - PHP_VERSION: 5.5.27
+  - PHP_VERSION: 5.5.28
     PHP_DEP_VER: 5.5
     DB_TYPE: mysql
     DB_DEP: mysql
@@ -54,7 +54,7 @@ environment:
     DB_BIN_PATH: C:\tools\mysql\current\
     BUILD_PLATFORM: x86
     PHP_VC: 9
-  - PHP_VERSION: 5.5.27
+  - PHP_VERSION: 5.5.28
     PHP_DEP_VER: 5.5
     DB_TYPE: mysql
     DB_DEP: mysql
@@ -76,7 +76,7 @@ environment:
     DB_BIN_PATH: C:\tools\mysql\current\
     BUILD_PLATFORM: x64
     PHP_VC: 9
-  - PHP_VERSION: 5.5.27
+  - PHP_VERSION: 5.5.28
     PHP_DEP_VER: 5.5
     DB_TYPE: mysql
     DB_DEP: mysql
