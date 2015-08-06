@@ -4,54 +4,51 @@ environment:
   #x86
   - PHP_VERSION: 5.6.11
     PHP_DEP_VER: 5.6
+    THREAD_TYPE: ts
     BUILD_PLATFORM: x86
     PHP_VC: 11
   - PHP_VERSION: 5.5.28
     PHP_DEP_VER: 5.5
-    BUILD_PLATFORM: x86
-    PHP_VC: 11
-  - PHP_VERSION: 5.4.44
-    PHP_DEP_VER: 5.4
+    THREAD_TYPE: ts
     BUILD_PLATFORM: x86
     PHP_VC: 11
   #x64
   - PHP_VERSION: 5.6.11
     PHP_DEP_VER: 5.6
+    THREAD_TYPE: ts
     BUILD_PLATFORM: x64
     PHP_VC: 11
   - PHP_VERSION: 5.5.28
     PHP_DEP_VER: 5.5
-    BUILD_PLATFORM: x64
-    PHP_VC: 11
-  - PHP_VERSION: 5.4.44
-    PHP_DEP_VER: 5.4
+    THREAD_TYPE: ts
     BUILD_PLATFORM: x64
     PHP_VC: 11
   #vc9
   #x86
   - PHP_VERSION: 5.6.11
     PHP_DEP_VER: 5.6
+    THREAD_TYPE: ts
     BUILD_PLATFORM: x86
     PHP_VC: 9
   - PHP_VERSION: 5.5.28
     PHP_DEP_VER: 5.5
+    THREAD_TYPE: ts
     BUILD_PLATFORM: x86
     PHP_VC: 9
   - PHP_VERSION: 5.4.44
     PHP_DEP_VER: 5.4
+    THREAD_TYPE: ts
     BUILD_PLATFORM: x86
     PHP_VC: 9
   #x64
   - PHP_VERSION: 5.6.11
     PHP_DEP_VER: 5.6
+    THREAD_TYPE: ts
     BUILD_PLATFORM: x64
     PHP_VC: 9
   - PHP_VERSION: 5.5.28
     PHP_DEP_VER: 5.5
-    BUILD_PLATFORM: x64
-    PHP_VC: 9
-  - PHP_VERSION: 5.4.44
-    PHP_DEP_VER: 5.4
+    THREAD_TYPE: ts
     BUILD_PLATFORM: x64
     PHP_VC: 9
   PHP_SDK: c:\projects\php-sdk
@@ -98,11 +95,11 @@ install:
   - '%PHP_SDK%\bin\phpsdk_setvars'
   - echo Downloading PHP-memcache
   - 'cd %APPVEYOR_BUILD_FOLDER%\..\php\ext'
-  - ps: (new-object net.webclient).DownloadFile('http://windows.php.net/downloads/pecl/releases/memcache/3.0.8/php_memcache-3.0.8-' + ${env:PHP_DEP_VER} + '-ts-vc' + ${env:PHP_VC} + '-' + ${env:BUILD_PLATFORM} + '.zip', ${env:APPVEYOR_BUILD_FOLDER} + '\..\php\ext\memcache.zip')
+  - ps: (new-object net.webclient).DownloadFile('http://windows.php.net/downloads/pecl/releases/memcache/3.0.8/php_memcache-3.0.8-' + ${env:PHP_DEP_VER} + '-' + ${env:THREAD_TYPE} '-vc' + ${env:PHP_VC} + '-' + ${env:BUILD_PLATFORM} + '.zip', ${env:APPVEYOR_BUILD_FOLDER} + '\..\php\ext\memcache.zip')
   - 7z.exe -y x memcache.zip
   - echo Downloading PHP-redis
   - 'cd %APPVEYOR_BUILD_FOLDER%\..\php\ext'
-  - ps: (new-object net.webclient).DownloadFile('http://windows.php.net/downloads/pecl/releases/redis/2.2.7/php_redis-2.2.7-' + ${env:PHP_DEP_VER} + '-ts-vc' + ${env:PHP_VC} + '-' + ${env:BUILD_PLATFORM} + '.zip', ${env:APPVEYOR_BUILD_FOLDER} + '\..\php\ext\redis.zip')
+  - ps: (new-object net.webclient).DownloadFile('http://windows.php.net/downloads/pecl/releases/redis/2.2.7/php_redis-2.2.7-' + ${env:PHP_DEP_VER} + '-' + ${env:THREAD_TYPE} '-vc' + ${env:PHP_VC} + '-' + ${env:BUILD_PLATFORM} + '.zip', ${env:APPVEYOR_BUILD_FOLDER} + '\..\php\ext\redis.zip')
   - 7z.exe -y x redis.zip
   - 'cd %APPVEYOR_BUILD_FOLDER%\..\php'
   - 'echo extension_dir=%APPVEYOR_BUILD_FOLDER%\..\php\ext > php.ini'
