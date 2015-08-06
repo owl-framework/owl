@@ -56,13 +56,15 @@ environment:
     PHP_VC: 9
   PHP_SDK: c:\projects\php-sdk
   PHP_DEVPACK: c:\projects\php-devpack
+  composeroauthtoken:
+    secure: 6maLq/HZKCJwbF6i3AjGQ/7njbyorSFZVF1PrdTk1nzFnLEfAjQphxATom8XVod/
 
 cache:
   - vendor -> composer.json
 
 services:
-  - mysql
-  - postgresql
+  - mysql56
+  - postgresql94
 
 version: '{build}-$(PHP_VERSION)'
 os: Windows Server 2012
@@ -115,7 +117,7 @@ install:
   - 'set PATH=%cd%;%PATH%'
   - 'set PATH=%APPVEYOR_BUILD_FOLDER%\vendor\zephir\bin;%PATH%'
   - cd %APPVEYOR_BUILD_FOLDER%
-  - if not exist vendor (php -r "readfile('https://getcomposer.org/installer');" | php & php composer.phar --prefer-dist install)
+  - if not exist vendor (php -r "readfile('https://getcomposer.org/installer');" | php & php php composer.phar config -g github-oauth.github.com %composeroauthtoken% | php composer.phar --prefer-dist install)
   - choco install -y memcached
   - choco install -y redis
   - SET PATH=C:\Program Files\PostgreSQL\9.4\bin;%PATH%
@@ -132,6 +134,8 @@ build_script:
   - 'type compile-errors.log'
   - 'type compile.log'
   - 'php vendor\phpunit\phpunit\phpunit -v --debug --configuration tests/travis/appveyor.xml --testsuite Owl'
+
+test: off
 
 artifacts:
   - path: ext\Release_TS\php_owl.dll
