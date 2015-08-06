@@ -21,7 +21,11 @@
 
     <testsuites>
         <testsuite name="Owl">
-            <directory>../../unit-tests/Owl/Tests/</directory>
+            <directory>./unit-tests/Owl/Tests/</directory>
+            <exclude>./unit-tests/Owl/Tests/DBAL/</exclude>
+        </testsuite>
+        <testsuite name="DBAL">
+            <directory>./unit-tests/Owl/Tests/DBAL/</directory>
         </testsuite>
     </testsuites>
 </phpunit>
