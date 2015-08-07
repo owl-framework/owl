@@ -13,7 +13,7 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
 {
     protected function createSmallApp($eventManager = null)
     {
-        $serviceManager = new \Owl\Service\Manager();
+        $serviceManager = new \Owl\Di\Container();
 
         $router = new Router();
         $router->add('/', ['controller' => 'Index', 'action' => 'index']);
@@ -28,7 +28,7 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
         $application = $this->createSmallApp();
 
         $this->assertInstanceOf('Owl\Application', $application);
-        $this->assertInstanceOf('Owl\Service\Manager', $application->getDi());
+        $this->assertInstanceOf('Owl\Di\Container', $application->getDi());
         $this->assertSame(Application::ENV_PRODUCTION, $application->getEnv());
     }
 
