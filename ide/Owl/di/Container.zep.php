@@ -40,12 +40,13 @@ class Container implements \Owl\Di\ContainerInterface
 
     /**
      * @param string $name 
+     * @return object 
      */
     public function get($name) {}
 
     /**
      * @param string $name 
-     * @return variable 
+     * @return object 
      */
     public function getService($name) {}
 

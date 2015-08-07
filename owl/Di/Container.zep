@@ -38,7 +38,7 @@ class Container implements ContainerInterface
 		return isset(this->instances[name]) || isset(this->services[name]);
 	}
 
-	public fn get(string! name)
+	public fn get(string! name) -> object
 	{
 		var instance;
 
@@ -49,7 +49,7 @@ class Container implements ContainerInterface
 		throw new Exception("Instance wasn't found by name: " . name);
 	}
 
-	public fn getService(string! name) -> var
+	public fn getService(string! name) -> object
 	{
 		var service;
 
