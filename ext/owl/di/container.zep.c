@@ -12,30 +12,68 @@
 #include <Zend/zend_interfaces.h>
 
 #include "kernel/main.h"
-#include "kernel/memory.h"
-#include "kernel/fcall.h"
 #include "kernel/object.h"
 #include "ext/spl/spl_exceptions.h"
 #include "kernel/exception.h"
 #include "kernel/operators.h"
+#include "kernel/memory.h"
+#include "kernel/fcall.h"
 #include "kernel/array.h"
 #include "kernel/concat.h"
 
 
-ZEPHIR_INIT_CLASS(Owl_Service_Manager) {
+ZEPHIR_INIT_CLASS(Owl_Di_Container) {
 
-	ZEPHIR_REGISTER_CLASS(Owl\\Service, Manager, owl, service_manager, owl_service_manager_method_entry, 0);
+	ZEPHIR_REGISTER_CLASS(Owl\\Di, Container, owl, di_container, owl_di_container_method_entry, 0);
 
-	zend_declare_property_null(owl_service_manager_ce, SL("instances"), ZEND_ACC_PROTECTED TSRMLS_CC);
+	/**
+	 * Service definitions
+	 *
+	 * @var array
+	 */
+	zend_declare_property_null(owl_di_container_ce, SL("services"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
-	zend_declare_property_null(owl_service_manager_ce, SL("services"), ZEND_ACC_PROTECTED TSRMLS_CC);
+	/**
+	 * Service object instances
+	 *
+	 * @var array
+	 */
+	zend_declare_property_null(owl_di_container_ce, SL("instances"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
-	owl_service_manager_ce->create_object = zephir_init_properties_Owl_Service_Manager;
+	owl_di_container_ce->create_object = zephir_init_properties_Owl_Di_Container;
+
+	zend_class_implements(owl_di_container_ce TSRMLS_CC, 1, owl_di_containerinterface_ce);
 	return SUCCESS;
 
 }
 
-PHP_METHOD(Owl_Service_Manager, set) {
+PHP_METHOD(Owl_Di_Container, setService) {
+
+	zval *name_param = NULL, *definition;
+	zval *name = NULL;
+
+	ZEPHIR_MM_GROW();
+	zephir_fetch_params(1, 2, 0, &name_param, &definition);
+
+	if (unlikely(Z_TYPE_P(name_param) != IS_STRING && Z_TYPE_P(name_param) != IS_NULL)) {
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'name' must be a string") TSRMLS_CC);
+		RETURN_MM_NULL();
+	}
+
+	if (likely(Z_TYPE_P(name_param) == IS_STRING)) {
+		zephir_get_strval(name, name_param);
+	} else {
+		ZEPHIR_INIT_VAR(name);
+		ZVAL_EMPTY_STRING(name);
+	}
+
+
+	zephir_update_property_array(this_ptr, SL("services"), name, definition TSRMLS_CC);
+	ZEPHIR_MM_RESTORE();
+
+}
+
+PHP_METHOD(Owl_Di_Container, set) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
 	zend_bool _0;
@@ -76,61 +114,7 @@ PHP_METHOD(Owl_Service_Manager, set) {
 
 }
 
-PHP_METHOD(Owl_Service_Manager, setService) {
-
-	zval *name_param = NULL, *definition;
-	zval *name = NULL;
-
-	ZEPHIR_MM_GROW();
-	zephir_fetch_params(1, 2, 0, &name_param, &definition);
-
-	if (unlikely(Z_TYPE_P(name_param) != IS_STRING && Z_TYPE_P(name_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'name' must be a string") TSRMLS_CC);
-		RETURN_MM_NULL();
-	}
-
-	if (likely(Z_TYPE_P(name_param) == IS_STRING)) {
-		zephir_get_strval(name, name_param);
-	} else {
-		ZEPHIR_INIT_VAR(name);
-		ZVAL_EMPTY_STRING(name);
-	}
-
-
-	zephir_update_property_array(this_ptr, SL("services"), name, definition TSRMLS_CC);
-	ZEPHIR_MM_RESTORE();
-
-}
-
-PHP_METHOD(Owl_Service_Manager, get) {
-
-	int ZEPHIR_LAST_CALL_STATUS;
-	zval *name_param = NULL;
-	zval *name = NULL;
-
-	ZEPHIR_MM_GROW();
-	zephir_fetch_params(1, 1, 0, &name_param);
-
-	if (unlikely(Z_TYPE_P(name_param) != IS_STRING && Z_TYPE_P(name_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'name' must be a string") TSRMLS_CC);
-		RETURN_MM_NULL();
-	}
-
-	if (likely(Z_TYPE_P(name_param) == IS_STRING)) {
-		zephir_get_strval(name, name_param);
-	} else {
-		ZEPHIR_INIT_VAR(name);
-		ZVAL_EMPTY_STRING(name);
-	}
-
-
-	ZEPHIR_RETURN_CALL_METHOD(this_ptr, "getinstance", NULL, 0, name);
-	zephir_check_call_status();
-	RETURN_MM();
-
-}
-
-PHP_METHOD(Owl_Service_Manager, has) {
+PHP_METHOD(Owl_Di_Container, has) {
 
 	zend_bool _1;
 	zval *name_param = NULL, *_0, *_2;
@@ -162,7 +146,7 @@ PHP_METHOD(Owl_Service_Manager, has) {
 
 }
 
-PHP_METHOD(Owl_Service_Manager, getInstance) {
+PHP_METHOD(Owl_Di_Container, get) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
 	zval *name_param = NULL, *instance, *_0, *_1;
@@ -195,13 +179,13 @@ PHP_METHOD(Owl_Service_Manager, getInstance) {
 	ZEPHIR_CONCAT_SV(_2, "Instance wasn't found by name: ", name);
 	ZEPHIR_CALL_METHOD(NULL, _1, "__construct", NULL, 5, _2);
 	zephir_check_call_status();
-	zephir_throw_exception_debug(_1, "owl/Service/Manager.zep", 44 TSRMLS_CC);
+	zephir_throw_exception_debug(_1, "owl/Di/Container.zep", 49 TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();
 	return;
 
 }
 
-PHP_METHOD(Owl_Service_Manager, getService) {
+PHP_METHOD(Owl_Di_Container, getService) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
 	zval *name_param = NULL, *service, *_0, *_1;
@@ -234,13 +218,13 @@ PHP_METHOD(Owl_Service_Manager, getService) {
 	ZEPHIR_CONCAT_SV(_2, "Service wasn't found by name: ", name);
 	ZEPHIR_CALL_METHOD(NULL, _1, "__construct", NULL, 5, _2);
 	zephir_check_call_status();
-	zephir_throw_exception_debug(_1, "owl/Service/Manager.zep", 55 TSRMLS_CC);
+	zephir_throw_exception_debug(_1, "owl/Di/Container.zep", 60 TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();
 	return;
 
 }
 
-static zend_object_value zephir_init_properties_Owl_Service_Manager(zend_class_entry *class_type TSRMLS_DC) {
+static zend_object_value zephir_init_properties_Owl_Di_Container(zend_class_entry *class_type TSRMLS_DC) {
 
 		zval *_0, *_1 = NULL, *_2;
 
@@ -249,17 +233,17 @@ static zend_object_value zephir_init_properties_Owl_Service_Manager(zend_class_e
 	{
 		zval *this_ptr = NULL;
 		ZEPHIR_CREATE_OBJECT(this_ptr, class_type);
-		_0 = zephir_fetch_nproperty_this(this_ptr, SL("services"), PH_NOISY_CC);
+		_0 = zephir_fetch_nproperty_this(this_ptr, SL("instances"), PH_NOISY_CC);
 		if (Z_TYPE_P(_0) == IS_NULL) {
 			ZEPHIR_INIT_VAR(_1);
 			array_init(_1);
-			zephir_update_property_this(this_ptr, SL("services"), _1 TSRMLS_CC);
+			zephir_update_property_this(this_ptr, SL("instances"), _1 TSRMLS_CC);
 		}
-		_2 = zephir_fetch_nproperty_this(this_ptr, SL("instances"), PH_NOISY_CC);
+		_2 = zephir_fetch_nproperty_this(this_ptr, SL("services"), PH_NOISY_CC);
 		if (Z_TYPE_P(_2) == IS_NULL) {
 			ZEPHIR_INIT_NVAR(_1);
 			array_init(_1);
-			zephir_update_property_this(this_ptr, SL("instances"), _1 TSRMLS_CC);
+			zephir_update_property_this(this_ptr, SL("services"), _1 TSRMLS_CC);
 		}
 		ZEPHIR_MM_RESTORE();
 		return Z_OBJVAL_P(this_ptr);

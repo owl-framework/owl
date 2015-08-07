@@ -84,7 +84,7 @@ PHP_METHOD(Owl_Log_Record, interpolate) {
 			ZEPHIR_CONCAT_SVS(_3, "{", key, "}");
 			zephir_array_update_zval(&replace, _3, &value, PH_COPY | PH_SEPARATE);
 		}
-		ZEPHIR_RETURN_CALL_FUNCTION("strtr", NULL, 22, message, replace);
+		ZEPHIR_RETURN_CALL_FUNCTION("strtr", NULL, 23, message, replace);
 		zephir_check_call_status();
 		RETURN_MM();
 	}

@@ -19,6 +19,7 @@ if (PHP_OWL != "no") {
 	ADD_SOURCES(configure_module_dirname + "/owl", "exception.zep.c applicationinterface.zep.c dispatcherinterface.zep.c application.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/http", "responseinterface.zep.c requestinterface.zep.c response.zep.c headersbag.zep.c request.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/router", "route.zep.c routerinterface.zep.c router.zep.c", "owl");
+	ADD_SOURCES(configure_module_dirname + "/owl/di", "containerinterface.zep.c container.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/mvc", "controller.zep.c view.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/std", "arraybag.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/std/collection", "abstractcollection.zep.c arraycollection.zep.c", "owl");

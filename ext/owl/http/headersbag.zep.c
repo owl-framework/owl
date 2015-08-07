@@ -49,10 +49,10 @@ PHP_METHOD(Owl_Http_HeadersBag, send) {
 		if (!(ZEPHIR_IS_EMPTY(value))) {
 			ZEPHIR_INIT_LNVAR(_4);
 			ZEPHIR_CONCAT_VSV(_4, header, ": ", value);
-			ZEPHIR_CALL_FUNCTION(NULL, "header", &_5, 16, _4, ZEPHIR_GLOBAL(global_true));
+			ZEPHIR_CALL_FUNCTION(NULL, "header", &_5, 17, _4, ZEPHIR_GLOBAL(global_true));
 			zephir_check_call_status();
 		} else {
-			ZEPHIR_CALL_FUNCTION(NULL, "header", &_5, 16, header, ZEPHIR_GLOBAL(global_true));
+			ZEPHIR_CALL_FUNCTION(NULL, "header", &_5, 17, header, ZEPHIR_GLOBAL(global_true));
 			zephir_check_call_status();
 		}
 	}
