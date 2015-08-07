@@ -1,15 +1,14 @@
 <?php
 
 
-$serviceManager = new \Owl\Service\Manager();
-
+$di = new Owl\Di\Container();
 $router = new \Owl\Router\Router();
 
 $router->add('/', ['action' => '/']);
 $router->add('/user/{id:int}/', ['action' => 'view']);
 $router->add('/users', ['action' => 'users']);
 
-$serviceManager->set('router', $router);
+$di->set('router', $router);
 
-$application = new \Owl\Application($serviceManager);
+$application = new \Owl\Application($di);
 $application->handle(\Owl\Http\Request::createFromGlobals(), new \Owl\Http\Response());

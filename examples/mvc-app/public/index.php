@@ -19,12 +19,12 @@ $profiler = new Owl\Debug\Profiler();
 $profiler->setAssetsUri('//assets.owl.local/profiler/min.css');
 $profiler->listen($eventManager);
 
-$serviceManager = new Owl\Service\Manager();
+$di = new Owl\Di\Container();
 
 $router = new Router();
 $router->add('/', ['module' => 'Common', 'controller' => 'Index', 'action' => 'index']);
 
-$serviceManager->set('router', $router);
+$di->set('router', $router);
 
 $driver = new \Owl\DBAl\Driver\Mysql(
     'mysql:host=127.0.0.1;dbname=phalcon-module-skeleton;port=49153',
@@ -36,16 +36,16 @@ $driver = new \Owl\DBAl\Driver\Mysql(
     )
 );
 $connection = new \Owl\DBAL\Connection(['driver' => $driver], $eventManager);
-$serviceManager->set('connection', $connection);
+$di->set('connection', $connection);
 
 $cache = new \Owl\Cache\Driver\Memcached();
-$serviceManager->set('cache', $cache);
+$di->set('cache', $cache);
 
 $view = new \Owl\Mvc\View();
 $view->setPath(__DIR__ . '/../app/modules/common/resources/views/');
-$serviceManager->set('view', $view);
+$di->set('view', $view);
 
-$application = new Application($serviceManager, $eventManager);
+$application = new Application($di, $eventManager);
 $application->setErrorHandlerParameters(array(
     'module' => 'Common',
     'controller' => 'Index',

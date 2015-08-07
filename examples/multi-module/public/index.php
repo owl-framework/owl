@@ -10,7 +10,7 @@ use Owl\Router\Router;
 
 include_once __DIR__ . '/../vendor/autoload.php';
 
-$serviceManager = new Owl\Service\Manager();
+$di = new Owl\Di\Container();
 
 $router = new Router();
 
@@ -28,8 +28,8 @@ $router->add('/api/users/:id', ['module' => 'Api', 'controller' => 'User', 'acti
 $router->add('/api/users/:id', ['module' => 'Api', 'controller' => 'User', 'action' => 'create'], Route::POST);
 $router->add('/api/users/:id', ['module' => 'Api', 'controller' => 'User', 'action' => 'delete'], Route::DELETE);
 
-$serviceManager->set('router', $router);
+$di->set('router', $router);
 
-$application = new Application($serviceManager);
+$application = new Application($di);
 $response = $application->handle(Request::createFromGlobals());
 $response->send();
