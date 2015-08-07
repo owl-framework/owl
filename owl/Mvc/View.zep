@@ -21,6 +21,10 @@ class View
 			throw new Exception("File is not exists");
 		}
 
+		if !is_readable(this->path . path) {
+			throw new Exception("File is not readable");
+		}
+
 		ob_start();
 
 		if !is_null(parameters) {

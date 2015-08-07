@@ -18,9 +18,9 @@
 #include "kernel/concat.h"
 #include "kernel/exception.h"
 #include "kernel/fcall.h"
+#include "kernel/operators.h"
 #include "kernel/require.h"
 #include "ext/spl/spl_exceptions.h"
-#include "kernel/operators.h"
 
 
 ZEPHIR_INIT_CLASS(Owl_Mvc_View) {
@@ -68,7 +68,7 @@ PHP_METHOD(Owl_Mvc_View, render) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
 	zval *parameters = NULL;
-	zval *path_param = NULL, *parameters_param = NULL, *_0, *_1, *_2, *_3, *_4, *tmp = NULL;
+	zval *path_param = NULL, *parameters_param = NULL, *_0, *_1, *_2, *_3, *_4 = NULL, *_5, *_6, *_7, *tmp = NULL;
 	zval *path = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -100,25 +100,34 @@ PHP_METHOD(Owl_Mvc_View, render) {
 		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(owl_exception_ce, "File is not exists", "owl/Mvc/View.zep", 21);
 		return;
 	}
-	ZEPHIR_CALL_FUNCTION(NULL, "ob_start", NULL, 25);
+	_2 = zephir_fetch_nproperty_this(this_ptr, SL("path"), PH_NOISY_CC);
+	ZEPHIR_INIT_VAR(_3);
+	ZEPHIR_CONCAT_VV(_3, _2, path);
+	ZEPHIR_CALL_FUNCTION(&_4, "is_readable", NULL, 25, _3);
+	zephir_check_call_status();
+	if (!(zephir_is_true(_4))) {
+		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(owl_exception_ce, "File is not readable", "owl/Mvc/View.zep", 25);
+		return;
+	}
+	ZEPHIR_CALL_FUNCTION(NULL, "ob_start", NULL, 26);
 	zephir_check_call_status();
 	if (!(Z_TYPE_P(parameters) == IS_NULL)) {
-		ZEPHIR_INIT_VAR(_2);
-		ZVAL_LONG(_2, 0);
+		ZEPHIR_INIT_VAR(_5);
+		ZVAL_LONG(_5, 0);
 		Z_SET_ISREF_P(parameters);
-		ZEPHIR_CALL_FUNCTION(NULL, "extract", NULL, 26, parameters, _2);
+		ZEPHIR_CALL_FUNCTION(NULL, "extract", NULL, 27, parameters, _5);
 		Z_UNSET_ISREF_P(parameters);
 		zephir_check_call_status();
 	}
-	_3 = zephir_fetch_nproperty_this(this_ptr, SL("path"), PH_NOISY_CC);
-	ZEPHIR_INIT_VAR(_4);
-	ZEPHIR_CONCAT_VV(_4, _3, path);
-	if (zephir_require_zval(_4 TSRMLS_CC) == FAILURE) {
+	_6 = zephir_fetch_nproperty_this(this_ptr, SL("path"), PH_NOISY_CC);
+	ZEPHIR_INIT_VAR(_7);
+	ZEPHIR_CONCAT_VV(_7, _6, path);
+	if (zephir_require_zval(_7 TSRMLS_CC) == FAILURE) {
 		RETURN_MM_NULL();
 	}
-	ZEPHIR_CALL_FUNCTION(&tmp, "ob_get_contents", NULL, 27);
+	ZEPHIR_CALL_FUNCTION(&tmp, "ob_get_contents", NULL, 28);
 	zephir_check_call_status();
-	ZEPHIR_CALL_FUNCTION(NULL, "ob_end_clean", NULL, 28);
+	ZEPHIR_CALL_FUNCTION(NULL, "ob_end_clean", NULL, 29);
 	zephir_check_call_status();
 	RETURN_CCTOR(tmp);
 
