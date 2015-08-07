@@ -67,7 +67,6 @@
 #include "owl/router/http/dynamicroute.zep.h"
 #include "owl/router/http/staticroute.zep.h"
 #include "owl/router/router.zep.h"
-#include "owl/service/manager.zep.h"
 #include "owl/session/managerinterface.zep.h"
 #include "owl/std/collection/arraycollection.zep.h"
 

@@ -91,7 +91,6 @@ zend_class_entry *owl_mvc_view_engine_php_ce;
 zend_class_entry *owl_router_http_dynamicroute_ce;
 zend_class_entry *owl_router_http_staticroute_ce;
 zend_class_entry *owl_router_router_ce;
-zend_class_entry *owl_service_manager_ce;
 zend_class_entry *owl_std_collection_arraycollection_ce;
 
 ZEND_DECLARE_MODULE_GLOBALS(owl)
@@ -182,7 +181,6 @@ static PHP_MINIT_FUNCTION(owl)
 	ZEPHIR_INIT(Owl_Router_Http_DynamicRoute);
 	ZEPHIR_INIT(Owl_Router_Http_StaticRoute);
 	ZEPHIR_INIT(Owl_Router_Router);
-	ZEPHIR_INIT(Owl_Service_Manager);
 	ZEPHIR_INIT(Owl_Std_Collection_ArrayCollection);
 
 #if PHP_VERSION_ID < 50500
