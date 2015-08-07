@@ -14,6 +14,6 @@ ini_set('display_errors', 1);
 include_once __DIR__ . '/../vendor/autoload.php';
 include_once __DIR__ . '/../app/Application.php';
 
-$application = new \RestApp\Application(new Owl\Service\Manager());
+$application = new \RestApp\Application(new Owl\Di\Container());
 $response = $application->bootstrap()->handle(Request::createFromGlobals(), new \Owl\Http\Response\Json());
 $response->send();

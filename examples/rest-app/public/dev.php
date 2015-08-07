@@ -19,7 +19,7 @@ $eventManager = new \Owl\Event\Manager();
 $profiler = new Owl\Debug\Profiler();
 $profiler->listen($eventManager);
 
-$application = new \RestApp\Application(new Owl\Service\Manager(), $eventManager);
+$application = new \RestApp\Application(new Owl\Di\Container(), $eventManager);
 $response = $application->bootstrap()->handle(Request::createFromGlobals(), new \Owl\Http\Response\Json());
 
 $response = $profiler->setContent($response);

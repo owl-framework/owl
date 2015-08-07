@@ -7,9 +7,9 @@
 use Owl\Application;
 use Owl\Http\Request;
 
-$serviceManager = new Owl\Service\Manager();
+$serviceManager = new Owl\Di\Container();
 $serviceManager->set('router', new \Owl\Router\Router());
-var_dump($serviceManager->getInstance('router'));
+var_dump($serviceManager->get('router'));
 
 $application = new Application($serviceManager);
 $response = $application->handle(Request::createFromGlobals());

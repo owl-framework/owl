@@ -9,7 +9,7 @@ class ServiceManagerTest extends \PHPUnit_Framework_TestCase
 {
     public function testSuccessConstructPass()
     {
-        $serviceManager = new \Owl\Service\Manager();
+        $serviceManager = new \Owl\Di\Container();
         $this->assertFalse($serviceManager->has('test'));
 
         $serviceManager->setService('test', new \Owl\Router\Router());
