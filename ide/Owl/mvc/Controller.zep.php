@@ -16,7 +16,7 @@ class Controller
     protected $response;
 
     /**
-     * @var \Owl\Service\Manager
+     * @var \Owl\Di\ContainerInterface
      */
     protected $di;
 
@@ -32,7 +32,7 @@ class Controller
     public function getResponse() {}
 
     /**
-     * @return \Owl\Service\Manager 
+     * @return \Owl\Di\ContainerInterface 
      */
     public function getDi() {}
 
@@ -41,6 +41,6 @@ class Controller
      * @param mixed $response 
      * @param mixed $di 
      */
-    public function __construct(\Owl\Http\Request $request, \Owl\Http\Response $response, \Owl\Service\Manager $di) {}
+    public function __construct(\Owl\Http\Request $request, \Owl\Http\Response $response, \Owl\Di\ContainerInterface $di) {}
 
 }

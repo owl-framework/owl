@@ -3,7 +3,7 @@ namespace Owl\Mvc;
 
 use Owl\Http\Request;
 use Owl\Http\Response;
-use Owl\Service\Manager;
+use Owl\Di\ContainerInterface;
 
 class Controller
 {
@@ -22,13 +22,13 @@ class Controller
 	};
 
 	/**
-	 * @var \Owl\Service\Manager
+	 * @var \Owl\Di\ContainerInterface
 	 */
 	protected di {
 		get
 	};
 
-	public function __construct(<Request> request, <Response> response, <Manager> di)
+	public function __construct(<Request> request, <Response> response, <ContainerInterface> di)
 	{
 		let this->request = request;
 		let this->response = response;
