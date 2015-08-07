@@ -33,7 +33,7 @@ ZEPHIR_INIT_CLASS(Owl_Application) {
 	zend_declare_property_null(owl_application_ce, SL("request"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
 	/**
-	 * @var \Owl\Service\Manager
+	 * @var \Owl\Di\ContainerInterface
 	 */
 	zend_declare_property_null(owl_application_ce, SL("di"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
@@ -89,7 +89,7 @@ PHP_METHOD(Owl_Application, getRequest) {
 }
 
 /**
- * @var \Owl\Service\Manager
+ * @var \Owl\Di\ContainerInterface
  */
 PHP_METHOD(Owl_Application, getDi) {
 

@@ -1,7 +1,7 @@
 
 namespace Owl;
 
-use Owl\Service\Manager;
+use Owl\Di\ContainerInterface;
 
 use Owl\Http\Request;
 use Owl\Http\RequestInterface;
@@ -19,7 +19,7 @@ interface ApplicationInterface
 	const EVENT_AFTER_HANDLE = "app:afterHandle";
 
 
-	public fn __construct(<Manager> di = null, <Event\Manager> eventManager = null, string env = self::ENV_PRODUCTION);
+	public fn __construct(<ContainerInterface> di = null, <Event\Manager> eventManager = null, string env = self::ENV_PRODUCTION);
 
 	/**
 	 * Handle Http Request

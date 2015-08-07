@@ -23,7 +23,7 @@ interface ApplicationInterface
      * @param mixed $eventManager 
      * @param string $env 
      */
-    public function __construct(\Owl\Service\Manager $di = null, Event\Manager $eventManager = null, $env = self::ENV_PRODUCTION);
+    public function __construct(\Owl\Di\ContainerInterface $di = null, Event\Manager $eventManager = null, $env = self::ENV_PRODUCTION);
 
     /**
      * Handle Http Request

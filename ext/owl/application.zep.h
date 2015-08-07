@@ -24,7 +24,7 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_application_seterrorhandlerparameters, 0, 0, 
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_application___construct, 0, 0, 0)
-	ZEND_ARG_OBJ_INFO(0, di, Owl\\Service\\Manager, 1)
+	ZEND_ARG_OBJ_INFO(0, di, Owl\\Di\\ContainerInterface, 1)
 	ZEND_ARG_OBJ_INFO(0, eventManager, Owl\\Event\\Manager, 1)
 	ZEND_ARG_INFO(0, env)
 ZEND_END_ARG_INFO()

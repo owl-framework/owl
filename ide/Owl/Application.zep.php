@@ -13,7 +13,7 @@ class Application implements \Owl\ApplicationInterface, \Owl\DispatcherInterface
     protected $request;
 
     /**
-     * @var \Owl\Service\Manager
+     * @var \Owl\Di\ContainerInterface
      */
     protected $di;
 
@@ -57,7 +57,7 @@ class Application implements \Owl\ApplicationInterface, \Owl\DispatcherInterface
     public function getRequest() {}
 
     /**
-     * @return \Owl\Service\Manager 
+     * @return \Owl\Di\ContainerInterface 
      */
     public function getDi() {}
 
@@ -101,7 +101,7 @@ class Application implements \Owl\ApplicationInterface, \Owl\DispatcherInterface
      * @param mixed $eventManager 
      * @param string $env 
      */
-    public function __construct(\Owl\Service\Manager $di = null, Event\Manager $eventManager = null, $env = ApplicationInterface::ENV_PRODUCTION) {}
+    public function __construct(\Owl\Di\ContainerInterface $di = null, Event\Manager $eventManager = null, $env = ApplicationInterface::ENV_PRODUCTION) {}
 
     /**
      * Dispatch the action

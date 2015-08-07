@@ -1,7 +1,7 @@
 
 namespace Owl;
 
-use Owl\Service\Manager;
+use Owl\Di\ContainerInterface;
 use Owl\Http\Request;
 use Owl\Http\RequestInterface;
 use Owl\Http\Response;
@@ -20,7 +20,7 @@ class Application implements ApplicationInterface, DispatcherInterface
 	};
 
 	/**
-	 * @var \Owl\Service\Manager
+	 * @var \Owl\Di\ContainerInterface
 	 */
 	protected di {
 		get
@@ -72,7 +72,7 @@ class Application implements ApplicationInterface, DispatcherInterface
 	};
 
 
-	public function __construct(<Manager> di = null, <Event\Manager> eventManager = null, string env = ApplicationInterface::ENV_PRODUCTION)
+	public function __construct(<ContainerInterface> di = null, <Event\Manager> eventManager = null, string env = ApplicationInterface::ENV_PRODUCTION)
 	{
 		let this->di = di;
 		let this->env = env;
