@@ -5,7 +5,7 @@ use Owl\Http\Request;
 use Owl\Http\Response;
 use Owl\Di\ContainerInterface;
 
-class Controller
+class Controller implements ControllerInterface
 {
 	/**
 	 * @var \Owl\Http\RequestInterface

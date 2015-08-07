@@ -14,6 +14,7 @@
 #include "owl/exception.zep.h"
 #include "owl/http/responseinterface.zep.h"
 #include "owl/log/formatterinterface.zep.h"
+#include "owl/mvc/controllerinterface.zep.h"
 #include "owl/router/route.zep.h"
 #include "owl/applicationinterface.zep.h"
 #include "owl/di/containerinterface.zep.h"

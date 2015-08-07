@@ -19,6 +19,7 @@ if test "$PHP_OWL" = "yes"; then
 	owl/exception.zep.c
 	owl/http/responseinterface.zep.c
 	owl/log/formatterinterface.zep.c
+	owl/mvc/controllerinterface.zep.c
 	owl/router/route.zep.c
 	owl/applicationinterface.zep.c
 	owl/di/containerinterface.zep.c

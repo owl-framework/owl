@@ -3,7 +3,7 @@
 namespace Owl\Mvc;
 
 
-class Controller
+class Controller implements \Owl\Mvc\ControllerInterface
 {
     /**
      * @var \Owl\Http\RequestInterface

@@ -35,6 +35,7 @@ ZEPHIR_INIT_CLASS(Owl_Mvc_Controller) {
 	 */
 	zend_declare_property_null(owl_mvc_controller_ce, SL("di"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
+	zend_class_implements(owl_mvc_controller_ce TSRMLS_CC, 1, owl_mvc_controllerinterface_ce);
 	return SUCCESS;
 
 }
