@@ -74,18 +74,23 @@ To build the zep Source to C extension:
 ### Components
 
 - Annotations [WIP]
-- Cache
 - Bridge [WIP]
-- Event
-- Log
-- Session [WIP]
+- Cache
+- Console [WIP]
+- DBAL
+- Debug
 - Di
-- MVC
-    * Controller
+- Event
 - HTTP
     * Request
     * Response
-- Application
+- Log
+- Module
+- MVC
+    * Controller
+- Router
+- Session [WIP]
+- Std
 
 License
 -------
