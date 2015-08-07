@@ -13,9 +13,9 @@
 
 #include "kernel/main.h"
 #include "kernel/object.h"
+#include "kernel/operators.h"
 #include "kernel/memory.h"
 #include "kernel/fcall.h"
-#include "kernel/operators.h"
 #include "kernel/array.h"
 #include "kernel/concat.h"
 #include "kernel/exception.h"
@@ -78,8 +78,6 @@ ZEPHIR_INIT_CLASS(Owl_Application) {
 
 /**
  * Latest Request
- *
- * @var \Owl\Http\RequestInterface
  */
 PHP_METHOD(Owl_Application, getRequest) {
 
@@ -89,7 +87,6 @@ PHP_METHOD(Owl_Application, getRequest) {
 }
 
 /**
- * @var \Owl\Di\ContainerInterface
  */
 PHP_METHOD(Owl_Application, getDi) {
 
@@ -99,9 +96,7 @@ PHP_METHOD(Owl_Application, getDi) {
 }
 
 /**
- * Current env, see ENV_* constants
- *
- * @var string
+ * Current env, see ENV_constants
  */
 PHP_METHOD(Owl_Application, getEnv) {
 
@@ -112,25 +107,25 @@ PHP_METHOD(Owl_Application, getEnv) {
 
 /**
  * Handle parameters for exception catch
- *
- * @var array
  */
 PHP_METHOD(Owl_Application, setExceptionHandlerParameters) {
 
-	zval *exceptionHandlerParameters;
+	zval *exceptionHandlerParameters_param = NULL;
+	zval *exceptionHandlerParameters = NULL;
 
-	zephir_fetch_params(0, 1, 0, &exceptionHandlerParameters);
+	ZEPHIR_MM_GROW();
+	zephir_fetch_params(1, 1, 0, &exceptionHandlerParameters_param);
 
+	zephir_get_arrval(exceptionHandlerParameters, exceptionHandlerParameters_param);
 
 
 	zephir_update_property_this(this_ptr, SL("exceptionHandlerParameters"), exceptionHandlerParameters TSRMLS_CC);
+	ZEPHIR_MM_RESTORE();
 
 }
 
 /**
  * Handle parameters for exception catch
- *
- * @var array
  */
 PHP_METHOD(Owl_Application, getExceptionHandlerParameters) {
 
@@ -141,25 +136,25 @@ PHP_METHOD(Owl_Application, getExceptionHandlerParameters) {
 
 /**
  * Handle parameters for not found page
- *
- * @var array
  */
 PHP_METHOD(Owl_Application, setErrorHandlerParameters) {
 
-	zval *errorHandlerParameters;
+	zval *errorHandlerParameters_param = NULL;
+	zval *errorHandlerParameters = NULL;
 
-	zephir_fetch_params(0, 1, 0, &errorHandlerParameters);
+	ZEPHIR_MM_GROW();
+	zephir_fetch_params(1, 1, 0, &errorHandlerParameters_param);
 
+	zephir_get_arrval(errorHandlerParameters, errorHandlerParameters_param);
 
 
 	zephir_update_property_this(this_ptr, SL("errorHandlerParameters"), errorHandlerParameters TSRMLS_CC);
+	ZEPHIR_MM_RESTORE();
 
 }
 
 /**
  * Handle parameters for not found page
- *
- * @var array
  */
 PHP_METHOD(Owl_Application, getErrorHandlerParameters) {
 

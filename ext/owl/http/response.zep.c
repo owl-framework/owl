@@ -14,8 +14,8 @@
 #include "kernel/main.h"
 #include "kernel/object.h"
 #include "kernel/memory.h"
-#include "kernel/fcall.h"
 #include "kernel/operators.h"
+#include "kernel/fcall.h"
 
 
 ZEPHIR_INIT_CLASS(Owl_Http_Response) {
@@ -45,7 +45,6 @@ ZEPHIR_INIT_CLASS(Owl_Http_Response) {
 }
 
 /**
- * @var int
  */
 PHP_METHOD(Owl_Http_Response, getStatusCode) {
 
@@ -55,22 +54,24 @@ PHP_METHOD(Owl_Http_Response, getStatusCode) {
 }
 
 /**
- * @var int
  */
 PHP_METHOD(Owl_Http_Response, setStatusCode) {
 
-	zval *statusCode;
+	zval *statusCode_param = NULL, *_0;
+	int statusCode;
 
-	zephir_fetch_params(0, 1, 0, &statusCode);
+	zephir_fetch_params(0, 1, 0, &statusCode_param);
+
+	statusCode = zephir_get_intval(statusCode_param);
 
 
-
-	zephir_update_property_this(this_ptr, SL("statusCode"), statusCode TSRMLS_CC);
+	ZEPHIR_INIT_ZVAL_NREF(_0);
+	ZVAL_LONG(_0, statusCode);
+	zephir_update_property_this(this_ptr, SL("statusCode"), _0 TSRMLS_CC);
 
 }
 
 /**
- * @var string
  */
 PHP_METHOD(Owl_Http_Response, getContent) {
 
@@ -80,22 +81,24 @@ PHP_METHOD(Owl_Http_Response, getContent) {
 }
 
 /**
- * @var string
  */
 PHP_METHOD(Owl_Http_Response, setContent) {
 
-	zval *content;
+	zval *content_param = NULL;
+	zval *content = NULL;
 
-	zephir_fetch_params(0, 1, 0, &content);
+	ZEPHIR_MM_GROW();
+	zephir_fetch_params(1, 1, 0, &content_param);
 
+	zephir_get_strval(content, content_param);
 
 
 	zephir_update_property_this(this_ptr, SL("content"), content TSRMLS_CC);
+	ZEPHIR_MM_RESTORE();
 
 }
 
 /**
- * @var string
  */
 PHP_METHOD(Owl_Http_Response, __toString) {
 
@@ -105,7 +108,6 @@ PHP_METHOD(Owl_Http_Response, __toString) {
 }
 
 /**
- * @var \Owl\Http\HeadersBag
  */
 PHP_METHOD(Owl_Http_Response, getHeaders) {
 

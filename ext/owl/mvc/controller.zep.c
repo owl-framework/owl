@@ -41,7 +41,6 @@ ZEPHIR_INIT_CLASS(Owl_Mvc_Controller) {
 }
 
 /**
- * @var \Owl\Http\RequestInterface
  */
 PHP_METHOD(Owl_Mvc_Controller, getRequest) {
 
@@ -51,7 +50,6 @@ PHP_METHOD(Owl_Mvc_Controller, getRequest) {
 }
 
 /**
- * @var \Owl\Http\ResponseInterface
  */
 PHP_METHOD(Owl_Mvc_Controller, getResponse) {
 
@@ -61,7 +59,6 @@ PHP_METHOD(Owl_Mvc_Controller, getResponse) {
 }
 
 /**
- * @var \Owl\Di\ContainerInterface
  */
 PHP_METHOD(Owl_Mvc_Controller, getDi) {
 

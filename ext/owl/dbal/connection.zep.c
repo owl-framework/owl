@@ -48,8 +48,6 @@ ZEPHIR_INIT_CLASS(Owl_DBAL_Connection) {
 
 /**
  * Current used driver
- *
- * @var Driver\DriverInterface
  */
 PHP_METHOD(Owl_DBAL_Connection, getDriver) {
 
@@ -60,8 +58,6 @@ PHP_METHOD(Owl_DBAL_Connection, getDriver) {
 
 /**
  * Current used db platform (MySQL|PgSQL)
- *
- * @var Platform\PlatformInterface
  */
 PHP_METHOD(Owl_DBAL_Connection, getPlatform) {
 

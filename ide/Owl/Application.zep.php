@@ -62,7 +62,7 @@ class Application implements \Owl\ApplicationInterface, \Owl\DispatcherInterface
     public function getDi() {}
 
     /**
-     * Current env, see ENV_* constants
+     * Current env, see ENV_constants
      *
      * @return string 
      */

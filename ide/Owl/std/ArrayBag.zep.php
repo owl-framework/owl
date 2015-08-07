@@ -34,7 +34,7 @@ class ArrayBag implements \Countable
     /**
      * @param string $key 
      * @param mixed $defaultValue 
-     * @return variable 
+     * @return mixed 
      */
     public function get($key, $defaultValue = null) {}
 

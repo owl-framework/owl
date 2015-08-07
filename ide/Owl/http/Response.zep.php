@@ -44,7 +44,9 @@ class Response implements \Owl\Http\ResponseInterface
      */
     public function setContent($content) {}
 
-
+    /**
+     * @return string 
+     */
     public function __toString() {}
 
     /**
