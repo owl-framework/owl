@@ -73,12 +73,13 @@ To build the zep Source to C extension:
 
 ### Components
 
-- Annotations
+- Annotations [WIP]
 - Cache
-- Bridge
+- Bridge [WIP]
 - Event
 - Log
-- Session
+- Session [WIP]
+- Di
 - MVC
     * Controller
 - HTTP
