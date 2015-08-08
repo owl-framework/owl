@@ -16,6 +16,8 @@
 #include "kernel/memory.h"
 #include "kernel/operators.h"
 #include "kernel/fcall.h"
+#include "ext/spl/spl_exceptions.h"
+#include "kernel/exception.h"
 
 
 ZEPHIR_INIT_CLASS(Owl_Http_Response) {
@@ -169,6 +171,47 @@ PHP_METHOD(Owl_Http_Response, send) {
 	zend_print_zval(_3, 0);
 	zephir_update_property_this(this_ptr, SL("sent"), (1) ? ZEPHIR_GLOBAL(global_true) : ZEPHIR_GLOBAL(global_false) TSRMLS_CC);
 	RETURN_MM_BOOL(1);
+
+}
+
+PHP_METHOD(Owl_Http_Response, redirect) {
+
+	int code, ZEPHIR_LAST_CALL_STATUS;
+	zval *location_param = NULL, *code_param = NULL, *_0, *_1 = NULL;
+	zval *location = NULL;
+
+	ZEPHIR_MM_GROW();
+	zephir_fetch_params(1, 1, 1, &location_param, &code_param);
+
+	if (unlikely(Z_TYPE_P(location_param) != IS_STRING && Z_TYPE_P(location_param) != IS_NULL)) {
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'location' must be a string") TSRMLS_CC);
+		RETURN_MM_NULL();
+	}
+
+	if (likely(Z_TYPE_P(location_param) == IS_STRING)) {
+		zephir_get_strval(location, location_param);
+	} else {
+		ZEPHIR_INIT_VAR(location);
+		ZVAL_EMPTY_STRING(location);
+	}
+	if (!code_param) {
+		code = 302;
+	} else {
+		code = zephir_get_intval(code_param);
+	}
+
+
+	_0 = zephir_fetch_nproperty_this(this_ptr, SL("headers"), PH_NOISY_CC);
+	ZEPHIR_INIT_VAR(_1);
+	ZVAL_STRING(_1, "Location", ZEPHIR_TEMP_PARAM_COPY);
+	ZEPHIR_CALL_METHOD(NULL, _0, "set", NULL, 0, _1, location);
+	zephir_check_temp_parameter(_1);
+	zephir_check_call_status();
+	ZEPHIR_INIT_NVAR(_1);
+	ZVAL_LONG(_1, code);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "setstatuscode", NULL, 0, _1);
+	zephir_check_call_status();
+	RETURN_THIS();
 
 }
 

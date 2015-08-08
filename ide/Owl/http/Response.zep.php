@@ -75,6 +75,13 @@ class Response implements \Owl\Http\ResponseInterface
     public function send() {}
 
     /**
+     * @param string $location 
+     * @param int $code 
+     * @return Response 
+     */
+    public function redirect($location, $code = 302) {}
+
+    /**
      * Check whether status is OK
      *
      * @return bool 

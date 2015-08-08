@@ -56,6 +56,14 @@ class Response implements ResponseInterface
 		return true;
 	}
 
+	public function redirect(string! location, int code = 302) -> <Response>
+	{
+		this->headers->set("Location", location);
+		this->setStatusCode(code);
+
+		return this;
+	}
+
 	/**
 	 * Check whether status is OK
 	 */

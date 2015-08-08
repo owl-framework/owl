@@ -12,6 +12,7 @@ PHP_METHOD(Owl_Http_Response, getHeaders);
 PHP_METHOD(Owl_Http_Response, __construct);
 PHP_METHOD(Owl_Http_Response, isSent);
 PHP_METHOD(Owl_Http_Response, send);
+PHP_METHOD(Owl_Http_Response, redirect);
 PHP_METHOD(Owl_Http_Response, isOk);
 PHP_METHOD(Owl_Http_Response, isServerError);
 
@@ -21,6 +22,11 @@ ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_http_response_setcontent, 0, 0, 1)
 	ZEND_ARG_INFO(0, content)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_http_response_redirect, 0, 0, 1)
+	ZEND_ARG_INFO(0, location)
+	ZEND_ARG_INFO(0, code)
 ZEND_END_ARG_INFO()
 
 ZEPHIR_INIT_FUNCS(owl_http_response_method_entry) {
@@ -33,6 +39,7 @@ ZEPHIR_INIT_FUNCS(owl_http_response_method_entry) {
 	PHP_ME(Owl_Http_Response, __construct, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
 	PHP_ME(Owl_Http_Response, isSent, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Http_Response, send, NULL, ZEND_ACC_PUBLIC)
+	PHP_ME(Owl_Http_Response, redirect, arginfo_owl_http_response_redirect, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Http_Response, isOk, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Http_Response, isServerError, NULL, ZEND_ACC_PUBLIC)
 	PHP_FE_END
