@@ -26,9 +26,22 @@ class Response implements ResponseInterface
 		get
 	};
 
+	/**
+	 * @var boolean
+	 */
+	protected sent = false;
+
 	public function __construct()
 	{
 		let this->headers = new HeadersBag([]);
+	}
+
+	/**
+	 * Check if the response is already sent
+	 */
+	public function isSent() -> boolean
+	{
+		return this->sent;
 	}
 
 	public function send() -> boolean
@@ -37,6 +50,8 @@ class Response implements ResponseInterface
 
 		this->headers->send();
 		echo (string) this->content;
+
+		let this->sent = true;
 
 		return true;
 	}

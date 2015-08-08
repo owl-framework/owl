@@ -23,6 +23,11 @@ class Response implements \Owl\Http\ResponseInterface
      */
     protected $headers;
 
+    /**
+     * @var boolean
+     */
+    protected $sent = false;
+
 
     /**
      * @return int 
@@ -56,6 +61,13 @@ class Response implements \Owl\Http\ResponseInterface
 
 
     public function __construct() {}
+
+    /**
+     * Check if the response is already sent
+     *
+     * @return bool 
+     */
+    public function isSent() {}
 
     /**
      * @return bool 

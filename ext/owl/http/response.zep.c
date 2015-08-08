@@ -37,6 +37,11 @@ ZEPHIR_INIT_CLASS(Owl_Http_Response) {
 	 */
 	zend_declare_property_null(owl_http_response_ce, SL("headers"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
+	/**
+	 * @var boolean
+	 */
+	zend_declare_property_bool(owl_http_response_ce, SL("sent"), 0, ZEND_ACC_PROTECTED TSRMLS_CC);
+
 	zend_declare_class_constant_long(owl_http_response_ce, SL("STATUS_CODE_OK"), 200 TSRMLS_CC);
 
 	zend_class_implements(owl_http_response_ce TSRMLS_CC, 1, owl_http_responseinterface_ce);
@@ -134,6 +139,16 @@ PHP_METHOD(Owl_Http_Response, __construct) {
 
 }
 
+/**
+ * Check if the response is already sent
+ */
+PHP_METHOD(Owl_Http_Response, isSent) {
+
+
+	RETURN_MEMBER(this_ptr, "sent");
+
+}
+
 PHP_METHOD(Owl_Http_Response, send) {
 
 	zval *_3 = NULL;
@@ -152,6 +167,7 @@ PHP_METHOD(Owl_Http_Response, send) {
 	zephir_read_property_this(&_2, this_ptr, SL("content"), PH_NOISY_CC);
 	zephir_get_strval(_3, _2);
 	zend_print_zval(_3, 0);
+	zephir_update_property_this(this_ptr, SL("sent"), (1) ? ZEPHIR_GLOBAL(global_true) : ZEPHIR_GLOBAL(global_false) TSRMLS_CC);
 	RETURN_MM_BOOL(1);
 
 }

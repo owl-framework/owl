@@ -10,6 +10,7 @@ PHP_METHOD(Owl_Http_Response, setContent);
 PHP_METHOD(Owl_Http_Response, __toString);
 PHP_METHOD(Owl_Http_Response, getHeaders);
 PHP_METHOD(Owl_Http_Response, __construct);
+PHP_METHOD(Owl_Http_Response, isSent);
 PHP_METHOD(Owl_Http_Response, send);
 PHP_METHOD(Owl_Http_Response, isOk);
 PHP_METHOD(Owl_Http_Response, isServerError);
@@ -30,6 +31,7 @@ ZEPHIR_INIT_FUNCS(owl_http_response_method_entry) {
 	PHP_ME(Owl_Http_Response, __toString, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Http_Response, getHeaders, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Http_Response, __construct, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
+	PHP_ME(Owl_Http_Response, isSent, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Http_Response, send, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Http_Response, isOk, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_Http_Response, isServerError, NULL, ZEND_ACC_PUBLIC)
