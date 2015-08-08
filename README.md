@@ -81,6 +81,7 @@ To build the zep Source to C extension:
 - Debug
 - Di
 - Event
+- Filter
 - HTTP
     * Request
     * Response
