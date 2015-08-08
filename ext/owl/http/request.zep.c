@@ -125,7 +125,7 @@ PHP_METHOD(Owl_Http_Request, getPath) {
 	zephir_check_call_status();
 	ZEPHIR_SINIT_VAR(_1);
 	ZVAL_LONG(&_1, 5);
-	ZEPHIR_RETURN_CALL_FUNCTION("parse_url", NULL, 19, _0, &_1);
+	ZEPHIR_RETURN_CALL_FUNCTION("parse_url", NULL, 20, _0, &_1);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -294,7 +294,7 @@ PHP_METHOD(Owl_Http_Request, createFromGlobals) {
 	object_init_ex(return_value, owl_http_request_ce);
 	ZEPHIR_INIT_VAR(_0);
 	array_init(_0);
-	ZEPHIR_CALL_METHOD(NULL, return_value, "__construct", NULL, 20, _GET, _POST, _SERVER, _0, _FILES, _COOKIE);
+	ZEPHIR_CALL_METHOD(NULL, return_value, "__construct", NULL, 21, _GET, _POST, _SERVER, _0, _FILES, _COOKIE);
 	zephir_check_call_status();
 	RETURN_MM();
 

@@ -47,7 +47,7 @@ PHP_METHOD(Owl_Log_Formatter_Json, format) {
 	zephir_create_array(_0, 3, 0 TSRMLS_CC);
 	ZEPHIR_OBS_VAR(_3);
 	zephir_read_property(&_3, record, SL("level"), PH_NOISY_CC);
-	ZEPHIR_CALL_CE_STATIC(&_1, owl_log_logger_ce, "getleveltitle", &_2, 21, _3);
+	ZEPHIR_CALL_CE_STATIC(&_1, owl_log_logger_ce, "getleveltitle", &_2, 22, _3);
 	zephir_check_call_status();
 	zephir_array_update_string(&_0, SL("type"), &_1, PH_COPY | PH_SEPARATE);
 	ZEPHIR_OBS_VAR(_4);

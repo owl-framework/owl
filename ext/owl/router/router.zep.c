@@ -99,11 +99,11 @@ PHP_METHOD(Owl_Router_Router, add) {
 	ZEPHIR_INIT_VAR(route);
 	if (_2) {
 		object_init_ex(route, owl_router_http_staticroute_ce);
-		ZEPHIR_CALL_METHOD(NULL, route, "__construct", NULL, 31, uri);
+		ZEPHIR_CALL_METHOD(NULL, route, "__construct", NULL, 32, uri);
 		zephir_check_call_status();
 	} else {
 		object_init_ex(route, owl_router_http_dynamicroute_ce);
-		ZEPHIR_CALL_METHOD(NULL, route, "__construct", NULL, 32, uri);
+		ZEPHIR_CALL_METHOD(NULL, route, "__construct", NULL, 33, uri);
 		zephir_check_call_status();
 	}
 	zephir_update_property_zval(route, SL("method"), method TSRMLS_CC);
@@ -137,7 +137,7 @@ PHP_METHOD(Owl_Router_Router, matchRequest) {
 
 	ZEPHIR_CALL_METHOD(&_0, request, "geturi", NULL, 0);
 	zephir_check_call_status();
-	ZEPHIR_CALL_FUNCTION(&result, "parse_url", NULL, 19, _0);
+	ZEPHIR_CALL_FUNCTION(&result, "parse_url", NULL, 20, _0);
 	zephir_check_call_status();
 	ZEPHIR_OBS_VAR(path);
 	if (zephir_array_isset_string_fetch(&path, result, SS("path"), 0 TSRMLS_CC)) {
