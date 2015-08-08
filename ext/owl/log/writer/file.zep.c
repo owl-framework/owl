@@ -54,7 +54,7 @@ PHP_METHOD(Owl_Log_Writer_File, write) {
 	ZEPHIR_CONCAT_VV(_2, record, _1);
 	ZEPHIR_SINIT_VAR(_3);
 	ZVAL_LONG(&_3, 8);
-	ZEPHIR_CALL_FUNCTION(NULL, "file_put_contents", NULL, 24, _0, _2, &_3);
+	ZEPHIR_CALL_FUNCTION(NULL, "file_put_contents", NULL, 25, _0, _2, &_3);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 

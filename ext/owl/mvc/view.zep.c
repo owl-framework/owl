@@ -103,19 +103,19 @@ PHP_METHOD(Owl_Mvc_View, render) {
 	_2 = zephir_fetch_nproperty_this(this_ptr, SL("path"), PH_NOISY_CC);
 	ZEPHIR_INIT_VAR(_3);
 	ZEPHIR_CONCAT_VV(_3, _2, path);
-	ZEPHIR_CALL_FUNCTION(&_4, "is_readable", NULL, 25, _3);
+	ZEPHIR_CALL_FUNCTION(&_4, "is_readable", NULL, 26, _3);
 	zephir_check_call_status();
 	if (!(zephir_is_true(_4))) {
 		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(owl_exception_ce, "File is not readable", "owl/Mvc/View.zep", 25);
 		return;
 	}
-	ZEPHIR_CALL_FUNCTION(NULL, "ob_start", NULL, 26);
+	ZEPHIR_CALL_FUNCTION(NULL, "ob_start", NULL, 27);
 	zephir_check_call_status();
 	if (!(Z_TYPE_P(parameters) == IS_NULL)) {
 		ZEPHIR_INIT_VAR(_5);
 		ZVAL_LONG(_5, 0);
 		Z_SET_ISREF_P(parameters);
-		ZEPHIR_CALL_FUNCTION(NULL, "extract", NULL, 27, parameters, _5);
+		ZEPHIR_CALL_FUNCTION(NULL, "extract", NULL, 28, parameters, _5);
 		Z_UNSET_ISREF_P(parameters);
 		zephir_check_call_status();
 	}
@@ -125,9 +125,9 @@ PHP_METHOD(Owl_Mvc_View, render) {
 	if (zephir_require_zval(_7 TSRMLS_CC) == FAILURE) {
 		RETURN_MM_NULL();
 	}
-	ZEPHIR_CALL_FUNCTION(&tmp, "ob_get_contents", NULL, 28);
+	ZEPHIR_CALL_FUNCTION(&tmp, "ob_get_contents", NULL, 29);
 	zephir_check_call_status();
-	ZEPHIR_CALL_FUNCTION(NULL, "ob_end_clean", NULL, 29);
+	ZEPHIR_CALL_FUNCTION(NULL, "ob_end_clean", NULL, 30);
 	zephir_check_call_status();
 	RETURN_CCTOR(tmp);
 

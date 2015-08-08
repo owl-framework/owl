@@ -307,7 +307,7 @@ PHP_METHOD(Owl_Log_Logger, log) {
 	object_init_ex(_0, owl_log_record_ce);
 	ZEPHIR_INIT_VAR(_1);
 	zephir_microtime(_1, ZEPHIR_GLOBAL(global_true) TSRMLS_CC);
-	ZEPHIR_CALL_METHOD(NULL, _0, "__construct", NULL, 22, level, _1, message, context);
+	ZEPHIR_CALL_METHOD(NULL, _0, "__construct", NULL, 23, level, _1, message, context);
 	zephir_check_call_status();
 	zephir_update_property_array_append(this_ptr, SL("records"), _0 TSRMLS_CC);
 	_2 = zephir_fetch_nproperty_this(this_ptr, SL("records"), PH_NOISY_CC);

@@ -100,7 +100,7 @@ PHP_METHOD(Owl_Std_Collection_ArrayCollection, map) {
 
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("elements"), PH_NOISY_CC);
-	ZEPHIR_CALL_FUNCTION(&_1, "array_map", NULL, 32, func, _0);
+	ZEPHIR_CALL_FUNCTION(&_1, "array_map", NULL, 33, func, _0);
 	zephir_check_call_status();
 	zephir_update_property_this(this_ptr, SL("elements"), _1 TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();
@@ -121,7 +121,7 @@ PHP_METHOD(Owl_Std_Collection_ArrayCollection, filter) {
 
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("elements"), PH_NOISY_CC);
-	ZEPHIR_CALL_FUNCTION(&_1, "array_filter", NULL, 33, _0, func);
+	ZEPHIR_CALL_FUNCTION(&_1, "array_filter", NULL, 34, _0, func);
 	zephir_check_call_status();
 	zephir_update_property_this(this_ptr, SL("elements"), _1 TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();
@@ -140,7 +140,7 @@ PHP_METHOD(Owl_Std_Collection_ArrayCollection, first) {
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("elements"), PH_NOISY_CC);
 	Z_SET_ISREF_P(_0);
-	ZEPHIR_RETURN_CALL_FUNCTION("reset", NULL, 34, _0);
+	ZEPHIR_RETURN_CALL_FUNCTION("reset", NULL, 35, _0);
 	Z_UNSET_ISREF_P(_0);
 	zephir_check_call_status();
 	RETURN_MM();
@@ -159,7 +159,7 @@ PHP_METHOD(Owl_Std_Collection_ArrayCollection, last) {
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("elements"), PH_NOISY_CC);
 	Z_SET_ISREF_P(_0);
-	ZEPHIR_RETURN_CALL_FUNCTION("end", NULL, 35, _0);
+	ZEPHIR_RETURN_CALL_FUNCTION("end", NULL, 36, _0);
 	Z_UNSET_ISREF_P(_0);
 	zephir_check_call_status();
 	RETURN_MM();
@@ -178,7 +178,7 @@ PHP_METHOD(Owl_Std_Collection_ArrayCollection, getIterator) {
 
 	object_init_ex(return_value, zephir_get_internal_ce(SS("arrayiterator") TSRMLS_CC));
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("elements"), PH_NOISY_CC);
-	ZEPHIR_CALL_METHOD(NULL, return_value, "__construct", NULL, 36, _0);
+	ZEPHIR_CALL_METHOD(NULL, return_value, "__construct", NULL, 37, _0);
 	zephir_check_call_status();
 	RETURN_MM();
 
