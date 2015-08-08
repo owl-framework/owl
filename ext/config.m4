@@ -24,6 +24,7 @@ if test "$PHP_OWL" = "yes"; then
 	owl/applicationinterface.zep.c
 	owl/di/containerinterface.zep.c
 	owl/dispatcherinterface.zep.c
+	owl/filter/filterinterface.zep.c
 	owl/http/requestinterface.zep.c
 	owl/http/response.zep.c
 	owl/log/abstractlogger.zep.c
@@ -55,6 +56,7 @@ if test "$PHP_OWL" = "yes"; then
 	owl/di/container.zep.c
 	owl/event/event.zep.c
 	owl/event/manager.zep.c
+	owl/filter/abstractfilter.zep.c
 	owl/http/headersbag.zep.c
 	owl/http/request.zep.c
 	owl/http/response/json.zep.c

@@ -21,6 +21,7 @@ if (PHP_OWL != "no") {
 	ADD_SOURCES(configure_module_dirname + "/owl/mvc", "controllerinterface.zep.c controller.zep.c view.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/router", "route.zep.c routerinterface.zep.c router.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/di", "containerinterface.zep.c container.zep.c", "owl");
+	ADD_SOURCES(configure_module_dirname + "/owl/filter", "filterinterface.zep.c abstractfilter.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/std", "arraybag.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/std/collection", "abstractcollection.zep.c arraycollection.zep.c", "owl");
 	ADD_SOURCES(configure_module_dirname + "/owl/annotations", "annotation.zep.c classannotationsresult.zep.c exception.zep.c reader.zep.c", "owl");
