@@ -1,4 +1,4 @@
-![Logo](http://owl.dmtry.me/img/repository.png?v2 "Owl Framework")
+![Logo](https://owl.dmtry.me/img/repository.png?v2 "Owl Framework")
 
 Owl Framework
 =============
