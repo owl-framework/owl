@@ -3,7 +3,7 @@
 Owl Framework
 =============
 
-## [Website](http://owl.dmtry.me/) :: [Documentation](http://docs.owl.dmtry.me/) :: [Get started](http://owl.dmtry.me/get-started)
+## [Website](https://framework.lowl.io/) :: [Documentation](https://framework.lowl.io/docs/en/) :: [Get started](https://framework.lowl.io/get-started)
 
 [![Join the chat at https://gitter.im/owl-framework/owl](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/owl-framework/owl?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
