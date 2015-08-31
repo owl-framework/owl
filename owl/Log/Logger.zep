@@ -72,29 +72,28 @@ class Logger extends AbstractLogger implements LoggerInterface
 	 */
 	protected function factoryWriter(array writerDescription = []) -> <WriterInterface> {
 
-		var writer, writerClass;
+		var writer, writerClass, levels, options, formatter;
 
-		if !isset(writerDescription["class"]) {
+		if !fetch writerClass, writerDescription["class"] {
 			throw new InvalidWriterException("Writer options 'class' is not exists");
 		}
 
-		if !class_exists(writerDescription["class"]) {
+		if !class_exists(writerClass) {
 			throw new InvalidWriterException("Writer class is not exists");
 		}
 
-		let writerClass = writerDescription["class"];
 		let writer = new {writerClass}();
 
-		if isset( writerDescription["levels"] ) {
-			writer->setLevels( writerDescription["levels"] );
+		if fetch levels, writerDescription["levels"] {
+			writer->setLevels(levels);
 		}
 
-		if isset( writerDescription["options"] ) {
-			writer->setOptions( writerDescription["options"] );
+		if fetch options, writerDescription["options"] {
+			writer->setOptions(options);
 		}
 
-		if isset( writerDescription["formatter"] ) {
-			writer->setFormatter( writerDescription["formatter"] );
+		if fetch formatter, writerDescription["formatter"] {
+			writer->setFormatter(formatter);
 		}
 
 		return writer;

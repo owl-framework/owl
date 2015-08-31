@@ -175,8 +175,8 @@ PHP_METHOD(Owl_Log_Logger, __destruct) {
 PHP_METHOD(Owl_Log_Logger, factoryWriter) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
-	zend_class_entry *_2;
-	zval *writerDescription_param = NULL, *writer, *writerClass, *_0, *_1 = NULL, *_3;
+	zend_class_entry *_1;
+	zval *writerDescription_param = NULL, *writer, *writerClass, *levels, *options, *formatter, *_0 = NULL;
 	zval *writerDescription = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -190,38 +190,36 @@ PHP_METHOD(Owl_Log_Logger, factoryWriter) {
 	}
 
 
-	if (!(zephir_array_isset_string(writerDescription, SS("class")))) {
+	ZEPHIR_OBS_VAR(writerClass);
+	if (!(zephir_array_isset_string_fetch(&writerClass, writerDescription, SS("class"), 0 TSRMLS_CC))) {
 		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(owl_log_exception_invalidwriterexception_ce, "Writer options 'class' is not exists", "owl/Log/Logger.zep", 78);
 		return;
 	}
-	zephir_array_fetch_string(&_0, writerDescription, SL("class"), PH_NOISY | PH_READONLY, "owl/Log/Logger.zep", 81 TSRMLS_CC);
-	if (!(zephir_class_exists(_0, 1 TSRMLS_CC))) {
+	if (!(zephir_class_exists(writerClass, 1 TSRMLS_CC))) {
 		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(owl_log_exception_invalidwriterexception_ce, "Writer class is not exists", "owl/Log/Logger.zep", 82);
 		return;
 	}
-	ZEPHIR_OBS_VAR(writerClass);
-	zephir_array_fetch_string(&writerClass, writerDescription, SL("class"), PH_NOISY, "owl/Log/Logger.zep", 85 TSRMLS_CC);
 	ZEPHIR_INIT_VAR(writer);
-	zephir_fetch_safe_class(_1, writerClass);
-	_2 = zend_fetch_class(Z_STRVAL_P(_1), Z_STRLEN_P(_1), ZEND_FETCH_CLASS_AUTO TSRMLS_CC);
-	object_init_ex(writer, _2);
+	zephir_fetch_safe_class(_0, writerClass);
+	_1 = zend_fetch_class(Z_STRVAL_P(_0), Z_STRLEN_P(_0), ZEND_FETCH_CLASS_AUTO TSRMLS_CC);
+	object_init_ex(writer, _1);
 	if (zephir_has_constructor(writer TSRMLS_CC)) {
 		ZEPHIR_CALL_METHOD(NULL, writer, "__construct", NULL, 0);
 		zephir_check_call_status();
 	}
-	if (zephir_array_isset_string(writerDescription, SS("levels"))) {
-		zephir_array_fetch_string(&_3, writerDescription, SL("levels"), PH_NOISY | PH_READONLY, "owl/Log/Logger.zep", 89 TSRMLS_CC);
-		ZEPHIR_CALL_METHOD(NULL, writer, "setlevels", NULL, 0, _3);
+	ZEPHIR_OBS_VAR(levels);
+	if (zephir_array_isset_string_fetch(&levels, writerDescription, SS("levels"), 0 TSRMLS_CC)) {
+		ZEPHIR_CALL_METHOD(NULL, writer, "setlevels", NULL, 0, levels);
 		zephir_check_call_status();
 	}
-	if (zephir_array_isset_string(writerDescription, SS("options"))) {
-		zephir_array_fetch_string(&_3, writerDescription, SL("options"), PH_NOISY | PH_READONLY, "owl/Log/Logger.zep", 93 TSRMLS_CC);
-		ZEPHIR_CALL_METHOD(NULL, writer, "setoptions", NULL, 0, _3);
+	ZEPHIR_OBS_VAR(options);
+	if (zephir_array_isset_string_fetch(&options, writerDescription, SS("options"), 0 TSRMLS_CC)) {
+		ZEPHIR_CALL_METHOD(NULL, writer, "setoptions", NULL, 0, options);
 		zephir_check_call_status();
 	}
-	if (zephir_array_isset_string(writerDescription, SS("formatter"))) {
-		zephir_array_fetch_string(&_3, writerDescription, SL("formatter"), PH_NOISY | PH_READONLY, "owl/Log/Logger.zep", 97 TSRMLS_CC);
-		ZEPHIR_CALL_METHOD(NULL, writer, "setformatter", NULL, 0, _3);
+	ZEPHIR_OBS_VAR(formatter);
+	if (zephir_array_isset_string_fetch(&formatter, writerDescription, SS("formatter"), 0 TSRMLS_CC)) {
+		ZEPHIR_CALL_METHOD(NULL, writer, "setformatter", NULL, 0, formatter);
 		zephir_check_call_status();
 	}
 	RETURN_CCTOR(writer);
@@ -245,7 +243,7 @@ PHP_METHOD(Owl_Log_Logger, getWriter) {
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("writers"), PH_NOISY_CC);
 	if (zephir_array_isset(_0, name)) {
 		_1 = zephir_fetch_nproperty_this(this_ptr, SL("writers"), PH_NOISY_CC);
-		zephir_array_fetch(&_2, _1, name, PH_NOISY | PH_READONLY, "owl/Log/Logger.zep", 109 TSRMLS_CC);
+		zephir_array_fetch(&_2, _1, name, PH_NOISY | PH_READONLY, "owl/Log/Logger.zep", 108 TSRMLS_CC);
 		RETURN_CTOR(_2);
 	}
 	RETURN_MM_BOOL(0);
@@ -265,7 +263,7 @@ PHP_METHOD(Owl_Log_Logger, commit) {
 	ZEPHIR_MM_GROW();
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("writers"), PH_NOISY_CC);
-	zephir_is_iterable(_0, &_2, &_1, 0, 0, "owl/Log/Logger.zep", 126);
+	zephir_is_iterable(_0, &_2, &_1, 0, 0, "owl/Log/Logger.zep", 125);
 	for (
 	  ; zephir_hash_get_current_data_ex(_2, (void**) &_3, &_1) == SUCCESS
 	  ; zephir_hash_move_forward_ex(_2, &_1)
