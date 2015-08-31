@@ -62,5 +62,5 @@ interface LoggerInterface
 	/**
 	 * Logs with an arbitrary level.
 	 */
-	public function log(var level, string message, array context = []);
+	public function log(int! level, string message, array context = []);
 }

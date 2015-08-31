@@ -84,7 +84,7 @@ interface LoggerInterface
     /**
      * Logs with an arbitrary level.
      *
-     * @param mixed $level 
+     * @param int $level 
      * @param string $message 
      * @param array $context 
      */

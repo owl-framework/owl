@@ -96,7 +96,7 @@ class Logger extends \Owl\Log\AbstractLogger implements \Owl\Log\LoggerInterface
 
     /**
      * @inheritdoc
-     * @param mixed $level 
+     * @param int $level 
      * @param string $message 
      * @param array $context 
      */

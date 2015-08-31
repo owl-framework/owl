@@ -129,7 +129,7 @@ class Logger extends AbstractLogger implements LoggerInterface
 	/**
 	 * @inheritdoc
 	 */
-	public function log(var level, string message, array context = [])
+	public function log(int! level, string message, array context = [])
 	{
 		let this->records[] = new Record(level, microtime(true), message, context);
 
