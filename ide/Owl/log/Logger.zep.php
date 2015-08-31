@@ -29,39 +29,51 @@ class Logger extends \Owl\Log\AbstractLogger implements \Owl\Log\LoggerInterface
 {
     /**
      * Array of <Record> elements
+     *
+     * @var \Owl\Log\Record[]
      */
     protected $records = array();
 
     /**
      * Records limit to commit them to writers
+     *
+     * @var int
      */
     protected $recordsInterval = 1000;
 
     /**
      * Log writers
+     *
+     * @var \Owl\Log\WriterInterface[]
      */
     protected $writers = array();
 
 
     /**
      * Array of <Record> elements
+     *
+     * @return \Owl\Log\Record[] 
      */
     public function getRecords() {}
 
     /**
      * Records limit to commit them to writers
+     *
+     * @return int 
      */
     public function getRecordsInterval() {}
 
     /**
      * Records limit to commit them to writers
      *
-     * @param mixed $recordsInterval 
+     * @param int $recordsInterval 
      */
     public function setRecordsInterval($recordsInterval) {}
 
     /**
      * Log writers
+     *
+     * @return \Owl\Log\WriterInterface[] 
      */
     public function getWriters() {}
 

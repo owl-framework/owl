@@ -32,6 +32,8 @@ class Logger extends AbstractLogger implements LoggerInterface
 {
 	/**
 	 * Array of <Record> elements
+	 *
+	 * @var \Owl\Log\Record[]
 	 */
 	protected records = [] {
 		get
@@ -39,6 +41,8 @@ class Logger extends AbstractLogger implements LoggerInterface
 
 	/**
 	 * Records limit to commit them to writers
+	 *
+	 * @var int
 	 */
 	protected recordsInterval = 1000 {
 		get, set
@@ -46,6 +50,8 @@ class Logger extends AbstractLogger implements LoggerInterface
 
 	/**
 	 * Log writers
+	 *
+	 * @var \Owl\Log\WriterInterface[]
 	 */
 	protected writers = [] {
 		get

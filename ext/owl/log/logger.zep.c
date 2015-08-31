@@ -14,9 +14,9 @@
 #include "kernel/main.h"
 #include "kernel/object.h"
 #include "kernel/memory.h"
+#include "kernel/operators.h"
 #include "kernel/hash.h"
 #include "kernel/fcall.h"
-#include "kernel/operators.h"
 #include "kernel/array.h"
 #include "kernel/exception.h"
 #include "kernel/time.h"
@@ -53,16 +53,22 @@ ZEPHIR_INIT_CLASS(Owl_Log_Logger) {
 
 	/**
 	 * Array of <Record> elements
+	 *
+	 * @var \Owl\Log\Record[]
 	 */
 	zend_declare_property_null(owl_log_logger_ce, SL("records"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
 	/**
 	 * Records limit to commit them to writers
+	 *
+	 * @var int
 	 */
 	zend_declare_property_long(owl_log_logger_ce, SL("recordsInterval"), 1000, ZEND_ACC_PROTECTED TSRMLS_CC);
 
 	/**
 	 * Log writers
+	 *
+	 * @var \Owl\Log\WriterInterface[]
 	 */
 	zend_declare_property_null(owl_log_logger_ce, SL("writers"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
@@ -98,13 +104,17 @@ PHP_METHOD(Owl_Log_Logger, getRecordsInterval) {
  */
 PHP_METHOD(Owl_Log_Logger, setRecordsInterval) {
 
-	zval *recordsInterval;
+	zval *recordsInterval_param = NULL, *_0;
+	int recordsInterval;
 
-	zephir_fetch_params(0, 1, 0, &recordsInterval);
+	zephir_fetch_params(0, 1, 0, &recordsInterval_param);
+
+	recordsInterval = zephir_get_intval(recordsInterval_param);
 
 
-
-	zephir_update_property_this(this_ptr, SL("recordsInterval"), recordsInterval TSRMLS_CC);
+	ZEPHIR_INIT_ZVAL_NREF(_0);
+	ZVAL_LONG(_0, recordsInterval);
+	zephir_update_property_this(this_ptr, SL("recordsInterval"), _0 TSRMLS_CC);
 
 }
 
@@ -138,7 +148,7 @@ PHP_METHOD(Owl_Log_Logger, __construct) {
 	}
 
 
-	zephir_is_iterable(writers, &_1, &_0, 0, 0, "owl/Log/Logger.zep", 61);
+	zephir_is_iterable(writers, &_1, &_0, 0, 0, "owl/Log/Logger.zep", 67);
 	for (
 	  ; zephir_hash_get_current_data_ex(_1, (void**) &_2, &_0) == SUCCESS
 	  ; zephir_hash_move_forward_ex(_1, &_0)
@@ -192,11 +202,11 @@ PHP_METHOD(Owl_Log_Logger, factoryWriter) {
 
 	ZEPHIR_OBS_VAR(writerClass);
 	if (!(zephir_array_isset_string_fetch(&writerClass, writerDescription, SS("class"), 0 TSRMLS_CC))) {
-		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(owl_log_exception_invalidwriterexception_ce, "Writer options 'class' is not exists", "owl/Log/Logger.zep", 78);
+		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(owl_log_exception_invalidwriterexception_ce, "Writer options 'class' is not exists", "owl/Log/Logger.zep", 84);
 		return;
 	}
 	if (!(zephir_class_exists(writerClass, 1 TSRMLS_CC))) {
-		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(owl_log_exception_invalidwriterexception_ce, "Writer class is not exists", "owl/Log/Logger.zep", 82);
+		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(owl_log_exception_invalidwriterexception_ce, "Writer class is not exists", "owl/Log/Logger.zep", 88);
 		return;
 	}
 	ZEPHIR_INIT_VAR(writer);
@@ -243,7 +253,7 @@ PHP_METHOD(Owl_Log_Logger, getWriter) {
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("writers"), PH_NOISY_CC);
 	if (zephir_array_isset(_0, name)) {
 		_1 = zephir_fetch_nproperty_this(this_ptr, SL("writers"), PH_NOISY_CC);
-		zephir_array_fetch(&_2, _1, name, PH_NOISY | PH_READONLY, "owl/Log/Logger.zep", 108 TSRMLS_CC);
+		zephir_array_fetch(&_2, _1, name, PH_NOISY | PH_READONLY, "owl/Log/Logger.zep", 114 TSRMLS_CC);
 		RETURN_CTOR(_2);
 	}
 	RETURN_MM_BOOL(0);
@@ -263,7 +273,7 @@ PHP_METHOD(Owl_Log_Logger, commit) {
 	ZEPHIR_MM_GROW();
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("writers"), PH_NOISY_CC);
-	zephir_is_iterable(_0, &_2, &_1, 0, 0, "owl/Log/Logger.zep", 125);
+	zephir_is_iterable(_0, &_2, &_1, 0, 0, "owl/Log/Logger.zep", 131);
 	for (
 	  ; zephir_hash_get_current_data_ex(_2, (void**) &_3, &_1) == SUCCESS
 	  ; zephir_hash_move_forward_ex(_2, &_1)
