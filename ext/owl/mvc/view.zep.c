@@ -32,6 +32,7 @@ ZEPHIR_INIT_CLASS(Owl_Mvc_View) {
 	 */
 	zend_declare_property_string(owl_mvc_view_ce, SL("path"), "./../resources/views/", ZEND_ACC_PROTECTED TSRMLS_CC);
 
+	zend_class_implements(owl_mvc_view_ce TSRMLS_CC, 1, owl_mvc_viewinterface_ce);
 	return SUCCESS;
 
 }

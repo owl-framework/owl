@@ -25,6 +25,7 @@
 #include "owl/http/response.zep.h"
 #include "owl/log/abstractlogger.zep.h"
 #include "owl/mvc/controller.zep.h"
+#include "owl/mvc/viewinterface.zep.h"
 #include "owl/router/routerinterface.zep.h"
 #include "owl/std/arraybag.zep.h"
 #include "owl/std/collection/abstractcollection.zep.h"

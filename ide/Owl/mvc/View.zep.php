@@ -3,7 +3,7 @@
 namespace Owl\Mvc;
 
 
-class View
+class View implements \Owl\Mvc\ViewInterface
 {
     /**
      * Base path for views

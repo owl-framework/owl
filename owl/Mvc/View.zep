@@ -3,7 +3,7 @@ namespace Owl\Mvc;
 
 use Owl\Exception;
 
-class View
+class View implements ViewInterface
 {
 	/**
 	 * Base path for views

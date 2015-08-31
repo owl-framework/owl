@@ -30,6 +30,7 @@ if test "$PHP_OWL" = "yes"; then
 	owl/http/response.zep.c
 	owl/log/abstractlogger.zep.c
 	owl/mvc/controller.zep.c
+	owl/mvc/viewinterface.zep.c
 	owl/router/routerinterface.zep.c
 	owl/std/arraybag.zep.c
 	owl/std/collection/abstractcollection.zep.c
