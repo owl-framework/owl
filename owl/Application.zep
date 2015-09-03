@@ -117,7 +117,8 @@ class Application implements ApplicationInterface, DispatcherInterface
 
 			this->eventManager->emit(DispatcherInterface::EVENT_AFTER_INIT, this);
 
-			let action = parameters["action"] . "Action";
+			let action = camelize(parameters["action"]) . "Action";
+
 			if (!method_exists(controller, action)) {
 				throw new Exception("Action '" . action . "' is not exists on '" . handlerClass ."'");
 			}
