@@ -25,6 +25,7 @@ if test "$PHP_OWL" = "yes"; then
 	owl/router/route.zep.c
 	owl/applicationinterface.zep.c
 	owl/di/containerinterface.zep.c
+	owl/di/servicedefinitioninterface.zep.c
 	owl/dispatcherinterface.zep.c
 	owl/http/requestinterface.zep.c
 	owl/http/response.zep.c
@@ -56,6 +57,7 @@ if test "$PHP_OWL" = "yes"; then
 	owl/debug/memoryprofiler.zep.c
 	owl/debug/profiler.zep.c
 	owl/di/container.zep.c
+	owl/di/servicedefinition.zep.c
 	owl/event/event.zep.c
 	owl/event/manager.zep.c
 	owl/filter/email.zep.c

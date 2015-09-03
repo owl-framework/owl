@@ -26,11 +26,22 @@ class Container implements ContainerInterface
 
 	public fn set(string! name, var definition)
 	{
-		if (is_object(definition) || is_callable(definition, true)) {
+		if (is_callable(definition, true)) {
 			let this->instances[name] = definition;
-		} else {
-			this->setService(name, definition);
+			return;
 		}
+
+		if (is_object(definition)) {
+			if (definition instanceof \Owl\Di\ServiceDefinitionInterface) {
+				this->setService(name, definition);
+			} else {
+				let this->instances[name] = definition;
+			}
+
+			return;
+		}
+
+		throw new Exception("It's not a registry to store it, type passed: " . gettype(name));
 	}
 
 	public fn has(string! name) -> boolean

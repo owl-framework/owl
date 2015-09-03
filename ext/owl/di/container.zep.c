@@ -18,8 +18,8 @@
 #include "kernel/operators.h"
 #include "kernel/memory.h"
 #include "kernel/fcall.h"
-#include "kernel/array.h"
 #include "kernel/concat.h"
+#include "kernel/array.h"
 
 
 ZEPHIR_INIT_CLASS(Owl_Di_Container) {
@@ -76,8 +76,7 @@ PHP_METHOD(Owl_Di_Container, setService) {
 PHP_METHOD(Owl_Di_Container, set) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
-	zend_bool _0;
-	zval *name_param = NULL, *definition, *_1, *_2 = NULL;
+	zval *name_param = NULL, *definition, *_0 = NULL, *_1 = NULL, *_2, *_3;
 	zval *name = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -96,21 +95,34 @@ PHP_METHOD(Owl_Di_Container, set) {
 	}
 
 
-	_0 = Z_TYPE_P(definition) == IS_OBJECT;
-	if (!(_0)) {
-		ZEPHIR_INIT_VAR(_1);
-		ZVAL_BOOL(_1, 1);
-		ZEPHIR_CALL_FUNCTION(&_2, "is_callable", NULL, 15, definition, _1);
-		zephir_check_call_status();
-		_0 = zephir_is_true(_2);
-	}
-	if (_0) {
+	ZEPHIR_INIT_VAR(_0);
+	ZVAL_BOOL(_0, 1);
+	ZEPHIR_CALL_FUNCTION(&_1, "is_callable", NULL, 15, definition, _0);
+	zephir_check_call_status();
+	if (zephir_is_true(_1)) {
 		zephir_update_property_array(this_ptr, SL("instances"), name, definition TSRMLS_CC);
-	} else {
-		ZEPHIR_CALL_METHOD(NULL, this_ptr, "setservice", NULL, 0, name, definition);
-		zephir_check_call_status();
+		RETURN_MM_NULL();
 	}
+	if (Z_TYPE_P(definition) == IS_OBJECT) {
+		if (zephir_instance_of_ev(definition, owl_di_servicedefinitioninterface_ce TSRMLS_CC)) {
+			ZEPHIR_CALL_METHOD(NULL, this_ptr, "setservice", NULL, 0, name, definition);
+			zephir_check_call_status();
+		} else {
+			zephir_update_property_array(this_ptr, SL("instances"), name, definition TSRMLS_CC);
+		}
+		RETURN_MM_NULL();
+	}
+	ZEPHIR_INIT_NVAR(_0);
+	object_init_ex(_0, owl_exception_ce);
+	ZEPHIR_INIT_VAR(_2);
+	zephir_gettype(_2, name TSRMLS_CC);
+	ZEPHIR_INIT_VAR(_3);
+	ZEPHIR_CONCAT_SV(_3, "It's not a registry to store it, type passed: ", _2);
+	ZEPHIR_CALL_METHOD(NULL, _0, "__construct", NULL, 5, _3);
+	zephir_check_call_status();
+	zephir_throw_exception_debug(_0, "owl/Di/Container.zep", 44 TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();
+	return;
 
 }
 
@@ -179,7 +191,7 @@ PHP_METHOD(Owl_Di_Container, get) {
 	ZEPHIR_CONCAT_SV(_2, "Instance wasn't found by name: ", name);
 	ZEPHIR_CALL_METHOD(NULL, _1, "__construct", NULL, 5, _2);
 	zephir_check_call_status();
-	zephir_throw_exception_debug(_1, "owl/Di/Container.zep", 49 TSRMLS_CC);
+	zephir_throw_exception_debug(_1, "owl/Di/Container.zep", 60 TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();
 	return;
 
@@ -218,7 +230,7 @@ PHP_METHOD(Owl_Di_Container, getService) {
 	ZEPHIR_CONCAT_SV(_2, "Service wasn't found by name: ", name);
 	ZEPHIR_CALL_METHOD(NULL, _1, "__construct", NULL, 5, _2);
 	zephir_check_call_status();
-	zephir_throw_exception_debug(_1, "owl/Di/Container.zep", 60 TSRMLS_CC);
+	zephir_throw_exception_debug(_1, "owl/Di/Container.zep", 71 TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();
 	return;
 
