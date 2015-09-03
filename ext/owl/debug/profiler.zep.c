@@ -158,7 +158,7 @@ PHP_METHOD(Owl_Debug_Profiler, setContent) {
 
 	ZEPHIR_INIT_VAR(resp);
 	object_init_ex(resp, owl_http_response_ce);
-	ZEPHIR_CALL_METHOD(NULL, resp, "__construct", NULL, 7);
+	ZEPHIR_CALL_METHOD(NULL, resp, "__construct", NULL, 8);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(html);
 	ZVAL_STRING(html, "<html><head>", 1);

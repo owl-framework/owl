@@ -40,7 +40,7 @@ PHP_METHOD(Owl_Http_Response_Json, __construct) {
 	ZEPHIR_INIT_VAR(_1);
 	zephir_create_array(_1, 1, 0 TSRMLS_CC);
 	add_assoc_stringl_ex(_1, SS("Content-Type"), SL("application/json"), 1);
-	ZEPHIR_CALL_METHOD(NULL, _0, "__construct", NULL, 3, _1);
+	ZEPHIR_CALL_METHOD(NULL, _0, "__construct", NULL, 4, _1);
 	zephir_check_call_status();
 	zephir_update_property_this(this_ptr, SL("headers"), _0 TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();

@@ -28,10 +28,10 @@
 
 
 zend_class_entry *owl_cache_driver_ce;
+zend_class_entry *owl_dbal_driver_driverinterface_ce;
 zend_class_entry *owl_filter_filterinterface_ce;
 zend_class_entry *owl_log_writerinterface_ce;
 zend_class_entry *owl_log_loggerinterface_ce;
-zend_class_entry *owl_dbal_driver_driverinterface_ce;
 zend_class_entry *owl_dbal_platform_platforminterface_ce;
 zend_class_entry *owl_http_responseinterface_ce;
 zend_class_entry *owl_log_formatterinterface_ce;
@@ -48,6 +48,7 @@ zend_class_entry *owl_session_managerinterface_ce;
 zend_class_entry *owl_cache_driver_cachedriver_ce;
 zend_class_entry *owl_filter_abstractfilter_ce;
 zend_class_entry *owl_log_abstractwriter_ce;
+zend_class_entry *owl_dbal_driver_abstractpdo_ce;
 zend_class_entry *owl_exception_ce;
 zend_class_entry *owl_router_route_ce;
 zend_class_entry *owl_http_response_ce;
@@ -127,10 +128,10 @@ static PHP_MINIT_FUNCTION(owl)
 #endif
 	REGISTER_INI_ENTRIES();
 	ZEPHIR_INIT(Owl_Cache_Driver);
+	ZEPHIR_INIT(Owl_DBAL_Driver_DriverInterface);
 	ZEPHIR_INIT(Owl_Filter_FilterInterface);
 	ZEPHIR_INIT(Owl_Log_WriterInterface);
 	ZEPHIR_INIT(Owl_Log_LoggerInterface);
-	ZEPHIR_INIT(Owl_DBAL_Driver_DriverInterface);
 	ZEPHIR_INIT(Owl_DBAL_Platform_PlatformInterface);
 	ZEPHIR_INIT(Owl_Http_ResponseInterface);
 	ZEPHIR_INIT(Owl_Log_FormatterInterface);
@@ -147,6 +148,7 @@ static PHP_MINIT_FUNCTION(owl)
 	ZEPHIR_INIT(Owl_Cache_Driver_CacheDriver);
 	ZEPHIR_INIT(Owl_Filter_AbstractFilter);
 	ZEPHIR_INIT(Owl_Log_AbstractWriter);
+	ZEPHIR_INIT(Owl_DBAL_Driver_AbstractPdo);
 	ZEPHIR_INIT(Owl_Exception);
 	ZEPHIR_INIT(Owl_Router_Route);
 	ZEPHIR_INIT(Owl_Http_Response);

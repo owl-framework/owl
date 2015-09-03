@@ -134,7 +134,7 @@ PHP_METHOD(Owl_Http_Response, __construct) {
 	object_init_ex(_0, owl_http_headersbag_ce);
 	ZEPHIR_INIT_VAR(_1);
 	array_init(_1);
-	ZEPHIR_CALL_METHOD(NULL, _0, "__construct", NULL, 3, _1);
+	ZEPHIR_CALL_METHOD(NULL, _0, "__construct", NULL, 4, _1);
 	zephir_check_call_status();
 	zephir_update_property_this(this_ptr, SL("headers"), _0 TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();
@@ -160,7 +160,7 @@ PHP_METHOD(Owl_Http_Response, send) {
 	ZEPHIR_MM_GROW();
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("statusCode"), PH_NOISY_CC);
-	ZEPHIR_CALL_FUNCTION(NULL, "http_response_code", NULL, 4, _0);
+	ZEPHIR_CALL_FUNCTION(NULL, "http_response_code", NULL, 5, _0);
 	zephir_check_call_status();
 	_1 = zephir_fetch_nproperty_this(this_ptr, SL("headers"), PH_NOISY_CC);
 	ZEPHIR_CALL_METHOD(NULL, _1, "send", NULL, 0);

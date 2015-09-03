@@ -118,7 +118,7 @@ PHP_METHOD(Owl_Di_Container, set) {
 	zephir_gettype(_2, name TSRMLS_CC);
 	ZEPHIR_INIT_VAR(_3);
 	ZEPHIR_CONCAT_SV(_3, "It's not a registry to store it, type passed: ", _2);
-	ZEPHIR_CALL_METHOD(NULL, _0, "__construct", NULL, 5, _3);
+	ZEPHIR_CALL_METHOD(NULL, _0, "__construct", NULL, 6, _3);
 	zephir_check_call_status();
 	zephir_throw_exception_debug(_0, "owl/Di/Container.zep", 44 TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();
@@ -189,7 +189,7 @@ PHP_METHOD(Owl_Di_Container, get) {
 	object_init_ex(_1, owl_exception_ce);
 	ZEPHIR_INIT_VAR(_2);
 	ZEPHIR_CONCAT_SV(_2, "Instance wasn't found by name: ", name);
-	ZEPHIR_CALL_METHOD(NULL, _1, "__construct", NULL, 5, _2);
+	ZEPHIR_CALL_METHOD(NULL, _1, "__construct", NULL, 6, _2);
 	zephir_check_call_status();
 	zephir_throw_exception_debug(_1, "owl/Di/Container.zep", 60 TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();
@@ -228,7 +228,7 @@ PHP_METHOD(Owl_Di_Container, getService) {
 	object_init_ex(_1, owl_exception_ce);
 	ZEPHIR_INIT_VAR(_2);
 	ZEPHIR_CONCAT_SV(_2, "Service wasn't found by name: ", name);
-	ZEPHIR_CALL_METHOD(NULL, _1, "__construct", NULL, 5, _2);
+	ZEPHIR_CALL_METHOD(NULL, _1, "__construct", NULL, 6, _2);
 	zephir_check_call_status();
 	zephir_throw_exception_debug(_1, "owl/Di/Container.zep", 71 TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();

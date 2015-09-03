@@ -265,7 +265,7 @@ PHP_METHOD(Owl_DBAL_Connection, update) {
 		if (ZEPHIR_IS_LONG(cnt, 1)) {
 			_9 = zephir_fetch_nproperty_this(this_ptr, SL("platform"), PH_NOISY_CC);
 			Z_SET_ISREF_P(identifiers);
-			ZEPHIR_CALL_FUNCTION(&_11, "key", NULL, 9, identifiers);
+			ZEPHIR_CALL_FUNCTION(&_11, "key", NULL, 10, identifiers);
 			Z_UNSET_ISREF_P(identifiers);
 			zephir_check_call_status();
 			ZEPHIR_CALL_METHOD(&_10, _9, "wrap", NULL, 0, _11);
@@ -282,9 +282,9 @@ PHP_METHOD(Owl_DBAL_Connection, update) {
 	ZEPHIR_CALL_METHOD(&stmt, _5, "prepare", NULL, 0, query);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(_13);
-	ZEPHIR_CALL_FUNCTION(&_6, "array_values", &_14, 10, data);
+	ZEPHIR_CALL_FUNCTION(&_6, "array_values", &_14, 11, data);
 	zephir_check_call_status();
-	ZEPHIR_CALL_FUNCTION(&_10, "array_values", &_14, 10, identifiers);
+	ZEPHIR_CALL_FUNCTION(&_10, "array_values", &_14, 11, identifiers);
 	zephir_check_call_status();
 	zephir_fast_array_merge(_13, &(_6), &(_10) TSRMLS_CC);
 	ZEPHIR_RETURN_CALL_METHOD(stmt, "execute", NULL, 0, _13);
