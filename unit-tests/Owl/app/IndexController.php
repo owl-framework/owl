@@ -9,6 +9,9 @@ class IndexController
 {
     public function indexAction()
     {
-
+        return array(
+            'test' => 1,
+            'key' => 'value'
+        );
     }
 }
