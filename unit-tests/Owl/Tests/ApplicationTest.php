@@ -28,7 +28,9 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
         $application = $this->createSmallApp();
 
         $this->assertInstanceOf('Owl\Application', $application);
+        $this->assertInstanceOf('Owl\ApplicationInterface', $application);
         $this->assertInstanceOf('Owl\Di\Container', $application->getDi());
+        $this->assertInstanceOf('Owl\Di\ContainerInterface', $application->getDi());
         $this->assertSame(Application::ENV_PRODUCTION, $application->getEnv());
     }
 
