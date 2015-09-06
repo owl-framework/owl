@@ -126,6 +126,9 @@ class Application implements ApplicationInterface, DispatcherInterface
 			}
 
 			let controller = new {handlerClass}(this->request, response, this->di);
+			if !(controller instanceof \Owl\Mvc\ControllerInterface) {
+				throw new Exception("Handle must be instance of ControllerInterface");
+			}
 
 			this->eventManager->emit(DispatcherInterface::EVENT_AFTER_INIT, this);
 

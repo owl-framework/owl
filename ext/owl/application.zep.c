@@ -243,7 +243,7 @@ PHP_METHOD(Owl_Application, dispatch) {
 	zval *_13 = NULL;
 	zend_class_entry *_5;
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *parameters, *callParameters = NULL, *response = NULL, *handlerClass, *controller, *result = NULL, *action, *e = NULL, *module, *_0 = NULL, *_1, *_2, *_3 = NULL, *_4 = NULL, *_6, *_7, *_8, *_9, *_10 = NULL, *_11, *_12;
+	zval *parameters, *callParameters = NULL, *response = NULL, *handlerClass, *controller, *result = NULL, *action, *e = NULL, *module, *_0 = NULL, *_1, *_2, *_3 = NULL, *_4 = NULL, *_6, *_7, *_8 = NULL, *_9, *_10, *_11, *_12;
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 2, 1, &parameters, &callParameters, &response);
@@ -304,33 +304,45 @@ PHP_METHOD(Owl_Application, dispatch) {
 			ZEPHIR_CALL_METHOD(NULL, controller, "__construct", NULL, 0, _6, response, _7);
 			zephir_check_call_status_or_jump(try_end_1);
 		}
-		_8 = zephir_fetch_nproperty_this(this_ptr, SL("eventManager"), PH_NOISY_CC);
+		if (!(zephir_instance_of_ev(controller, owl_mvc_controllerinterface_ce TSRMLS_CC))) {
+			ZEPHIR_INIT_NVAR(_3);
+			object_init_ex(_3, owl_exception_ce);
+			ZEPHIR_INIT_VAR(_8);
+			ZVAL_STRING(_8, "Handle must be instance of ControllerInterface", ZEPHIR_TEMP_PARAM_COPY);
+			ZEPHIR_CALL_METHOD(NULL, _3, "__construct", NULL, 6, _8);
+			zephir_check_temp_parameter(_8);
+			zephir_check_call_status_or_jump(try_end_1);
+			zephir_throw_exception_debug(_3, "owl/Application.zep", 130 TSRMLS_CC);
+			goto try_end_1;
+
+		}
+		_9 = zephir_fetch_nproperty_this(this_ptr, SL("eventManager"), PH_NOISY_CC);
 		ZEPHIR_INIT_NVAR(_3);
 		ZVAL_STRING(_3, "dispatch:afterInitialize", ZEPHIR_TEMP_PARAM_COPY);
-		ZEPHIR_CALL_METHOD(NULL, _8, "emit", NULL, 0, _3, this_ptr);
+		ZEPHIR_CALL_METHOD(NULL, _9, "emit", NULL, 0, _3, this_ptr);
 		zephir_check_temp_parameter(_3);
 		zephir_check_call_status_or_jump(try_end_1);
 		ZEPHIR_INIT_NVAR(_3);
-		zephir_array_fetch_string(&_9, parameters, SL("action"), PH_NOISY | PH_READONLY, "owl/Application.zep", 132 TSRMLS_CC);
-		zephir_camelize(_3, _9);
+		zephir_array_fetch_string(&_10, parameters, SL("action"), PH_NOISY | PH_READONLY, "owl/Application.zep", 135 TSRMLS_CC);
+		zephir_camelize(_3, _10);
 		ZEPHIR_INIT_VAR(action);
 		ZEPHIR_CONCAT_VS(action, _3, "Action");
 		if (!((zephir_method_exists(controller, action TSRMLS_CC)  == SUCCESS))) {
-			ZEPHIR_INIT_VAR(_10);
-			object_init_ex(_10, owl_exception_ce);
+			ZEPHIR_INIT_NVAR(_8);
+			object_init_ex(_8, owl_exception_ce);
 			ZEPHIR_INIT_VAR(_11);
 			ZEPHIR_CONCAT_SVSVS(_11, "Action '", action, "' is not exists on '", handlerClass, "'");
-			ZEPHIR_CALL_METHOD(NULL, _10, "__construct", NULL, 6, _11);
+			ZEPHIR_CALL_METHOD(NULL, _8, "__construct", NULL, 6, _11);
 			zephir_check_call_status_or_jump(try_end_1);
-			zephir_throw_exception_debug(_10, "owl/Application.zep", 135 TSRMLS_CC);
+			zephir_throw_exception_debug(_8, "owl/Application.zep", 138 TSRMLS_CC);
 			goto try_end_1;
 
 		}
 		_12 = zephir_fetch_nproperty_this(this_ptr, SL("eventManager"), PH_NOISY_CC);
-		ZEPHIR_INIT_NVAR(_10);
-		ZVAL_STRING(_10, "dispatch:afterAction", ZEPHIR_TEMP_PARAM_COPY);
-		ZEPHIR_CALL_METHOD(NULL, _12, "emit", NULL, 0, _10, this_ptr);
-		zephir_check_temp_parameter(_10);
+		ZEPHIR_INIT_NVAR(_8);
+		ZVAL_STRING(_8, "dispatch:afterAction", ZEPHIR_TEMP_PARAM_COPY);
+		ZEPHIR_CALL_METHOD(NULL, _12, "emit", NULL, 0, _8, this_ptr);
+		zephir_check_temp_parameter(_8);
 		zephir_check_call_status_or_jump(try_end_1);
 		if (Z_TYPE_P(callParameters) == IS_NULL) {
 			ZEPHIR_CALL_METHOD_ZVAL(&result, controller, action,  NULL, 0);
