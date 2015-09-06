@@ -41,4 +41,9 @@ interface RequestInterface
      */
     public function getScheme();
 
+    /**
+     * @return string 
+     */
+    public function getMethod();
+
 }

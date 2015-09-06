@@ -25,5 +25,6 @@ ZEPHIR_INIT_FUNCS(owl_http_requestinterface_method_entry) {
 	PHP_ABSTRACT_ME(Owl_Http_RequestInterface, getPost, arginfo_owl_http_requestinterface_getpost)
 	PHP_ABSTRACT_ME(Owl_Http_RequestInterface, getServer, arginfo_owl_http_requestinterface_getserver)
 	PHP_ABSTRACT_ME(Owl_Http_RequestInterface, getScheme, NULL)
+	PHP_ABSTRACT_ME(Owl_Http_RequestInterface, getMethod, NULL)
 	PHP_FE_END
 };

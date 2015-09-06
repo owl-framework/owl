@@ -35,3 +35,5 @@ ZEPHIR_DOC_METHOD(Owl_Http_RequestInterface, getServer);
 
 ZEPHIR_DOC_METHOD(Owl_Http_RequestInterface, getScheme);
 
+ZEPHIR_DOC_METHOD(Owl_Http_RequestInterface, getMethod);
+

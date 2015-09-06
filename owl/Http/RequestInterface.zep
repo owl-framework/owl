@@ -17,4 +17,6 @@ interface RequestInterface
     public fn getServer(string! key, var defaultValue = null);
 
     public fn getScheme() -> string;
+
+	public fn getMethod() -> string;
 }
