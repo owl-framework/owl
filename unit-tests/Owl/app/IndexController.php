@@ -5,7 +5,7 @@
 
 namespace RestApp\Controller;
 
-class IndexController
+class IndexController extends \Owl\Mvc\Controller
 {
     public function indexAction()
     {
