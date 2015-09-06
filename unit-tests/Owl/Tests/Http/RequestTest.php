@@ -87,6 +87,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals('/testuri', $request->getUri());
+        $this->assertEquals('/testuri', $request->getPath());
         $this->assertEquals(Request::GET, $request->getMethod());
 
         $this->assertSame(5, $request->getParam('param1'));
