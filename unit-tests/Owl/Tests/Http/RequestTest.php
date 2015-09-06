@@ -23,10 +23,31 @@ class RequestTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('/', $request->getUri());
         $this->assertEquals(Request::GET, $request->getMethod());
 
+        /**
+         *
+         */
+        $_SERVER['REQUEST_URI'] = '/?code=1&test=2';
+        $request = Request::createFromGlobals();
+
+        $this->assertEquals('/?code=1&test=2', $request->getUri());
+        $this->assertEquals(Request::GET, $request->getMethod());
+
+        /**
+         *
+         */
         $_SERVER['REQUEST_URI'] = '/test';
         $request = Request::createFromGlobals();
 
         $this->assertEquals('/test', $request->getUri());
+        $this->assertEquals(Request::GET, $request->getMethod());
+
+        /**
+         *
+         */
+        $_SERVER['REQUEST_URI'] = '/test?code=1';
+        $request = Request::createFromGlobals();
+
+        $this->assertEquals('/test?code=1', $request->getUri());
         $this->assertEquals(Request::GET, $request->getMethod());
     }
 
