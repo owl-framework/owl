@@ -17,6 +17,7 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
 
         $router = new Router();
         $router->add('/', ['controller' => 'Index', 'action' => 'index']);
+        $router->add('/view/:id/', ['controller' => 'Index', 'action' => 'view']);
 
         $serviceManager->set('router', $router);
 
@@ -90,5 +91,38 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
         $this->assertNotFalse($dispatchAfterInitialize);
         $this->assertNotFalse($dispatchAfterAction);
         $this->assertNotFalse($appAfterHandle);
+    }
+
+    public function testIndexAction()
+    {
+        $application = $this->createSmallApp();
+        $response = $application->handle(Request::createFromGlobals(), new \Owl\Http\Response\Json());
+
+
+        $this->assertInstanceOf('Owl\Http\ResponseInterface', $response);
+        $this->assertSame(200, $response->getStatusCode());
+
+        $this->assertJson($response->getContent());
+
+        $result = json_decode($response->getContent());
+        $this->assertSame('indexAction', $result->action);
+        $this->assertSame('value', $result->key);
+        $this->assertEquals('1', $result->test);
+    }
+
+    public function testViewAction()
+    {
+        $application = $this->createSmallApp();
+        $response = $application->handle(new Request([], [], ['REQUEST_URI' => '/view/1/'], [], [], []), new \Owl\Http\Response\Json());
+
+        $this->assertInstanceOf('Owl\Http\ResponseInterface', $response);
+        $this->assertSame(200, $response->getStatusCode());
+
+        $this->assertJson($response->getContent());
+
+        $result = json_decode($response->getContent());
+        $this->assertSame('viewAction', $result->action);
+        $this->assertSame('value', $result->key);
+        $this->assertEquals('1', $result->test);
     }
 }

@@ -11,7 +11,17 @@ class IndexController extends \Owl\Mvc\Controller
     {
         return array(
             'test' => 1,
-            'key' => 'value'
+            'key' => 'value',
+            'action' => __FUNCTION__
+        );
+    }
+
+    public function viewAction()
+    {
+        return array(
+            'test' => 1,
+            'key' => 'value',
+            'action' => __FUNCTION__
         );
     }
 }
