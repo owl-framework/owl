@@ -3,10 +3,13 @@ namespace Owl\Http;
 
 interface RequestInterface
 {
-    public function getUri() -> string|null;
+	/**
+	 * Get Request's URI
+	 */
+    public function getUri() -> string;
 
     /**
-     * Get request path (URI without GET parameters)
+     * Get Request's path (URI without GET parameters)
      */
     public function getPath() -> string;
 

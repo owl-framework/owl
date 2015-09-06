@@ -7,12 +7,14 @@ interface RequestInterface
 {
 
     /**
-     * @return string|null 
+     * Get Request's URI
+     *
+     * @return string 
      */
     public function getUri();
 
     /**
-     * Get request path (URI without GET parameters)
+     * Get Request's path (URI without GET parameters)
      *
      * @return string 
      */
