@@ -35,6 +35,11 @@ class Application implements \Owl\ApplicationInterface, \Owl\DispatcherInterface
     protected $eventManager;
 
     /**
+     * @var string
+     */
+    protected $defaultNamespace = "\\\\RestApp\\\\";
+
+    /**
      * Handle parameters for exception catch
      *
      * @var array
@@ -67,6 +72,11 @@ class Application implements \Owl\ApplicationInterface, \Owl\DispatcherInterface
      * @return string 
      */
     public function getEnv() {}
+
+    /**
+     * @return string 
+     */
+    public function getDefaultNamespace() {}
 
     /**
      * Handle parameters for exception catch
@@ -102,6 +112,11 @@ class Application implements \Owl\ApplicationInterface, \Owl\DispatcherInterface
      * @param string $env 
      */
     public function __construct(\Owl\Di\ContainerInterface $di = null, Event\Manager $eventManager = null, $env = ApplicationInterface::ENV_PRODUCTION) {}
+
+    /**
+     * @param string $namespaceName 
+     */
+    public function setDefaultNamespace($namespaceName) {}
 
     /**
      * Dispatch the action

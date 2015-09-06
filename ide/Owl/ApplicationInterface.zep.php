@@ -34,4 +34,11 @@ interface ApplicationInterface
      */
     public function handle(\Owl\Http\RequestInterface $request, \Owl\Http\ResponseInterface $response = null);
 
+    /**
+     * Sets the default namespace
+     *
+     * @param string $namespaceName 
+     */
+    public function setDefaultNamespace($namespaceName);
+
 }

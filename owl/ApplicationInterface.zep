@@ -25,4 +25,9 @@ interface ApplicationInterface
 	 * Handle Http Request
 	 */
 	public fn handle(<RequestInterface> request, <ResponseInterface> response = null) -> <ResponseInterface>;
+
+	/**
+	 * Sets the default namespace
+	 */
+	public function setDefaultNamespace(string namespaceName);
 }

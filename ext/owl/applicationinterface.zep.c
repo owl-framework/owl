@@ -35,3 +35,8 @@ ZEPHIR_DOC_METHOD(Owl_ApplicationInterface, __construct);
  */
 ZEPHIR_DOC_METHOD(Owl_ApplicationInterface, handle);
 
+/**
+ * Sets the default namespace
+ */
+ZEPHIR_DOC_METHOD(Owl_ApplicationInterface, setDefaultNamespace);
+

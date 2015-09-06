@@ -10,7 +10,6 @@ if test "$PHP_OWL" = "yes"; then
 
 	AC_DEFINE(HAVE_OWL, 1, [Whether you have Owl])
 	owl_sources="owl.c kernel/main.c kernel/memory.c kernel/exception.c kernel/hash.c kernel/debug.c kernel/backtrace.c kernel/object.c kernel/array.c kernel/extended/array.c kernel/string.c kernel/fcall.c kernel/extended/fcall.c kernel/require.c kernel/file.c kernel/operators.c kernel/math.c kernel/concat.c kernel/variables.c kernel/filter.c kernel/iterator.c kernel/time.c kernel/exit.c owl/cache/driver.zep.c
-	owl/dbal/driver/driverinterface.zep.c
 	owl/cache/driver/cachedriver.zep.c
 	owl/filter/filterinterface.zep.c
 	owl/log/writerinterface.zep.c
@@ -18,6 +17,7 @@ if test "$PHP_OWL" = "yes"; then
 	owl/log/abstractwriter.zep.c
 	owl/log/loggerinterface.zep.c
 	owl/dbal/driver/abstractpdo.zep.c
+	owl/dbal/driver/driverinterface.zep.c
 	owl/dbal/platform/platforminterface.zep.c
 	owl/exception.zep.c
 	owl/http/responseinterface.zep.c

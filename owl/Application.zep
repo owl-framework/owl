@@ -46,6 +46,13 @@ class Application implements ApplicationInterface, DispatcherInterface
 	protected eventManager;
 
 	/**
+	 * @var string
+	 */
+	protected defaultNamespace = "\\RestApp\\" {
+		get
+	};
+
+	/**
 	 * Handle parameters for exception catch
 	 *
 	 * @var array
@@ -84,6 +91,11 @@ class Application implements ApplicationInterface, DispatcherInterface
 		}
 	}
 
+	public function setDefaultNamespace(string namespaceName)
+	{
+		let this->defaultNamespace = namespaceName;
+	}
+
 	/**
 	 * Dispatch the action
 	 */
@@ -93,7 +105,7 @@ class Application implements ApplicationInterface, DispatcherInterface
 
 		let this->currentLoop++;
 
-		let handlerClass = "\\RestApp\\";
+		let handlerClass = this->defaultNamespace;
 
 		if fetch module, parameters["module"] {
 			let handlerClass .= module . "\\";

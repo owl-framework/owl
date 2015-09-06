@@ -3,7 +3,7 @@
 namespace Owl\DBAL\Driver;
 
 
-abstract class AbstractPdo implements \Owl\DBAL\Driver\DriverInterface
+abstract class AbstractPdo
 {
 
     protected $eventsManager;

@@ -36,7 +36,6 @@ ZEPHIR_INIT_CLASS(Owl_DBAL_Driver_AbstractPdo) {
 
 	zend_declare_property_null(owl_dbal_driver_abstractpdo_ce, SL("connection"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
-	zend_class_implements(owl_dbal_driver_abstractpdo_ce TSRMLS_CC, 1, owl_dbal_driver_driverinterface_ce);
 	return SUCCESS;
 
 }
