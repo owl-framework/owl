@@ -24,6 +24,9 @@ ZEPHIR_INIT_CLASS(Owl_Http_Request) {
 
 	ZEPHIR_REGISTER_CLASS(Owl\\Http, Request, owl, http_request, owl_http_request_method_entry, 0);
 
+	/**
+	 * @var string
+	 */
 	zend_declare_property_string(owl_http_request_ce, SL("method"), "GET", ZEND_ACC_PROTECTED TSRMLS_CC);
 
 	/**
@@ -81,6 +84,8 @@ ZEPHIR_INIT_CLASS(Owl_Http_Request) {
 
 }
 
+/**
+ */
 PHP_METHOD(Owl_Http_Request, getMethod) {
 
 
@@ -279,7 +284,7 @@ PHP_METHOD(Owl_Http_Request, __construct) {
 	ZEPHIR_INIT_VAR(_9);
 	ZVAL_STRING(_9, "REQUEST_METHOD", ZEPHIR_TEMP_PARAM_COPY);
 	ZEPHIR_INIT_VAR(_10);
-	ZVAL_STRING(_10, "UNKNOWN", ZEPHIR_TEMP_PARAM_COPY);
+	ZVAL_STRING(_10, "GET", ZEPHIR_TEMP_PARAM_COPY);
 	ZEPHIR_CALL_METHOD(&_8, _7, "get", NULL, 0, _9, _10);
 	zephir_check_temp_parameter(_9);
 	zephir_check_temp_parameter(_10);

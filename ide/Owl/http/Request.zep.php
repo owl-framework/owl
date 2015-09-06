@@ -35,7 +35,9 @@ class Request implements \Owl\Http\RequestInterface
 
     const PROPFIND = "PROPFIND";
 
-
+    /**
+     * @var string
+     */
     protected $method = self::GET;
 
     /**
@@ -69,7 +71,9 @@ class Request implements \Owl\Http\RequestInterface
     protected $cookies;
 
 
-
+    /**
+     * @return string 
+     */
     public function getMethod() {}
 
     /**

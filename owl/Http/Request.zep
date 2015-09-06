@@ -17,7 +17,12 @@ class Request implements RequestInterface
     const PATCH    = "PATCH";
     const PROPFIND = "PROPFIND";
 
-    protected method = self::GET {get};
+	/**
+	 * @var string
+	 */
+    protected method = self::GET {
+    	get
+	};
 
     /**
      * @var \Owl\Std\ArrayBag
@@ -97,7 +102,7 @@ class Request implements RequestInterface
         let this->files = new ArrayBag(files);
         let this->cookies = new ArrayBag(cookies);
 
-		let this->method = this->server->get("REQUEST_METHOD", "UNKNOWN");
+		let this->method = this->server->get("REQUEST_METHOD", self::GET);
     }
 
     public static fn createFromGlobals() -> <Request>
