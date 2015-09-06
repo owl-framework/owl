@@ -30,13 +30,28 @@ ZEPHIR_DOC_METHOD(Owl_Http_RequestInterface, getUri);
  */
 ZEPHIR_DOC_METHOD(Owl_Http_RequestInterface, getPath);
 
+/**
+ * Get parameter from $_GET
+ */
 ZEPHIR_DOC_METHOD(Owl_Http_RequestInterface, getParam);
 
+/**
+ * Get parameter from $_POST
+ */
 ZEPHIR_DOC_METHOD(Owl_Http_RequestInterface, getPost);
 
+/**
+ * Get parameter from $_SERVER
+ */
 ZEPHIR_DOC_METHOD(Owl_Http_RequestInterface, getServer);
 
+/**
+ * Get Request's scheme (HTTP/HTTPS)
+ */
 ZEPHIR_DOC_METHOD(Owl_Http_RequestInterface, getScheme);
 
+/**
+ * Get Request's method (GET, POST, PUT, DELETE, OPTIONS, HEAD, TRACE, CONNECT, PATCH, PROPFIND)
+ */
 ZEPHIR_DOC_METHOD(Owl_Http_RequestInterface, getMethod);
 
