@@ -21,6 +21,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
         $request = Request::createFromGlobals();
 
         $this->assertEquals('/', $request->getUri());
+        $this->assertEquals('/', $request->getPath());
         $this->assertEquals(Request::GET, $request->getMethod());
 
         /**
@@ -30,6 +31,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
         $request = Request::createFromGlobals();
 
         $this->assertEquals('/?code=1&test=2', $request->getUri());
+        $this->assertEquals('/', $request->getPath());
         $this->assertEquals(Request::GET, $request->getMethod());
 
         /**
@@ -39,6 +41,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
         $request = Request::createFromGlobals();
 
         $this->assertEquals('/test', $request->getUri());
+        $this->assertEquals('/test', $request->getPath());
         $this->assertEquals(Request::GET, $request->getMethod());
 
         /**
@@ -48,6 +51,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
         $request = Request::createFromGlobals();
 
         $this->assertEquals('/test?code=1', $request->getUri());
+        $this->assertEquals('/test', $request->getPath());
         $this->assertEquals(Request::GET, $request->getMethod());
     }
 
@@ -63,6 +67,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals('/', $request->getUri()); // By default it's /
+        $this->assertEquals('/', $request->getPath());
         $this->assertEquals(Request::GET, $request->getMethod());
 
         $request = new Request(
