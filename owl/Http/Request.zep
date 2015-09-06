@@ -96,6 +96,8 @@ class Request implements RequestInterface
         let this->headers = new ArrayBag(headers);
         let this->files = new ArrayBag(files);
         let this->cookies = new ArrayBag(cookies);
+
+		let this->method = this->server->get("REQUEST_METHOD", "UNKNOWN");
     }
 
     public static fn createFromGlobals() -> <Request>
