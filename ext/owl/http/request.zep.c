@@ -234,8 +234,24 @@ PHP_METHOD(Owl_Http_Request, getServer) {
 
 PHP_METHOD(Owl_Http_Request, getScheme) {
 
+	int ZEPHIR_LAST_CALL_STATUS;
+	zval *https = NULL, *_0;
 
-	RETURN_STRING("http", 1);
+	ZEPHIR_MM_GROW();
+
+	ZEPHIR_INIT_VAR(_0);
+	ZVAL_STRING(_0, "HTTPS", ZEPHIR_TEMP_PARAM_COPY);
+	ZEPHIR_CALL_METHOD(&https, this_ptr, "getserver", NULL, 0, _0);
+	zephir_check_temp_parameter(_0);
+	zephir_check_call_status();
+	if (zephir_is_true(https)) {
+		if (ZEPHIR_IS_STRING(https, "off")) {
+			RETURN_MM_STRING("http", 1);
+		} else {
+			RETURN_MM_STRING("https", 1);
+		}
+	}
+	RETURN_MM_STRING("http", 1);
 
 }
 

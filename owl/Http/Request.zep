@@ -85,13 +85,21 @@ class Request implements RequestInterface
         return this->server->get(key, defaultValue);
     }
 
-    public fn getScheme() -> string
-    {
-        /**
-         * @todo implement it
-         */
-        return "http";
-    }
+	public fn getScheme() -> string
+	{
+		var https;
+
+		let https = this->getServer("HTTPS");
+		if https {
+			if https == "off" {
+				return "http";
+			} else {
+				return "https";
+			}
+		}
+
+		return "http";
+	}
 
     public fn __construct(var get, var post, var server, var headers, var files, var cookies)
     {
