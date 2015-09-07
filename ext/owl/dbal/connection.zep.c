@@ -31,14 +31,14 @@ ZEPHIR_INIT_CLASS(Owl_DBAL_Connection) {
 	/**
 	 * Current used driver
 	 *
-	 * @var Driver\DriverInterface
+	 * @var \Owl\DBAL\Driver\DriverInterface
 	 */
 	zend_declare_property_null(owl_dbal_connection_ce, SL("driver"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
 	/**
 	 * Current used db platform (MySQL|PgSQL)
 	 *
-	 * @var Platform\PlatformInterface
+	 * @var \Owl\DBAL\Platform\PlatformInterface
 	 */
 	zend_declare_property_null(owl_dbal_connection_ce, SL("platform"), ZEND_ACC_PROTECTED TSRMLS_CC);
 

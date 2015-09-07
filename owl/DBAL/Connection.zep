@@ -8,7 +8,7 @@ class Connection
 	/**
 	 * Current used driver
 	 *
-	 * @var Driver\DriverInterface
+	 * @var \Owl\DBAL\Driver\DriverInterface
 	 */
 	protected driver {
 		get
@@ -17,7 +17,7 @@ class Connection
 	/**
 	 * Current used db platform (MySQL|PgSQL)
 	 *
-	 * @var Platform\PlatformInterface
+	 * @var \Owl\DBAL\Platform\PlatformInterface
 	 */
 	protected platform {
 		get

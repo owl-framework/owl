@@ -8,14 +8,14 @@ class Connection
     /**
      * Current used driver
      *
-     * @var Driver\DriverInterface
+     * @var \Owl\DBAL\Driver\DriverInterface
      */
     protected $driver;
 
     /**
      * Current used db platform (MySQL|PgSQL)
      *
-     * @var Platform\PlatformInterface
+     * @var \Owl\DBAL\Platform\PlatformInterface
      */
     protected $platform;
 
@@ -23,14 +23,14 @@ class Connection
     /**
      * Current used driver
      *
-     * @return Driver\DriverInterface 
+     * @return \Owl\DBAL\Driver\DriverInterface 
      */
     public function getDriver() {}
 
     /**
      * Current used db platform (MySQL|PgSQL)
      *
-     * @return Platform\PlatformInterface 
+     * @return \Owl\DBAL\Platform\PlatformInterface 
      */
     public function getPlatform() {}
 
