@@ -12,6 +12,7 @@ PHP_METHOD(Owl_DBAL_Driver_AbstractPdo, connect);
 PHP_METHOD(Owl_DBAL_Driver_AbstractPdo, getNewPlatform);
 PHP_METHOD(Owl_DBAL_Driver_AbstractPdo, lastInsertId);
 PHP_METHOD(Owl_DBAL_Driver_AbstractPdo, prepare);
+PHP_METHOD(Owl_DBAL_Driver_AbstractPdo, query);
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_dbal_driver_abstractpdo_seteventsmanager, 0, 0, 1)
 	ZEND_ARG_INFO(0, eventsManager)
@@ -32,6 +33,11 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_dbal_driver_abstractpdo_prepare, 0, 0, 1)
 	ZEND_ARG_INFO(0, statement)
 ZEND_END_ARG_INFO()
 
+ZEND_BEGIN_ARG_INFO_EX(arginfo_owl_dbal_driver_abstractpdo_query, 0, 0, 1)
+	ZEND_ARG_INFO(0, sql)
+	ZEND_ARG_ARRAY_INFO(0, parameters, 1)
+ZEND_END_ARG_INFO()
+
 ZEPHIR_INIT_FUNCS(owl_dbal_driver_abstractpdo_method_entry) {
 	PHP_ME(Owl_DBAL_Driver_AbstractPdo, setEventsManager, arginfo_owl_dbal_driver_abstractpdo_seteventsmanager, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_DBAL_Driver_AbstractPdo, getEventsManager, NULL, ZEND_ACC_PUBLIC)
@@ -42,5 +48,6 @@ ZEPHIR_INIT_FUNCS(owl_dbal_driver_abstractpdo_method_entry) {
 	PHP_ME(Owl_DBAL_Driver_AbstractPdo, getNewPlatform, NULL, ZEND_ACC_ABSTRACT|ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_DBAL_Driver_AbstractPdo, lastInsertId, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Owl_DBAL_Driver_AbstractPdo, prepare, arginfo_owl_dbal_driver_abstractpdo_prepare, ZEND_ACC_PUBLIC)
+	PHP_ME(Owl_DBAL_Driver_AbstractPdo, query, arginfo_owl_dbal_driver_abstractpdo_query, ZEND_ACC_PUBLIC)
 	PHP_FE_END
 };

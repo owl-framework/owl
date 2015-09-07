@@ -70,4 +70,11 @@ abstract class AbstractPdo
      */
     public function prepare($statement) {}
 
+    /**
+     * @param mixed $sql 
+     * @param array $parameters 
+     * @return \PDOStatement 
+     */
+    public function query($sql, $parameters = array()) {}
+
 }

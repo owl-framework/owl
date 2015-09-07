@@ -209,3 +209,30 @@ PHP_METHOD(Owl_DBAL_Driver_AbstractPdo, prepare) {
 
 }
 
+PHP_METHOD(Owl_DBAL_Driver_AbstractPdo, query) {
+
+	int ZEPHIR_LAST_CALL_STATUS;
+	zval *parameters = NULL;
+	zval *sql, *parameters_param = NULL, *_0 = NULL;
+
+	ZEPHIR_MM_GROW();
+	zephir_fetch_params(1, 1, 1, &sql, &parameters_param);
+
+	if (!parameters_param) {
+		ZEPHIR_INIT_VAR(parameters);
+		array_init(parameters);
+	} else {
+		zephir_get_arrval(parameters, parameters_param);
+	}
+
+
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "connect", NULL, 0);
+	zephir_check_call_status();
+	ZEPHIR_CALL_METHOD(&_0, this_ptr, "prepare", NULL, 0, sql);
+	zephir_check_call_status();
+	ZEPHIR_RETURN_CALL_METHOD(_0, "execute", NULL, 0, parameters);
+	zephir_check_call_status();
+	RETURN_MM();
+
+}
+

@@ -70,4 +70,11 @@ abstract class AbstractPdo
 
 		return this->connection->prepare(statement);
 	}
+
+	public function query(var sql, array parameters = []) -> <\PDOStatement>
+	{
+		this->connect();
+
+		return this->prepare(sql)->execute(parameters);
+	}
 }
