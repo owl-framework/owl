@@ -83,6 +83,7 @@ zend_class_entry *owl_event_manager_ce;
 zend_class_entry *owl_filter_email_ce;
 zend_class_entry *owl_filter_striptags_ce;
 zend_class_entry *owl_filter_trim_ce;
+zend_class_entry *owl_filter_url_ce;
 zend_class_entry *owl_http_headersbag_ce;
 zend_class_entry *owl_http_request_ce;
 zend_class_entry *owl_http_response_json_ce;
@@ -183,6 +184,7 @@ static PHP_MINIT_FUNCTION(owl)
 	ZEPHIR_INIT(Owl_Filter_Email);
 	ZEPHIR_INIT(Owl_Filter_StripTags);
 	ZEPHIR_INIT(Owl_Filter_Trim);
+	ZEPHIR_INIT(Owl_Filter_Url);
 	ZEPHIR_INIT(Owl_Http_HeadersBag);
 	ZEPHIR_INIT(Owl_Http_Request);
 	ZEPHIR_INIT(Owl_Http_Response_Json);

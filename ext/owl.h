@@ -5,10 +5,10 @@
 #define ZEPHIR_CLASS_ENTRIES_H
 
 #include "owl/cache/driver.zep.h"
-#include "owl/cache/driver/cachedriver.zep.h"
 #include "owl/filter/filterinterface.zep.h"
-#include "owl/log/writerinterface.zep.h"
+#include "owl/cache/driver/cachedriver.zep.h"
 #include "owl/filter/abstractfilter.zep.h"
+#include "owl/log/writerinterface.zep.h"
 #include "owl/log/abstractwriter.zep.h"
 #include "owl/log/loggerinterface.zep.h"
 #include "owl/dbal/driver/abstractpdo.zep.h"
@@ -59,6 +59,7 @@
 #include "owl/filter/email.zep.h"
 #include "owl/filter/striptags.zep.h"
 #include "owl/filter/trim.zep.h"
+#include "owl/filter/url.zep.h"
 #include "owl/http/headersbag.zep.h"
 #include "owl/http/request.zep.h"
 #include "owl/http/response/json.zep.h"
