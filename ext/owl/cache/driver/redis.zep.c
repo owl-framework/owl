@@ -46,8 +46,8 @@ PHP_METHOD(Owl_Cache_Driver_Redis, __construct) {
 	zephir_fetch_params(1, 0, 1, &options_param);
 
 	if (!options_param) {
-	ZEPHIR_INIT_VAR(options);
-	array_init(options);
+		ZEPHIR_INIT_VAR(options);
+		array_init(options);
 	} else {
 		zephir_get_arrval(options, options_param);
 	}
@@ -81,8 +81,10 @@ PHP_METHOD(Owl_Cache_Driver_Redis, getInstance) {
 	if (Z_TYPE_P(_0) == IS_NULL) {
 		ZEPHIR_INIT_VAR(_1);
 		object_init_ex(_1, zephir_get_internal_ce(SS("redis") TSRMLS_CC));
-		ZEPHIR_CALL_METHOD(NULL, _1, "__construct", NULL, 0);
-		zephir_check_call_status();
+		if (zephir_has_constructor(_1 TSRMLS_CC)) {
+			ZEPHIR_CALL_METHOD(NULL, _1, "__construct", NULL, 0);
+			zephir_check_call_status();
+		}
 		zephir_update_property_this(this_ptr, SL("instance"), _1 TSRMLS_CC);
 		_2 = zephir_fetch_nproperty_this(this_ptr, SL("instance"), PH_NOISY_CC);
 		ZEPHIR_INIT_VAR(_3);

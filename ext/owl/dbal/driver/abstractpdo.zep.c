@@ -72,7 +72,6 @@ PHP_METHOD(Owl_DBAL_Driver_AbstractPdo, __construct) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'dsn' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-
 	if (likely(Z_TYPE_P(dsn_param) == IS_STRING)) {
 		zephir_get_strval(dsn, dsn_param);
 	} else {
@@ -127,7 +126,6 @@ PHP_METHOD(Owl_DBAL_Driver_AbstractPdo, execute) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'query' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-
 	if (likely(Z_TYPE_P(query_param) == IS_STRING)) {
 		zephir_get_strval(query, query_param);
 	} else {

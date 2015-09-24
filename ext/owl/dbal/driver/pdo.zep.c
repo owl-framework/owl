@@ -44,7 +44,6 @@ PHP_METHOD(Owl_DBAL_Driver_Pdo, __construct) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'dsn' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-
 	if (likely(Z_TYPE_P(dsn_param) == IS_STRING)) {
 		zephir_get_strval(dsn, dsn_param);
 	} else {
@@ -58,8 +57,8 @@ PHP_METHOD(Owl_DBAL_Driver_Pdo, __construct) {
 		password = ZEPHIR_GLOBAL(global_null);
 	}
 	if (!options_param) {
-	ZEPHIR_INIT_VAR(options);
-	array_init(options);
+		ZEPHIR_INIT_VAR(options);
+		array_init(options);
 	} else {
 		zephir_get_arrval(options, options_param);
 	}

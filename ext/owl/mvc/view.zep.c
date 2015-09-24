@@ -79,7 +79,6 @@ PHP_METHOD(Owl_Mvc_View, render) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'path' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-
 	if (likely(Z_TYPE_P(path_param) == IS_STRING)) {
 		zephir_get_strval(path, path_param);
 	} else {
@@ -87,8 +86,8 @@ PHP_METHOD(Owl_Mvc_View, render) {
 		ZVAL_EMPTY_STRING(path);
 	}
 	if (!parameters_param) {
-	ZEPHIR_INIT_VAR(parameters);
-	array_init(parameters);
+		ZEPHIR_INIT_VAR(parameters);
+		array_init(parameters);
 	} else {
 		zephir_get_arrval(parameters, parameters_param);
 	}
@@ -115,9 +114,9 @@ PHP_METHOD(Owl_Mvc_View, render) {
 	if (!(Z_TYPE_P(parameters) == IS_NULL)) {
 		ZEPHIR_INIT_VAR(_5);
 		ZVAL_LONG(_5, 0);
-		Z_SET_ISREF_P(parameters);
+		ZEPHIR_MAKE_REF(parameters);
 		ZEPHIR_CALL_FUNCTION(NULL, "extract", NULL, 29, parameters, _5);
-		Z_UNSET_ISREF_P(parameters);
+		ZEPHIR_UNREF(parameters);
 		zephir_check_call_status();
 	}
 	_6 = zephir_fetch_nproperty_this(this_ptr, SL("path"), PH_NOISY_CC);

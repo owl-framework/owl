@@ -56,12 +56,14 @@ PHP_METHOD(Owl_Debug_MemoryProfiler, getPlatformInfo) {
 
 	zval *_0, *_1, *_2, *_3;
 	int tmp = 0;
-	zval *memoryInfo;
+	zval *memoryInfo = NULL;
 
 	ZEPHIR_MM_GROW();
 	ZEPHIR_INIT_VAR(memoryInfo);
 	array_init(memoryInfo);
 
+	ZEPHIR_INIT_NVAR(memoryInfo);
+	array_init(memoryInfo);
 	
 			tmp = sizeof(zend_class_entry);
 		

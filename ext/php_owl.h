@@ -14,7 +14,7 @@
 #define PHP_OWL_VERSION     "0.5"
 #define PHP_OWL_EXTNAME     "owl"
 #define PHP_OWL_AUTHOR      "Owl team and Contributors"
-#define PHP_OWL_ZEPVERSION  "0.7.1b"
+#define PHP_OWL_ZEPVERSION  "0.8.0a"
 #define PHP_OWL_DESCRIPTION "Owl is an extreme fast PHP framework for building REST and MVC applications"
 
 

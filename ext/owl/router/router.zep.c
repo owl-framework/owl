@@ -74,7 +74,6 @@ PHP_METHOD(Owl_Router_Router, add) {
 		array_init(parameters);
 	} else {
 	parameters = parameters_param;
-
 	}
 	if (!method_param) {
 		ZEPHIR_INIT_VAR(method);

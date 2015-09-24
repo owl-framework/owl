@@ -296,7 +296,7 @@ PHP_METHOD(Owl_Application, dispatch) {
 		}
 		ZEPHIR_INIT_VAR(controller);
 		zephir_fetch_safe_class(_4, handlerClass);
-		_5 = zend_fetch_class(Z_STRVAL_P(_4), Z_STRLEN_P(_4), ZEND_FETCH_CLASS_AUTO TSRMLS_CC);
+			_5 = zend_fetch_class(Z_STRVAL_P(_4), Z_STRLEN_P(_4), ZEND_FETCH_CLASS_AUTO TSRMLS_CC);
 		object_init_ex(controller, _5);
 		if (zephir_has_constructor(controller TSRMLS_CC)) {
 			_6 = zephir_fetch_nproperty_this(this_ptr, SL("request"), PH_NOISY_CC);
@@ -345,7 +345,7 @@ PHP_METHOD(Owl_Application, dispatch) {
 		zephir_check_temp_parameter(_8);
 		zephir_check_call_status_or_jump(try_end_1);
 		if (Z_TYPE_P(callParameters) == IS_NULL) {
-			ZEPHIR_CALL_METHOD_ZVAL(&result, controller, action,  NULL, 0);
+			ZEPHIR_CALL_METHOD_ZVAL(&result, controller, action, NULL, 0);
 			zephir_check_call_status_or_jump(try_end_1);
 		} else {
 			ZEPHIR_INIT_VAR(_13);
@@ -490,7 +490,7 @@ PHP_METHOD(Owl_Application, handle) {
 static zend_object_value zephir_init_properties_Owl_Application(zend_class_entry *class_type TSRMLS_DC) {
 
 		zval *_1 = NULL;
-		zval *_0, *_2;
+	zval *_0, *_2;
 
 		ZEPHIR_MM_GROW();
 	

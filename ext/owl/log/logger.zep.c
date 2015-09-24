@@ -211,7 +211,7 @@ PHP_METHOD(Owl_Log_Logger, factoryWriter) {
 	}
 	ZEPHIR_INIT_VAR(writer);
 	zephir_fetch_safe_class(_0, writerClass);
-	_1 = zend_fetch_class(Z_STRVAL_P(_0), Z_STRLEN_P(_0), ZEND_FETCH_CLASS_AUTO TSRMLS_CC);
+		_1 = zend_fetch_class(Z_STRVAL_P(_0), Z_STRLEN_P(_0), ZEND_FETCH_CLASS_AUTO TSRMLS_CC);
 	object_init_ex(writer, _1);
 	if (zephir_has_constructor(writer TSRMLS_CC)) {
 		ZEPHIR_CALL_METHOD(NULL, writer, "__construct", NULL, 0);
@@ -304,10 +304,9 @@ PHP_METHOD(Owl_Log_Logger, log) {
 	zephir_fetch_params(1, 2, 1, &level_param, &message_param, &context_param);
 
 	if (unlikely(Z_TYPE_P(level_param) != IS_LONG)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'level' must be a long/integer") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'level' must be a int") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-
 	level = Z_LVAL_P(level_param);
 	zephir_get_strval(message, message_param);
 	if (!context_param) {

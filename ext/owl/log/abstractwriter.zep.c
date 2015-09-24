@@ -275,7 +275,7 @@ PHP_METHOD(Owl_Log_AbstractWriter, setFormatter) {
 		}
 		ZEPHIR_INIT_VAR(_3);
 		zephir_fetch_safe_class(_4, formatter);
-		_5 = zend_fetch_class(Z_STRVAL_P(_4), Z_STRLEN_P(_4), ZEND_FETCH_CLASS_AUTO TSRMLS_CC);
+			_5 = zend_fetch_class(Z_STRVAL_P(_4), Z_STRLEN_P(_4), ZEND_FETCH_CLASS_AUTO TSRMLS_CC);
 		object_init_ex(_3, _5);
 		if (zephir_has_constructor(_3 TSRMLS_CC)) {
 			ZEPHIR_CALL_METHOD(NULL, _3, "__construct", NULL, 0);

@@ -172,7 +172,7 @@ PHP_METHOD(Owl_Debug_Profiler, setContent) {
 	zephir_microtime(_2, ZEPHIR_GLOBAL(global_true) TSRMLS_CC);
 	_3 = zephir_fetch_nproperty_this(this_ptr, SL("startTime"), PH_NOISY_CC);
 	ZEPHIR_SINIT_VAR(_4);
-	sub_function(&_4, _2, _3 TSRMLS_CC);
+	zephir_sub_function(&_4, _2, _3);
 	ZEPHIR_SINIT_VAR(_5);
 	ZVAL_STRING(&_5, "%.4Fms", 0);
 	ZEPHIR_CALL_FUNCTION(&_6, "sprintf", &_7, 12, &_5, &_4);

@@ -39,13 +39,11 @@ PHP_METHOD(Owl_Annotations_ClassAnnotationsResult, __construct) {
 	zephir_fetch_params(1, 1, 1, &annotations_param, &methods_param);
 
 	annotations = annotations_param;
-
 	if (!methods_param) {
-	ZEPHIR_INIT_VAR(methods);
-	array_init(methods);
+		ZEPHIR_INIT_VAR(methods);
+		array_init(methods);
 	} else {
 	methods = methods_param;
-
 	}
 
 

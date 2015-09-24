@@ -175,7 +175,7 @@ PHP_METHOD(Owl_Router_Http_DynamicRoute, getPattern) {
 PHP_METHOD(Owl_Router_Http_DynamicRoute, match) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *parameters;
+	zval *parameters = NULL;
 	zval *uri_param = NULL, *_0, *_1 = NULL;
 	zval *uri = NULL;
 
@@ -187,6 +187,8 @@ PHP_METHOD(Owl_Router_Http_DynamicRoute, match) {
 	array_init(parameters);
 
 
+	ZEPHIR_INIT_NVAR(parameters);
+	array_init(parameters);
 	ZEPHIR_INIT_VAR(_0);
 	ZEPHIR_CALL_METHOD(&_1, this_ptr, "getpattern", NULL, 0);
 	zephir_check_call_status();

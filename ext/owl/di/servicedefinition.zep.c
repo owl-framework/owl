@@ -104,7 +104,6 @@ PHP_METHOD(Owl_Di_ServiceDefinition, __construct) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'name' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-
 	if (likely(Z_TYPE_P(name_param) == IS_STRING)) {
 		zephir_get_strval(name, name_param);
 	} else {
@@ -120,7 +119,11 @@ PHP_METHOD(Owl_Di_ServiceDefinition, __construct) {
 
 	zephir_update_property_this(this_ptr, SL("name"), name TSRMLS_CC);
 	zephir_update_property_this(this_ptr, SL("definition"), definition TSRMLS_CC);
-	zephir_update_property_this(this_ptr, SL("shared"), shared ? ZEPHIR_GLOBAL(global_true) : ZEPHIR_GLOBAL(global_false) TSRMLS_CC);
+	if (shared) {
+		zephir_update_property_this(this_ptr, SL("shared"), ZEPHIR_GLOBAL(global_true) TSRMLS_CC);
+	} else {
+		zephir_update_property_this(this_ptr, SL("shared"), ZEPHIR_GLOBAL(global_false) TSRMLS_CC);
+	}
 	ZEPHIR_MM_RESTORE();
 
 }

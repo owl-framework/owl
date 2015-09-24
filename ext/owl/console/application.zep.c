@@ -64,7 +64,6 @@ PHP_METHOD(Owl_Console_Application, addCommands) {
 	commands = commands_param;
 
 
-
 	zephir_is_iterable(commands, &_1, &_0, 0, 0, "owl/Console/Application.zep", 22);
 	for (
 	  ; zephir_hash_get_current_data_ex(_1, (void**) &_2, &_0) == SUCCESS

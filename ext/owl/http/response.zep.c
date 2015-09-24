@@ -169,7 +169,11 @@ PHP_METHOD(Owl_Http_Response, send) {
 	zephir_read_property_this(&_2, this_ptr, SL("content"), PH_NOISY_CC);
 	zephir_get_strval(_3, _2);
 	zend_print_zval(_3, 0);
-	zephir_update_property_this(this_ptr, SL("sent"), (1) ? ZEPHIR_GLOBAL(global_true) : ZEPHIR_GLOBAL(global_false) TSRMLS_CC);
+	if (1) {
+		zephir_update_property_this(this_ptr, SL("sent"), ZEPHIR_GLOBAL(global_true) TSRMLS_CC);
+	} else {
+		zephir_update_property_this(this_ptr, SL("sent"), ZEPHIR_GLOBAL(global_false) TSRMLS_CC);
+	}
 	RETURN_MM_BOOL(1);
 
 }
@@ -187,7 +191,6 @@ PHP_METHOD(Owl_Http_Response, redirect) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'location' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-
 	if (likely(Z_TYPE_P(location_param) == IS_STRING)) {
 		zephir_get_strval(location, location_param);
 	} else {

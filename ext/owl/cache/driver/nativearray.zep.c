@@ -44,8 +44,8 @@ PHP_METHOD(Owl_Cache_Driver_NativeArray, __construct) {
 	zephir_fetch_params(1, 0, 1, &options_param);
 
 	if (!options_param) {
-	ZEPHIR_INIT_VAR(options);
-	array_init(options);
+		ZEPHIR_INIT_VAR(options);
+		array_init(options);
 	} else {
 		zephir_get_arrval(options, options_param);
 	}
@@ -156,7 +156,6 @@ PHP_METHOD(Owl_Cache_Driver_NativeArray, get) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'id' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-
 	if (likely(Z_TYPE_P(id_param) == IS_STRING)) {
 		zephir_get_strval(id, id_param);
 	} else {

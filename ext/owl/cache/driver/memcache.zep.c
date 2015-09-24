@@ -46,8 +46,8 @@ PHP_METHOD(Owl_Cache_Driver_Memcache, __construct) {
 	zephir_fetch_params(1, 0, 1, &options_param);
 
 	if (!options_param) {
-	ZEPHIR_INIT_VAR(options);
-	array_init(options);
+		ZEPHIR_INIT_VAR(options);
+		array_init(options);
 	} else {
 		zephir_get_arrval(options, options_param);
 	}

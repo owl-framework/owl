@@ -46,7 +46,6 @@ PHP_METHOD(Owl_Std_Collection_ArrayCollection, __construct) {
 		array_init(elements);
 	} else {
 	elements = elements_param;
-
 	}
 
 
@@ -139,9 +138,9 @@ PHP_METHOD(Owl_Std_Collection_ArrayCollection, first) {
 	ZEPHIR_MM_GROW();
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("elements"), PH_NOISY_CC);
-	Z_SET_ISREF_P(_0);
+	ZEPHIR_MAKE_REF(_0);
 	ZEPHIR_RETURN_CALL_FUNCTION("reset", NULL, 36, _0);
-	Z_UNSET_ISREF_P(_0);
+	ZEPHIR_UNREF(_0);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -158,9 +157,9 @@ PHP_METHOD(Owl_Std_Collection_ArrayCollection, last) {
 	ZEPHIR_MM_GROW();
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("elements"), PH_NOISY_CC);
-	Z_SET_ISREF_P(_0);
+	ZEPHIR_MAKE_REF(_0);
 	ZEPHIR_RETURN_CALL_FUNCTION("end", NULL, 37, _0);
-	Z_UNSET_ISREF_P(_0);
+	ZEPHIR_UNREF(_0);
 	zephir_check_call_status();
 	RETURN_MM();
 

@@ -42,7 +42,6 @@ PHP_METHOD(Owl_Std_ArrayBag, __construct) {
 	input = input_param;
 
 
-
 	zephir_update_property_this(this_ptr, SL("elements"), input TSRMLS_CC);
 
 }
@@ -69,7 +68,6 @@ PHP_METHOD(Owl_Std_ArrayBag, set) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-
 	if (likely(Z_TYPE_P(key_param) == IS_STRING)) {
 		zephir_get_strval(key, key_param);
 	} else {
@@ -95,7 +93,6 @@ PHP_METHOD(Owl_Std_ArrayBag, has) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-
 	if (likely(Z_TYPE_P(key_param) == IS_STRING)) {
 		zephir_get_strval(key, key_param);
 	} else {
@@ -121,7 +118,6 @@ PHP_METHOD(Owl_Std_ArrayBag, get) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-
 	if (likely(Z_TYPE_P(key_param) == IS_STRING)) {
 		zephir_get_strval(key, key_param);
 	} else {
